@@ -1,12 +1,12 @@
+import React from 'react';
+import Wallet from './pages/Wallet';
 
 import './App.css';
 
 function App() {
   return (
     <>
-    <div>
-      <h1>Spotstich WebApp</h1>
-    </div>
+      <Wallet />
     </>
   );
 }
