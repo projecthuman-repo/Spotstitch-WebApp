@@ -7,6 +7,7 @@ import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import Chat from "./pages/Chat";
 import Wallet from "./pages/Wallet";
+import Refunds from "./pages/Refunds";
 import TransactionHistory from"./pages/TransactionHistory";
 import { useSelector } from "react-redux";
 import { useState } from "react";
@@ -28,12 +29,13 @@ function App() {
                     <Route path="/" element={<Home />} />
                     {!user && (
                         <>
-                            <Route path="/login" element={<Login />} />
+                            <Route path="/login" element={<Home />} />
                             <Route path="/signup" element={<Signup />} />
                         </>
                     )}
                     <Route path="/chat" element={<Chat />} />
                     <Route path="/wallet" element={<Wallet />} />
+                    <Route path="/refunds" element={<Refunds />} />
                     <Route path="/transaction" element={<TransactionHistory />} />
                 </Routes>
             </BrowserRouter>
