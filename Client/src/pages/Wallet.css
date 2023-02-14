@@ -1,0 +1,86 @@
+.container{
+    margin-top: 8%;
+    margin-left: 10%;
+    margin-right: 10%;
+}
+
+
+
+.title {
+    display: flex;
+    border-radius: 15px;
+    border: 3px solid #cad5bc;
+    
+    width:auto;
+    height: 50px;
+    justify-content: center;
+    align-items: center;
+    text-decoration-line: underline ;
+    text-decoration-thickness: 5px;
+    text-decoration-color: rgb(82, 82, 232) ;
+
+}
+
+.body{
+    
+    margin-top: 5%;
+    display: flex;
+    
+}
+
+.leftbox {
+    margin-right: 3%;
+    border: 3px solid #cad5bc;
+    border-radius: 15px;
+    height: 100px;
+    width: 15%;
+
+    padding-top: 10px;
+    padding-bottom: 10px;
+    display:grid;
+    justify-content: center;
+    align-items: center;
+
+}
+.lboxpayment{
+    background-color: rgb(170, 163, 163);
+}
+a:visited {
+    color: black;
+  }
+a:link { text-decoration: none; }
+/* mouse over link */
+a:hover {
+    background-color: rgb(170, 163, 163);
+  }
+  
+  /* selected link 
+    not functional right now
+  */
+  a:active {
+    background-color: grey;
+  }
+
+.rightbox {
+    display:flex;
+    flex-direction: column;
+    border: 3px solid #cad5bc;
+    border-radius: 15px;
+    height: 300px;
+    width: 85%;
+}
+
+.rboxtitle{
+    display: flex;
+    align-items: center;
+    padding-left: 15px;
+    border-bottom: 6px solid #cad5bc;;
+    height: 40px;
+    width: 100% -15px;
+
+
+}
+
+.rboxbody{
+  
+}
