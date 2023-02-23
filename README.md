@@ -30,7 +30,7 @@ Spotstitch is a web application that allows businesses to manage their inventory
 ### Built With
 
 * React JS - Frontend
-* Express JS - Backend
+* React JS - Backend
 
 
 <!-- GETTING STARTED -->
@@ -43,7 +43,7 @@ To get a local copy up and running follow these simple steps.
 * node
 
 ### Installation
-#### Express Backend
+#### React Backend
 
 1. `cd` into server folder
 2. run `npm install`
