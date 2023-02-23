@@ -4,6 +4,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Navigation from "./components/Navigation";
 import Home from "./pages/Home";
 import Login from "./pages/Login/Login";
+import Profile from "./pages/Profile/Profile";
 import Signup from "./pages/Signup/Signup";
 import Chat from "./pages/Chat";
 import Wallet from "./pages/Wallet/Wallet";
@@ -34,6 +35,7 @@ function App() {
                         </>
                     )}
                     <Route path="/chat" element={<Chat />} />
+                    <Route path="/profile" element={<Profile />} />
                     <Route path="/wallet" element={<Wallet />} />
                     <Route path="/refunds" element={<Refunds />} />
                     <Route path="/transaction" element={<TransactionHistory />} />

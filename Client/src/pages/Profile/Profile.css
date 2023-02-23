@@ -1,0 +1,28 @@
+.container{
+    margin-top: 8%;
+    margin-left: 10%;
+    margin-right: 10%;
+  }
+  
+  .title {
+    font-size: 30px;
+    display: flex;
+    border-radius: 15px;
+    border: 3px solid #cad5bc;
+    font-weight: bold;
+    width:auto;
+    height: 50px;
+    justify-content: center;
+    align-items: center;
+    text-decoration-line: underline ;
+    text-decoration-thickness: 5px;
+    text-decoration-color: rgb(82, 82, 232) ;
+  
+  }
+  
+  .body{
+    
+    margin-top: 5%;
+    display: flex;
+    
+  }
