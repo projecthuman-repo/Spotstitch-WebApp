@@ -49,7 +49,7 @@ To get a local copy up and running follow these simple steps.
 2. run `npm install`
 3. run `npm start`
 
-Backend will be exposed on port 3000
+Once that it is running, you can access the backend at `http://localhost:3000`
 
 #### React Frontend
 
