@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { Col, Container, Form, Row, Button } from "react-bootstrap";
-import { useSignupUserMutation } from "../services/appApi";
+import { useSignupUserMutation } from "../../services/appApi";
 import { Link, useNavigate } from "react-router-dom";
 import "./Signup.css";
-import botImg from "../assets/bot.jpeg";
+import botImg from "../../assets/bot.jpeg";
 
 function Signup() {
     const [email, setEmail] = useState("");
@@ -92,7 +92,7 @@ function Signup() {
                         </Button>
                         <div className="py-4">
                             <p className="text-center">
-                                Already have an account ? <Link to="/login">Login</Link>
+                                Already have an account? <Link to="/login">Login</Link>
                             </p>
                         </div>
                     </Form>

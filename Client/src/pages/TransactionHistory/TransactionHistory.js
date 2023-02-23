@@ -1,5 +1,5 @@
 import React from "react";
-import './TransactionHistory.css'
+import './TransactionHistory.css';
 
 const TransactionHistory = () => {
     return (

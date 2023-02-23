@@ -1,7 +1,7 @@
 import React from "react";
 import './Wallet.css';
-import lawnmowercopy from '../assets/lawnmowercopy.jpeg';
-import TransactionHistory from "./TransactionHistory";
+import lawnmowercopy from '../../assets/lawnmowercopy.jpeg';
+import TransactionHistory from "../TransactionHistory/TransactionHistory";
 import { Link, useNavigate } from "react-router-dom";
 
 import { BrowserRouter as Router, Switch, 
