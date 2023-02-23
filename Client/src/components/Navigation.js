@@ -42,9 +42,9 @@ function Navigation() {
                                 }
                                 id="basic-nav-dropdown"
                             >
+                                <NavDropdown.Item href="./profile">Profile</NavDropdown.Item>
                                 <NavDropdown.Item href="./wallet">Wallet</NavDropdown.Item>
                                 <NavDropdown.Item href="./transaction">Transaction History</NavDropdown.Item>
-                                <NavDropdown.Item href="#action/3.3">profile</NavDropdown.Item>
                                 <NavDropdown.Item>
                                     <Button variant="danger" onClick={handleLogout}>
                                         Logout
