@@ -1,7 +1,7 @@
 import React from "react";
 import './Wallet.css';
 import lawnmowercopy from '../../assets/lawnmowercopy.jpeg';
-import TransactionHistory from "../TransactionHistory/TransactionHistory";
+
 import { Link, useNavigate } from "react-router-dom";
 
 import { BrowserRouter as Router, Switch, 
@@ -56,6 +56,8 @@ return (
             <Link to="/wallet" className="lboxpayment">Payment</Link>
             <Link to="/transaction" className="">Orders</Link>
             <Link to="/refunds" className="">Refunds & return</Link>
+            <Link to="/refundspolicy" >Refunds Policy</Link>
+            
         
             </div>
 
@@ -71,10 +73,12 @@ return (
                     <a className="checkoutlink" href="https://buy.stripe.com/test_7sI17GfGDcFa0MM9AA">
                         <button className="checkoutbutton" onClick={redirectToCheckout}>Checkout</button>
                     </a>
+                    
         
             </div>
+            
         </div>
-
+        <div className="footer"></div>
 
 
     </div>

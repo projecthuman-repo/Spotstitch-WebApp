@@ -9,6 +9,7 @@ import Signup from "./pages/Signup/Signup";
 import Chat from "./pages/Chat";
 import Wallet from "./pages/Wallet/Wallet";
 import Refunds from "./pages/Refunds/Refunds";
+import RefundsPolicy from "./pages/RefundsPolicy/RefundsPolicy";
 import TransactionHistory from"./pages/TransactionHistory/TransactionHistory";
 import { useSelector } from "react-redux";
 import { useState } from "react";
@@ -38,6 +39,7 @@ function App() {
                     <Route path="/profile" element={<Profile />} />
                     <Route path="/wallet" element={<Wallet />} />
                     <Route path="/refunds" element={<Refunds />} />
+                    <Route path="/refundspolicy" element={<RefundsPolicy />} />
                     <Route path="/transaction" element={<TransactionHistory />} />
                 </Routes>
             </BrowserRouter>
