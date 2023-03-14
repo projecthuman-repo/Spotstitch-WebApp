@@ -1,0 +1,161 @@
+@import url(https://fonts.googleapis.com/css?family=Open+Sans);
+$mainColor: #15023a;
+
+$width: 768px;
+
+@mixin mobile {
+    @media (max-width: #{$width}){
+        @content 
+    }
+}
+
+
+.topbar {
+  width: 100%;
+  height: 70px;
+  background-color:white;
+  color: $mainColor;
+  position: fixed;
+  box-shadow: 5px 5px 3px 0 lightgray;
+  top: 0;
+  z-index: 2;
+  transition: all 1s ease;
+  font-size:15px;
+
+  .wrapper {
+    padding: 10px 30px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    .left {
+      display: flex;
+      align-items: center;
+
+      .logo {
+        font-size: 20px;
+        font-weight: 700;
+        text-decoration: none;
+        color: inherit;
+        margin-right: 30px;
+        margin-top:7px;
+      }
+
+      .itemContainer {
+        display: flex;
+        align-items:flex-start;
+        .search {
+            width: 130%;
+            position: relative;
+            display: flex;
+            z-index:1000 !important;
+          }
+          
+          .searchTerm {
+            width: 70%;
+            border: 1px solid lightgray;
+            border-right: none;
+            padding: 5px;
+            height: 30px;
+            border-radius: 5px 0 0 5px;
+            outline: none;
+          }
+          
+          .searchTerm:focus{
+            color: white;
+          }
+          
+          .searchButton {
+            width: 50px;
+            height: 30px;
+            border: 0.5px solid lightgray;
+            background: white;
+            text-align: center;
+            color: gray;
+            border-radius: 0 5px 5px 0;
+            cursor: pointer;
+            font-size: 16px;
+          }
+        
+        @include mobile{
+          display: none;
+        }
+
+        .icon {
+          font-size: 8px;
+          margin-right: 5px;
+          color:gray;
+        }
+
+        span {
+          font-size: 8px;
+          font-weight: 100;
+        }
+      }
+    }
+    .itemContainer{
+      margin-top: 12px;
+      .topbarItem{
+        margin-left: 2em;
+        
+      }
+     .verticalLine {
+      border-left:thin solid gray;
+      height:30px;
+      float:right;
+      margin-left:50px;
+    }
+
+      @include mobile{
+        display: none;
+      }
+    }
+    .userImg{
+      margin-top: 5px;
+      margin-left: -150px;
+    }
+    .right {
+      .userImg{
+        float:left;
+        margin-right:3em;
+      }
+      .hamburger {
+        width: 32px;
+        height: 25px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        cursor: pointer;
+
+        span {
+          width: 100%;
+          height: 3px;
+          background-color: $mainColor;
+          transform-origin: left;
+          transition: all 2s ease;
+        }
+      }
+    }
+  }
+
+  &.active {
+    //background-color: $mainColor;
+    //color: white;
+
+    .hamburger {
+      span {
+        &:first-child {
+          background-color:black;
+          transform: rotate(45deg);
+        }
+        &:nth-child(2) {
+          opacity: 0;
+        }
+        &:last-child {
+          background-color: black;
+          transform: rotate(-45deg);
+        }
+      }
+    }
+  }
+}

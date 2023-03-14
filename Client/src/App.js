@@ -14,6 +14,7 @@ import TransactionHistory from"./pages/TransactionHistory/TransactionHistory";
 import { useSelector } from "react-redux";
 import { useState } from "react";
 import { AppContext, socket } from "./context/appContext";
+import  Menu  from "./components/Menu";
 
 function App() {
     const [rooms, setRooms] = useState([]);
@@ -23,10 +24,12 @@ function App() {
     const [privateMemberMsg, setPrivateMemberMsg] = useState({});
     const [newMessages, setNewMessages] = useState({});
     const user = useSelector((state) => state.user);
+    const [menuOpen,setMenuOpen] = useState(false);
     return (
         <AppContext.Provider value={{ socket, currentRoom, setCurrentRoom, members, setMembers, messages, setMessages, privateMemberMsg, setPrivateMemberMsg, rooms, setRooms, newMessages, setNewMessages }}>
             <BrowserRouter>
-                <Navigation />
+                <Navigation menuOpen={menuOpen} setMenuOpen={setMenuOpen}/>
+                <Menu menuOpen={menuOpen} setMenuOpen={setMenuOpen}/>
                 <Routes>
                     <Route path="/" element={<Home />} />
                     {!user && (
