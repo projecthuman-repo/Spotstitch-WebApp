@@ -44,7 +44,6 @@ export default function Menu({ menuOpen, setMenuOpen }) {
           <a href="#contact">Settings</a>
         </li>
       </ul>
-      
     </div>
    </>
   );
