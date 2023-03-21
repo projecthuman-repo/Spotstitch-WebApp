@@ -1,55 +1,53 @@
 .TransactionHistoryContainer{
     margin-top: 8%;
-    margin-left: 10%;
-    margin-right: 10%;
+    margin-left: 5%;
+    margin-right: 5%;
 }
 
 
 
 .titleTH {
+    font-size: 30px;
     display: flex;
     border-radius: 15px;
     border: 3px solid #cad5bc;
-
+    font-weight: bold;
     width:auto;
     height: 50px;
     justify-content: center;
     align-items: center;
     text-decoration-line: underline ;
     text-decoration-thickness: 5px;
-    text-decoration-color: rgb(34,139,34) ;
-
+    text-decoration-color: rgb(82, 82, 232) ;
 }
 
 .bodyTH{
-
     margin-top: 5%;
     display: flex;
-
 }
 
-.lboxtitle{
+.lboxtitleTH{
     display: flex;
     align-items: center;
     padding-left: 15px;
-    border-bottom: 4px solid #cad5bc;;
-    height: 30px;
-    width: 100% -15px;
+    border-bottom: 2px solid #cad5bc;
+    height: 20px;
+    width: 100% 15px;
 }
 
-.lboxitem{
+.lboxitemTH{
     display: flex;
     align-items: center;
-    padding-left: 15px;
+    padding-left: 20px;
     height: 25px;
-    width: 100% -15px;
+    width: 100% 15px;
 }
 
 .leftboxTH {
-    margin-right: 3%;
+    margin-right: 1%;
     border: 3px solid #cad5bc;
     border-radius: 15px;
-    height: min-content;
+    height: 120px;
     width: 15%;
 
     padding-top: 10px;
@@ -59,6 +57,21 @@
     align-items: center;
 
 }
+
+.leftboxsortTH {
+    margin-right: 1%;
+    border: 3px solid #cad5bc;
+    border-radius: 15px;
+    height: 120px;
+    width: 15%;
+
+    padding-top: 10px;
+    padding-bottom: 10px;
+    display:grid;
+    justify-content: center;
+    align-items: center;
+}
+
 a:visited {
     color: black;
 }
@@ -78,31 +91,70 @@ a:active {
 .rightboxTH {
     display:flex;
     flex-direction: column;
-    border: 3px solid #cad5bc;
+    border: 3px solid #607986;
     border-radius: 15px;
-    height: 300px;
+    height: 400px;
     width: 85%;
+    overflow: auto;
 }
 
-.rboxtitleTH{
+.rboxtitleTH {
     display: flex;
     align-items: center;
     padding-left: 15px;
-    border-bottom: 6px solid #cad5bc;;
+    border-bottom: 6px solid #cad5bc;
     height: 40px;
     width: 100% -15px;
 }
 
-.rboxbodyTH{
+.rboxbodyTH {
     display: flex;
     align-items: center;
     padding-left: 15px;
-    border-bottom: 3px solid #cad5bc;;
+    border-bottom: 3px solid #cad5bc;
     height: 250px;
     width: 100% -15px;
 }
 
-.rboxshowallTH{
+.transaction {
+    display: flex;
+    align-items: center;
+    padding-left: 35px;
+    background-color: white;
+    border-bottom: 3px solid #cad5bc;
+    height: 75px;
+    width: 100% -15px;
+}
+
+.transactionDate {
+    display: flex;
+    align-items: center;
+    padding-left: 35px;
+    height: 75px;
+    width: 100% -15px;
+}
+
+.transactionRelationship {
+    display: flex;
+    align-items: center;
+    padding-left: 125px;
+    height: 75px;
+    width: 100% -15px;
+}
+
+.transactionAmount {
+    display: flex;
+    align-items: center;
+    padding-left: 125px;
+    padding-right: 125px;
+    height: 75px;
+    width: 100% -15px;
+}
+
+.transactionImage {
+}
+
+.rboxshowallTH {
     display: flex;
     width:auto;
     height: 50px;
