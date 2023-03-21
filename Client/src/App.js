@@ -1,6 +1,8 @@
 import logo from "./logo.svg";
 import "./App.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Start from "./pages/Start/Start";
+
 import Navigation from "./components/Navigation";
 import Home from "./pages/Home";
 import Login from "./pages/Login/Login";
@@ -28,8 +30,10 @@ function App() {
     return (
         <AppContext.Provider value={{ socket, currentRoom, setCurrentRoom, members, setMembers, messages, setMessages, privateMemberMsg, setPrivateMemberMsg, rooms, setRooms, newMessages, setNewMessages }}>
             <BrowserRouter>
+                {/* 
                 <Navigation menuOpen={menuOpen} setMenuOpen={setMenuOpen}/>
                 <Menu menuOpen={menuOpen} setMenuOpen={setMenuOpen}/>
+                */}
                 <Routes>
                     <Route path="/" element={<Home />} />
                     {!user && (
@@ -38,6 +42,7 @@ function App() {
                             <Route path="/signup" element={<Signup />} />
                         </>
                     )}
+                    <Route path ="/start" element ={<Start />} />
                     <Route path="/chat" element={<Chat />} />
                     <Route path="/profile" element={<Profile />} />
                     <Route path="/wallet" element={<Wallet />} />
