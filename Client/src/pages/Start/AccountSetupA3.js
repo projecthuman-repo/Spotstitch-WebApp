@@ -1,5 +1,5 @@
 import React from "react";
-import "./UserSignUpA2.css";
+import "./AccountSetupA3.css";
 import HumanCityLogo from '../../assets/HumanCityLogo.png';
 import sslogo from '../../assets/sslogo.png';
 
@@ -28,7 +28,7 @@ const AccountSetup = () => {
             <input className="email" type="text" placeholder="    Country" id="Country" name="Country"></input><br/>
             <input className="email" type="text" placeholder="    State/Province" id="State/Province" name="State/Province"></input><br/>
             <br/>
-            <input className="signin" type="submit" value="Get Started"></input>
+            <Link to='/emailverification'className="lacc"> <input className="signup" type="submit" value="Get Started"></input></Link> 
 
             <br/><br/><br/>
             

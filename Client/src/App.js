@@ -4,6 +4,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Start from "./pages/Start/Start";
 import UserSignUp from "./pages/Start/UserSignUpA2";
 import AccountSetup from "./pages/Start/AccountSetupA3";
+import AccountEmailVerification from "./pages/Start/AccountEmailVerificationA4";
 
 import Navigation from "./components/Navigation";
 import Home from "./pages/Home";
@@ -47,6 +48,7 @@ function App() {
                     <Route path ="/start" element ={<Start />} />
                     <Route path ="/usersignup" element = {<UserSignUp/>} />
                     <Route path ="/accountsetup" element = {<AccountSetup/>}/>
+                    <Route path="/emailverification" element={<AccountEmailVerification/>} />
 
 
                     <Route path="/chat" element={<Chat />} />
