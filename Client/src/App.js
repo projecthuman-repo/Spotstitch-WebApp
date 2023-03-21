@@ -2,6 +2,7 @@ import logo from "./logo.svg";
 import "./App.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Start from "./pages/Start/Start";
+import UserSignUp from "./pages/Start/UserSignUpA2";
 
 import Navigation from "./components/Navigation";
 import Home from "./pages/Home";
@@ -30,7 +31,7 @@ function App() {
     return (
         <AppContext.Provider value={{ socket, currentRoom, setCurrentRoom, members, setMembers, messages, setMessages, privateMemberMsg, setPrivateMemberMsg, rooms, setRooms, newMessages, setNewMessages }}>
             <BrowserRouter>
-                {/* 
+                {/* We should create a navigation component since not every page need the navigation open.
                 <Navigation menuOpen={menuOpen} setMenuOpen={setMenuOpen}/>
                 <Menu menuOpen={menuOpen} setMenuOpen={setMenuOpen}/>
                 */}
@@ -43,6 +44,8 @@ function App() {
                         </>
                     )}
                     <Route path ="/start" element ={<Start />} />
+                    <Route path ="/usersignup" element = {<UserSignUp/>} />
+
                     <Route path="/chat" element={<Chat />} />
                     <Route path="/profile" element={<Profile />} />
                     <Route path="/wallet" element={<Wallet />} />

@@ -20,8 +20,8 @@ const Start = () => {
             <img className="sslogo" src={sslogo}  alt="sslogo"/>
             <div className="titlen">SPOTSTITCH</div>
             <div/>
-            <input className="email" type="text" placeholder="    Email or Username" id="username" name="username"></input>
-            <input className="password" type="password" placeholder="    Password"id="username" name="username"></input>
+            <input className="email" type="text" placeholder="    Email or Username" id="email" name="email"></input>
+            <input className="password" type="password" placeholder="    Password"id="password" name="password"></input>
             <input className="signin" type="submit" value="Sign In"></input>
             
             <img className="lineor" src={orline}  alt="orline"/>
@@ -36,7 +36,7 @@ const Start = () => {
             <div className="needaccountbox">
                Need an account?
             </div>
-            <Link to='/wallet' className="createaccount">Create your account</Link>
+            <Link to='/usersignup' className="createaccount">Create your account</Link>
 
             <div></div>
             <div></div>
