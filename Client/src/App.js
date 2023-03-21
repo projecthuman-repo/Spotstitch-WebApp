@@ -5,6 +5,7 @@ import Start from "./pages/Start/Start";
 import UserSignUp from "./pages/Start/UserSignUpA2";
 import AccountSetup from "./pages/Start/AccountSetupA3";
 import AccountEmailVerification from "./pages/Start/AccountEmailVerificationA4";
+import ProfileImage from "./pages/Start/ProfileImageA5";
 
 import Navigation from "./components/Navigation";
 import Home from "./pages/Home";
@@ -49,6 +50,7 @@ function App() {
                     <Route path ="/usersignup" element = {<UserSignUp/>} />
                     <Route path ="/accountsetup" element = {<AccountSetup/>}/>
                     <Route path="/emailverification" element={<AccountEmailVerification/>} />
+                    <Route path="/profileimage" element={<ProfileImage/>}/>
 
 
                     <Route path="/chat" element={<Chat />} />

@@ -23,7 +23,7 @@ const AccountEmailVerification = () => {
             <div className="verifydescription">A confirmation email has been sent to angela*****@gmail.com, click the link to verify</div>
             <div className="noemail">Didn't receive an email? Send again</div>
             <div className="botspace"></div>
-            <button className="nextbutton">Next</button>
+            <Link to='/profileimage' className="linknextbutton"><button className="nextbutton">Next</button></Link>
 
 
             <div className="botspace"></div>
