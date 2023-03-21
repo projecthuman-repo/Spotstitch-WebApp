@@ -10,6 +10,7 @@ import GoogleButton from 'react-google-button';
 import facebooksignin from '../../assets/facebooksignin.png'
 
 import { Link } from "react-router-dom";
+
 const UserSignUp = () => {
 
     return (
@@ -37,14 +38,15 @@ const UserSignUp = () => {
                 <div className="policy">I accept Spotstitch's <span className="bold">Privacy Policy</span> and <span className="bold">Terms of Service</span>.</div>
             </div>
             <br/>
-            <input className="signup" type="submit" value="Join Spotstitch"></input>
+                
+            <Link to='/accountsetup'className="lacc"> <input className="signup" type="submit" value="Join Spotstitch"></input></Link>  
             <br/>
             <img className="lineor" src={orline}  alt="orline"/>
             <br/>
             <GoogleButton className="google"
-                type="light" // can be light or dark
-                onClick={() => { console.log('Google button clicked') }}
+                type="light" // can be light or dark 
             />
+               
             <br/>
             <img className="signfacebook" src={facebooksignin}  alt="facebookSignIn"/>
             <br/>
