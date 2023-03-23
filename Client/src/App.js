@@ -16,11 +16,12 @@ import Chat from "./pages/Chat";
 import Wallet from "./pages/Wallet/Wallet";
 import Refunds from "./pages/Refunds/Refunds";
 import RefundsPolicy from "./pages/RefundsPolicy/RefundsPolicy";
-import TransactionHistory from"./pages/TransactionHistory/TransactionHistory";
+import TransactionHistory from "./pages/TransactionHistory/TransactionHistory";
 import { useSelector } from "react-redux";
 import { useState } from "react";
 import { AppContext, socket } from "./context/appContext";
-import  Menu  from "./components/Menu";
+import Menu from "./components/Menu";
+import ShopSetup from "./features/ShopSetup";
 
 function App() {
     const [rooms, setRooms] = useState([]);
@@ -30,7 +31,7 @@ function App() {
     const [privateMemberMsg, setPrivateMemberMsg] = useState({});
     const [newMessages, setNewMessages] = useState({});
     const user = useSelector((state) => state.user);
-    const [menuOpen,setMenuOpen] = useState(false);
+    const [menuOpen, setMenuOpen] = useState(false);
     return (
         <AppContext.Provider value={{ socket, currentRoom, setCurrentRoom, members, setMembers, messages, setMessages, privateMemberMsg, setPrivateMemberMsg, rooms, setRooms, newMessages, setNewMessages }}>
             <BrowserRouter>
@@ -46,11 +47,11 @@ function App() {
                             <Route path="/signup" element={<Signup />} />
                         </>
                     )}
-                    <Route path ="/start" element ={<Start />} />
-                    <Route path ="/usersignup" element = {<UserSignUp/>} />
-                    <Route path ="/accountsetup" element = {<AccountSetup/>}/>
-                    <Route path="/emailverification" element={<AccountEmailVerification/>} />
-                    <Route path="/profileimage" element={<ProfileImage/>}/>
+                    <Route path="/start" element={<Start />} />
+                    <Route path="/usersignup" element={<UserSignUp />} />
+                    <Route path="/accountsetup" element={<AccountSetup />} />
+                    <Route path="/emailverification" element={<AccountEmailVerification />} />
+                    <Route path="/profileimage" element={<ProfileImage />} />
 
 
                     <Route path="/chat" element={<Chat />} />
@@ -59,6 +60,7 @@ function App() {
                     <Route path="/refunds" element={<Refunds />} />
                     <Route path="/refundspolicy" element={<RefundsPolicy />} />
                     <Route path="/transaction" element={<TransactionHistory />} />
+                    <Route path="/shopsetup" element={<ShopSetup />} />
                 </Routes>
             </BrowserRouter>
         </AppContext.Provider>

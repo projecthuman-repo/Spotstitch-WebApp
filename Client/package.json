@@ -20,6 +20,7 @@
     "react-router-dom": "^6.2.1",
     "react-scripts": "5.0.0",
     "react-social-login-buttons": "^3.6.1",
+    "react-step-progress-bar": "^1.0.3",
     "react-toastify": "^9.1.1",
     "redux": "^4.1.2",
     "redux-persist": "^6.0.0",
