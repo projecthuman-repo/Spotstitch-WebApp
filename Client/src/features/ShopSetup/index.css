@@ -1,0 +1,12 @@
+.indexedStep {
+    color: white;
+    width: 20px;
+    height: 20px;
+    font-size: 12px;
+    background-color: #d3d3d3cc;
+    border-radius: 50%;
+  }
+  
+  .indexedStep.accomplished {
+    background-color: black;
+  }
