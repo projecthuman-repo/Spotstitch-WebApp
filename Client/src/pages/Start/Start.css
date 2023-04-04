@@ -6,17 +6,20 @@
 .left{
     height: 100vh;
     width: 50%;
-    background-color: rgba(0, 255, 136, 0.227);
+
     
 }
-.humanlogo{
-    
+
+.holderimg{
+    width: 100%;
+    height: 100%;
 }
+
 .right{
     display: grid;
     
     height: 100vh;
-    width: 50%;
+    
    
 }
 
@@ -84,20 +87,26 @@ width: 50%;
     width: 50%;
 }
 
-.google{
-    width: 264px;
+
+
+.facebookbutton,.googlebutton,.projectbutton {
+    width: 364px;
     height: 40px;
     margin: auto;
     width: 50%;
-}
 
-.signfacebook{
-    width: 150px;
-    height: 40px;
-    margin: auto;
-    width: 50%;
-}
+    
+    border: none;
+    cursor: pointer;
+    appearance: none;
+    background-color: inherit;
+    
+  }
 
+* {
+    margin: 0;
+    padding: 0;
+  }
 .needaccountbox{
     width: 200px;
     margin: auto;

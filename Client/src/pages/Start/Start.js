@@ -1,10 +1,11 @@
 import React from "react";
 import "./Start.css";
-import HumanCityLogo from '../../assets/HumanCityLogo.png';
+import holderimg from "../../assets/holderimg.png";
 import sslogo from '../../assets/sslogo.png';
 import orline from '../../assets/orline.png';
-import GoogleButton from 'react-google-button';
-import facebooksignin from '../../assets/facebooksignin.png'
+import googlesignin from '../../assets/googlesignin.png';
+import facesignin from '../../assets/facesignin.png';
+import projectsignin from '../../assets/projectsignin.png';
 import { Link } from "react-router-dom";
 
 const Start = () => {
@@ -13,7 +14,7 @@ const Start = () => {
         
         <div className="boss">
         <div className="left">
-        <img className="humanlogo" src={HumanCityLogo}  alt="humanlogo"/>
+        <img className="holderimg" src={holderimg}  alt="holderimg"/>
         </div>
         <div className="right">
             <div className="topspace"></div>
@@ -26,12 +27,21 @@ const Start = () => {
             
             <img className="lineor" src={orline}  alt="orline"/>
 
-            <GoogleButton className="google"
-                type="light" // can be light or dark
-                onClick={() => { console.log('Google button clicked') }}
-            />
+            <button className="googlebutton">
+                <img src={googlesignin} alt="googlesignin" border="0" />
+            </button>
+           
+            <button className="facebookbutton">
+                <img src={facesignin} alt="facebooksignin" border="0" />
+            </button>
+
+            <button className="projectbutton">
+                <img src={projectsignin} alt="projectsignin" border="0" />
+            </button>
+
+           
             
-            <img className="signfacebook" src={facebooksignin}  alt="facebookSignIn"/>
+
 
             <div className="needaccountbox">
                Need an account?
