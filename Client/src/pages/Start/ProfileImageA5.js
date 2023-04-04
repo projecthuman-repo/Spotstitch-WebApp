@@ -1,6 +1,6 @@
 import React from "react";
 import "./ProfileImageA5.css";
-import HumanCityLogo from '../../assets/HumanCityLogo.png';
+import holderimg from "../../assets/holderimg.png";
 import sslogo from '../../assets/sslogo.png';
 import photo from '../../assets/photo.png';
 
@@ -12,7 +12,7 @@ const ProfileImage = () => {
         <>
         <div className="boss">
         <div className="left">
-        <img className="humanlogo" src={HumanCityLogo}  alt="humanlogo"/>
+        <img className="holderimg" src={holderimg}  alt="holderimg"/>
         </div>
 
 

@@ -1,6 +1,6 @@
 import React from "react";
 import "./AccountEmailVerificationA4.css";
-import HumanCityLogo from '../../assets/HumanCityLogo.png';
+import holderimg from "../../assets/holderimg.png";
 
 
 
@@ -12,7 +12,7 @@ const AccountEmailVerification = () => {
         <>
         <div className="boss">
         <div className="left">
-        <img className="humanlogo" src={HumanCityLogo}  alt="humanlogo"/>
+        <img className="holderimg" src={holderimg}  alt="holderimg"/>
         </div>
 
 
@@ -20,7 +20,9 @@ const AccountEmailVerification = () => {
             <div className="topspace"></div><div className="topspace"></div>
 
             <div className="verifyacctitle">Verify your account</div>
+            <br/>
             <div className="verifydescription">A confirmation email has been sent to angela*****@gmail.com, click the link to verify</div>
+            <br/>
             <div className="noemail">Didn't receive an email? Send again</div>
             <div className="botspace"></div>
             <Link to='/profileimage' className="linknextbutton"><button className="nextbutton">Next</button></Link>

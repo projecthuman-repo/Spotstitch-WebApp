@@ -1,8 +1,8 @@
 import React from "react";
 import "./AccountSetupA3.css";
-import HumanCityLogo from '../../assets/HumanCityLogo.png';
-import sslogo from '../../assets/sslogo.png';
 
+import sslogo from '../../assets/sslogo.png';
+import holderimg from "../../assets/holderimg.png";
 
 import { Link } from "react-router-dom";
 
@@ -12,7 +12,7 @@ const AccountSetup = () => {
         <>
         <div className="boss">
         <div className="left">
-        <img className="humanlogo" src={HumanCityLogo}  alt="humanlogo"/>
+        <img className="holderimg" src={holderimg}  alt="holderimg"/>
         </div>
 
 
@@ -20,7 +20,7 @@ const AccountSetup = () => {
             <div className="topspace"></div>
             <img className="sslogo" src={sslogo}  alt="sslogo"/>
             <div className="signuptitle">Account Information</div>
-            <div className="signupdescription">We're designing and creating an open ecosystem; so innovative ideas can turn into world changing action. Our main operating goals are: to address human inequality, remediate social injustice and bridge the lack of access to human needs globally.</div>
+            <div className="signupdescription">We're designing and creating an open ecosystem; so innovative ideas can turn into world changing action.</div>
             
             <input className="email" type="text" placeholder="    Full Name" id="fname" name="fname"></input> <br/>
             <input className="email" type="text" placeholder="    User Name" id="username" name="username"></input><br/>

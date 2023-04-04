@@ -3,12 +3,11 @@ import "./UserSignUpA2.css";
 import HumanCityLogo from '../../assets/HumanCityLogo.png';
 import sslogo from '../../assets/sslogo.png';
 import orline from '../../assets/orline.png';
-import JoinGoogle from '../../assets/JoinGoogle.png'
-import JoinFacebook from '../../assets/JoinFacebook.png'
 
-import GoogleButton from 'react-google-button';
-import facebooksignin from '../../assets/facebooksignin.png'
-
+import holderimg from "../../assets/holderimg.png";
+import googlesignin from '../../assets/googlesignin.png';
+import facesignin from '../../assets/facesignin.png';
+import projectsignin from '../../assets/projectsignin.png';
 import { Link } from "react-router-dom";
 
 const UserSignUp = () => {
@@ -17,7 +16,7 @@ const UserSignUp = () => {
         <>
         <div className="boss">
         <div className="left">
-        <img className="humanlogo" src={HumanCityLogo}  alt="humanlogo"/>
+        <img className="holderimg" src={holderimg}  alt="holderimg"/>
         </div>
 
 
@@ -25,7 +24,7 @@ const UserSignUp = () => {
             <div className="topspace"></div>
             <img className="sslogo" src={sslogo}  alt="sslogo"/>
             <div className="signuptitle">Let's get you stitched in!</div>
-            <div className="signupdescription">We're designing and creating an open ecosystem; so innovative ideas can turn into world changing action. Our main operating goals are: to address human inequality, remediate social injustice and bridge the lack of access to human needs globally.</div>
+            <div className="signupdescription">We're designing and creating an open ecosystem; so innovative ideas can turn into world changing action. </div>
             
             <input className="email" type="text" placeholder="    Email" id="email" name="email"></input>
             <br/>
@@ -43,12 +42,17 @@ const UserSignUp = () => {
             <br/>
             <img className="lineor" src={orline}  alt="orline"/>
             <br/>
-            <GoogleButton className="google"
-                type="light" // can be light or dark 
-            />
-               
+            <button className="googlebutton">
+                <img src={googlesignin} alt="googlesignin" border="0" />
+            </button>
             <br/>
-            <img className="signfacebook" src={facebooksignin}  alt="facebookSignIn"/>
+            <button className="facebookbutton">
+                <img src={facesignin} alt="facebooksignin" border="0" />
+            </button>
+            <br/>
+            <button className="projectbutton">
+                <img src={projectsignin} alt="projectsignin" border="0" />
+            </button>
             <br/>
             <div className="policy2"><span className="bold">Privacy Policy</span> and <span className="bold">Terms of Service</span> apply.</div>
           
