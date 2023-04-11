@@ -28,9 +28,9 @@ const ProfileImage = () => {
             <img src={photo} alt='photo' className="photo"/>
             <br/><br/><br/>
             <div className="skipnextbox">
-                <Link to='' className="linkskipbutton"><button className="skipbutton">Skip</button></Link>
+                <Link to='/accounttype' className="linkskipbutton"><button className="skipbutton">Skip</button></Link>
 
-                <Link to='' className="linknextbutton"><button className="nextbutton">Next</button></Link>
+                <Link to='/accounttype' className="linknextbutton"><button className="nextbutton">Next</button></Link>
 
             </div>
 
