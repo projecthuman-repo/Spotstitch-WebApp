@@ -24,9 +24,9 @@ const AccountTypeSelection = () => {
             <div className="smalldescription">First, what type of account are you looking for at Spotstitch?</div>
             <br/><br/>
             <div className="accounttypebuttonbox">
-                <button className="accounttypebutton">Personal Account</button>
+                <Link to='/bioinput' className="linkacctypebutton"> <button className="accounttypebutton">Personal Account</button></Link>
                 <br/>
-                <button className="accounttypebutton">Vendor Account</button>
+                <Link to='/bioinput' className="linkacctypebutton">< button className="accounttypebutton">Vendor Account</button></Link>
             </div>
             <div className="botspace"></div>
             
