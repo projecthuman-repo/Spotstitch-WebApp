@@ -1,4 +1,5 @@
 import React from "react";
+import { useState } from "react";
 import "./Start.css";
 import holderimg from "../../assets/holderimg.png";
 import sslogo from '../../assets/sslogo.png';
@@ -9,7 +10,15 @@ import projectsignin from '../../assets/projectsignin.png';
 import { Link } from "react-router-dom";
 
 const Start = () => {
-  
+    
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+
+    const handleSubmit = (event) => {
+        event.preventDefault();
+        // handle form submission here
+    }
+
     return (
         
         <div className="boss">
@@ -21,9 +30,15 @@ const Start = () => {
             <img className="sslogo" src={sslogo}  alt="sslogo"/>
             <div className="titlen">SPOTSTITCH</div>
             <div/>
-            <input className="email" type="text" placeholder="    Email or Username" id="email" name="email"></input>
-            <input className="password" type="password" placeholder="    Password"id="password" name="password"></input>
-            <input className="signin" type="submit" value="Sign In"></input>
+
+            <form className="formsignin" onSubmit={handleSubmit}>
+                
+                <input className="email" type="text" placeholder="     Email or Username" id="email" name="email" />
+
+                <input className="password" type="password" placeholder="     Password"id="password" name="password" />
+
+                <input className="signin" type="submit" value="Sign In" />
+            </form>
             
             <img className="lineor" src={orline}  alt="orline"/>
 

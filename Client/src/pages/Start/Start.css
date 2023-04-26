@@ -52,7 +52,9 @@ width: 50%;
 
     
 }
-
+.formsignin{
+    display: grid;
+}
 .email,.password{
     
     width: 350px;
