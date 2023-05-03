@@ -34,7 +34,7 @@ const BioInput = () => {
             value={biotext} onChange={handleChange}
             ></input>
             <div className="space1"/>
-            <Link to='' className="linknextbutton"><button className="nextbutton">Next</button></Link>
+            <Link to='/connectsocial' className="linknextbutton"><button className="nextbutton">Next</button></Link>
 
             <div className="botspace"></div>
             
