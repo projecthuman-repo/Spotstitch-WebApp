@@ -9,7 +9,7 @@ import ProfileImage from "./pages/Start/ProfileImageA5";
 import AccountTypeSelection from "./pages/Start/AccountTypeSelectionA6";
 import BioInput from "./pages/Start/BioInputA7.1.js";
 import ConnectSocial from "./pages/Start/ConnectSocialMediaA7.2";
-
+import CategorySelection from "./pages/Start/CategorySelectionA7.3";
 
 import Navigation from "./components/Navigation";
 import Home from "./pages/Home";
@@ -59,7 +59,8 @@ function App() {
                     <Route path="/accounttype" element={<AccountTypeSelection />} />
                     <Route path="/bioinput" element={<BioInput />} />
                     <Route path="/connectsocial" element={<ConnectSocial />} />
-                           
+                    <Route path="/categoryselection" element={<CategorySelection />} />
+                            
 
                     <Route path="/chat" element={<Chat />} />
                     <Route path="/profile" element={<Profile />} />
