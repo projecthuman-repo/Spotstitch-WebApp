@@ -11,6 +11,9 @@ import BioInput from "./pages/Start/BioInputA7.1.js";
 import ConnectSocial from "./pages/Start/ConnectSocialMediaA7.2";
 import CategorySelection from "./pages/Start/CategorySelectionA7.3";
 
+
+import PopupDialog from './pages/Layers/CreateNewLayer'
+
 import Navigation from "./components/Navigation";
 import Home from "./pages/Home";
 import Login from "./pages/Login/Login";
@@ -61,7 +64,8 @@ function App() {
                     <Route path="/connectsocial" element={<ConnectSocial />} />
                     <Route path="/categoryselection" element={<CategorySelection />} />
                             
-
+                    
+                    <Route path="/layer" element={<PopupDialog/>} />
                     <Route path="/chat" element={<Chat />} />
                     <Route path="/profile" element={<Profile />} />
                     <Route path="/wallet" element={<Wallet />} />
