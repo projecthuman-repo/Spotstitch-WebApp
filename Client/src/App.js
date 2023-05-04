@@ -10,7 +10,7 @@ import AccountTypeSelection from "./pages/Start/AccountTypeSelectionA6";
 import BioInput from "./pages/Start/BioInputA7.1.js";
 import ConnectSocial from "./pages/Start/ConnectSocialMediaA7.2";
 import CategorySelection from "./pages/Start/CategorySelectionA7.3";
-
+import FindLayer from "./pages/Start/FindLayer";
 
 import PopupDialog from './pages/Layers/CreateNewLayer'
 
@@ -63,7 +63,8 @@ function App() {
                     <Route path="/bioinput" element={<BioInput />} />
                     <Route path="/connectsocial" element={<ConnectSocial />} />
                     <Route path="/categoryselection" element={<CategorySelection />} />
-                            
+                    <Route path="/findlayer" element={<FindLayer />} />
+                   
                     
                     <Route path="/layer" element={<PopupDialog/>} />
                     <Route path="/chat" element={<Chat />} />
