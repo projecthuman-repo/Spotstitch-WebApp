@@ -29,9 +29,9 @@
     height: 200px;
 }
 
-.welcometitle1{
+.welcometitle{
    
-    width: 400px;
+    width: 500px;
     height: 76px;
   
 
@@ -48,8 +48,8 @@
 
 }
 
-.smalldescription1{
-    width: 400px;
+.smalldescription{
+    width: 500px;
     font-family: 'Poppins';
     font-style: normal;
     font-weight: 400;
@@ -60,43 +60,40 @@
     margin: auto;
     
 }
-.layerjoinbox{
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    margin: auto;
-    width: 400px;
-}
-
-.layerjoin{
-    width: 400px;
-    height: 51px;
-    background: #D9D9D9;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-    border-radius: 6px;
-    border: none;
-
+.input.placeholder{
     
 }
 
-.textl{
-    margin-right:80px;
-}
-.textr{
-    margin-left: 80px;
+
+.addbiobox{
+    padding-bottom: 75px; /* Adjust the padding-top to move the text up */
+    
+    box-sizing: border-box;
+    width: 500px;
+    height: 125px;
+    margin: auto;
+
+    border: 2px solid #C4C4C4;
+    border-radius: 9px;
 }
 .space1{
     height: 150px;
 }
-
-.skipnextbox1{
-    margin-left: auto;
-    
-}
-
 .linknextbutton{
     margin-left: auto;
     margin-right: 80px;
     width: 175px;
     height: 50px;
 }
+.nextbutton{
+   
+    width: 175px;
+    height: 50px;
+ 
+
+    background: #E6E6E6;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border:none;
+    margin-left: auto;
+    margin-right: 80px;
+    }
