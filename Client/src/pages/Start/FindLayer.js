@@ -52,7 +52,7 @@ import { Link } from "react-router-dom";
      
             
             <div className="space1"/>
-            <div className="skipnextbox1">
+            <div className="skipnextbox">
                 <Link to='/vendoraccountsetup' className="linkskipbutton"><button className="skipbutton">Skip</button></Link>
 
                 <Link to='/vendoraccountsetup' className="linknextbutton"><button className="nextbutton">Next</button></Link>

@@ -24,7 +24,7 @@ const VendorAccountSetup = () => {
             <div className="smalldescription">Lorem ipsum dolor sit amet consectetur. Tellus libero diam sed neque nam libero tellus nec faucibus.</div>
  
             <div className="space1"/><br/><br/><br/>
-            <Link to='' className="linknextbutton"><button className="nextbutton">Next</button></Link>
+            <Link to='/vendortype' className="linknextbutton"><button className="nextbutton">Next</button></Link>
 
             <div className="botspace"></div>
             

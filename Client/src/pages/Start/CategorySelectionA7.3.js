@@ -131,7 +131,7 @@ import { Link } from "react-router-dom";
      
             
             <div className="space1"/>
-            <div className="skipnextbox1">
+            <div className="skipnextbox">
                 <Link to='/findlayer' className="linkskipbutton"><button className="skipbutton">Skip</button></Link>
 
                 <Link to='/findlayer' className="linknextbutton"><button className="nextbutton">Next</button></Link>

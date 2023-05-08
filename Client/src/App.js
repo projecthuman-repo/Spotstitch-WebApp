@@ -1,6 +1,8 @@
 import logo from "./logo.svg";
 import "./App.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+
+
 import Start from "./pages/Start/Start";
 import UserSignUp from "./pages/Start/UserSignUpA2";
 import AccountSetup from "./pages/Start/AccountSetupA3";
@@ -12,6 +14,7 @@ import ConnectSocial from "./pages/Start/ConnectSocialMediaA7.2";
 import CategorySelection from "./pages/Start/CategorySelectionA7.3";
 import FindLayer from "./pages/Start/FindLayer";
 import VendorAccountSetup from "./pages/VendorAccountSetup/VendorAccountSetupA8.1";
+import VendorType from "./pages/VendorAccountSetup/VendorTypeA8.2";
 
 
 
@@ -71,6 +74,7 @@ function App() {
                     <Route path="/categoryselection" element={<CategorySelection />} />
                     <Route path="/findlayer" element={<FindLayer />} />
                     <Route path="/vendoraccountsetup" element={<VendorAccountSetup />} />
+                    <Route path="/vendortype" element={<VendorType />} />
                    
 
 
