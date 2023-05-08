@@ -155,11 +155,11 @@ const VendorGoal = () => {
             <br />
             <br />
             <div className="skipnextbox">
-                <Link to="" className="linkskipbutton">
+                <Link to="/vendorsetupcomplete" className="linkskipbutton">
                 <button className="skipbutton">Skip</button>
                 </Link>
 
-                <Link to="" className="linknextbutton">
+                <Link to="/vendorsetupcomplete" className="linknextbutton">
                 <button className="nextbutton">Next</button>
                 </Link>
             </div>

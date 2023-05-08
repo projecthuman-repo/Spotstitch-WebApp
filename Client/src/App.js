@@ -17,6 +17,7 @@ import VendorAccountSetup from "./pages/VendorAccountSetup/VendorAccountSetupA8.
 import VendorType from "./pages/VendorAccountSetup/VendorTypeA8.2";
 import BusinessMethod from "./pages/VendorAccountSetup/BusinessMethodA8.3";
 import VendorGoal from "./pages/VendorAccountSetup/VendorGoalA8.4";
+import VendorSetupComplete from "./pages/VendorAccountSetup/VendorSetupCompleteA8.5";
 
 
 
@@ -79,7 +80,9 @@ function App() {
                     <Route path="/vendortype" element={<VendorType />} />
                     <Route path="/businessmethod" element={<BusinessMethod />} />
                     <Route path="/vendorgoal" element={<VendorGoal />} />
+                    <Route path="/vendorsetupcomplete" element={<VendorSetupComplete />} />
                    
+
 
 
 
