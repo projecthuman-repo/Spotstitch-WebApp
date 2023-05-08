@@ -1,12 +1,12 @@
 import React from "react";
-import "./VendorType.css";
+import "./BusinessMethod.css";
 import holderimg from "../../assets/holderimg.png";
 import { useState } from "react";
 
 
 import { Link } from "react-router-dom";
 
-const VendorType = () => {
+const BusinessMethod = () => {
 
     const [selectedOption, setSelectedOption] = useState('');
 
@@ -25,7 +25,7 @@ const VendorType = () => {
         <div className="right">
             <div className="topspace"></div>
 
-            <div className="welcometitle">What brings you to Spotstitch?</div>
+            <div className="welcometitle">What is your business method?</div>
             <br/><br/><br/>
             <div className="smalldescription">Lorem ipsum dolor sit amet consectetur. Tellus libero diam sed neque nam libero tellus nec faucibus.</div>
             <br/>
@@ -36,7 +36,7 @@ const VendorType = () => {
                 checked={selectedOption === "I'm just starting to sell."}
                 onChange={() => handleOptionSelected("I'm just starting to sell.")}
                 />
-                <span className="radiotext">I'm just starting to sell.</span>
+                <span className="radiotext">In person business only.</span>
                 
             </label>
             <br />
@@ -47,7 +47,7 @@ const VendorType = () => {
                 checked={selectedOption === "I already have a business to sell products."}
                 onChange={() => handleOptionSelected("I already have a business to sell products.")}
                 />
-                <span className="radiotext">I already have a business to sell products.</span>
+                <span className="radiotext">Online business only.</span>
             </label>
             <br />
             <label className="whatbringyouradiobox">
@@ -57,15 +57,15 @@ const VendorType = () => {
                 checked={selectedOption === "I want to promote and expand my business through Spotstitch."}
                 onChange={() => handleOptionSelected("I want to promote and expand my business through Spotstitch.")}
                 />
-                <span className="radiotext">I want to promote and expand my business through Spotstitch.</span>
+                <span className="radiotext">Both in person and online.</span>
                 
             </label>
 
             <br/><br/><br/>
             <div className="skipnextbox">
-                <Link to='/businessmethod' className="linkskipbutton"><button className="skipbutton">Skip</button></Link>
+                <Link to='' className="linkskipbutton"><button className="skipbutton">Skip</button></Link>
 
-                <Link to='/businessmethod' className="linknextbutton"><button className="nextbutton">Next</button></Link>
+                <Link to='' className="linknextbutton"><button className="nextbutton">Next</button></Link>
             </div>
             <div className="botspace"></div>
             
@@ -77,4 +77,4 @@ const VendorType = () => {
     )
 }
 
-export default VendorType
+export default BusinessMethod
