@@ -16,6 +16,7 @@ import FindLayer from "./pages/Start/FindLayer";
 import VendorAccountSetup from "./pages/VendorAccountSetup/VendorAccountSetupA8.1";
 import VendorType from "./pages/VendorAccountSetup/VendorTypeA8.2";
 import BusinessMethod from "./pages/VendorAccountSetup/BusinessMethodA8.3";
+import VendorGoal from "./pages/VendorAccountSetup/VendorGoalA8.4";
 
 
 
@@ -77,6 +78,7 @@ function App() {
                     <Route path="/vendoraccountsetup" element={<VendorAccountSetup />} />
                     <Route path="/vendortype" element={<VendorType />} />
                     <Route path="/businessmethod" element={<BusinessMethod />} />
+                    <Route path="/vendorgoal" element={<VendorGoal />} />
                    
 
 

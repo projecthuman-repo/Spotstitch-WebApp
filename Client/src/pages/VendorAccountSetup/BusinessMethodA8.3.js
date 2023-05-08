@@ -63,9 +63,9 @@ const BusinessMethod = () => {
 
             <br/><br/><br/>
             <div className="skipnextbox">
-                <Link to='' className="linkskipbutton"><button className="skipbutton">Skip</button></Link>
+                <Link to='/vendorgoal' className="linkskipbutton"><button className="skipbutton">Skip</button></Link>
 
-                <Link to='' className="linknextbutton"><button className="nextbutton">Next</button></Link>
+                <Link to='/vendorgoal' className="linknextbutton"><button className="nextbutton">Next</button></Link>
             </div>
             <div className="botspace"></div>
             
