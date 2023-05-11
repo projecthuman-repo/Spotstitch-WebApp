@@ -1,7 +1,7 @@
-
+import './Navigation.css'
 //import { Person, Mail } from "@material-ui/icons";
-import React from "react";
-import { Nav, Navbar, Container, Button, NavDropdown, Form, InputGroup } from "react-bootstrap";
+import React, { useState } from "react";
+import { Nav, Navbar, Container, Button, NavDropdown, Form, Modal, Badge } from "react-bootstrap";
 import { useLogoutUserMutation } from "../services/appApi";
 import { useSelector } from "react-redux";
 import { LinkContainer } from "react-router-bootstrap";
@@ -10,6 +10,46 @@ import { IoNotificationsSharp } from 'react-icons/io5'
 import { AiOutlineSearch } from 'react-icons/ai'
 import { RxHamburgerMenu } from 'react-icons/rx'
 import logo from "../assets/sslogo.png";
+
+
+const SideModal = () => {
+  const [show, setShow] = useState(false);
+
+  const handleClose = () => {
+    setShow(false);
+  };
+
+  const handleShow = () => {
+    setShow(true);
+  };
+
+  return (
+    <>
+      <button className="btn border-0" onClick={handleShow}><RxHamburgerMenu /></button>
+
+      <Modal
+        show={show}
+        onHide={handleClose}
+        dialogClassName="side-modal"
+        contentClassName="side-modal-content"
+        size="lg"
+        aria-labelledby="side-modal"
+      >
+        <Modal.Header closeButton>
+          <Modal.Title id="side-modal">Side Modal</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          {/* Your modal content goes here */}
+        </Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={handleClose}>
+            Close
+          </Button>
+        </Modal.Footer>
+      </Modal>
+    </>
+  );
+};
 
 export default function Topbar({ menuOpen, setMenuOpen }) {
   const user = useSelector((state) => state.user);
@@ -24,6 +64,7 @@ export default function Topbar({ menuOpen, setMenuOpen }) {
     <Navbar height={'85px'} className="shadow">
       <Container className="d-flex justify-content-center" style={{ maxWidth: '1440px' }} fluid >
 
+        
         <img
           src={logo}
           width={'40px'}
@@ -64,9 +105,14 @@ export default function Topbar({ menuOpen, setMenuOpen }) {
 
           <div className={"vr"}></div>
           <Nav>
-            <Nav.Item><BsCircleFill /></Nav.Item>
-            <Nav.Item><IoNotificationsSharp /></Nav.Item>
-            <Nav.Item><RxHamburgerMenu /></Nav.Item>
+            <Nav.Item><button className="btn border-0" ><BsCircleFill /></button></Nav.Item>
+            <Nav.Item>
+              <button className="btn border-0" ><IoNotificationsSharp /></button>
+              <Badge></Badge>
+            </Nav.Item>
+            <Nav.Item>
+              <SideModal />
+            </Nav.Item>
           </Nav>
 
           <></>
