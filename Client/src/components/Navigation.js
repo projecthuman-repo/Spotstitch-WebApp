@@ -1,4 +1,4 @@
-import "./topbar.scss";
+
 //import { Person, Mail } from "@material-ui/icons";
 import React from "react";
 import { Nav, Navbar, Container, Button, NavDropdown, Form } from "react-bootstrap";
@@ -19,26 +19,57 @@ export default function Topbar({ menuOpen, setMenuOpen }) {
   return (
     <Navbar>
       <Container fluid>
-        
+
         <Navbar.Brand href="#">SPOTSTICH</Navbar.Brand>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
-        <Form className="d-flex">
-          <Form.Control
-            type="search"
-            placeholder="Search"
-            className="me-2"
-            aria-label="Search"
-          />
-          <Button variant="outline-success">Search</Button>
-        </Form>
 
-        <Nav className="me-auto my-2 my-lg-0">
-          <Nav.Link>HOME</Nav.Link>
-          <Nav.Link>GAME</Nav.Link>
-          <Nav.Link>EVENTS</Nav.Link>
-          <Nav.Link>MARKET</Nav.Link>
-          <Nav.Link>EXPLORE</Nav.Link>
-        </Nav>
+        <Navbar.Collapse id="navbarScroll">
+          <Form className="d-flex">
+            <Form.Control
+              type="search"
+              placeholder="Search"
+              className="me-2"
+              aria-label="Search"
+            />
+            <Button variant="outline-success">Search</Button>
+          </Form>
+          <Nav
+            className="ms-auto my-2 my-lg-0"
+            style={{ maxHeight: '100px' }}
+            navbarScroll
+          >
+            <Nav.Link>HOME</Nav.Link>
+            <Nav.Link>GAME</Nav.Link>
+            <Nav.Link>EVENTS</Nav.Link>
+            <Nav.Link>MARKET</Nav.Link>
+            <Nav.Link>EXPLORE</Nav.Link>
+          </Nav>
+          
+          <div className={"vr"}></div>
+
+          {user && (
+            <NavDropdown className="userImg"
+              title={
+                <>
+                  <img src={user.picture} style={{ width: 30, height: 30, marginRight: 10, objectFit: "cover", borderRadius: "50%" }} />
+                  {user.name}
+                </>
+              }
+              id="basic-nav-dropdown"
+            >
+              <NavDropdown.Item href="./profile">Profile</NavDropdown.Item>
+              <NavDropdown.Item href="./wallet">Wallet</NavDropdown.Item>
+              <NavDropdown.Item href="./transaction">Transaction History</NavDropdown.Item>
+              <NavDropdown.Item>
+                <Button variant="danger" onClick={handleLogout}>
+                  Logout
+                </Button>
+              </NavDropdown.Item>
+            </NavDropdown>
+          )}
+        </Navbar.Collapse>
+
+
 
 
       </Container>
