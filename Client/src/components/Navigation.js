@@ -1,7 +1,7 @@
 import "./topbar.scss";
 //import { Person, Mail } from "@material-ui/icons";
 import React from "react";
-import { Nav, Navbar, Container, Button, NavDropdown } from "react-bootstrap";
+import { Nav, Navbar, Container, Button, NavDropdown, Form } from "react-bootstrap";
 import { useLogoutUserMutation } from "../services/appApi";
 import { useSelector } from "react-redux";
 import { LinkContainer } from "react-router-bootstrap";
@@ -11,13 +11,47 @@ export default function Topbar({ menuOpen, setMenuOpen }) {
   const user = useSelector((state) => state.user);
   const [logoutUser] = useLogoutUserMutation();
   async function handleLogout(e) {
-      e.preventDefault();
-      await logoutUser(user);
-      // redirect to home page
-      window.location.replace("/");
+    e.preventDefault();
+    await logoutUser(user);
+    // redirect to home page
+    window.location.replace("/");
   }
   return (
-    <div className={"topbar " + (menuOpen && "active")}>
+    <Navbar>
+      <Container fluid>
+        
+        <Navbar.Brand href="#">SPOTSTICH</Navbar.Brand>
+        <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+        <Form className="d-flex">
+          <Form.Control
+            type="search"
+            placeholder="Search"
+            className="me-2"
+            aria-label="Search"
+          />
+          <Button variant="outline-success">Search</Button>
+        </Form>
+
+        <Nav className="me-auto my-2 my-lg-0">
+          <Nav.Link>HOME</Nav.Link>
+          <Nav.Link>GAME</Nav.Link>
+          <Nav.Link>EVENTS</Nav.Link>
+          <Nav.Link>MARKET</Nav.Link>
+          <Nav.Link>EXPLORE</Nav.Link>
+        </Nav>
+
+
+      </Container>
+    </Navbar>
+
+
+  );
+}
+
+/*
+
+<div className={"topbar " + (menuOpen && "active")}>
+      
       <div className="wrapper">
         <div className="left">
             
@@ -78,6 +112,5 @@ export default function Topbar({ menuOpen, setMenuOpen }) {
         </div>
       </div>
     </div>
-    
-  );
-}
+
+*/
