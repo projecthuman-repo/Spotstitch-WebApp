@@ -1,11 +1,15 @@
 
 //import { Person, Mail } from "@material-ui/icons";
 import React from "react";
-import { Nav, Navbar, Container, Button, NavDropdown, Form } from "react-bootstrap";
+import { Nav, Navbar, Container, Button, NavDropdown, Form, InputGroup } from "react-bootstrap";
 import { useLogoutUserMutation } from "../services/appApi";
 import { useSelector } from "react-redux";
 import { LinkContainer } from "react-router-bootstrap";
-import logo from "../assets/logo.jpg";
+import { BsCircleFill } from 'react-icons/bs'
+import { IoNotificationsSharp } from 'react-icons/io5'
+import { AiOutlineSearch } from 'react-icons/ai'
+import { RxHamburgerMenu } from 'react-icons/rx'
+import logo from "../assets/sslogo.png";
 
 export default function Topbar({ menuOpen, setMenuOpen }) {
   const user = useSelector((state) => state.user);
@@ -17,56 +21,55 @@ export default function Topbar({ menuOpen, setMenuOpen }) {
     window.location.replace("/");
   }
   return (
-    <Navbar>
-      <Container fluid>
+    <Navbar height={'85px'} className="shadow">
+      <Container className="d-flex justify-content-center" style={{ maxWidth: '1440px' }} fluid >
 
-        <Navbar.Brand href="#">SPOTSTICH</Navbar.Brand>
+        <img
+          src={logo}
+          width={'40px'}
+          height={'40px'}
+          className="d-inline-block align-top"
+          alt="Logo"
+        />
+        <Navbar.Brand href="#"><strong>SPOTSTICH</strong></Navbar.Brand>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
 
         <Navbar.Collapse id="navbarScroll">
           <Form className="d-flex">
-            <Form.Control
-              type="search"
-              placeholder="Search"
-              className="me-2"
-              aria-label="Search"
-            />
-            <Button variant="outline-success">Search</Button>
+            <div className="input-group">
+              <input
+                className="form-control border-end-0 border"
+                type="search"
+                placeholder="Search"
+              />
+              <span className="input-group-append">
+                <button className="btn border-start-0 border ms-n5" type="button">
+                  <AiOutlineSearch />
+                </button>
+              </span>
+            </div>
           </Form>
+
           <Nav
             className="ms-auto my-2 my-lg-0"
             style={{ maxHeight: '100px' }}
             navbarScroll
           >
-            <Nav.Link>HOME</Nav.Link>
-            <Nav.Link>GAME</Nav.Link>
-            <Nav.Link>EVENTS</Nav.Link>
-            <Nav.Link>MARKET</Nav.Link>
-            <Nav.Link>EXPLORE</Nav.Link>
+            <Nav.Link href="#">HOME</Nav.Link>
+            <Nav.Link href="#">GAME</Nav.Link>
+            <Nav.Link href="#">EVENTS</Nav.Link>
+            <Nav.Link href="#">MARKET</Nav.Link>
+            <Nav.Link href="#">EXPLORE</Nav.Link>
           </Nav>
-          
-          <div className={"vr"}></div>
 
-          {user && (
-            <NavDropdown className="userImg"
-              title={
-                <>
-                  <img src={user.picture} style={{ width: 30, height: 30, marginRight: 10, objectFit: "cover", borderRadius: "50%" }} />
-                  {user.name}
-                </>
-              }
-              id="basic-nav-dropdown"
-            >
-              <NavDropdown.Item href="./profile">Profile</NavDropdown.Item>
-              <NavDropdown.Item href="./wallet">Wallet</NavDropdown.Item>
-              <NavDropdown.Item href="./transaction">Transaction History</NavDropdown.Item>
-              <NavDropdown.Item>
-                <Button variant="danger" onClick={handleLogout}>
-                  Logout
-                </Button>
-              </NavDropdown.Item>
-            </NavDropdown>
-          )}
+          <div className={"vr"}></div>
+          <Nav>
+            <Nav.Item><BsCircleFill /></Nav.Item>
+            <Nav.Item><IoNotificationsSharp /></Nav.Item>
+            <Nav.Item><RxHamburgerMenu /></Nav.Item>
+          </Nav>
+
+          <></>
         </Navbar.Collapse>
 
 
