@@ -1,23 +1,136 @@
-import "./topbar.scss";
+import './Navigation.css'
 //import { Person, Mail } from "@material-ui/icons";
-import React from "react";
-import { Nav, Navbar, Container, Button, NavDropdown } from "react-bootstrap";
+import React, { useState } from "react";
+import { Nav, Navbar, Container, Button, NavDropdown, Form, Modal, Badge } from "react-bootstrap";
 import { useLogoutUserMutation } from "../services/appApi";
 import { useSelector } from "react-redux";
 import { LinkContainer } from "react-router-bootstrap";
-import logo from "../assets/logo.jpg";
+import { BsCircleFill } from 'react-icons/bs'
+import { IoNotificationsSharp } from 'react-icons/io5'
+import { AiOutlineSearch } from 'react-icons/ai'
+import { RxHamburgerMenu } from 'react-icons/rx'
+import logo from "../assets/sslogo.png";
+
+
+const SideModal = () => {
+  const [show, setShow] = useState(false);
+
+  const handleClose = () => {
+    setShow(false);
+  };
+
+  const handleShow = () => {
+    setShow(true);
+  };
+
+  return (
+    <>
+      <button className="btn border-0" onClick={handleShow}><RxHamburgerMenu /></button>
+      
+      <Modal
+        show={show}
+        onHide={handleClose}
+        className="modal right"
+        dialogClassName="modal-dialog"
+        contentClassName="modal-content"
+        size="lg"
+        aria-labelledby="right-side-modal"
+      >
+        <Modal.Header>
+          <Modal.Title id="side-modal">Side Modal</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          {/* Your modal content goes here */}
+        </Modal.Body>
+        <Modal.Footer>
+          
+        </Modal.Footer>
+      </Modal>
+    </>
+  );
+};
 
 export default function Topbar({ menuOpen, setMenuOpen }) {
   const user = useSelector((state) => state.user);
   const [logoutUser] = useLogoutUserMutation();
   async function handleLogout(e) {
-      e.preventDefault();
-      await logoutUser(user);
-      // redirect to home page
-      window.location.replace("/");
+    e.preventDefault();
+    await logoutUser(user);
+    // redirect to home page
+    window.location.replace("/");
   }
   return (
-    <div className={"topbar " + (menuOpen && "active")}>
+    <Navbar height={'85px'} className="shadow">
+      <Container className="d-flex justify-content-center" style={{ maxWidth: '1440px' }} fluid >
+
+        
+        <img
+          src={logo}
+          width={'40px'}
+          height={'40px'}
+          className="d-inline-block align-top"
+          alt="Logo"
+        />
+        <Navbar.Brand href="#"><strong>SPOTSTICH</strong></Navbar.Brand>
+        <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+
+        <Navbar.Collapse id="navbarScroll">
+          <Form className="d-flex">
+            <div className="input-group">
+              <input
+                className="form-control border-end-0 border"
+                type="search"
+                placeholder="Search"
+              />
+              <span className="input-group-append">
+                <button className="btn border-start-0 border ms-n5" type="button">
+                  <AiOutlineSearch />
+                </button>
+              </span>
+            </div>
+          </Form>
+
+          <Nav
+            className="ms-auto my-2 my-lg-0"
+            style={{ maxHeight: '100px' }}
+            navbarScroll
+          >
+            <Nav.Link href="#">HOME</Nav.Link>
+            <Nav.Link href="#">GAME</Nav.Link>
+            <Nav.Link href="#">EVENTS</Nav.Link>
+            <Nav.Link href="#">MARKET</Nav.Link>
+            <Nav.Link href="#">EXPLORE</Nav.Link>
+          </Nav>
+
+          <div className={"vr"}></div>
+          <Nav>
+            <Nav.Item><button className="btn border-0" ><BsCircleFill /></button></Nav.Item>
+            <Nav.Item>
+              <button className="btn border-0" ><IoNotificationsSharp /></button>
+              <Badge></Badge>
+            </Nav.Item>
+            <Nav.Item>
+              <SideModal />
+            </Nav.Item>
+          </Nav>
+
+          <></>
+        </Navbar.Collapse>
+
+
+
+
+      </Container>
+    </Navbar>
+
+
+  );
+}
+
+/*
+
+<div className={"topbar " + (menuOpen && "active")}>
+      
       <div className="wrapper">
         <div className="left">
             
@@ -78,6 +191,5 @@ export default function Topbar({ menuOpen, setMenuOpen }) {
         </div>
       </div>
     </div>
-    
-  );
-}
+
+*/

@@ -27,7 +27,7 @@ import VendorSetupComplete from "./pages/VendorAccountSetup/VendorSetupCompleteA
 import PopupDialog from './pages/Layers/CreateNewLayer'
 
 import Navigation from "./components/Navigation";
-import Home from "./pages/Home";
+import Home from "./pages/Home/Home";
 import Login from "./pages/Login/Login";
 import Profile from "./pages/Profile/Profile";
 import Signup from "./pages/Signup/Signup";
@@ -58,6 +58,7 @@ function App() {
                 <Navigation menuOpen={menuOpen} setMenuOpen={setMenuOpen}/>
                 <Menu menuOpen={menuOpen} setMenuOpen={setMenuOpen}/>
                 */}
+                
                 <Routes>
                     <Route path="/" element={<Home />} />
                     {!user && (

@@ -3,10 +3,6 @@ import 'bootstrap/dist/css/bootstrap.css';
 import"./home.scss";
 import { useSelector } from "react-redux";
 import { Button, Col, Form, Row } from "react-bootstrap";
-import Picker from 'emoji-picker-react';
-import {ReactEmojiEditor} from 'react-emotor';
-
-
 
 
 function Home() {
@@ -35,7 +31,6 @@ function Home() {
         </div>)} 
            
             
-            <ReactEmojiEditor className="chatbox" ref={emotor} defaultValue="default" onChange={content=>contentOnChange(content)}/>
             <div className="icons">
               <span><i class="bi bi-image"></i></span>
               <span><i class="bi bi-camera-video"></i></span>
