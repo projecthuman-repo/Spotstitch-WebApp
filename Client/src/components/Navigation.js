@@ -30,10 +30,11 @@ const SideModal = () => {
       <Modal
         show={show}
         onHide={handleClose}
-        dialogClassName="side-modal"
-        contentClassName="side-modal-content"
+        className="modal right"
+        dialogClassName="modal-dialog"
+        contentClassName="modal-content"
         size="lg"
-        aria-labelledby="side-modal"
+        aria-labelledby="right-side-modal"
       >
         <Modal.Header>
           <Modal.Title id="side-modal">Side Modal</Modal.Title>
