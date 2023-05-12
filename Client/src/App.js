@@ -46,9 +46,7 @@ function App() {
                 <Navigation menuOpen={menuOpen} setMenuOpen={setMenuOpen}/>
                 <Menu menuOpen={menuOpen} setMenuOpen={setMenuOpen}/>
                 */}
-                {!user && (
-                    <Navigation />
-                )}
+                
                 <Routes>
                     <Route path="/" element={<Home />} />
                     {!user && (
