@@ -26,7 +26,7 @@ const SideModal = () => {
   return (
     <>
       <button className="btn border-0" onClick={handleShow}><RxHamburgerMenu /></button>
-
+      
       <Modal
         show={show}
         onHide={handleClose}
@@ -35,16 +35,14 @@ const SideModal = () => {
         size="lg"
         aria-labelledby="side-modal"
       >
-        <Modal.Header closeButton>
+        <Modal.Header>
           <Modal.Title id="side-modal">Side Modal</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           {/* Your modal content goes here */}
         </Modal.Body>
         <Modal.Footer>
-          <Button variant="secondary" onClick={handleClose}>
-            Close
-          </Button>
+          
         </Modal.Footer>
       </Modal>
     </>
