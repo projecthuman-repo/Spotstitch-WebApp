@@ -14,7 +14,7 @@ function Home() {
   const [tab, setTab] = useState(1)
   const isActive = true;
   const layerExamples = ["test", "Categories", "test"]
-  const postExanples = [""]
+  const postExanples = ["", "", ""]
   const emotor = useRef();
 
   function tabOnChange(i) {
@@ -33,7 +33,6 @@ function Home() {
     <div>
       <Navigation />
       <Container className='my-4'>
-
         <Row>
           <Col lg="3">
             <Card className="my-3">
@@ -46,12 +45,12 @@ function Home() {
                     Username
                   </Col>
                 </Row>
-                
+
                 <Row >
-                <Form>
-                  <Form.Group>
-                    <Form.Control className="bg-light input" as="textarea" placeholder='Share your life!' rows={4}></Form.Control>
-                    
+                  <Form>
+                    <Form.Group>
+                      <Form.Control className="lighter input" as="textarea" placeholder='Share your life!' rows={4}></Form.Control>
+
                       <Row className=''>
                         <Col lg={1}><BsImage size={28} /></Col>
                         <Col lg={1}><BsCameraVideo size={28} /></Col>
@@ -59,13 +58,13 @@ function Home() {
                         <Col lg={1}><BsCloudUpload size={28} /> </Col>
                         <Col lg={1}><BsEmojiSmile size={28} /></Col>
                       </Row>
-                      
-                    <button className='btn'>Post</button>
-                  </Form.Group>
 
-                </Form>
+                      <button className='btn light float-end'>Post</button>
+                    </Form.Group>
+
+                  </Form>
                 </Row>
-                
+
               </Card.Body>
             </Card>
 
@@ -97,18 +96,56 @@ function Home() {
                 </div>
               </Card.Body>
             </Card>
-            <Card className="my-3">
-              <Card.Body className="bg-light shadow nopadding">
-                <Row className="nopadding">
-                  <Col lg="7" className="bg-white rounded">
-                    <img src={imgPH}></img>
-                  </Col>
-                  <Col lg="5">
-                    test
-                  </Col>
-                </Row>
-              </Card.Body>
-            </Card>
+            {
+              postExanples.map((post) => {
+                return (
+                  <Card className="my-3 post">
+                    <Card.Body className="shadow nopadding">
+                      <Row>
+                        <Col lg="7" className="rounded">
+                          <img src={imgPH}></img>
+                        </Col>
+                        <Col lg="5">
+                          <Row className='mx-2 my-3'>
+                            <Col lg={2}>
+                              <img src={avatar} width={56} height={56}></img>
+                            </Col>
+                            <Col lg={10}>
+                              Username
+                            </Col>
+                          </Row>
+                          <Row className='mx-3'>
+                            test
+                          </Row>
+                          <Row>
+                            reaction
+                          </Row>
+                          <Row >
+                            <Col lg={11} className='mx-2'>
+                              <hr style={{color:"white"}}/>
+                              <Form className="d-flex">
+                                <div className="input-group">
+                                  <input
+                                    className="form-control border-0 comment"
+                                    type="text"
+                                    placeholder="Add a comment..."
+                                  />
+                                  <span className="input-group-append">
+                                    <button className="btn border-0 comment" type="button">
+                                      a
+                                    </button>
+                                  </span>
+                                </div>
+                              </Form>
+                            </Col>
+                          </Row>
+                        </Col>
+                      </Row>
+                    </Card.Body>
+                  </Card>
+                )
+              })
+            }
           </Col>
         </Row>
       </Container>
@@ -118,121 +155,3 @@ function Home() {
 }
 
 export default Home;
-
-/* 
-
-<div className="content">
-        <div className="row">
-        <div className="col-4">
-        <div className="lb">
-        {user &&(<div className="photoFrame"> 
-        <img src={user.picture} style={{ width: 80, height: 80, marginRight: 10, objectFit: "cover", borderRadius: "50%" }} /> <div>{user.name}</div>
-        </div>)} 
-           
-            
-            <div className="icons">
-              <span><i class="bi bi-image"></i></span>
-              <span><i class="bi bi-camera-video"></i></span>
-              <span><i class="bi bi-geo-alt"></i></span>
-              <span><i class="bi bi-cloud-upload"></i></span>
-              <span><i class="bi bi-emoji-smile"></i></span></div>
-
-              <div className="inputBtn">
-                 <input class="btn btn-secondary " id="postBtn" type="submit" value="Post"></input>
-                 </div> 
-                 </div>
-                <div className="lb2">
-                  <div>Layers</div>
-
-
-
-
-
-                  <div className="layerBox"><p>Layer Category</p></div>
-                  <div className="layerBox"><p>Layer Category</p></div>
-                  <div className="layerBox"><p>Layer Category</p></div>
-                  <div className="layerBox"><p>Layer Category</p></div>
-                  <div className="layerBox"><p>Layer Category</p></div>
-                  <div className="layerBox"><p>Layer Category</p></div>
-                 </div>                        
-        </div>
-        <div className="col-8">
-           <div className="rb">
-           <nav class="nav nav-pills flex-column flex-sm-row">
-            <a class="flex-sm-fill text-sm-center nav-link" aria-current="page" href="#">For You</a>
-            <a class="flex-sm-fill text-sm-center nav-link" href="#">Following</a></nav>
-           </div>
-
-           <div className="rcard"> 
-           <div class="row g-0">
-           <div class="col-md-7">
-             <img src={require('./image-placeholder.jpg')} class="img-fluid rounded-start" style={{ height:350, borderRadius: "5%"}} alt="IMAGE"/>
-             </div>
-             <div class="col-md-5">
-             <div class="card-body">
-             <div className="userInfo">
-                    <div className="avatar">
-                      <img src={require('./avatar.png')} style={{ width: 60, height: 60, marginRight: 10, objectFit: "cover", borderRadius: "50%"}} />
-                       </div>
-                       <div className="userdescrip">
-                        <div><b>User Name</b></div>
-                        <div>User Description</div></div>
-             </div>
-
-             <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-              <p class="card-text"><small class="text-muted">#posttag #posttag</small></p>
-              <div className="icons">
-                <span><i class="bi bi-heart"></i></span>
-                <span><i class="bi bi-send"></i></span>
-                <span><i class="bi bi-box-arrow-up-right"></i></span>
-                </div>
-
-                <div class="input-group mb-3">
-                   <input type="text" class="form-control" placeholder="Add a Comment" aria-label="Recipient's username" aria-describedby="button-addon2"/>
-                   <button class="btn" type="button" id="button-addon2"><i class="bi bi-chat"/></button></div>    
-             </div>
-             </div>
-           </div>
-           </div>
-        
-
-           <div className="rcard"> 
-           <div class="row g-0">
-           <div class="col-md-7">
-             <img src={require('./image-placeholder.jpg')} class="img-fluid rounded-start" style={{ height:350, borderRadius: "5%"}} alt="IMAGE"/>
-             </div>
-             <div class="col-md-5">
-             <div class="card-body">
-             <div className="userInfo">
-                    <div className="avatar">
-                      <img src={require('./avatar.png')} style={{ width: 60, height: 60, marginRight: 10, objectFit: "cover", borderRadius: "50%"}} />
-                       </div>
-                       <div className="userdescrip">
-                        <div><b>User Name</b></div>
-                        <div>User Description</div></div>
-             </div>
-
-             <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-              <p class="card-text"><small class="text-muted">#posttag #posttag</small></p>
-              <div className="icons">
-                <span><i class="bi bi-heart"></i></span>
-                <span><i class="bi bi-send"></i></span>
-                <span><i class="bi bi-box-arrow-up-right"></i></span>
-                </div>
-
-                <div class="input-group mb-3">
-                   <input type="text" class="form-control" placeholder="Add a Comment" aria-label="Recipient's username" aria-describedby="button-addon2"/>
-                   <button class="btn" type="button" id="button-addon2"><i class="bi bi-chat"/></button></div>    
-             </div>
-             </div>
-           </div>
-           </div>
-
-
-
-
-        </div>
-        </div>              
-       </div> 
-
-*/

@@ -12,6 +12,11 @@ code {
     monospace;
 }
 
+.nopadding {
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
 .active {
   box-shadow: none;
   border-bottom: 8px solid rgb(142, 174, 233) !important ;
@@ -22,6 +27,10 @@ code {
 .btn-nav.focus,.btn-nav:active.focus,.btn-nav.active.focus {
     outline: none;
     box-shadow: none;
+}
+
+.btn-nav {
+  border-bottom: 8px solid transparent;
 }
 
 .btn-nav:hover {
