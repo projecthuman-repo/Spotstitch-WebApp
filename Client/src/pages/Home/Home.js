@@ -4,7 +4,7 @@ import { useSelector } from "react-redux";
 import { Button, Col, Container, Form, Row, Card, InputGroup } from "react-bootstrap";
 import Navigation from '../../components/Navigation'
 import { HiOutlinePencil } from 'react-icons/hi'
-import { IconContext } from "react-icons/lib";
+import { BsCameraVideo } from 'react-icons/bs'
 function Home() {
   const user = useSelector((state) => state.user);
 
@@ -29,17 +29,25 @@ function Home() {
             <Card className="my-3">
               <Card.Body>
                 <Form>
-                  <InputGroup></InputGroup>
+                  <Form.Group>
+                    <span><VideocamIcon></VideocamIcon></span>
+                    <Form.Control type="file"></Form.Control>
+                    <Form.Control type="file"></Form.Control>
+                    <Form.Control type="file"></Form.Control>
+                    <Form.Control type="file"></Form.Control>
+                    <Form.Control type="file"></Form.Control>
+                  </Form.Group>
+
                 </Form>
               </Card.Body>
             </Card>
 
             <Card className="my-3">
-              <Card.Body>
-                <div className="row mp-2" style={{display: "flex", "align-items": "center"}}>
+              <Card.Body >
+                <div className="row p-2" style={{ display: "flex", "align-items": "center" }}>
                   <div className="col-lg-10 ">Layers </div>
                   <div className="col-lg-2">
-                      <button className="btn text-left"><HiOutlinePencil /></button>
+                    <button className="btn text-left"><HiOutlinePencil /></button>
                   </div>
                   <hr></hr>
                   {
@@ -55,7 +63,7 @@ function Home() {
 
           <Col lg="9">
             <Card className="my-3">
-              <Card.Body>
+              <Card.Body >
                 <div className="d-flex justify-content-evenly">
                   <button className="btn ">For you</button>
                   <button className="btn ">Following</button>
