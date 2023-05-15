@@ -4,12 +4,22 @@ import { useSelector } from "react-redux";
 import { Button, Col, Container, Form, Row, Card, InputGroup } from "react-bootstrap";
 import Navigation from '../../components/Navigation'
 import { HiOutlinePencil } from 'react-icons/hi'
-import { BsCameraVideo } from 'react-icons/bs'
+import { BsCameraVideo, BsCloudUpload, BsEmojiSmile, BsImage } from 'react-icons/bs'
+import { GoLocation } from 'react-icons/go'
+
+import avatar from './avatar.png'
+import imgPH from './image-placeholder.jpg'
 function Home() {
   const user = useSelector((state) => state.user);
-
+  const [tab, setTab] = useState(1)
+  const isActive = true;
   const layerExamples = ["test", "Categories", "test"]
+  const postExanples = [""]
   const emotor = useRef();
+
+  function tabOnChange(i) {
+    setTab(i);
+  }
 
   function contentOnChange(content) {
     console.log(content);
@@ -22,23 +32,40 @@ function Home() {
   return (
     <div>
       <Navigation />
-      <Container >
+      <Container className='my-4'>
 
-        <Row >
+        <Row>
           <Col lg="3">
             <Card className="my-3">
               <Card.Body>
+                <Row className='my-2'>
+                  <Col lg={3}>
+                    <img src={avatar} width={56} height={56}></img>
+                  </Col>
+                  <Col lg={9}>
+                    Username
+                  </Col>
+                </Row>
+                
+                <Row >
                 <Form>
                   <Form.Group>
-                    <span><VideocamIcon></VideocamIcon></span>
-                    <Form.Control type="file"></Form.Control>
-                    <Form.Control type="file"></Form.Control>
-                    <Form.Control type="file"></Form.Control>
-                    <Form.Control type="file"></Form.Control>
-                    <Form.Control type="file"></Form.Control>
+                    <Form.Control className="bg-light input" as="textarea" placeholder='Share your life!' rows={4}></Form.Control>
+                    
+                      <Row className=''>
+                        <Col lg={1}><BsImage size={28} /></Col>
+                        <Col lg={1}><BsCameraVideo size={28} /></Col>
+                        <Col lg={1}><GoLocation size={28} /></Col>
+                        <Col lg={1}><BsCloudUpload size={28} /> </Col>
+                        <Col lg={1}><BsEmojiSmile size={28} /></Col>
+                      </Row>
+                      
+                    <button className='btn'>Post</button>
                   </Form.Group>
 
                 </Form>
+                </Row>
+                
               </Card.Body>
             </Card>
 
@@ -63,10 +90,10 @@ function Home() {
 
           <Col lg="9">
             <Card className="my-3">
-              <Card.Body >
+              <Card.Body className='nopadding'>
                 <div className="d-flex justify-content-evenly">
-                  <button className="btn ">For you</button>
-                  <button className="btn ">Following</button>
+                  <button className={tab == 1 ? "btn btn-nav active p-3" : "btn btn-nav"} onClick={() => tabOnChange(1)}>For you</button>
+                  <button className={tab == 2 ? "btn btn-nav active p-3" : "btn btn-nav"} onClick={() => tabOnChange(2)}>Following</button>
                 </div>
               </Card.Body>
             </Card>
@@ -74,7 +101,7 @@ function Home() {
               <Card.Body className="bg-light shadow nopadding">
                 <Row className="nopadding">
                   <Col lg="7" className="bg-white rounded">
-                    test
+                    <img src={imgPH}></img>
                   </Col>
                   <Col lg="5">
                     test
