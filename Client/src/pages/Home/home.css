@@ -24,4 +24,21 @@
 }
 
 
+.flip {
+  -webkit-transform: scaleX(-1);
+  transform: scaleX(-1);
+}
 
+.avatar {
+  border-radius: 50%
+}
+
+.border {
+  border: 2px solid #C4C4C4 !important;
+}
+
+hr.white {
+  border: 1px solid white !important;
+  border-color: white !important;
+  color: white !important;
+}

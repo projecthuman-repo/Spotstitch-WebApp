@@ -1,7 +1,7 @@
 import './home.css'
 import React, { useRef, useState } from "react";
 import { useSelector } from "react-redux";
-import { Button, Col, Container, Form, Row, Card, InputGroup } from "react-bootstrap";
+import { Col, Container, Form, Row, Card } from "react-bootstrap";
 import Navigation from '../../components/Navigation'
 import { HiOutlinePencil } from 'react-icons/hi'
 import { BsCameraVideo, BsCloudUpload, BsEmojiSmile, BsImage } from 'react-icons/bs'
@@ -9,21 +9,22 @@ import { GoLocation } from 'react-icons/go'
 
 import avatar from './avatar.png'
 import imgPH from './image-placeholder.jpg'
+import UserContent from './UserContent';
 function Home() {
   const user = useSelector((state) => state.user);
   const [tab, setTab] = useState(1);
   const [filters, setFilters] = useState([]);
 
-  const layerExamples = ["test", "Categories", "name"]
+  const layerExamples = ["these", "are", "test", "layers", "replace later"]
   const postExanples = ["", "", ""]
 
   const emotor = useRef();
 
   function editFilter(layerName) {
     const newFilters = [...filters];
-    if (filters.includes(layerName)) newFilters.splice(newFilters.indexOf('B'), 1)
+    if (filters.includes(layerName)) newFilters.splice(newFilters.indexOf(layerName), 1)
     else newFilters.push(layerName)
-    setFilters(newFilters) 
+    setFilters(newFilters)
   }
 
   function tabOnChange(i) {
@@ -34,18 +35,18 @@ function Home() {
     console.log("clean");
     emotor.current.onFocus();
   }
-  
+
   return (
     <div>
       <Navigation />
-      <Container className='my-4'>
+      <Container className='my-4 '>
         <Row>
           <Col lg="3">
             <Card className="my-3">
               <Card.Body>
                 <Row className='my-2'>
                   <Col lg={3}>
-                    <img src={avatar} width={56} height={56}></img>
+                    <img className='avatar shadow' src={avatar} width={56} height={56}></img>
                   </Col>
                   <Col lg={9}>
                     Username
@@ -57,7 +58,7 @@ function Home() {
                     <Form.Group>
                       <Form.Control className="lighter input" as="textarea" placeholder='Share your life!' rows={4}></Form.Control>
 
-                      <Row className='mx-1'>
+                      <Row className='px-1'>
                         <Col lg={1}><BsImage size={20} /></Col>
                         <Col lg={1}><BsCameraVideo size={20} /></Col>
                         <Col lg={1}><GoLocation size={20} /></Col>
@@ -74,20 +75,20 @@ function Home() {
               </Card.Body>
             </Card>
 
-            <Card className="my-3">
+            <Card className="my-3 border">
               <Card.Body >
                 <div className="row p-2" style={{ display: "flex", "align-items": "center" }}>
                   <div className="col-lg-10 ">Layers </div>
                   <div className="col-lg-2">
                     <button className="btn text-left"><HiOutlinePencil /></button>
                   </div>
-                  <hr></hr>
+                  <hr ></hr>
                   {
                     layerExamples.map((layer) => {
                       return <Row><Col>
                         <button
-                          className="btn bg-light m-2 text-start w-100"
-                          onClick={() => editFilter(layer)}>
+                          className={filters.includes(layer) == true ? "btn post m-2 text-start w-100 shadow" : "btn bg-light m-2 text-start w-100"}
+                          onClick={() => { editFilter(layer) }}>
                           {layer}
                         </button>
                       </Col></Row>
@@ -112,7 +113,7 @@ function Home() {
               <Col>
                 {
                   filters.map(filter => {
-                      return <button className='btn light mx-2' onClick={() => editFilter(filter)}>{filter}</button>
+                    return <button className='btn light mx-2' onClick={() => { editFilter(filter) }}>{filter}</button>
                   })
                 }
               </Col>
@@ -120,50 +121,7 @@ function Home() {
             {
               postExanples.map((post) => {
                 return (
-                  <Card className="my-3 post">
-                    <Card.Body className="shadow nopadding">
-                      <Row>
-                        <Col lg="7" className="rounded">
-                          <img src={imgPH}></img>
-                        </Col>
-                        <Col lg="5">
-                          <Row className='mx-2 my-3'>
-                            <Col lg={2}>
-                              <img src={avatar} width={56} height={56}></img>
-                            </Col>
-                            <Col lg={10}>
-                              Username
-                            </Col>
-                          </Row>
-                          <Row className='mx-3'>
-                            test
-                          </Row>
-                          <Row>
-                            reaction
-                          </Row>
-                          <Row >
-                            <Col lg={11} className='mx-2'>
-                              <hr style={{ color: "white" }} />
-                              <Form className="d-flex">
-                                <div className="input-group">
-                                  <input
-                                    className="form-control border-0 comment"
-                                    type="text"
-                                    placeholder="Add a comment..."
-                                  />
-                                  <span className="input-group-append">
-                                    <button className="btn border-0 comment" type="button">
-                                      a
-                                    </button>
-                                  </span>
-                                </div>
-                              </Form>
-                            </Col>
-                          </Row>
-                        </Col>
-                      </Row>
-                    </Card.Body>
-                  </Card>
+                  <UserContent img={imgPH} avatar={avatar} user={'name'} desc={'desc'} body={"test"} />
                 )
               })
             }
