@@ -60,7 +60,7 @@ export default function Topbar({ menuOpen, setMenuOpen }) {
     window.location.replace("/");
   }
   return (
-    <Navbar className="shadow p-3">
+    <Navbar className="shadow p-3 overflow-auto">
       <Container className="d-flex justify-content-center" style={{ maxWidth: '1440px' }} fluid >
 
         

@@ -10,6 +10,7 @@ import { GoLocation } from 'react-icons/go'
 import avatar from './avatar.png'
 import imgPH from './image-placeholder.jpg'
 import UserContent from './UserContent';
+import VendorConnections from './VendorConnections';
 function Home() {
   const user = useSelector((state) => state.user);
   const [tab, setTab] = useState(1);
@@ -43,7 +44,7 @@ function Home() {
       <Container className='my-4 '>
         <Row>
           <Col lg="3">
-            <Card className="my-3 content-border">
+            <Card className="my-3 content-border-l round-s">
               <Card.Body>
                 <Row className='my-2'>
                   <Col lg={3}>
@@ -76,7 +77,7 @@ function Home() {
               </Card.Body>
             </Card>
 
-            <Card className="my-3 content-border">
+            <Card className="my-3 content-border-l round-s">
               <Card.Body >
                 <div className="row p-2" style={{ display: "flex", "align-items": "center" }}>
                   <div className="col-lg-10 ">{ uTest ? 'Layers' : 'Connections'} </div>
@@ -102,7 +103,7 @@ function Home() {
           </Col >
 
           <Col lg="9">
-            <Card className="my-3 content-border">
+            <Card className="mt-3 content-border-l round-s">
               <Card.Body className='nopadding'>
                 <div className="d-flex justify-content-evenly">
                   <button className={tab == 1 ? "btn-nav active p-3" : "btn-nav p-3"} onClick={() => tabOnChange(1)}>For you</button>
@@ -119,7 +120,9 @@ function Home() {
                 }
               </Col>
             </Row>
+            <VendorConnections /> {/* test view */}
             {
+              
               postExanples.map((post) => {
                 return (
                   <UserContent img={imgPH} avatar={avatar} user={'name'} desc={'desc'} body={"test"} />

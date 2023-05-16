@@ -1,19 +1,18 @@
 import './home.css'
-import { Col, Form, Row, Card, Table } from "react-bootstrap";
+import { Col, Form, Row, Card, Container } from "react-bootstrap";
 import { BsChat, BsHeart, BsSend, BsReply } from 'react-icons/bs'
 
 function UserContent({ img, avatar, user, desc, body }) {
     return (
-        <Card className="my-3 post rounded-lg content-border">
-            <Card.Body className="shadow nopadding">
-                <Row className='d-flex'>
-                    <Col lg="7" className="rounded-lg">
-                        <img src={img}></img>
+        <Container className="shadow p-0 my-4 round-l content">
+            <Row className='d-flex'>
+                    <Col lg="7" className="round-l">
+                        <img src={img} className="round-l img-fluid"></img>
                     </Col>
                     <Col lg="5">
                         <Row className='mx-2 my-3'>
-                            <Col lg={2}><img className='avatar shadow' src={avatar} width={56} height={56}></img></Col>
-                            <Col lg={10}>
+                            <Col sm={2}><img className='avatar shadow' src={avatar} width={61} height={61}></img></Col>
+                            <Col sm={9} className='mx-2'>
                                 <Row><Col><strong>{user}</strong></Col></Row>
                                 <Row><Col>{desc}</Col></Row>
                             </Col>
@@ -22,11 +21,11 @@ function UserContent({ img, avatar, user, desc, body }) {
                             <Col>{body}</Col>
                         </Row>
                         <Row className='mx-2'>
-                            <Col lg={1}><BsHeart size={22}/></Col>
-                            <Col lg={1}><BsSend size={22} /></Col>
-                            <Col lg={1}><BsReply size={22} className='flip'/></Col>
+                            <Col sm={1}><BsHeart size={22}/></Col>
+                            <Col sm={1}><BsSend size={22} /></Col>
+                            <Col sm={1}><BsReply size={22} className='flip'/></Col>
                         </Row>
-                        <Row className='align-self-end'>
+                        <Row className='align-self-end w-100'>
                             <Col lg={11} className='mx-2 '>
                                 <hr className='my-2 white' />
                                 <Form className="d-flex">
@@ -47,8 +46,8 @@ function UserContent({ img, avatar, user, desc, body }) {
                         </Row>
                     </Col>
                 </Row>
-            </Card.Body>
-        </Card>)
+        </Container>
+        )
 }
 
 export default UserContent
