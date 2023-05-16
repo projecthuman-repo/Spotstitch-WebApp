@@ -4,7 +4,7 @@ import { BsChat, BsHeart, BsSend, BsReply } from 'react-icons/bs'
 
 function UserContent({ img, avatar, user, desc, body }) {
     return (
-        <Card className="my-3 post rounded-lg border">
+        <Card className="my-3 post rounded-lg content-border">
             <Card.Body className="shadow nopadding">
                 <Row className='d-flex'>
                     <Col lg="7" className="rounded-lg">

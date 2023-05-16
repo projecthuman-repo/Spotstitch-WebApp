@@ -17,6 +17,7 @@ function Home() {
 
   const layerExamples = ["these", "are", "test", "layers", "replace later"]
   const postExanples = ["", "", ""]
+  const uTest = true;
 
   const emotor = useRef();
 
@@ -42,7 +43,7 @@ function Home() {
       <Container className='my-4 '>
         <Row>
           <Col lg="3">
-            <Card className="my-3">
+            <Card className="my-3 content-border">
               <Card.Body>
                 <Row className='my-2'>
                   <Col lg={3}>
@@ -75,10 +76,10 @@ function Home() {
               </Card.Body>
             </Card>
 
-            <Card className="my-3 border">
+            <Card className="my-3 content-border">
               <Card.Body >
                 <div className="row p-2" style={{ display: "flex", "align-items": "center" }}>
-                  <div className="col-lg-10 ">Layers </div>
+                  <div className="col-lg-10 ">{ uTest ? 'Layers' : 'Connections'} </div>
                   <div className="col-lg-2">
                     <button className="btn text-left"><HiOutlinePencil /></button>
                   </div>
@@ -101,7 +102,7 @@ function Home() {
           </Col >
 
           <Col lg="9">
-            <Card className="my-3">
+            <Card className="my-3 content-border">
               <Card.Body className='nopadding'>
                 <div className="d-flex justify-content-evenly">
                   <button className={tab == 1 ? "btn-nav active p-3" : "btn-nav p-3"} onClick={() => tabOnChange(1)}>For you</button>

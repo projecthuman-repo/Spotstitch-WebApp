@@ -40,3 +40,7 @@ code {
   border-bottom: 8px solid rgb(142, 174, 233, 0.5);
   border-radius: 0 !important;
 }
+
+.content-border {
+  border: 2px solid #C4C4C4 !important;
+}
