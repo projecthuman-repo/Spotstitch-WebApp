@@ -95,11 +95,11 @@ export default function Topbar({ menuOpen, setMenuOpen }) {
             style={{ maxHeight: '100px' }}
             navbarScroll
           >
-            <Nav.Link href="#" className="mx-3 btn-nav">HOME</Nav.Link>
-            <Nav.Link href="#" className="mx-3 btn-nav">GAME</Nav.Link>
-            <Nav.Link href="#" className="mx-3 btn-nav">EVENTS</Nav.Link>
-            <Nav.Link href="#" className="mx-3 btn-nav">MARKET</Nav.Link>
-            <Nav.Link href="#" className="mx-3 btn-nav">EXPLORE</Nav.Link>
+            <Nav.Link href="#" className="mx-2 btn-nav">HOME</Nav.Link>
+            <Nav.Link href="##" className="mx-2 btn-nav">GAME</Nav.Link>
+            <Nav.Link href="###" className="mx-2 btn-nav">EVENTS</Nav.Link>
+            <Nav.Link href="####" className="mx-2 btn-nav">MARKET</Nav.Link>
+            <Nav.Link href="#####" className="mx-2 btn-nav">EXPLORE</Nav.Link>
           </Nav>
 
           <div className={"vr"}></div>

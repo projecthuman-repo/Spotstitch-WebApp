@@ -11,24 +11,30 @@ import avatar from './avatar.png'
 import imgPH from './image-placeholder.jpg'
 function Home() {
   const user = useSelector((state) => state.user);
-  const [tab, setTab] = useState(1)
-  const isActive = true;
-  const layerExamples = ["test", "Categories", "test"]
+  const [tab, setTab] = useState(1);
+  const [filters, setFilters] = useState([]);
+
+  const layerExamples = ["test", "Categories", "name"]
   const postExanples = ["", "", ""]
+
   const emotor = useRef();
+
+  function editFilter(layerName) {
+    const newFilters = [...filters];
+    if (filters.includes(layerName)) newFilters.splice(newFilters.indexOf('B'), 1)
+    else newFilters.push(layerName)
+    setFilters(newFilters) 
+  }
 
   function tabOnChange(i) {
     setTab(i);
-  }
-
-  function contentOnChange(content) {
-    console.log(content);
   }
 
   function myClean() {
     console.log("clean");
     emotor.current.onFocus();
   }
+  
   return (
     <div>
       <Navigation />
@@ -51,15 +57,15 @@ function Home() {
                     <Form.Group>
                       <Form.Control className="lighter input" as="textarea" placeholder='Share your life!' rows={4}></Form.Control>
 
-                      <Row className=''>
-                        <Col lg={1}><BsImage size={28} /></Col>
-                        <Col lg={1}><BsCameraVideo size={28} /></Col>
-                        <Col lg={1}><GoLocation size={28} /></Col>
-                        <Col lg={1}><BsCloudUpload size={28} /> </Col>
-                        <Col lg={1}><BsEmojiSmile size={28} /></Col>
+                      <Row className='mx-1'>
+                        <Col lg={1}><BsImage size={20} /></Col>
+                        <Col lg={1}><BsCameraVideo size={20} /></Col>
+                        <Col lg={1}><GoLocation size={20} /></Col>
+                        <Col lg={1}><BsCloudUpload size={20} /> </Col>
+                        <Col lg={1}><BsEmojiSmile size={20} /></Col>
                       </Row>
 
-                      <button className='btn light float-end'>Post</button>
+                      <button className='btn light float-end mt-4 rounded-pill px-3'>Post</button>
                     </Form.Group>
 
                   </Form>
@@ -77,8 +83,14 @@ function Home() {
                   </div>
                   <hr></hr>
                   {
-                    layerExamples.map((category) => {
-                      return <button className="btn bg-light m-2 text-start w-75">{category}</button>
+                    layerExamples.map((layer) => {
+                      return <Row><Col>
+                        <button
+                          className="btn bg-light m-2 text-start w-100"
+                          onClick={() => editFilter(layer)}>
+                          {layer}
+                        </button>
+                      </Col></Row>
                     })
                   }
                 </div>
@@ -91,11 +103,20 @@ function Home() {
             <Card className="my-3">
               <Card.Body className='nopadding'>
                 <div className="d-flex justify-content-evenly">
-                  <button className={tab == 1 ? "btn btn-nav active p-3" : "btn btn-nav"} onClick={() => tabOnChange(1)}>For you</button>
-                  <button className={tab == 2 ? "btn btn-nav active p-3" : "btn btn-nav"} onClick={() => tabOnChange(2)}>Following</button>
+                  <button className={tab == 1 ? "btn-nav active p-3" : "btn-nav p-3"} onClick={() => tabOnChange(1)}>For you</button>
+                  <button className={tab == 2 ? "btn-nav active p-3" : "btn-nav p-3"} onClick={() => tabOnChange(2)}>Following</button>
                 </div>
               </Card.Body>
             </Card>
+            <Row>
+              <Col>
+                {
+                  filters.map(filter => {
+                      return <button className='btn light mx-2' onClick={() => editFilter(filter)}>{filter}</button>
+                  })
+                }
+              </Col>
+            </Row>
             {
               postExanples.map((post) => {
                 return (
@@ -122,7 +143,7 @@ function Home() {
                           </Row>
                           <Row >
                             <Col lg={11} className='mx-2'>
-                              <hr style={{color:"white"}}/>
+                              <hr style={{ color: "white" }} />
                               <Form className="d-flex">
                                 <div className="input-group">
                                   <input

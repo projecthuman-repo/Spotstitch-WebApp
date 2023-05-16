@@ -23,13 +23,16 @@ code {
   border-radius: 0 !important;
 }
 
+.btn-nav,.btn-nav:hover,
 .btn-nav-nav:focus,.btn-nav:active:focus,.btn-nav.active:focus,
 .btn-nav.focus,.btn-nav:active.focus,.btn-nav.active.focus {
     outline: none;
     box-shadow: none;
+    background-color: white;
 }
 
 .btn-nav {
+  border: 0;
   border-bottom: 8px solid transparent;
 }
 
