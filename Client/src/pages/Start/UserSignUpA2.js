@@ -3,23 +3,44 @@ import "./UserSignUpA2.css";
 import HumanCityLogo from '../../assets/HumanCityLogo.png';
 import sslogo from '../../assets/sslogo.png';
 import orline from '../../assets/orline.png';
-
+import axios from 'axios'
 import holderimg from "../../assets/holderimg.png";
 import googlesignin from '../../assets/googlesignin.png';
 import facesignin from '../../assets/facesignin.png';
 import projectsignin from '../../assets/projectsignin.png';
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const UserSignUp = () => {
 
+    const navigate = useNavigate();
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [confirmPassword, setConfirmPassword] = useState("");
     const [acceptedTerms, setAcceptedTerms] = useState(false);
 
     const handleSubmit = (event) => {
+        console.log("Clicked")
         event.preventDefault();
         // handle form submission here
+        const newUser = {
+            name: 'John Doe',
+            email: email,
+            password: password,
+            picture: "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2c/Default_pfp.svg/1200px-Default_pfp.svg.png"
+          };
+          
+          axios.post('http://localhost:5001/users', newUser)
+            .then(response => {
+                console.log("Created")
+              console.log(response.data); // Handle the response data
+              navigate('/accountsetup');
+
+            })
+            .catch(error => {
+              console.error(error); // Handle any errors
+              console.log("error")
+            });
+        
     }
 
     return (
@@ -77,7 +98,7 @@ const UserSignUp = () => {
                     <div className="policy">I accept Spotstitch's <span className="bold">Privacy Policy</span> and <span className="bold">Terms of Service</span>.</div>
                 </div>
                 <br/>
-                <Link to='/accountsetup'className="lacc"> <input className="signup" type="submit" value="Join Spotstitch"></input></Link>  
+                <Link to='/accountsetup'className="lacc"> <button onClick = {handleSubmit} className="signup" type="submit">Join Spotstitch</button></Link>  
                 
             </form>
              <br/>
