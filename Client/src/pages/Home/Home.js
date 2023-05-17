@@ -2,7 +2,7 @@ import './home.css'
 import React, { useRef, useState } from "react";
 import { useSelector } from "react-redux";
 import { Col, Container, Form, Row, Card } from "react-bootstrap";
-import Navigation from '../../components/Navigation'
+import Navigation from '../../components/Navigation/Navigation'
 import { HiOutlinePencil } from 'react-icons/hi'
 import { BsCameraVideo, BsCloudUpload, BsEmojiSmile, BsImage } from 'react-icons/bs'
 import { GoLocation } from 'react-icons/go'

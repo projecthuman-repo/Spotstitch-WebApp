@@ -2,14 +2,14 @@ import './Navigation.css'
 //import { Person, Mail } from "@material-ui/icons";
 import React, { useState } from "react";
 import { Nav, Navbar, Container, Button, NavDropdown, Form, Modal, Badge } from "react-bootstrap";
-import { useLogoutUserMutation } from "../services/appApi";
+import { useLogoutUserMutation } from "../../services/appApi";
 import { useSelector } from "react-redux";
 import { LinkContainer } from "react-router-bootstrap";
 import { BsCircleFill } from 'react-icons/bs'
 import { IoNotificationsSharp } from 'react-icons/io5'
 import { AiOutlineSearch } from 'react-icons/ai'
 
-import logo from "../assets/sslogo.png";
+import logo from "../../assets/sslogo.png";
 import SideNav from './SideNav';
 
 export default function Topbar({ menuOpen, setMenuOpen }) {

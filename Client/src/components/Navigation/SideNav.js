@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 import { RxHamburgerMenu } from 'react-icons/rx'
 import { Modal, Row, Col, Container } from "react-bootstrap";
 import NavSelection from "./NavSelection";
-import { inventory, messages, profile, settings, wallet } from '../assets/icons'
+import { inventory, messages, profile, settings, wallet } from '../../assets/icons'
 
 
 function SideNav() {
