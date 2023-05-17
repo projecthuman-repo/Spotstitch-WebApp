@@ -8,7 +8,8 @@ import { BsCameraVideo, BsCloudUpload, BsEmojiSmile, BsImage } from 'react-icons
 import { GoLocation } from 'react-icons/go'
 
 import avatar from './avatar.png'
-import imgPH from './image-placeholder.jpg'
+import placeHolder from '../../assets/holderimg.png'
+
 import UserContent from './UserContent';
 import VendorConnections from './VendorConnections';
 function Home({ vendor = false }) {
@@ -119,7 +120,7 @@ function Home({ vendor = false }) {
               <Col>
                 {
                   filters.map(filter => {
-                    return <button className='btn light mx-2' onClick={() => { editFilter(filter) }}>{filter}</button>
+                    return <button className='btn light mx-2 my-2 s15 f-500' onClick={() => { editFilter(filter) }}>{filter}</button>
                   })
                 }
               </Col>
@@ -128,7 +129,12 @@ function Home({ vendor = false }) {
             {
               postExanples.map((post) => { /* switch to api data here */
                 return (
-                  <UserContent img={imgPH} avatar={avatar} user={'name'} desc={'desc'} body={"test"} />
+                  <UserContent
+                    img={placeHolder}
+                    avatar={avatar}
+                    user={'name'}
+                    desc={'desc'}
+                    body={"test"} />
                 )
               })
             }

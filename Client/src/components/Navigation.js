@@ -8,47 +8,9 @@ import { LinkContainer } from "react-router-bootstrap";
 import { BsCircleFill } from 'react-icons/bs'
 import { IoNotificationsSharp } from 'react-icons/io5'
 import { AiOutlineSearch } from 'react-icons/ai'
-import { RxHamburgerMenu } from 'react-icons/rx'
+
 import logo from "../assets/sslogo.png";
-
-
-const SideModal = () => {
-  const [show, setShow] = useState(false);
-
-  const handleClose = () => {
-    setShow(false);
-  };
-
-  const handleShow = () => {
-    setShow(true);
-  };
-
-  return (
-    <>
-      <button className="btn border-0" onClick={handleShow}><RxHamburgerMenu /></button>
-      
-      <Modal
-        show={show}
-        onHide={handleClose}
-        className="modal right"
-        dialogClassName="modal-dialog"
-        contentClassName="modal-content"
-        size="lg"
-        aria-labelledby="right-side-modal"
-      >
-        <Modal.Header>
-          <Modal.Title id="side-modal">Side Modal</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>
-          {/* Your modal content goes here */}
-        </Modal.Body>
-        <Modal.Footer>
-          
-        </Modal.Footer>
-      </Modal>
-    </>
-  );
-};
+import SideNav from './SideNav';
 
 export default function Topbar({ menuOpen, setMenuOpen }) {
   const user = useSelector((state) => state.user);
@@ -110,7 +72,7 @@ export default function Topbar({ menuOpen, setMenuOpen }) {
               <Badge></Badge>
             </Nav.Item>
             <Nav.Item>
-              <SideModal />
+              <SideNav />
             </Nav.Item>
           </Nav>
 
