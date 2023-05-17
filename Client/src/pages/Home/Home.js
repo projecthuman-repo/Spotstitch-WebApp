@@ -1,142 +1,151 @@
+import './home.css'
 import React, { useRef, useState } from "react";
-import 'bootstrap/dist/css/bootstrap.css';
-import"./home.scss";
 import { useSelector } from "react-redux";
-import { Button, Col, Form, Row } from "react-bootstrap";
+import { Col, Container, Form, Row, Card } from "react-bootstrap";
+import Navigation from '../../components/Navigation/Navigation'
+import { HiOutlinePencil } from 'react-icons/hi'
+import { BsCameraVideo, BsCloudUpload, BsEmojiSmile, BsImage } from 'react-icons/bs'
+import { GoLocation } from 'react-icons/go'
 
+import avatar from './avatar.png'
+import placeHolder from '../../assets/holderimg.png'
 
-function Home() {
+import UserContent from './UserContent';
+import VendorConnections from './VendorConnections';
+
+function Home({ vendor = false }) {
   const user = useSelector((state) => state.user);
-   
+  const [tab, setTab] = useState(1);
+  const [filters, setFilters] = useState([]);
+
+  const layerExamples = ["these", "are", "test", "layers", "replace later"]
+  const postExanples = ["", "", ""]
 
   const emotor = useRef();
 
-  function contentOnChange(content)
-  {
-    console.log(content);
+  function editFilter(layerName) {
+    const newFilters = [...filters];
+    if (filters.includes(layerName)) newFilters.splice(newFilters.indexOf(layerName), 1)
+    else newFilters.push(layerName)
+    setFilters(newFilters)
   }
 
-  function myClean()
-  {
-    console.log("clean");
-    emotor.current.onFocus();
+  function tabOnChange(i) {
+    setTab(i);
   }
-    return (
-      <div className="content">
-        <div className="row">
-        <div className="col-4">
-        <div className="lb">
-        {user &&(<div className="photoFrame"> 
-        <img src={user.picture} style={{ width: 80, height: 80, marginRight: 10, objectFit: "cover", borderRadius: "50%" }} /> <div>{user.name}</div>
-        </div>)} 
-           
-            
-            <div className="icons">
-              <span><i class="bi bi-image"></i></span>
-              <span><i class="bi bi-camera-video"></i></span>
-              <span><i class="bi bi-geo-alt"></i></span>
-              <span><i class="bi bi-cloud-upload"></i></span>
-              <span><i class="bi bi-emoji-smile"></i></span></div>
 
-              <div className="inputBtn">
-                 <input class="btn btn-secondary " id="postBtn" type="submit" value="Post"></input>
-                 </div> 
-                 </div>
-                <div className="lb2">
-                  <div>Layers</div>
+  function addAttachment(e) {
+    e.preventDefault()
+  }
 
+  return (
+    <div>
+      <Navigation />
+      <Container className='my-4 '>
+        <Row>
+          <Col lg="3">
+            <Card className="my-3 content-border-l round-s">
+              <Card.Body>
+                <Row className='mb-3'>
+                  <Col lg={3}>
+                    <img className='avatar shadow' src={avatar} width={56} height={56}></img>
+                  </Col>
+                  <Col lg={9}>
+                    <p className='nopadding s-15 f-500'>Username</p>
+                  </Col>
+                </Row>
 
+                <Row >
+                  <Form>
+                    <Form.Group>
+                      <Form.Control className="lighter input" as="textarea" placeholder='Share your life!' rows={4}></Form.Control>
 
+                      <Row className='px-1'>
+                        <span>
+                          <button className='btn nopadding' onClick={addAttachment}><BsImage size={20} /></button>
+                          <button className='btn nopadding' onClick={addAttachment}><BsCameraVideo size={20} /></button>
+                          <button className='btn nopadding' onClick={addAttachment}><GoLocation size={20} /></button>
+                          <button className='btn nopadding' onClick={addAttachment}><BsCloudUpload size={20} /></button>
+                          <button className='btn nopadding' onClick={addAttachment}><BsEmojiSmile size={20} /></button>
+                        </span>
+                      </Row>
 
+                      <button className='btn light float-end mt-4 round-l px-3 py-1 f-400'><p className='s15 nopadding'>Post</p></button>
+                    </Form.Group>
 
-                  <div className="layerBox"><p>Layer Category</p></div>
-                  <div className="layerBox"><p>Layer Category</p></div>
-                  <div className="layerBox"><p>Layer Category</p></div>
-                  <div className="layerBox"><p>Layer Category</p></div>
-                  <div className="layerBox"><p>Layer Category</p></div>
-                  <div className="layerBox"><p>Layer Category</p></div>
-                 </div>                        
-        </div>
-        <div className="col-8">
-           <div className="rb">
-           <nav class="nav nav-pills flex-column flex-sm-row">
-            <a class="flex-sm-fill text-sm-center nav-link" aria-current="page" href="#">For You</a>
-            <a class="flex-sm-fill text-sm-center nav-link" href="#">Following</a></nav>
-           </div>
+                  </Form>
+                </Row>
 
-           <div className="rcard"> 
-           <div class="row g-0">
-           <div class="col-md-7">
-             <img src={require('./image-placeholder.jpg')} class="img-fluid rounded-start" style={{ height:350, borderRadius: "5%"}} alt="IMAGE"/>
-             </div>
-             <div class="col-md-5">
-             <div class="card-body">
-             <div className="userInfo">
-                    <div className="avatar">
-                      <img src={require('./avatar.png')} style={{ width: 60, height: 60, marginRight: 10, objectFit: "cover", borderRadius: "50%"}} />
-                       </div>
-                       <div className="userdescrip">
-                        <div><b>User Name</b></div>
-                        <div>User Description</div></div>
-             </div>
+              </Card.Body>
+            </Card>
 
-             <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-              <p class="card-text"><small class="text-muted">#posttag #posttag</small></p>
-              <div className="icons">
-                <span><i class="bi bi-heart"></i></span>
-                <span><i class="bi bi-send"></i></span>
-                <span><i class="bi bi-box-arrow-up-right"></i></span>
+            <Card className="my-3 content-border-l round-s">
+              <Card.Body >
+                <div className="row p-2" style={{ display: "flex", "align-items": "center" }}>
+                  <div className="col-lg-10 s-16 f-mid">{vendor ? 'Connections' : 'Layers'} </div>
+                  <div className="col-lg-2">
+                    <button className="btn text-left"><HiOutlinePencil /></button>
+                  </div>
+                  <hr ></hr>
+                  {
+                    layerExamples.map((layer) => { /* switch to api data here */
+                      return <Row><Col>
+                        <button
+                          className={filters.includes(layer) == true ? "btn post m-2 text-start w-100 shadow" : "btn bg-light m-2 text-start w-100"}
+                          onClick={() => { editFilter(layer) }}>
+                          <p className='nopadding s16 f-400'>
+                            {layer}
+                          </p>
+
+                        </button>
+                      </Col></Row>
+                    })
+                  }
                 </div>
 
-                <div class="input-group mb-3">
-                   <input type="text" class="form-control" placeholder="Add a Comment" aria-label="Recipient's username" aria-describedby="button-addon2"/>
-                   <button class="btn" type="button" id="button-addon2"><i class="bi bi-chat"/></button></div>    
-             </div>
-             </div>
-           </div>
-           </div>
-        
+              </Card.Body>
+            </Card>
+          </Col >
 
-           <div className="rcard"> 
-           <div class="row g-0">
-           <div class="col-md-7">
-             <img src={require('./image-placeholder.jpg')} class="img-fluid rounded-start" style={{ height:350, borderRadius: "5%"}} alt="IMAGE"/>
-             </div>
-             <div class="col-md-5">
-             <div class="card-body">
-             <div className="userInfo">
-                    <div className="avatar">
-                      <img src={require('./avatar.png')} style={{ width: 60, height: 60, marginRight: 10, objectFit: "cover", borderRadius: "50%"}} />
-                       </div>
-                       <div className="userdescrip">
-                        <div><b>User Name</b></div>
-                        <div>User Description</div></div>
-             </div>
-
-             <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-              <p class="card-text"><small class="text-muted">#posttag #posttag</small></p>
-              <div className="icons">
-                <span><i class="bi bi-heart"></i></span>
-                <span><i class="bi bi-send"></i></span>
-                <span><i class="bi bi-box-arrow-up-right"></i></span>
+          <Col lg="9">
+            <Card className="mt-3 content-border-l round-s">
+              <Card.Body className='nopadding'>
+                <div className="d-flex justify-content-evenly">
+                  <button className={tab == 1 ? "btn-nav active p-3" : "btn-nav p-3"} onClick={() => tabOnChange(1)}>
+                    <p className='nopadding s-16 f-500'>For you</p></button>
+                  <button className={tab == 2 ? "btn-nav active p-3" : "btn-nav p-3"} onClick={() => tabOnChange(2)}>
+                    <p className='nopadding s-16 f-500'>Following</p></button>
                 </div>
+              </Card.Body>
+            </Card>
+            <Row>
+              <Col>
+                {
+                  filters.map(filter => {
+                    return <button className='btn light mx-2 my-2 s15 f-500' onClick={() => { editFilter(filter) }}>{filter}</button>
+                  })
+                }
+              </Col>
+            </Row>
+            {/* <VendorConnections /> test view */}
+            {
+              postExanples.map((post) => { /* switch to api data here */
+                return (
+                  <UserContent
+                    img={placeHolder}
+                    avatar={avatar}
+                    user={'name'}
+                    desc={'desc'}
+                    body={"test"} />
+                )
+              })
+            }
+          </Col>
+        </Row>
+      </Container>
+    </div>
 
-                <div class="input-group mb-3">
-                   <input type="text" class="form-control" placeholder="Add a Comment" aria-label="Recipient's username" aria-describedby="button-addon2"/>
-                   <button class="btn" type="button" id="button-addon2"><i class="bi bi-chat"/></button></div>    
-             </div>
-             </div>
-           </div>
-           </div>
-
-
-
-
-        </div>
-        </div>              
-       </div> 
-    );
+  );
 }
 
 export default Home;
-
