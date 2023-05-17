@@ -36,6 +36,7 @@ import { AppContext, socket } from './context/appContext';
 import Menu from './components/Menu';
 import ShopSetup from './features/ShopSetup';
 import Events from './pages/Events/Events';
+import Event from './pages/Event/Event';
 
 function App() {
   const [rooms, setRooms] = useState([]);
@@ -101,6 +102,7 @@ function App() {
           />
 
           <Route path='/events' element={<Events />} />
+          <Route path='/events-event' element={<Event />} />
 
           <Route path='/layer' element={<PopupDialog />} />
           <Route path='/chat' element={<Chat />} />

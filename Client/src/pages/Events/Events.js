@@ -2,23 +2,58 @@ import React from 'react';
 import ListingCard from '../../components/listingCard/ListingCard';
 import EventHeader from '../../components/eventHeader/EventHeader';
 import './event.css';
+import { useNavigate } from 'react-router-dom';
 
 const Events = () => {
-  let eventTitle = 'Cultural Celebration';
-  let eventCompany = 'Null Company';
-  let eventDescription =
-    'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.';
+  const navigate = useNavigate();
+  const navigateToListing = (eventClicked) => {
+    console.log(eventClicked);
+    navigate('/events-event', { state: { event: eventClicked } });
+  };
+  let event = {
+    eventTitle: 'Cultural Celebration',
+    eventCompany: 'Null Company',
+    eventShortDescription:
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
+    eventLongDescription:
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
+    eventDate: 'Feb 17 2023',
+    eventStartTime: '1:30PM',
+    eventTime: '1:30PM - 6:00PM',
+    eventLocation: 'All Star Stadium',
+    eventAddress: '851 China Town Road, Vancouver BC V4S 9LC',
+    eventEmail: 'nullCompany@gmail.com',
+    eventPrice: '$$',
+    eventTags: ['General Tag', 'General Tag', 'General Tag', 'General Tag'],
+  };
+  let event1 = {
+    eventTitle: 'Basketball Event',
+    eventCompany: 'Null Company',
+    eventShortDescription:
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
+    eventLongDescription:
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
+    eventDate: 'Feb 17 2023',
+    eventStartTime: '1:30PM',
+    eventTime: '1:30PM - 6:00PM',
+    eventLocation: 'All Star Stadium',
+    eventAddress: '851 China Town Road, Vancouver BC V4S 9LC',
+    eventEmail: 'nullCompany@gmail.com',
+    eventPrice: '$',
+    eventTags: ['General Tag', 'General Tag', 'General Tag'],
+  };
+
   return (
     <div className='container-fluid g-0'>
       <div
-        id='carouselExampleIndicators'
+        id='carouselIndicators'
         className='carousel slide'
         data-bs-ride='carousel'
       >
         <div className='carousel-indicators'>
           <button
             type='button'
-            data-bs-target='#carouselExampleIndicators'
+            data-bs-target='#carouselIndicators'
             data-bs-slide-to='0'
             className='active'
             aria-current='true'
@@ -26,90 +61,69 @@ const Events = () => {
           ></button>
           <button
             type='button'
-            data-bs-target='#carouselExampleIndicators'
+            data-bs-target='#carouselIndicators'
             data-bs-slide-to='1'
             aria-label='Slide 2'
           ></button>
           <button
             type='button'
-            data-bs-target='#carouselExampleIndicators'
+            data-bs-target='#carouselIndicators'
             data-bs-slide-to='2'
             aria-label='Slide 3'
           ></button>
           <button
             type='button'
-            data-bs-target='#carouselExampleIndicators'
+            data-bs-target='#carouselIndicators'
             data-bs-slide-to='3'
             aria-label='Slide 4'
           ></button>
           <button
             type='button'
-            data-bs-target='#carouselExampleIndicators'
+            data-bs-target='#carouselIndicators'
             data-bs-slide-to='4'
             aria-label='Slide 5'
           ></button>
           <button
             type='button'
-            data-bs-target='#carouselExampleIndicators'
+            data-bs-target='#carouselIndicators'
             data-bs-slide-to='5'
             aria-label='Slide 6'
           ></button>
         </div>
         <div className='carousel-inner'>
           <div className='carousel-item active'>
-            <EventHeader
-              eventTitle={eventTitle}
-              eventCompany={eventCompany}
-              eventDescription={eventDescription}
-            />
+            <EventHeader event={event} page={'Events'} />
           </div>
           <div className='carousel-item'>
-            <EventHeader
-              eventTitle={eventTitle}
-              eventCompany={eventCompany}
-              eventDescription={eventDescription}
-            />
+            <EventHeader event={event} page={'Events'} />
           </div>
           <div className='carousel-item'>
-            <EventHeader
-              eventTitle={eventTitle}
-              eventCompany={eventCompany}
-              eventDescription={eventDescription}
-            />
+            <EventHeader event={event} page={'Events'} />
           </div>
           <div className='carousel-item'>
-            <EventHeader
-              eventTitle={eventTitle}
-              eventCompany={eventCompany}
-              eventDescription={eventDescription}
-            />
+            <EventHeader event={event} page={'Events'} />
           </div>
           <div className='carousel-item'>
-            <EventHeader
-              eventTitle={eventTitle}
-              eventCompany={eventCompany}
-              eventDescription={eventDescription}
-            />
+            <EventHeader event={event} page={'Events'} />
           </div>
           <div className='carousel-item'>
-            <EventHeader
-              eventTitle={eventTitle}
-              eventCompany={eventCompany}
-              eventDescription={eventDescription}
-            />
+            <EventHeader event={event} page={'Events'} />
           </div>
         </div>
       </div>
 
       <div className='row g-0'>
-        <div className='col-2'>
-          <div className='border rounded p-2 mx-2 my-3'>
+        <div className='col-3 col-sm-2'>
+          <div
+            className='border border-2 rounded p-2 mx-2 my-3'
+            style={{ borderColor: '#C4C4C4' }}
+          >
             <p>Events</p>
             <input type='text' className='form-control' />
 
             <p>Filters</p>
             <p>Toronto, Ontario . Within 20 Km</p>
-            <hr />
+            <hr style={{ color: '#757575' }} />
 
             <p>Price Range</p>
             <div className='form-check'>
@@ -132,7 +146,21 @@ const Events = () => {
               <input type='radio' className='form-check-input' />
               <label className='form-check-label'>$100 and Above</label>
             </div>
-            <hr />
+            <div className='d-flex mt-2'>
+              <input
+                type='text'
+                className='form-control mx-2'
+                placeholder='$'
+              />
+              -{' '}
+              <input
+                type='text'
+                className='form-control mx-2'
+                placeholder='$'
+              />
+              <button className='btn btn-secondary'>Go</button>
+            </div>
+            <hr style={{ color: '#757575' }} />
 
             <p>Categories</p>
             <div className='form-check'>
@@ -165,19 +193,31 @@ const Events = () => {
             </div>
           </div>
         </div>
-        <div className='col-10'>
-          <div className='row row-cols-2 row-cols-md-3 row-cols-lg-4 g-0'>
+        <div className='col-9 col-sm-10'>
+          <div className='row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4  row-cols-xxl-5 g-0'>
             <div className='col'>
-              <ListingCard />
+              <ListingCard event={event} thisClicked={navigateToListing} />
             </div>
             <div className='col'>
-              <ListingCard />
+              <ListingCard event={event1} thisClicked={navigateToListing} />
             </div>
             <div className='col'>
-              <ListingCard />
+              <ListingCard event={event} thisClicked={navigateToListing} />
             </div>
             <div className='col'>
-              <ListingCard />
+              <ListingCard event={event} thisClicked={navigateToListing} />
+            </div>
+            <div className='col'>
+              <ListingCard event={event} thisClicked={navigateToListing} />
+            </div>
+            <div className='col'>
+              <ListingCard event={event} thisClicked={navigateToListing} />
+            </div>
+            <div className='col'>
+              <ListingCard event={event} thisClicked={navigateToListing} />
+            </div>
+            <div className='col'>
+              <ListingCard event={event} thisClicked={navigateToListing} />
             </div>
           </div>
         </div>
