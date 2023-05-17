@@ -46,7 +46,7 @@ function Home() {
           <Col lg="3">
             <Card className="my-3 content-border-l round-s">
               <Card.Body>
-                <Row className='my-2'>
+                <Row className='mb-3'>
                   <Col lg={3}>
                     <img className='avatar shadow' src={avatar} width={56} height={56}></img>
                   </Col>
@@ -86,7 +86,7 @@ function Home() {
                   </div>
                   <hr ></hr>
                   {
-                    layerExamples.map((layer) => {
+                    layerExamples.map((layer) => { /* switch to api data here */ 
                       return <Row><Col>
                         <button
                           className={filters.includes(layer) == true ? "btn post m-2 text-start w-100 shadow" : "btn bg-light m-2 text-start w-100"}
@@ -123,7 +123,7 @@ function Home() {
             <VendorConnections /> {/* test view */}
             {
               
-              postExanples.map((post) => {
+              postExanples.map((post) => { /* switch to api data here */ 
                 return (
                   <UserContent img={imgPH} avatar={avatar} user={'name'} desc={'desc'} body={"test"} />
                 )

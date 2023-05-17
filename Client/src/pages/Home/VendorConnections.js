@@ -5,7 +5,7 @@ function VendorConnections() {
     const pendingEx = ['1', '2'];
     const busEx = ['1', '2', '3', '4'];
 
-    return <Container className="my-4 content-border-l">
+    return <Container className="my-4 content-border-l round-s">
         <Row>
             <h4>Pending Requests</h4>
             {

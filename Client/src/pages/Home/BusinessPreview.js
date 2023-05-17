@@ -8,8 +8,8 @@ function BusinessPreview({ message }) {
             <Row>
                 <Col><img className='avatar shadow' lg={2} src={""} width={52} height={52}></img></Col>
                 <Col lg={9}>
-                    <h5>Business name</h5>
-                    <p>Business Description</p>
+                    <h5 className="mb-0">Business name</h5>
+                    <p className="mt-0">Business Description</p>
                     {
                         message &&
                         <div>
