@@ -127,24 +127,24 @@ const Events = () => {
             <div className='text-nowrap'>
               <p>Price Range</p>
               <div className='form-check'>
-                <input type='radio' className='form-check-input' />
+                <input type='radio' className='form-check-input' name='price' />
                 <label className='form-check-label'>All</label>
               </div>
               <div className='form-check'>
-                <input type='radio' className='form-check-input' />
+                <input type='radio' className='form-check-input' name='price' />
                 <label className='form-check-label'>$0 - $20</label>
               </div>
               <div className='form-check'>
-                <input type='radio' className='form-check-input' />
+                <input type='radio' className='form-check-input' name='price' />
                 <label className='form-check-label'>$20 - $50</label>
               </div>
               <div className='form-check'>
-                <input type='radio' className='form-check-input' />
+                <input type='radio' className='form-check-input' name='price' />
                 <label className='form-check-label'>$50 - $100</label>
               </div>
             </div>
             <div className='form-check'>
-              <input type='radio' className='form-check-input' />
+              <input type='radio' className='form-check-input' name='price' />
               <label className='form-check-label'>$100 and Above</label>
             </div>
             <div className='d-block d-lg-flex mt-2 mx-2 mx-sm-0 text-center'>
@@ -172,31 +172,59 @@ const Events = () => {
 
             <p>Categories</p>
             <div className='form-check'>
-              <input type='radio' className='form-check-input' />
+              <input
+                type='radio'
+                className='form-check-input'
+                name='category'
+              />
               <label className='form-check-label'>Category Name</label>
             </div>
             <div className='form-check'>
-              <input type='radio' className='form-check-input' />
+              <input
+                type='radio'
+                className='form-check-input'
+                name='category'
+              />
               <label className='form-check-label'>Category Name</label>
             </div>
             <div className='form-check'>
-              <input type='radio' className='form-check-input' />
+              <input
+                type='radio'
+                className='form-check-input'
+                name='category'
+              />
               <label className='form-check-label'>Category Name</label>
             </div>
             <div className='form-check'>
-              <input type='radio' className='form-check-input' />
+              <input
+                type='radio'
+                className='form-check-input'
+                name='category'
+              />
               <label className='form-check-label'>Category Name</label>
             </div>
             <div className='form-check'>
-              <input type='radio' className='form-check-input' />
+              <input
+                type='radio'
+                className='form-check-input'
+                name='category'
+              />
               <label className='form-check-label'>Category Name</label>
             </div>
             <div className='form-check'>
-              <input type='radio' className='form-check-input' />
+              <input
+                type='radio'
+                className='form-check-input'
+                name='category'
+              />
               <label className='form-check-label'>Category Name</label>
             </div>
             <div className='form-check'>
-              <input type='radio' className='form-check-input' />
+              <input
+                type='radio'
+                className='form-check-input'
+                name='category'
+              />
               <label className='form-check-label'>Category Name</label>
             </div>
           </div>

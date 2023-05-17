@@ -169,14 +169,14 @@ const CreateEvent = () => {
 
               <div class='mb-3'>
                 <label for='eventDescription' class='form-label'>
-                  Event Description
+                  Event Type
                 </label>
                 <div className='d-flex'>
                   <div className='form-check'>
                     <input
                       type='radio'
                       className='form-check-input'
-                      name='radio'
+                      name='type'
                       value='In-Person'
                     />
                     <label className='form-check-label'>In-Person</label>
@@ -185,7 +185,7 @@ const CreateEvent = () => {
                     <input
                       type='radio'
                       className='form-check-input'
-                      name='radio'
+                      name='type'
                       value='Onlinne'
                     />
                     <label className='form-check-label'>Online</label>
