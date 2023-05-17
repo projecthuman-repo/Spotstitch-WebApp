@@ -34,5 +34,33 @@ router.post('/login', async(req, res)=> {
   }
 })
 
+// Update bio
+router.put('/:email/bio', async (req, res) => {
+  try {
+    const email = req.params.email;
+    const newBio = req.body.bio;
+
+    // Validate input if needed
+    // ...
+
+    const user = await User.findOneAndUpdate(
+      { email },
+      { bio: newBio },
+      { new: true }
+    );
+
+    if (!user) {
+      return res.status(404).json({ error: 'User not found' });
+    }
+
+    return res.status(200).json({ message: 'Bio updated successfully', user });
+  } catch (e) {
+    console.error(e);
+    return res.status(500).json({ error: 'Internal Server Error' });
+  }
+});
+
+
+
 
 module.exports = router
