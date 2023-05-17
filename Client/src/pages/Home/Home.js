@@ -12,6 +12,7 @@ import placeHolder from '../../assets/holderimg.png'
 
 import UserContent from './UserContent';
 import VendorConnections from './VendorConnections';
+
 function Home({ vendor = false }) {
   const user = useSelector((state) => state.user);
   const [tab, setTab] = useState(1);
