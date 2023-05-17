@@ -5,9 +5,12 @@ import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import BusinessPreferences from "./Steps/BusinessPreferences"
-
+import BusinessName from "./Steps/BusinessName"
+import BusinessCategory from "./Steps/BusinessCategory"
+import BillingInformation from "./Steps/BillingInformation"
 
 function ShopSetup() {
+    // getting current step from the state variable
     const [step, setStep] = useState("BP")
 
     useEffect(() => {
@@ -25,12 +28,18 @@ function ShopSetup() {
                     <Col></Col>
                 </Row>
                 <br /><br /><br /><br />
+                {/* Determines which step we are currently on and renders appropriately */}
                 {step === "BP" && (
                     <BusinessPreferences />
                 )}
                 {step === "BN" && (
-                    <>Business Name
-                    </>
+                    <BusinessName></BusinessName>
+                )}
+                {step === "BC" && (
+                    <BusinessCategory></BusinessCategory>
+                )}
+                {step === "BI" && (
+                    <BillingInformation></BillingInformation>
                 )}
             </Container>
         </>

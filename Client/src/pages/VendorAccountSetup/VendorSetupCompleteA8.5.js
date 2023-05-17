@@ -33,7 +33,7 @@ const VendorSetupComplete = () => {
             <br />
           
 
-                <Link to="" className="linknextbutton">
+                <Link to="/shopsetup" className="linknextbutton">
                   <button className="nextbutton">Next</button>
                 </Link>
           
