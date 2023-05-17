@@ -6,8 +6,11 @@ function UserContent({ img, avatar, user, desc, body }) {
     return (
         <Container className="shadow p-0 my-3 round-l content">
             <Row>
-                <Col lg={7} className="round-l bg-black">
+                <Col lg={7} className="round-l">
+                    <div className='bg-black round-l'>
                     <img src={img} className="round-l img-fluid mx-auto d-block"></img>
+                    </div>
+                    
                 </Col>
                 <Col sm={5}>
                     <Row className='mx-2 my-3'>

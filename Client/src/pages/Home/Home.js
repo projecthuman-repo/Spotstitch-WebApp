@@ -34,9 +34,8 @@ function Home({ vendor = false }) {
     setTab(i);
   }
 
-  function myClean() {
-    console.log("clean");
-    emotor.current.onFocus();
+  function addAttachment(e) {
+    e.preventDefault()
   }
 
   return (
@@ -62,11 +61,13 @@ function Home({ vendor = false }) {
                       <Form.Control className="lighter input" as="textarea" placeholder='Share your life!' rows={4}></Form.Control>
 
                       <Row className='px-1'>
-                        <Col lg={1}><BsImage size={20} /></Col>
-                        <Col lg={1}><BsCameraVideo size={20} /></Col>
-                        <Col lg={1}><GoLocation size={20} /></Col>
-                        <Col lg={1}><BsCloudUpload size={20} /> </Col>
-                        <Col lg={1}><BsEmojiSmile size={20} /></Col>
+                        <span>
+                          <button className='btn nopadding' onClick={addAttachment}><BsImage size={20} /></button>
+                          <button className='btn nopadding' onClick={addAttachment}><BsCameraVideo size={20} /></button>
+                          <button className='btn nopadding' onClick={addAttachment}><GoLocation size={20} /></button>
+                          <button className='btn nopadding' onClick={addAttachment}><BsCloudUpload size={20} /></button>
+                          <button className='btn nopadding' onClick={addAttachment}><BsEmojiSmile size={20} /></button>
+                        </span>
                       </Row>
 
                       <button className='btn light float-end mt-4 round-l px-3 py-1 f-400'><p className='s15 nopadding'>Post</p></button>
