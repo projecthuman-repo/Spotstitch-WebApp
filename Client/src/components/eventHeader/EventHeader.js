@@ -13,6 +13,10 @@ const EventHeader = (props) => {
     navigate('/events');
   };
 
+  const navigateBookEvent = () => {
+    navigate('/events-bookevent', { state: { event: props.event } });
+  };
+
   const updateBackButton = () => {
     if (location.pathname === '/events') {
       setBackButton(null);
@@ -64,10 +68,10 @@ const EventHeader = (props) => {
                 {props.event.eventLocation}
               </p>
               <hr />
-              <div className='text-center justify-content-center'>
-                <a
-                  href='#'
-                  className='btn btn-secondary btn-lg px-4 px-lg-5 px-xl-4 px-xxl-3 py-1'
+              <div className='d-grid text-center '>
+                <button
+                  onClick={navigateBookEvent}
+                  className='btn btn-secondary btn-lg   py-1'
                   style={{
                     backgroundColor: '#666666',
                     color: 'white',
@@ -77,7 +81,7 @@ const EventHeader = (props) => {
                   <span className=' text-nowrap' style={{ fontSize: '36px' }}>
                     Book Now
                   </span>
-                </a>
+                </button>
                 <p className='text-decoration-underline mt-3'>No Refunds</p>
               </div>
             </div>

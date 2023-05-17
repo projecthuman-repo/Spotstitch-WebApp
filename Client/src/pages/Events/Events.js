@@ -7,7 +7,6 @@ import { useNavigate } from 'react-router-dom';
 const Events = () => {
   const navigate = useNavigate();
   const navigateToListing = (eventClicked) => {
-    console.log(eventClicked);
     navigate('/events-event', { state: { event: eventClicked } });
   };
   let event = {
@@ -95,7 +94,7 @@ const Events = () => {
             <EventHeader event={event} page={'Events'} />
           </div>
           <div className='carousel-item'>
-            <EventHeader event={event} page={'Events'} />
+            <EventHeader event={event1} page={'Events'} />
           </div>
           <div className='carousel-item'>
             <EventHeader event={event} page={'Events'} />
@@ -113,7 +112,7 @@ const Events = () => {
       </div>
 
       <div className='row g-0'>
-        <div className='col-3 col-sm-2'>
+        <div className='col-4 col-sm-3 col-md-2'>
           <div
             className='border border-2 rounded p-2 mx-2 my-3'
             style={{ borderColor: '#C4C4C4' }}
@@ -125,40 +124,49 @@ const Events = () => {
             <p>Toronto, Ontario . Within 20 Km</p>
             <hr style={{ color: '#757575' }} />
 
-            <p>Price Range</p>
-            <div className='form-check'>
-              <input type='radio' className='form-check-input' />
-              <label className='form-check-label'>All</label>
-            </div>
-            <div className='form-check'>
-              <input type='radio' className='form-check-input' />
-              <label className='form-check-label'>$0 - $20</label>
-            </div>
-            <div className='form-check'>
-              <input type='radio' className='form-check-input' />
-              <label className='form-check-label'>$20 - $50</label>
-            </div>
-            <div className='form-check'>
-              <input type='radio' className='form-check-input' />
-              <label className='form-check-label'>$20 - $50</label>
+            <div className='text-nowrap'>
+              <p>Price Range</p>
+              <div className='form-check'>
+                <input type='radio' className='form-check-input' />
+                <label className='form-check-label'>All</label>
+              </div>
+              <div className='form-check'>
+                <input type='radio' className='form-check-input' />
+                <label className='form-check-label'>$0 - $20</label>
+              </div>
+              <div className='form-check'>
+                <input type='radio' className='form-check-input' />
+                <label className='form-check-label'>$20 - $50</label>
+              </div>
+              <div className='form-check'>
+                <input type='radio' className='form-check-input' />
+                <label className='form-check-label'>$50 - $100</label>
+              </div>
             </div>
             <div className='form-check'>
               <input type='radio' className='form-check-input' />
               <label className='form-check-label'>$100 and Above</label>
             </div>
-            <div className='d-flex mt-2'>
+            <div className='d-block d-lg-flex mt-2 mx-2 mx-sm-0 text-center'>
               <input
                 type='text'
-                className='form-control mx-2'
+                className='form-control form-control-sm mx-1'
                 placeholder='$'
               />
-              -{' '}
+              <span className='my-auto'>-</span>{' '}
               <input
                 type='text'
-                className='form-control mx-2'
+                className='form-control form-control-sm mx-1'
                 placeholder='$'
               />
-              <button className='btn btn-secondary'>Go</button>
+              <button
+                className='btn btn-sm mt-2 my-lg-auto'
+                style={{
+                  backgroundColor: '#D9D9D9',
+                }}
+              >
+                Go
+              </button>
             </div>
             <hr style={{ color: '#757575' }} />
 
@@ -193,7 +201,7 @@ const Events = () => {
             </div>
           </div>
         </div>
-        <div className='col-9 col-sm-10'>
+        <div className='col-8 col-sm-9 col-md-10'>
           <div className='row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4  row-cols-xxl-5 g-0'>
             <div className='col'>
               <ListingCard event={event} thisClicked={navigateToListing} />
