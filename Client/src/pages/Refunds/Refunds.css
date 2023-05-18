@@ -1,168 +1,144 @@
-
-h1 {
+/* h1 {
     text-align: center;
     font-size: 2em;
     font-weight: bold;
     margin-bottom: 25px;
-  }
-  
+  } */
 
-
-
-.container{
-    margin-top: 8%;
-    margin-left: 10%;
-    margin-right: 10%;
+.container {
+  margin-top: 8%;
+  margin-left: 10%;
+  margin-right: 10%;
 }
-
-
 
 .title {
-    font-size: 30px;
-    display: flex;
-    border-radius: 15px;
-    border: 3px solid #cad5bc;
-    font-weight: bold;
-    width:auto;
-    height: 50px;
-    justify-content: center;
-    align-items: center;
-    text-decoration-line: underline ;
-    text-decoration-thickness: 5px;
-    text-decoration-color: rgb(82, 82, 232) ;
-
+  font-size: 30px;
+  display: flex;
+  border-radius: 15px;
+  border: 3px solid #cad5bc;
+  font-weight: bold;
+  width: auto;
+  height: 50px;
+  justify-content: center;
+  align-items: center;
+  text-decoration-line: underline;
+  text-decoration-thickness: 5px;
+  text-decoration-color: rgb(82, 82, 232);
 }
 
-.body{
-    
-    margin-top: 5%;
-    display: flex;
-    
+.body {
+  margin-top: 5%;
+  display: flex;
 }
 
 .leftbox {
-    margin-right: 3%;
-    border: 3px solid #cad5bc;
-    border-radius: 15px;
-    height: 120px;
-    width: 15%;
+  margin-right: 3%;
+  border: 3px solid #cad5bc;
+  border-radius: 15px;
+  height: 120px;
+  width: 15%;
 
-    padding-top: 10px;
-    padding-bottom: 10px;
-    display:grid;
-    justify-content: center;
-    align-items: center;
-
+  padding-top: 10px;
+  padding-bottom: 10px;
+  display: grid;
+  justify-content: center;
+  align-items: center;
 }
 
 a:visited {
-    color: black;
-  }
-a:link { text-decoration: none; }
+  color: black;
+}
+a:link {
+  text-decoration: none;
+}
 /* mouse over link */
 a:hover {
-    background-color: rgb(170, 163, 163);
-  }
-  
-  /* selected link 
+  background-color: rgb(170, 163, 163);
+}
+
+/* selected link 
     not functional right now
   */
-  a:active {
-    background-color: grey;
-  }
+a:active {
+  background-color: grey;
+}
 
 .rightbox {
-    display:flex;
-    flex-direction: column;
-    border: 3px solid #cad5bc;
-    border-radius: 15px;
-    height: 400px;
-    width: 85%;
-    overflow: auto;
-    
-    
+  display: flex;
+  flex-direction: column;
+  border: 3px solid #cad5bc;
+  border-radius: 15px;
+  height: 400px;
+  width: 85%;
+  overflow: auto;
 }
 
-.rboxtitle{
-    display: flex;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    align-items: center;
-    padding-left: 15px;
-    border-bottom: 6px solid #cad5bc;;
-    height: 40px;
-    width: 100% -15px;
-    font-weight: bold;
-    font-size: 20px;
+.rboxtitle {
+  display: flex;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  align-items: center;
+  padding-left: 15px;
+  border-bottom: 6px solid #cad5bc;
+  height: 40px;
+  width: 100% -15px;
+  font-weight: bold;
+  font-size: 20px;
 }
-
-
-
 
 .refundsbox {
-    display: flex;
-    margin: 20px;
-    border-style: solid;
-    border-color: gray;
-    height: 200px;
-    border-radius: 20px;
-    flex-direction: column;
-
-
-
+  display: flex;
+  margin: 20px;
+  border-style: solid;
+  border-color: gray;
+  height: 200px;
+  border-radius: 20px;
+  flex-direction: column;
 }
 
-.status{
-    display: flex;
-    margin: 15px;
+.status {
+  display: flex;
+  margin: 15px;
 }
 
-.inprogress{
-    margin-right: 50px;
+.inprogress {
+  margin-right: 50px;
 }
 
-.searchbox{
-    /*border-style: solid;
+.searchbox {
+  /*border-style: solid;
     border-color: rgba(214, 10, 10, 0.427);*/
-    height: 50px;
-    
-    
-    
+  height: 50px;
 }
 
-.ordernumber{
-    border-radius: 5px;
-    border-color: rgb(234, 226, 226);
-    margin-left: 15px;
-    margin-right: 25px;
-    width: 300px;
-    
+.ordernumber {
+  border-radius: 5px;
+  border-color: rgb(234, 226, 226);
+  margin-left: 15px;
+  margin-right: 25px;
+  width: 300px;
 }
 
-.sellername{
-    border-color: rgb(234, 226, 226);
-    border-radius: 5px;
-    margin-right: 150px;
+.sellername {
+  border-color: rgb(234, 226, 226);
+  border-radius: 5px;
+  margin-right: 150px;
 }
 
-
-.searchbutton{
-    border: none;
-    margin-left: 15px;
-    border-radius: 20px ;
-    width: 100px;
-    padding-top: 10px;
-    padding-bottom: 10px;
-
+.searchbutton {
+  border: none;
+  margin-left: 15px;
+  border-radius: 20px;
+  width: 100px;
+  padding-top: 10px;
+  padding-bottom: 10px;
 }
 
-
-.line{
-    margin-top: 20px;
-    border-top: solid gray;
+.line {
+  margin-top: 20px;
+  border-top: solid gray;
 }
 
-
-.footer{
+.footer {
   height: 100px;
 }
