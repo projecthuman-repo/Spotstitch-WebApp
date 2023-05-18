@@ -61,7 +61,7 @@ function SideNav() {
                             <NavSelection icon={messages} text={'Messages'} />
                             <NavSelection icon={inventory} text={'Inventory'} />
                             <NavSelection icon={wallet} text={'Wallet'} />
-                            <NavSelection icon={settings} text={'Settings'} />
+                            <NavSelection icon={settings} text={'Settings'} link="/settings"/>
                         </Row>
                         <Row><Col><button className="btn nopadding"><p className="fw-600 mb-0">Your Accounts</p></button></Col></Row>
                         <Row><Col><button className="btn nopadding">Switch account</button></Col></Row>

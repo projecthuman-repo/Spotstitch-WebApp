@@ -51,7 +51,7 @@ function Home({ vendor = false }) {
                     <img className='avatar shadow' src={avatar} width={56} height={56}></img>
                   </Col>
                   <Col lg={9}>
-                    <p className='nopadding s-15 fw-500'>Username</p>
+                    <p className=' s-15 fw-500'>Username</p>
                   </Col>
                 </Row>
 

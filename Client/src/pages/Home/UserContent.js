@@ -8,9 +8,9 @@ function UserContent({ img, avatar, user, desc, body }) {
             <Row>
                 <Col lg={7} className="round-l">
                     <div className='bg-black round-l'>
-                    <img src={img} className="round-l img-fluid mx-auto d-block"></img>
+                        <img src={img} className="round-l img-fluid mx-auto d-block"></img>
                     </div>
-                    
+
                 </Col>
                 <Col sm={5}>
                     <Row className='mx-2 my-3'>

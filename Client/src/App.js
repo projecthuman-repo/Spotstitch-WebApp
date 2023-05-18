@@ -38,6 +38,7 @@ import Events from './pages/Events/Events';
 import Event from './pages/Event/Event';
 import BookEvent from './pages/BookEvent/BookEvent';
 import CreateEvent from './pages/CreateEvent/CreateEvent';
+import Settings from './pages/Settings/Settings';
 
 function App() {
   const [rooms, setRooms] = useState([]);
@@ -115,6 +116,8 @@ function App() {
           <Route path='/refundspolicy' element={<RefundsPolicy />} />
           <Route path='/transaction' element={<TransactionHistory />} />
           <Route path='/shopsetup' element={<ShopSetup />} />
+
+          <Route path='/settings' element={<Settings />} />
         </Routes>
       </BrowserRouter>
     </AppContext.Provider>
