@@ -37,9 +37,9 @@ function SideNav() {
                         <Row>
                             <Col lg={2}><img className='avatar' src={''} height={88} width={88}></img></Col>
                             <Col lg={10}>
-                                <p className="nopadding s16 f-500 my-1">user</p>
-                                <p className="nopadding s15 f-300 my-1">account type</p>
-                                <p className="nopadding s15 f-400">email</p>
+                                <p className="nopadding fs-16 fw-500 my-1">user</p>
+                                <p className="nopadding fs-15 fw-300 my-1">account type</p>
+                                <p className="nopadding fs-15 fw-400">email</p>
                             </Col>
                         </Row>
                         <Row className="mt-3">
@@ -63,11 +63,11 @@ function SideNav() {
                             <NavSelection icon={wallet} text={'Wallet'} />
                             <NavSelection icon={settings} text={'Settings'} />
                         </Row>
-                        <Row><Col><button className="btn nopadding"><p className="f-600 mb-0">Your Accounts</p></button></Col></Row>
+                        <Row><Col><button className="btn nopadding"><p className="fw-600 mb-0">Your Accounts</p></button></Col></Row>
                         <Row><Col><button className="btn nopadding">Switch account</button></Col></Row>
                         <Row><Col><button className="btn nopadding">Add account</button></Col></Row>
                         <Row><Col><button className="btn nopadding">Covert to vendor</button></Col></Row>
-                        <Row><Col><button className="btn nopadding mt-3"><p className="f-600 mb-0">More Options</p></button></Col></Row>
+                        <Row><Col><button className="btn nopadding mt-3"><p className="fw-600 mb-0">More Options</p></button></Col></Row>
                         <Row><Col><button className="btn nopadding">See terms of service</button></Col></Row>
                         <Row><Col><button className="btn nopadding">See privacy policy</button></Col></Row>
 

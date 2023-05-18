@@ -16,12 +16,12 @@ function UserContent({ img, avatar, user, desc, body }) {
                     <Row className='mx-2 my-3'>
                         <Col sm={2}><img className='avatar shadow' src={avatar} width={61} height={61}></img></Col>
                         <Col sm={9} className='mx-2'>
-                            <Row><Col><p className='nopadding s15 f-500'>{user}</p></Col></Row>
-                            <Row><Col><p className='nopadding s12 f-400'>{desc}</p></Col></Row>
+                            <Row><Col><p className='nopadding fs-15 fw-500'>{user}</p></Col></Row>
+                            <Row><Col><p className='nopadding fs-12 fw-400'>{desc}</p></Col></Row>
                         </Col>
                     </Row>
                     <Row className='mx-2 '>
-                        <Col><p className='s12 f-400'>{body}</p></Col>
+                        <Col><p className='fs-12 fw-400'>{body}</p></Col>
                     </Row>
                     <Row className='mx-2'>
                         <Col sm={1}><BsHeart size={22} /></Col>

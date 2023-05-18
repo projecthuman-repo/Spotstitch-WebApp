@@ -6,7 +6,7 @@ function NavSelection({icon, text}) {
         <Col lg={1}>
             <img src={icon}></img>
         </Col>
-        <Col lg={10} className="s20">
+        <Col lg={10} className="fs-20">
             {text}
         </Col>
     </Row></button>

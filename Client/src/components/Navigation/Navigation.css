@@ -30,34 +30,6 @@
     right: 0;
 }
 
-.f-600 {
-    font-weight: 600;
-}
-
-.f-500 {
-    font-weight: 300;
-}
-
-.f-400 {
-    font-weight: 300;
-}
-
-.f-300 {
-    font-weight: 300;
-}
-
-.s20 {
-    font-size: 20px;
-}
-
-.s16 {
-    font-size: 16px;
-}
-
-.s15 {
-    font-size: 15px;
-}
-
 .avatar {
     border-radius: 50%;
     background: #D9D9D9;

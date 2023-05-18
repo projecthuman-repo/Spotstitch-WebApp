@@ -7,7 +7,7 @@ function VendorConnections() {
 
     return <Container className="my-4 content-border-l round-s">
         <Row>
-            <p className="s18 f-600 my-2">Pending Requests</p>
+            <p className="fs-18 fw-600 my-2">Pending Requests</p>
             {
                 pendingEx.map(pending => {
                     return <Col lg={5}><BusinessPreview message={'test'} /></Col>
@@ -15,7 +15,7 @@ function VendorConnections() {
             }
         </Row>
         <Row>
-        <p className="s18 f-600 my-2">Connected Business</p>
+        <p className="fs-18 fw-600 my-2">Connected Business</p>
             {busEx.map(bus => {
                 return <Col lg={5}><BusinessPreview /></Col>
             })}

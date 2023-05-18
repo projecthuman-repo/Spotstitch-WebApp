@@ -51,7 +51,7 @@ function Home({ vendor = false }) {
                     <img className='avatar shadow' src={avatar} width={56} height={56}></img>
                   </Col>
                   <Col lg={9}>
-                    <p className='nopadding s-15 f-500'>Username</p>
+                    <p className='nopadding s-15 fw-500'>Username</p>
                   </Col>
                 </Row>
 
@@ -70,7 +70,7 @@ function Home({ vendor = false }) {
                         </span>
                       </Row>
 
-                      <button className='btn light float-end mt-4 round-l px-3 py-1 f-400'><p className='s15 nopadding'>Post</p></button>
+                      <button className='btn light float-end mt-4 round-l px-3 py-1 fw-400'><p className='fs-15 nopadding'>Post</p></button>
                     </Form.Group>
 
                   </Form>
@@ -82,7 +82,7 @@ function Home({ vendor = false }) {
             <Card className="my-3 content-border-l round-s">
               <Card.Body >
                 <div className="row p-2" style={{ display: "flex", "align-items": "center" }}>
-                  <div className="col-lg-10 s-16 f-mid">{vendor ? 'Connections' : 'Layers'} </div>
+                  <div className="col-lg-10 s-16 fw-mid">{vendor ? 'Connections' : 'Layers'} </div>
                   <div className="col-lg-2">
                     <button className="btn text-left"><HiOutlinePencil /></button>
                   </div>
@@ -93,7 +93,7 @@ function Home({ vendor = false }) {
                         <button
                           className={filters.includes(layer) == true ? "btn post m-2 text-start w-100 shadow" : "btn bg-light m-2 text-start w-100"}
                           onClick={() => { editFilter(layer) }}>
-                          <p className='nopadding s16 f-400'>
+                          <p className='nopadding fs-16 fw-400'>
                             {layer}
                           </p>
 
@@ -112,9 +112,9 @@ function Home({ vendor = false }) {
               <Card.Body className='nopadding'>
                 <div className="d-flex justify-content-evenly">
                   <button className={tab == 1 ? "btn-nav active p-3" : "btn-nav p-3"} onClick={() => tabOnChange(1)}>
-                    <p className='nopadding s-16 f-500'>For you</p></button>
+                    <p className='nopadding s-16 fw-500'>For you</p></button>
                   <button className={tab == 2 ? "btn-nav active p-3" : "btn-nav p-3"} onClick={() => tabOnChange(2)}>
-                    <p className='nopadding s-16 f-500'>Following</p></button>
+                    <p className='nopadding s-16 fw-500'>Following</p></button>
                 </div>
               </Card.Body>
             </Card>
@@ -122,7 +122,7 @@ function Home({ vendor = false }) {
               <Col>
                 {
                   filters.map(filter => {
-                    return <button className='btn light mx-2 my-2 s15 f-500' onClick={() => { editFilter(filter) }}>{filter}</button>
+                    return <button className='btn light mx-2 my-2 fs-15 fw-500' onClick={() => { editFilter(filter) }}>{filter}</button>
                   })
                 }
               </Col>
