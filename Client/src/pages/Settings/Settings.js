@@ -7,6 +7,12 @@ import Security from "./Security";
 
 function Settings() {
   const tabs = ['General', 'Account', 'Security']
+  const tabComponents = {
+    General: <General />,
+    Account: <Account />,
+    Security: <Security />
+  }
+
   const [currentTab, setCurrentTab] = useState(tabs[0])
 
 
@@ -33,7 +39,7 @@ function Settings() {
                     <div className="d-flex row justify-content-center my-3" >
                       {tabs.map((tab) => {
                         return (
-                          <Row className="nopadding my-1">
+                          <Row className="nopadding my-1" id={tab}>
                             <Col >
                               <button className={currentTab == tab ? "btn light text-start w-100 px-3 py-1" : "btn text-start w-100 px-3 py-1"}
                                 onClick={() => setCurrentTab(tab)}>
@@ -49,12 +55,7 @@ function Settings() {
               </Col>
 
               <Col lg={9}>
-                <div><General />
-                  <Account />
-                  <Security /></div>
-                  
-                
-
+                {tabComponents[currentTab]}
               </Col>
             </Row>
           </Col>
