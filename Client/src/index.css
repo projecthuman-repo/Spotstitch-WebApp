@@ -12,7 +12,6 @@ code {
     monospace;
 }
 
-
 .nopadding {
   padding: 0 !important;
   margin: 0 !important;
@@ -24,12 +23,17 @@ code {
   border-radius: 0 !important;
 }
 
-.btn-nav,.btn-nav:hover,
-.btn-nav-nav:focus,.btn-nav:active:focus,.btn-nav.active:focus,
-.btn-nav.focus,.btn-nav:active.focus,.btn-nav.active.focus {
-    outline: none;
-    box-shadow: none;
-    background-color: white;
+.btn-nav,
+.btn-nav:hover,
+.btn-nav-nav:focus,
+.btn-nav:active:focus,
+.btn-nav.active:focus,
+.btn-nav.focus,
+.btn-nav:active.focus,
+.btn-nav.active.focus {
+  outline: none;
+  box-shadow: none;
+  background-color: white;
 }
 
 .btn-nav {
@@ -40,4 +44,10 @@ code {
 .btn-nav:hover {
   border-bottom: 8px solid rgb(142, 174, 233, 0.5);
   border-radius: 0 !important;
+}
+
+.btn-shadow {
+  background-color: #e1e1e1 !important;
+  border-radius: 10px !important;
+  box-shadow: 0px 2px #8e8e8e;
 }
