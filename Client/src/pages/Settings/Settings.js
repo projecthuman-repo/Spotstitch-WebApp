@@ -5,6 +5,8 @@ import General from "./General";
 import Account from "./Account";
 import Security from "./Security";
 
+import './settings.css'
+
 function Settings() {
   const tabs = ['General', 'Account', 'Security']
   const tabComponents = {
