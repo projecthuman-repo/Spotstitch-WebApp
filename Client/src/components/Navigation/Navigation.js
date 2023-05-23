@@ -11,11 +11,12 @@ import { AiOutlineSearch } from 'react-icons/ai'
 
 import logo from "../../assets/sslogo.png";
 import SideNav from './SideNav';
+import { useLocation } from 'react-router-dom';
 
 export default function Topbar({ menuOpen, setMenuOpen }) {
   const user = useSelector((state) => state.user);
   const [logoutUser] = useLogoutUserMutation();
-
+  const location = useLocation()
   const nav = "mx-2 btn-nav";
   const active = "mx-2 btn-nav active"
   const links = [
@@ -68,7 +69,7 @@ export default function Topbar({ menuOpen, setMenuOpen }) {
           >
             {
               links.map(link => {
-                return <Nav.Link href={link.path} className={window.location.pathname == link.path ? active : nav}>{link.name}</Nav.Link>
+                return <Nav.Link href={link.path} className={location.pathname == link.path ? active : nav}>{link.name}</Nav.Link>
               })
             }
           </Nav>

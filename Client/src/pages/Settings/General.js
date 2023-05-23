@@ -1,4 +1,4 @@
-import { Col, Container, Form, Row } from "react-bootstrap";
+import { Col, Container, Form, InputGroup, Row } from "react-bootstrap";
 
 function General() {
     const messages = ['Send read receipts']
@@ -17,15 +17,30 @@ function General() {
                 <Col lg={12}>
                     <p className="fw-600 fs-16 my-0">Messages</p>
                     {messages.map(setting => {
-                        return <Row className="my-1"><Col lg={8}>{setting}</Col><Col lg={4}><Form.Check type="switch" id={setting}></Form.Check></Col></Row>
-
+                        return <Row className="my-1">
+                            <Col lg={9}>{setting}</Col>
+                            <Col lg={1}>
+                                <Form.Check name={setting} id={`${setting}_on`} type='radio' label={'On'} />
+                            </Col>
+                            <Col lg={1}>
+                                <Form.Check name={setting} id={`${setting}_off`} type='radio' label={'Off'} />
+                            </Col>
+                        </Row>
                     })}
                 </Col>
 
                 <Col lg={12}>
                     <p className="fw-600 fs-16 my-0">Who's allowed to message you?</p>
                     {allowedMessages.map(setting => {
-                        return <Row className="my-1"><Col lg={8}>{setting}</Col><Col lg={4}><Form.Check type="switch"></Form.Check></Col></Row>
+                        return <Row className="my-1">
+                            <Col lg={9}>{setting}</Col>
+                            <Col lg={1}>
+                                <Form.Check name={setting} id={`${setting}_on`} type='radio' label={'On'} />
+                            </Col>
+                            <Col lg={1}>
+                                <Form.Check name={setting} id={`${setting}_off`} type='radio' label={'Off'} />
+                            </Col>
+                        </Row>
                     })}
                 </Col>
             </Row>
@@ -35,7 +50,15 @@ function General() {
                 <Col lg={12}>
                     <p className="fw-600 fs-16 my-0">Notifications</p>
                     {notifications.map(setting => {
-                        return <Row className="my-1"><Col lg={8}>{setting}</Col><Col lg={4}><Form.Check type="switch"></Form.Check></Col></Row>
+                        return <Row className="my-1">
+                            <Col lg={9}>{setting}</Col>
+                            <Col lg={1}>
+                                <Form.Check name={setting} id={`${setting}_on`} type='radio' label={'On'} />
+                            </Col>
+                            <Col lg={1}>
+                                <Form.Check name={setting} id={`${setting}_off`} type='radio' label={'Off'} />
+                            </Col>
+                        </Row>
                     })}
 
                 </Col>
