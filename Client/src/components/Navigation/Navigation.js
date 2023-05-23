@@ -53,7 +53,7 @@ export default function Topbar({ menuOpen, setMenuOpen }) {
           </Form>
 
           <Nav
-            className="ms-auto my-2 my-lg-0"
+            className="ms-auto my-0 "
             navbarScroll
           >
             <Nav.Link href="#" className="mx-2 btn-nav">HOME</Nav.Link>
