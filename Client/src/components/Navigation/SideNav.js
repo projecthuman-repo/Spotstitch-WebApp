@@ -20,7 +20,7 @@ function SideNav() {
 
     return (
         <>
-            <button className="btn border-0" onClick={handleShow}><RxHamburgerMenu /></button>
+            <button className="btn border-0" onClick={handleShow}><RxHamburgerMenu size={30}/></button>
 
             <Modal
                 show={show}
@@ -31,8 +31,10 @@ function SideNav() {
                 size="lg"
                 aria-labelledby="right-side-modal"
             >
+                <Modal.Header className="border-no pb-0" closeButton>
 
-                <Modal.Body>
+                </Modal.Header>
+                <Modal.Body className="mt-0 pt-0">
                     <Container>
                         <Row>
                             <Col lg={2}><img className='avatar' src={''} height={88} width={88}></img></Col>
@@ -61,7 +63,7 @@ function SideNav() {
                             <NavSelection icon={messages} text={'Messages'} />
                             <NavSelection icon={inventory} text={'Inventory'} />
                             <NavSelection icon={wallet} text={'Wallet'} />
-                            <NavSelection icon={settings} text={'Settings'} link="/settings"/>
+                            <NavSelection icon={settings} text={'Settings'} link="/settings" />
                         </Row>
                         <Row><Col><button className="btn nopadding"><p className="fw-600 mb-0">Your Accounts</p></button></Col></Row>
                         <Row><Col><button className="btn nopadding">Switch account</button></Col></Row>

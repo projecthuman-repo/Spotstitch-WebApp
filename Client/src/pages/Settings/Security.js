@@ -7,16 +7,37 @@ function Security() {
         </Row>
         <Row className="border-bottom mx-0">
             <Row className="my-2">
+
                 <Col lg={6}><span className="align-middle"></span></Col>
                 <Col lg={4}>
                     <Form>
-                        <Form.Control type="input">
+                        <Form.Control type="input" className="round-s">
 
                         </Form.Control>
 
                     </Form>
                 </Col>
                 <Col lg={2}><button className="btn link px-5">Update</button></Col>
+
+
+                <Form>
+                    <Col lg={6}><span className="align-middle"></span></Col>
+                    <Col lg={4}>
+                        <Form.Control type="input" className="round-s">
+
+                        </Form.Control>
+                        <Form.Control type="input" className="round-s">
+
+                        </Form.Control>
+                        <Form.Control type="input" className="round-s">
+
+                        </Form.Control>
+                    </Col>
+                    <Col lg={2}><button className="btn link px-5">Update</button></Col>
+
+
+
+                </Form>
             </Row>
         </Row>
     </Container>
