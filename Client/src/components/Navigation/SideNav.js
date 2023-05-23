@@ -69,7 +69,7 @@ function SideNav() {
                     <Row>
                         {
                             links.map(link => {
-                                return <Link to={link.destination} className="btn text-start"><Row>
+                                return <Link to={link.destination} className="btn text-start my-1"><Row>
                                     <Col lg={1} className="mx-2"><img src={link.icon}></img></Col>
                                     <Col lg={6} className="fs-20">{link.name}</Col>
                                 </Row></Link>

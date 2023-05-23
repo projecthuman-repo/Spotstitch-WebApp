@@ -15,6 +15,16 @@ import SideNav from './SideNav';
 export default function Topbar({ menuOpen, setMenuOpen }) {
   const user = useSelector((state) => state.user);
   const [logoutUser] = useLogoutUserMutation();
+
+  const nav = "mx-2 btn-nav";
+  const active = "mx-2 btn-nav active"
+  const links = [
+    { path: '/', name: 'HOME' },
+    { path: '/game', name: 'GAME' },
+    { path: '/events', name: 'EVENTS' },
+    { path: '/market', name: 'MARKET' },
+    { path: '/explore', name: 'EXPLORE' }
+  ]
   async function handleLogout(e) {
     e.preventDefault();
     await logoutUser(user);
@@ -56,11 +66,11 @@ export default function Topbar({ menuOpen, setMenuOpen }) {
             className="ms-auto my-0 "
             navbarScroll
           >
-            <Nav.Link href="#" className="mx-2 btn-nav">HOME</Nav.Link>
-            <Nav.Link href="##" className="mx-2 btn-nav">GAME</Nav.Link>
-            <Nav.Link href="###" className="mx-2 btn-nav">EVENTS</Nav.Link>
-            <Nav.Link href="####" className="mx-2 btn-nav">MARKET</Nav.Link>
-            <Nav.Link href="#####" className="mx-2 btn-nav">EXPLORE</Nav.Link>
+            {
+              links.map(link => {
+                return <Nav.Link href={link.path} className={window.location.pathname == link.path ? active : nav}>{link.name}</Nav.Link>
+              })
+            }
           </Nav>
 
           <div className={"vr"}></div>
@@ -83,12 +93,7 @@ export default function Topbar({ menuOpen, setMenuOpen }) {
               <SideNav />
             </Nav.Item>
           </Nav>
-
-          <></>
         </Navbar.Collapse>
-
-
-
 
       </Container>
     </Navbar>

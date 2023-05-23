@@ -16,9 +16,7 @@ function Security() {
                     <Col lg={6}><span className="align-middle">Update email address</span></Col>
                     <Col lg={4}>
                         <Form>
-                            <Form.Control type="input" className="round-s">
-
-                            </Form.Control>
+                            <Form.Control type="input" className="round-s"></Form.Control>
 
                         </Form>
                     </Col>
@@ -26,40 +24,31 @@ function Security() {
                 </Row>
 
                 <p>Change password</p>
-                <Form>
-                    <Row>
-                        <Col lg={6}><span className="align-middle">Old password</span></Col>
-                        <Col lg={4}>
-                            <Form.Control type="input" className="round-s">
+                <Row className="my-1">
+                    <Col lg={6}><span className="align-middle">Old password</span></Col>
+                    <Col lg={4}>
+                        <Form.Control type="input" className="round-s">
 
-                            </Form.Control>
-                        </Col>
-                    </Row>
-                    <Row>
-                        <Col lg={6}><span className="align-middle">New password</span></Col>
-                        <Col lg={4}>
-                            <Form.Control type="input" className="round-s">
+                        </Form.Control>
+                    </Col>
+                </Row>
+                <Row className="my-1">
+                    <Col lg={6}><span className="align-middle">New password</span></Col>
+                    <Col lg={4}>
+                        <Form.Control type="input" className="round-s"></Form.Control>
+                    </Col>
+                </Row>
+                <Row className="my-1">
+                    <Col lg={6}><span className="align-middle">Confirm new password</span></Col>
+                    <Col lg={4}>
+                        <Form.Control type="input" className="round-s"></Form.Control>
+                    </Col>
 
-                            </Form.Control>
-                        </Col>
-                    </Row>
-                    <Row>
-                        <Col lg={6}><span className="align-middle">Confirm new password</span></Col>
-                        <Col lg={4}>
-                            <Form.Control type="input" className="round-s">
-
-                            </Form.Control>
-                        </Col>
-
-                        <Col lg={2}><button className="btn link px-5">Update</button></Col>
-                    </Row>
-
-
-
-
-                </Form>
+                    <Col lg={2}><button className="btn link px-5">Update</button></Col>
+                </Row>
             </Row>
         </section>
+
         <section className="border-bottom mx-0">
             <Row className="m-3">
                 <Col lg={12}>
