@@ -20,7 +20,6 @@ function Settings() {
 
   return (
     <div>
-      <Navigation />
       <Container className="my-4">
         <Row>
           <Col lg={12}>

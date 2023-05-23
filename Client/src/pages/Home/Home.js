@@ -40,7 +40,6 @@ function Home({ vendor = false }) {
 
   return (
     <div>
-      <Navigation />
       <Container className='my-4 '>
         <Row>
           <Col lg="3">
