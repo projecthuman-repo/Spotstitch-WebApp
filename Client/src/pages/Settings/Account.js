@@ -47,10 +47,10 @@ function Account() {
                 })}
             </Row>
         </section>
-        
+
         <section className="border-bottom mx-0">
             <Row className="m-3">
-                <Col lg={12} className="my-2">Link Accounts</Col>
+                <Col lg={12} className="my-2 fw-600 fs-16 my-0">Link Accounts</Col>
                 {links.map(link => {
                     return <Row className="my-2">
                         <Col lg={10}><span className="align-middle">{link}</span></Col>

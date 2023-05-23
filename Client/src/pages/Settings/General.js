@@ -15,7 +15,7 @@ function General() {
         <section className="border-bottom mx-0">
             <Row className="m-3">
                 <Col lg={12}>
-                    <p className="fw-600 fs-16">Messages</p>
+                    <p className="fw-600 fs-16 my-0">Messages</p>
                     {messages.map(setting => {
                         return <Row className="my-1"><Col lg={8}>{setting}</Col><Col lg={4}><Form.Check type="switch" id={setting}></Form.Check></Col></Row>
 
@@ -23,7 +23,7 @@ function General() {
                 </Col>
 
                 <Col lg={12}>
-                    <p className="fw-600 fs-16">Who's allowed to message you?</p>
+                    <p className="fw-600 fs-16 my-0">Who's allowed to message you?</p>
                     {allowedMessages.map(setting => {
                         return <Row className="my-1"><Col lg={8}>{setting}</Col><Col lg={4}><Form.Check type="switch"></Form.Check></Col></Row>
                     })}
@@ -33,7 +33,7 @@ function General() {
         <section className="border-bottom mx-0">
             <Row className="m-3">
                 <Col lg={12}>
-                    <p className="fw-600 fs-16">Notifications</p>
+                    <p className="fw-600 fs-16 my-0">Notifications</p>
                     {notifications.map(setting => {
                         return <Row className="my-1"><Col lg={8}>{setting}</Col><Col lg={4}><Form.Check type="switch"></Form.Check></Col></Row>
                     })}
