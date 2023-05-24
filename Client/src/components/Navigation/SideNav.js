@@ -10,7 +10,7 @@ function SideNav() {
     const user = useSelector((state) => state.user);
     const links = [
         { icon: profile, name: "Profile", destination: "/profile" },
-        { icon: messages, name: "Messages", destination: "/" },
+        { icon: messages, name: "Messages", destination: "/messages" },
         { icon: inventory, name: "Inventory", destination: "/inventory" },
         { icon: wallet, name: "Wallet", destination: "/wallet" },
         { icon: settings, name: "Settings", destination: "/settings" }
