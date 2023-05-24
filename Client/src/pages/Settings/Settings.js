@@ -1,5 +1,4 @@
 import { Col, Container, Row, Card } from "react-bootstrap";
-import Navigation from "../../components/Navigation/Navigation";
 import { useState } from "react";
 import General from "./General";
 import Account from "./Account";
