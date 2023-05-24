@@ -42,6 +42,10 @@ code {
   border-radius: 0 !important;
 }
 
+.fw-700 {
+  font-weight: 700;
+}
+
 .fw-600 {
   font-weight: 600;
 }
