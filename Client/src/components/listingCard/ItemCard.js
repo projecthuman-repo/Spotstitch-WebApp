@@ -19,7 +19,7 @@ const ItemCard = ({ item = {} }) => {
     }, []);
     return (
         <div
-            className='card my-3 mx-2 listingCard'
+            className='card my-3 listingCard'
             style={{ borderRadius: '20px' }}
         >
             <img
@@ -27,7 +27,7 @@ const ItemCard = ({ item = {} }) => {
                 className='card-img-top '
                 height={'180px'}
                 width={'250px'}
-                style={{ borderRadius: '20px 20px 0px 0px', height: '13vh' }}
+                style={{ borderRadius: '20px 20px 0px 0px', maxHeight: '180px'}}
             />
             <div className='card-body' style={{ fontSize: 'smaller' }}>
                 <h5 className='card-title fs-20 m-0'>{item.title}</h5>
@@ -48,8 +48,8 @@ const EventTag = ({ tag }) => {
     return (
         <Col className="light rounded-pill me-2 py-1 fs-10" lg={5}>
             <span>
-                <div className='mx-2 d-inline'>{tag}</div>
-                <div className='float-end mx-2'>
+                <div className='mx-1 d-inline'>{tag}</div>
+                <div className='float-end mx-1'>
                     <AiOutlineClose style={{ backgroundColor: 'white', borderRadius: '25px' }} />
                 </div>
             </span>

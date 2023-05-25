@@ -121,7 +121,7 @@ function Home({ vendor = false }) {
               <Col>
                 {
                   filters.map(filter => {
-                    return <button className='btn light mx-2 my-2 fs-15 fw-500' onClick={() => { editFilter(filter) }}>{filter}</button>
+                    return <button className='btn light mx-2 my-2 px-4 fs-15 fw-500' onClick={() => { editFilter(filter) }}>{filter}</button>
                   })
                 }
               </Col>
