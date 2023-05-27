@@ -1,28 +1,23 @@
-import React from "react";
+import React, { useState } from "react";
 import "./Profile.css";
 import { Col, Container, Row } from "react-bootstrap";
 import Followers from "./Followers";
 import AccountDetails from "./AccountDetails";
+import PageNav from '../../components/pageNav/PageNav'
 
 const Profile = () => {
 
+    const [tab, setTab] = useState(0)
+
+
     return (
         <div>
-            <Container className="my-4">
-                <Row className="mt-3 content-border-l round-s">
-                    <Col>
-                        <div className="d-flex justify-content-evenly">
-                            <button className={"btn-nav active p-3"}>
-                                <p className="nopadding s-16 fw-500">Profile</p>
-                            </button>
-                        </div>
-                    </Col>
-                </Row>
-            </Container>
+            <PageNav options={['Profile']} tabFn={setTab} tab={tab}/>
+            
             <Container className="mt-3 content-border-l round-s">
                 <Row className="p-5 underline bg-profile">
                     <Col>
-                        <img src="" className="avatar content-border-l" height={235} width={235}/>
+                        <img src="" className="avatar content-border-l" height={235} width={235} />
                     </Col>
                     <Col>
                         <Followers />
@@ -31,7 +26,7 @@ const Profile = () => {
                 </Row>
                 <Row className="">
                     <Col>
-                    test
+                        test
                     </Col>
                 </Row>
             </Container>
