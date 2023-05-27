@@ -40,6 +40,7 @@ import Event from './pages/Event/Event';
 import BookEvent from './pages/BookEvent/BookEvent';
 import CreateEvent from './pages/CreateEvent/CreateEvent';
 import Settings from './pages/Settings/Settings';
+import Inventory from './pages/Inventory/Inventory';
 
 function App() {
   const [rooms, setRooms] = useState([]);
@@ -113,7 +114,7 @@ function App() {
           <Route path='/shopsetup' element={<ShopSetup />} />
 
           <Route path='/settings' element={<Settings />} />
-
+          <Route path='/inventory' element={<Inventory />} />
         </Routes>
       </BrowserRouter>
     </AppContext.Provider>

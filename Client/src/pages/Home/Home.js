@@ -12,6 +12,7 @@ import placeHolder from '../../assets/holderimg.png'
 
 import UserContent from './UserContent';
 import VendorConnections from './VendorConnections';
+import PageNav from '../../components/pageNav/PageNav';
 
 function Home({ vendor = false }) {
   const user = useSelector((state) => state.user);
@@ -107,21 +108,12 @@ function Home({ vendor = false }) {
           </Col >
 
           <Col lg="9">
-            <Card className="mt-3 content-border-l round-s">
-              <Card.Body className='nopadding'>
-                <div className="d-flex justify-content-evenly">
-                  <button className={tab == 1 ? "btn-nav active p-3" : "btn-nav p-3"} onClick={() => tabOnChange(1)}>
-                    <p className='nopadding s-16 fw-500'>For you</p></button>
-                  <button className={tab == 2 ? "btn-nav active p-3" : "btn-nav p-3"} onClick={() => tabOnChange(2)}>
-                    <p className='nopadding s-16 fw-500'>Following</p></button>
-                </div>
-              </Card.Body>
-            </Card>
+            <PageNav options={['For you', 'Following']} tabFn={setTab} tab={tab}/>
             <Row>
               <Col>
                 {
                   filters.map(filter => {
-                    return <button className='btn light mx-2 my-2 fs-15 fw-500' onClick={() => { editFilter(filter) }}>{filter}</button>
+                    return <button className='btn light mx-2 my-2 px-4 fs-15 fw-500' onClick={() => { editFilter(filter) }}>{filter}</button>
                   })
                 }
               </Col>

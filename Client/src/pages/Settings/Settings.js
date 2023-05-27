@@ -1,11 +1,11 @@
 import { Col, Container, Row, Card } from "react-bootstrap";
-import Navigation from "../../components/Navigation/Navigation";
 import { useState } from "react";
 import General from "./General";
 import Account from "./Account";
 import Security from "./Security";
 
 import './settings.css'
+import PageNav from "../../components/pageNav/PageNav";
 
 function Settings() {
   const tabs = ['General', 'Account', 'Security']
@@ -23,15 +23,7 @@ function Settings() {
       <Container className="my-4">
         <Row>
           <Col lg={12}>
-            <Card className="mt-3 content-border-l round-s">
-              <Card.Body className="nopadding">
-                <div className="d-flex justify-content-evenly">
-                  <button className={"btn-nav active p-3"}>
-                    <p className="nopadding s-16 fw-500">Settings</p>
-                  </button>
-                </div>
-              </Card.Body>
-            </Card>
+            <PageNav options={['Settings']}/>
 
             <Row>
               <Col lg={3}>
