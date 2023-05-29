@@ -9,11 +9,22 @@
   background-color: #e9ecef;
   border-radius: 0.25rem rem;
 }
+.progress-gap {
+  display: flex;
+  width: 25%;
+  /* height: 5px;
+  margin-top: auto;
+  margin-bottom: auto; */
+  overflow: hidden;
+  /* font-size: 0.75rem;
+  background-color: #e9ecef; */
+  /* border-radius: 0.25rem rem; */
+}
 
 .progress-circle-unfinished {
   height: 25px;
   width: 25px;
-  background-color: gray;
+  background-color: #e9ecef;
   border-radius: 50%;
   margin-top: auto;
   margin-bottom: auto;
@@ -31,16 +42,21 @@
 .progress-circle-finished {
   height: 40px;
   width: 40px;
+  font-size: 25px;
   border-radius: 50%;
   margin-top: auto;
   margin-bottom: auto;
   border: 1px solid black;
+  /* padding-left: 5px; */
 }
 
-.checkmark-box {
-  vertical-align: middle;
-}
-
-.checkmark {
-  margin-left: auto;
-}
+/* .circle-icon {
+  border-radius: 50%;
+  border: 2px solid white;
+  padding: 5px;
+  padding-left: 5px;
+  font-size: 15px;
+  height: 30px;
+  width: 30px;
+  background-color: #757575;
+} */

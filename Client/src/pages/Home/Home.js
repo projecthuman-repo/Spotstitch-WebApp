@@ -35,20 +35,19 @@ function Home({ vendor = false }) {
   const [popoverShow, setPopoverShow] = useState(false);
 
   const popover = (
-    <Popover id='popover-basic'>
+    <Popover id='popover-basic' className='mt-5'>
       <Popover.Body>
-        <p>Edit Layers</p>
-        <hr />
-        <button
-          type='button'
-          className='btn light f-400'
+        <p className='btn-layer py-3 px-1 m-0'>Edit Layers</p>
+        <hr className='m-0' />
+        <p
+          className='btn-layer py-3 px-1 m-0'
           onClick={() => {
             setModalShow(true);
             setPopoverShow(false);
           }}
         >
           Create new layer
-        </button>
+        </p>
       </Popover.Body>
     </Popover>
   );
