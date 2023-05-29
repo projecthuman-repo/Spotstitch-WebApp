@@ -40,6 +40,7 @@ function Followers({ text, startTab, numOfFollowers = 0 }) {
                 dialogClassName="modal-dialog"
                 contentClassName="modal-content"
                 aria-labelledby="modal"
+                backdrop="static"
                 size="lg"
             >
                 <Modal.Header className="py-0 underline" closeButton>
@@ -56,14 +57,16 @@ function Followers({ text, startTab, numOfFollowers = 0 }) {
                 <Modal.Body className="mt-0 pt-0 mx-3">
 
                     {['', '', ''].map(user => {
-                        return <Row className="my-3 px-2">
-                            <Col lg={2}>a</Col>
-                            <Col lg={6}>
+                        return <Row className="my-4 px-2">
+                            <Col lg={2}><img className="float-end avatar" src={''} height={61} width={61}/></Col>
+                            <Col lg={7}>
                                 <div>Username</div>
                                 <div>Name</div>
-                                <div>description</div>
+                                <div className="fs-11">Lorem ipsum dolor sit amet consectetur. 
+                                    Dapibus mauris scelerisque egestas scelerisque lectus pellentesque ante. 
+                                    Porttitor congue sed vivamus vel vulputate aliquet.</div>
                             </Col>
-                            <Col lg={3}><button className="btn btn-follower">Following</button></Col>
+                            <Col lg={2}><button className="btn btn-follower px-3 py-1">Following</button></Col>
                         </Row>
                     })}
 

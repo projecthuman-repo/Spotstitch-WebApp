@@ -70,7 +70,7 @@ function SideNav() {
                         <Row>
                             {
                                 links.map(link => {
-                                    return <Link to={link.destination} className="btn text-start my-1"><Row>
+                                    return <Link to={link.destination} className="btn text-start my-1" onClick={handleClose}><Row>
                                         <Col sm={1} lg={1} className="mx-2"><img src={link.icon}></img></Col>
                                         <Col sm={5} lg={6} className="fs-20">{link.name}</Col>
                                     </Row></Link>
