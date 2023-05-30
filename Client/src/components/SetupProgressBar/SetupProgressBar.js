@@ -3,9 +3,14 @@ import { IoCheckmarkSharp } from 'react-icons/io5';
 import { ProgressBar } from 'react-bootstrap';
 import './setupProgressBar.css';
 
-const SetupProgressBar = ({ step }) => {
+const SetupProgressBar = ({ step, setCurrentStep }) => {
   const Checkmark = () => {
     return <IoCheckmarkSharp color='black' />;
+  };
+  const onCircleClick = (stepClicked) => {
+    if (stepClicked < step) {
+      setCurrentStep(stepClicked);
+    }
   };
   return (
     <>
@@ -16,6 +21,7 @@ const SetupProgressBar = ({ step }) => {
               ? 'progress-circle-current text-center'
               : 'progress-circle-finished text-center'
           }
+          onClick={() => onCircleClick(1)}
         >
           {step > 1 ? <Checkmark /> : ''}
         </div>
@@ -28,6 +34,7 @@ const SetupProgressBar = ({ step }) => {
               ? 'progress-circle-current text-center'
               : 'progress-circle-finished text-center'
           }
+          onClick={() => onCircleClick(2)}
         >
           {step > 2 ? <Checkmark /> : ''}
         </div>
@@ -40,6 +47,7 @@ const SetupProgressBar = ({ step }) => {
               ? 'progress-circle-finished text-center'
               : 'progress-circle-unfinished text-center'
           }
+          onClick={() => onCircleClick(3)}
           // className='progress-circle-unfinished'
         >
           {step > 3 ? <Checkmark /> : ''}
@@ -51,6 +59,7 @@ const SetupProgressBar = ({ step }) => {
               ? 'progress-circle-current text-center'
               : 'progress-circle-unfinished text-center'
           }
+          onClick={() => onCircleClick(4)}
         >
           {step > 4 ? <Checkmark /> : ''}
         </div>

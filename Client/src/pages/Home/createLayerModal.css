@@ -27,3 +27,7 @@ input::placeholder {
 textarea::placeholder {
   color: black !important;
 }
+
+textarea {
+  resize: none !important;
+}

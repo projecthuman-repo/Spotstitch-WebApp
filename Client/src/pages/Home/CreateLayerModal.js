@@ -9,10 +9,20 @@ const CreateLayerModal = (props) => {
   const [currentStep, setCurrentStep] = useState(1);
 
   useEffect(() => {
-    setCurrentScreen(
-      <SetUpScreen props={props} setCurrentScreen={setCurrentScreen} />
-    );
+    setCurrentScreen(<SetUpScreen />);
   }, []);
+
+  useEffect(() => {
+    if (currentStep === 1) {
+      setCurrentScreen(<SetUpScreen />);
+    } else if (currentStep === 2) {
+      setCurrentScreen(<AddStyle />);
+    } else if (currentStep === 3) {
+      setCurrentScreen(<ReviewScreen />);
+    } else if (currentStep === 4) {
+      setCurrentScreen(<NewLayerCreatedScreen />);
+    }
+  }, [currentStep]);
 
   const saveLayer = () => {
     props.onHide();
@@ -120,7 +130,7 @@ const CreateLayerModal = (props) => {
               className='btn btn-lg btn-shadow ms-auto mt-3'
               // onClick={props.onHide}
               onClick={() => {
-                setCurrentScreen(<AddStyle />);
+                // setCurrentScreen(<AddStyle />);
                 setCurrentStep(2);
               }}
               style={{ width: '15%' }}
@@ -190,7 +200,7 @@ const CreateLayerModal = (props) => {
               <p
                 className='my-auto pt-3 me-5 text-decoration-underline'
                 onClick={() => {
-                  setCurrentScreen(<SetUpScreen />);
+                  // setCurrentScreen(<SetUpScreen />);
                   setCurrentStep(1);
                 }}
               >
@@ -199,7 +209,7 @@ const CreateLayerModal = (props) => {
               <button
                 className='btn btn-lg btn-shadow  mt-3 px-5'
                 onClick={() => {
-                  setCurrentScreen(<ReviewScreen />);
+                  // setCurrentScreen(<ReviewScreen />);
                   setCurrentStep(3);
                 }}
               >
@@ -314,7 +324,7 @@ const CreateLayerModal = (props) => {
               <p
                 className='my-auto pt-3 me-5 text-decoration-underline'
                 onClick={() => {
-                  setCurrentScreen(<AddStyle />);
+                  // setCurrentScreen(<AddStyle />);
                   setCurrentStep(2);
                 }}
               >
@@ -324,7 +334,7 @@ const CreateLayerModal = (props) => {
                 className='btn btn-lg btn-shadow  mt-3 px-5'
                 // onClick={props.onHide}
                 onClick={() => {
-                  setCurrentScreen(<NewLayerCreatedScreen />);
+                  // setCurrentScreen(<NewLayerCreatedScreen />);
                   setCurrentStep(4);
                 }}
               >
@@ -355,7 +365,7 @@ const CreateLayerModal = (props) => {
               <p
                 className='my-auto pt-3 me-5 text-decoration-underline'
                 onClick={() => {
-                  setCurrentScreen(<ReviewScreen />);
+                  // setCurrentScreen(<ReviewScreen />);
                   setCurrentStep(3);
                 }}
               >
@@ -387,7 +397,7 @@ const CreateLayerModal = (props) => {
         className='d-flex flex-column p-sm-5'
         style={{ height: '75vh' }}
       >
-        <SetupProgressBar step={currentStep} />
+        <SetupProgressBar step={currentStep} setCurrentStep={setCurrentStep} />
 
         <hr />
 
