@@ -7,31 +7,37 @@ function UserContent({ img, avatar, user, desc, body }) {
         <Container className="shadow p-0 my-3 round-l content">
             <Row>
                 <Col lg={7} className="round-l">
-                    <div className='bg-black round-l'>
+                    <div className='bg-white round-l'>
                         <img src={img} className="round-l img-fluid mx-auto d-block"></img>
                     </div>
 
                 </Col>
-                <Col sm={5}>
+                <Col lg={5} className='d-flex flex-column g-0 px-2'>
+
                     <Row className='mx-2 my-3'>
-                        <Col sm={2}><img className='avatar shadow' src={avatar} width={61} height={61}></img></Col>
-                        <Col sm={9} className='mx-2'>
+                        <Col lg={2} xs={5}><img className='avatar shadow' src={avatar} width={61} height={61}></img></Col>
+                        <Col lg={9} xs={7} className='mx-2'>
                             <Row><Col><p className='nopadding fs-15 fw-500'>{user}</p></Col></Row>
                             <Row><Col><p className='nopadding fs-12 fw-400'>{desc}</p></Col></Row>
                         </Col>
                     </Row>
+
                     <Row className='mx-2 '>
                         <Col><p className='fs-12 fw-400'>{body}</p></Col>
                     </Row>
-                    <Row className='mx-2'>
-                        <Col sm={1}><BsHeart size={22} /></Col>
-                        <Col sm={1}><BsSend size={22} /></Col>
-                        <Col sm={1}><BsReply size={22} className='flip' /></Col>
+
+                    <Row className='mx-2 mt-auto'>
+                        <Col lg={12}>
+                            <button className='btn btn-outline-0 p-0 pe-2'><BsHeart size={22} /> </button>
+                            <button className='btn btn-outline-0 px-2'><BsSend size={22} /> </button>
+                            <button className='btn btn-outline-0 px-2'><BsReply size={22} className='flip' /></button>
+                        </Col>
                     </Row>
-                    <Row className='w-100 '>
-                        <Col lg={11} className='mx-2 '>
-                            <hr className='my-2 white' />
-                            <Form className="d-flex">
+
+                    <Row className='mb-3'>
+                        <Col className='mx-4'>
+                            <div className='my-2 overline'></div>
+                            <Form>
                                 <div className="input-group">
                                     <input
                                         className="form-control border-0 comment"
@@ -47,6 +53,7 @@ function UserContent({ img, avatar, user, desc, body }) {
                             </Form>
                         </Col>
                     </Row>
+
                 </Col>
             </Row>
         </Container>
