@@ -24,15 +24,6 @@
   transform: scaleX(-1);
 }
 
-.avatar {
-  border-radius: 50%;
-  background: #D9D9D9;
-  border: 1px solid;
-  border-color: #D9D9D9;
-}
-
-
-
 .t-light {
   color: #666666;
 }
