@@ -30,9 +30,9 @@ const Profile = () => {
 
                     </Col>
                     <Col>
-                        <div className="h-50"></div>
+                        <Row className="h-50"></Row>
                         <Row className="mt-2">
-                            <Col lg={10}>
+                            <Col lg={10} xs={12}>
                                 <div>
                                     <Followers text={'Following'} startTab={0} />
                                     <Followers text={'Followers'} startTab={1} />
@@ -48,21 +48,19 @@ const Profile = () => {
                             </Col>
                             <Col lg={2} className="mt-3"><AccountDetails /></Col>
                         </Row>
-
-
-
-
                     </Col>
                 </Row>
                 <Row className="">
-                    <Col className="mx-5">
+                    <Col className="mx-5 mt-2">
                         {postExanples.map(post => {
+                            const body = `Lorem ipsum dolor sit amet consectetur. Eget libero a convallis ut. Nunc fermentum et nunc commodo pulvinar lectus imperdiet vel tellus. Dolor accumsan elit consectetur fringilla dignissim. Quis elit egestas vulputate nec etiam mauris vel vel. Quisque amet sociis odio est neque.
+                            #posttag #posttag`
                             return <UserPosts
-                            img={""}
-                            avatar={""}
-                            user={'name'}
-                            desc={'desc'}
-                            body={"test"} />
+                                img={require('./image-placeholder.jpg')}
+                                avatar={""}
+                                user={'name'}
+                                desc={'desc'}
+                                body={body} />
                         })}
                     </Col>
                 </Row>

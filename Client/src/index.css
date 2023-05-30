@@ -18,6 +18,13 @@ code {
   margin: 0 !important;
 }
 
+.avatar {
+  border-radius: 50%;
+  background: #757575;
+  border: 1px solid;
+  border-color: #D9D9D9;
+}
+
 .active {
   box-shadow: none;
   border-bottom: 8px solid rgb(142, 174, 233) !important ;

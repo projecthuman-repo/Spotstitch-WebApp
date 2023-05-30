@@ -6,13 +6,15 @@ function UserPosts({ img, avatar, user, desc, body }) {
     return (
         <Container className="shadow g-0 my-3 round-l content">
             <Row>
-                <Col lg={7} className="round-l bg-white border">
-                        <img src={img} className="round-l img-fluid mx-auto d-block"></img>
+                <Col lg={7} xs={12} >
+                    <div className="round-l bg-white">
+                        <img src={img} className="round-l img-fluid mx-auto d-block bg-white"></img>
+                    </div>
                 </Col>
-                <Col sm={5}>
+                <Col lg={5} xs={12}>
                     <Row className='mx-2 my-3'>
-                        <Col sm={2}><img className='avatar shadow' src={avatar} width={61} height={61}></img></Col>
-                        <Col sm={9} className='mx-2'>
+                        <Col lg={2} xs={5}><img className='avatar shadow' src={avatar} width={61} height={61}></img></Col>
+                        <Col lg={9} xs={6} className='mx-2'>
                             <Row><Col><p className='nopadding fs-15 fw-500'>{user}</p></Col></Row>
                             <Row><Col><p className='nopadding fs-12 fw-400'>{desc}</p></Col></Row>
                         </Col>
@@ -20,7 +22,7 @@ function UserPosts({ img, avatar, user, desc, body }) {
                     <Row className='mx-2 '>
                         <Col><p className='fs-12 fw-400'>{body}</p></Col>
                     </Row>
-                    
+
                 </Col>
             </Row>
         </Container>

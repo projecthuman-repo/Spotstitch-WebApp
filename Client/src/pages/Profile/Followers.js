@@ -61,7 +61,7 @@ function Followers({ text, startTab, numOfFollowers = 0 }) {
                             <Col lg={2}><img className="float-end avatar" src={''} height={61} width={61}/></Col>
                             <Col lg={7}>
                                 <div>Username</div>
-                                <div>Name</div>
+                                <div className="fs-12">Name</div>
                                 <div className="fs-11">Lorem ipsum dolor sit amet consectetur. 
                                     Dapibus mauris scelerisque egestas scelerisque lectus pellentesque ante. 
                                     Porttitor congue sed vivamus vel vulputate aliquet.</div>

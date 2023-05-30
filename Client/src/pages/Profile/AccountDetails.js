@@ -55,10 +55,15 @@ function AccountDetails() {
                             <Form.Group>
                                 <div className="bg-banner row g-0 pt-5"
                                     style={{ backgroundImage: `url(${''}), linear-gradient(#D9D9D9 100%, #FFFFFF 1%)` }}>
-                                    <Col lg={3} sm={6} xs={6}>
-                                        <img src={""} className="avatar content-border-l mx-4" width={139} height={139} />
+                                    <Col lg={3} sm={6} xs={7}>
+                                        <div
+                                            className="avatar content-border-l mx-4 d-flex"
+                                            style={{ width: '139px', height: '139px', backgroundImage: `url(${''})` }}>
+                                                <img src={editAvatar} className="m-auto" width={30} height={30}/>
+                                        </div>
+
                                     </Col>
-                                    <Col lg={6} className="d-flex justify-content-evenly" sm={6} xs={6}>
+                                    <Col lg={6} className="d-flex justify-content-evenly" sm={6} xs={5}>
                                         <img src={editBanner} className="" height={54} width={54} />
                                         <img src={removeBanner} className="" height={54} width={54} />
                                     </Col>
@@ -68,27 +73,24 @@ function AccountDetails() {
 
                             </Form.Group>
 
-                            <Form.Group className="mt-2 mx-4">
+                            <Form.Group className="mt-2 mx-4" itemID="account.name">
                                 <Form.Label>Name</Form.Label>
-                                <Form.Control type='input' />
+                                <Form.Control type='input' placeholder="name" />
                             </Form.Group>
 
-                            <Form.Group className="mt-2 mx-4">
+                            <Form.Group className="mt-2 mx-4" itemID="account.bio">
                                 <Form.Label>Bio</Form.Label>
                                 <Form.Control as="textarea" placeholder='old bio' rows={4} style={{ resize: 'none' }} />
                             </Form.Group>
 
-                            <Form.Group className="mt-2 mx-4">
+                            <Form.Group className="mt-2 mx-4" itemID="account.website">
                                 <Form.Label>Website</Form.Label>
-                                <Form.Control type='input' />
+                                <Form.Control type='input' placeholder="website" />
                             </Form.Group>
 
                             <button className="btn btn-profile my-2 mx-4 float-end">Save</button>
 
                         </Form>
-                        <Col></Col>
-                        <Col></Col>
-                        <Col></Col>
                     </Row>
                 </Modal.Body>
 
