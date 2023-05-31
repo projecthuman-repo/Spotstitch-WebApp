@@ -14,7 +14,7 @@ function PageNav({ options, tabFn, tab = 0, className='' }) {
         setIndex(i);
     }
     return <>
-        <Container className={className ? classname : "mt-3 content-border-l round-s"}>
+        <Container className={className ? className : "mt-3 content-border-l round-s"}>
             <Row >
                 <Col>
                     <div className="d-flex justify-content-evenly">
