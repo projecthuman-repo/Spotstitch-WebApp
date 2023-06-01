@@ -36,10 +36,10 @@ const Profile = () => {
                                 <div>
                                     <Followers text={'Following'} startTab={0} />
                                     <Followers text={'Followers'} startTab={1} />
-                                    <button className="btn">
+                                    <a href="#posts" className="btn">
                                         <div>Posts</div>
                                         <div className="fs-32 text-start">0</div>
-                                    </button>
+                                    </a>
                                     <div>Lorem ipsum dolor sit amet consectetur.
                                         Dapibus mauris scelerisque egestas scelerisque lectus pellentesque ante.
                                         Porttitor congue sed vivamus vel vulputate aliquet.</div>
@@ -50,7 +50,7 @@ const Profile = () => {
                         </Row>
                     </Col>
                 </Row>
-                <Row className="">
+                <Row className="" id="posts">
                     <Col className="mx-5 mt-2">
                         {postExanples.map(post => {
                             const body = `Lorem ipsum dolor sit amet consectetur. Eget libero a convallis ut. Nunc fermentum et nunc commodo pulvinar lectus imperdiet vel tellus. Dolor accumsan elit consectetur fringilla dignissim. Quis elit egestas vulputate nec etiam mauris vel vel. Quisque amet sociis odio est neque.

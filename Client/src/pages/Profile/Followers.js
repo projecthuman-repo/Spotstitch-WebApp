@@ -62,7 +62,7 @@ function Followers({ text, startTab, numOfFollowers = 0 }) {
                                     Dapibus mauris scelerisque egestas scelerisque lectus pellentesque ante. 
                                     Porttitor congue sed vivamus vel vulputate aliquet.</div>
                             </Col>
-                            <Col lg={2} sm={2} className="d-flex"><button className="btn btn-follower px-3 py-1 m-1 m-auto">Following</button></Col>
+                            <Col lg={2} sm={2} className="d-flex py-2"><button className="btn btn-follower px-3 m-2 m-auto">Following</button></Col>
                         </Row>
                     })}
 
