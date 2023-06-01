@@ -7,7 +7,6 @@ import { HiOutlinePencil } from 'react-icons/hi'
 import { BsCameraVideo, BsCloudUpload, BsEmojiSmile, BsImage } from 'react-icons/bs'
 import { GoLocation } from 'react-icons/go'
 
-import avatar from './avatar.png'
 import placeHolder from '../../assets/holderimg.png'
 
 import UserContent from './UserContent';
@@ -21,6 +20,7 @@ function Home({ vendor = false }) {
 
   const layerExamples = ["these", "are", "test", "layers", "replace later"]
   const postExanples = ["", "", ""]
+  const avatar = ''
 
   const emotor = useRef();
 
@@ -29,10 +29,6 @@ function Home({ vendor = false }) {
     if (filters.includes(layerName)) newFilters.splice(newFilters.indexOf(layerName), 1)
     else newFilters.push(layerName)
     setFilters(newFilters)
-  }
-
-  function tabOnChange(i) {
-    setTab(i);
   }
 
   function addAttachment(e) {
@@ -125,9 +121,10 @@ function Home({ vendor = false }) {
                   <UserContent
                     img={placeHolder}
                     avatar={avatar}
-                    user={'name'}
-                    desc={'desc'}
-                    body={"test"} />
+                    user={'User Name'}
+                    desc={'User Description'}
+                    body={`Lorem ipsum dolor sit amet consectetur. Eget libero a convallis ut. Nunc fermentum et nunc commodo pulvinar lectus imperdiet vel tellus. Dolor accumsan elit consectetur fringilla dignissim. Quis elit egestas vulputate nec etiam mauris vel vel. Quisque amet sociis odio est neque.
+                    #posttag #posttag`} />
                 )
               })
             }
