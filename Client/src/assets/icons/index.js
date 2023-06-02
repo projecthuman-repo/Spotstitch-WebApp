@@ -11,6 +11,7 @@ import paperAirplane from './paperAirplane.svg'
 import share from './share.svg'
 import mastercard from './Mastercard.svg'
 import visa from './Visa.svg'
+import cart from './Cart.svg'
 
 export {
     inventory,
@@ -25,5 +26,6 @@ export {
     paperAirplane,
     share,
     mastercard,
-    visa
+    visa,
+    cart
 }

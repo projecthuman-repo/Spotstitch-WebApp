@@ -19,6 +19,16 @@
     border-bottom: 1px solid #757575;
 }
 
+.light {
+    background: #D9D9D9 !important;
+}
+
+.order-img {
+    border: 0 !important;
+    background: #E6E6E6;
+    border-radius: 7px;
+}
+
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
     /* display: none; <- Crashes Chrome on hover */
