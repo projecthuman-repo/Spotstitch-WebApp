@@ -8,10 +8,7 @@ import { BsSend } from 'react-icons/bs';
 
 const Messages = () => {
   const [rightScreen, setRightScreen] = useState([]);
-
-  useEffect(() => {
-    setRightScreen(<NewMessage />);
-  }, []);
+  const [messageClicked, setMessageClicked] = useState([]);
 
   const users = [
     {
@@ -70,8 +67,26 @@ const Messages = () => {
     },
   ];
 
-  const onMessageClick = (user) => {
+  useEffect(() => {
+    setRightScreen(<NewMessage />);
+    const tempMessages = Array(users.length).fill(false);
+    setMessageClicked(tempMessages);
+
+    // users.forEach((element, index) => {
+    //   tempMessages[index] = false;
+    //   setMessageClicked(tempMessages);
+    // });
+  }, []);
+
+  const onMessageClick = (user, index) => {
+    const newMessageClick = Array(messageClicked.length).fill(false);
     setRightScreen(<ClickedMessage user={user} />);
+    if (messageClicked[index] === false) {
+      newMessageClick.splice(index, 1, true);
+    } else {
+      setRightScreen(<NewMessage />);
+    }
+    setMessageClicked(newMessageClick);
   };
 
   const NewMessage = () => {
@@ -79,7 +94,7 @@ const Messages = () => {
       <div className='my-auto mx-auto px-5' style={{ width: '60%' }}>
         <h3>Select a message</h3>
         <p>Choose from your existing conversations or start a new one</p>
-        <button className='btn btn-lg-gray px-5'>New Message</button>
+        <button className='btn btn-lg-gray bg-e6 px-5'>New Message</button>
       </div>
     );
   };
@@ -92,24 +107,24 @@ const Messages = () => {
           <h5 className='mt-3'>{user.name}</h5>
         </div>
         <div className='d-flex flex-column mt-auto'>
-          <div className='d-flex ms-auto message-blob'>
+          <div className='d-flex ms-auto message-blob bg-e6'>
             <p>{user.message}</p>
           </div>
           <p className='ms-auto mb-0 fs-14'>{user.date}</p>
           <div className='d-flex flex-column mt-auto'>
-            <div className='input-group search-field my-3'>
-              <span className='input-group-text search-field border-0'>
+            <div className='input-group search-field bg-e6 my-3'>
+              <span className='input-group-text search-field bg-e6 border-0'>
                 <HiOutlinePhoto />
               </span>
-              <span className='input-group-text search-field border-0'>
+              <span className='input-group-text search-field bg-e6 border-0'>
                 <HiOutlineFaceSmile />
               </span>
               <Form.Control
-                className='search-field border-0'
+                className='search-field bg-e6 border-0'
                 type='search'
                 placeholder='Send a message...'
               />
-              <span className='input-group-text search-field border-0'>
+              <span className='input-group-text search-field bg-e6 border-0'>
                 <BsSend />
               </span>
             </div>
@@ -120,30 +135,36 @@ const Messages = () => {
   };
 
   return (
-    <div>
-      <Container>
-        <Row>
-          <PageNav options={['Messages']} />
-        </Row>
-        <Row className='mt-3 content-border-l round-s'>
-          <Col lg='6' className='content-border-end px-5'>
-            <div className='input-group search-field my-3'>
-              <span className='input-group-text search-field border-0'>
+    <div className='container mt-5'>
+      <Row>
+        <PageNav options={['Messages']} />
+      </Row>
+      <Row className='mt-3 content-border-l round-s'>
+        <Col lg='6' className='content-border-end'>
+          <div className='px-5'>
+            <div className='input-group search-field bg-e6 my-3'>
+              <span className='input-group-text search-field bg-e6 border-0'>
                 <MdOutlineSearch />
               </span>
               <Form.Control
-                className='search-field border-0'
+                className='search-field bg-e6 border-0'
                 type='search'
                 placeholder='Search for direct messages...'
               />
             </div>
+          </div>
 
-            {users.map((user, index) => {
-              return (
-                <div
-                  className='d-flex my-3'
-                  onClick={() => onMessageClick(user)}
-                >
+          {users.map((user, index) => {
+            return (
+              <div
+                className={
+                  messageClicked.at(index) === true
+                    ? 'row my-3 bg-e6 px-5 hover-pointer'
+                    : 'row my-3 px-5 hover-pointer'
+                }
+                onClick={() => onMessageClick(user, index)}
+              >
+                <div className='d-flex'>
                   <img
                     src={require('../../assets/' + user.profilePic)}
                     height={60}
@@ -156,14 +177,14 @@ const Messages = () => {
                   </div>
                   <p className='ms-auto mb-0'>{user.date}</p>
                 </div>
-              );
-            })}
-          </Col>
-          <Col lg='6'>
-            <Row className='h-100'>{rightScreen}</Row>
-          </Col>
-        </Row>
-      </Container>
+              </div>
+            );
+          })}
+        </Col>
+        <Col lg='6'>
+          <Row className='h-100'>{rightScreen}</Row>
+        </Col>
+      </Row>
     </div>
   );
 };

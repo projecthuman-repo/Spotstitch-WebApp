@@ -3,12 +3,10 @@
 }
 
 .search-field {
-  background: #e6e6e6 !important;
   border-radius: 15px !important;
 }
 
 .btn-lg-gray {
-  background-color: #e6e6e6 !important;
   border-radius: 40px !important;
   line-height: 50px !important;
   font-size: 20px !important;
@@ -16,11 +14,14 @@
 }
 
 .message-blob {
-  background-color: #e6e6e6;
   border-radius: 40px;
 }
 
 .message-blob > p {
   margin: 0px;
   padding: 10px;
+}
+
+.bg-e6 {
+  background-color: #e6e6e6 !important;
 }
