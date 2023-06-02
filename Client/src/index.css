@@ -27,16 +27,21 @@ code {
 
 .active {
   box-shadow: none;
-  border-bottom: 8px solid rgb(142, 174, 233) !important ;
+  border-bottom: 8px solid rgb(142, 174, 233) !important;
   border-radius: 0 !important;
 }
 
-.btn-nav,.btn-nav:hover,
-.btn-nav-nav:focus,.btn-nav:active:focus,.btn-nav.active:focus,
-.btn-nav.focus,.btn-nav:active.focus,.btn-nav.active.focus {
-    outline: none;
-    box-shadow: none;
-    background-color: white;
+.btn-nav,
+.btn-nav:hover,
+.btn-nav-nav:focus,
+.btn-nav:active:focus,
+.btn-nav.active:focus,
+.btn-nav.focus,
+.btn-nav:active.focus,
+.btn-nav.active.focus {
+  outline: none;
+  box-shadow: none;
+  background-color: white;
 }
 
 .btn-nav {
@@ -47,6 +52,31 @@ code {
 .btn-nav:hover {
   border-bottom: 8px solid rgb(142, 174, 233, 0.5);
   border-radius: 0 !important;
+}
+
+.btn-outline-0 {
+  box-shadow: none !important;
+  outline: 0px !important;
+}
+
+.content-border-s {
+  border: 1px solid #B3B3B3 !important;
+}
+
+.content-border-l {
+  border: 2px solid #C4C4C4 !important;
+}
+
+.round-xl {
+  border-radius: 25px !important;
+}
+
+.round-l {
+  border-radius: 13px !important;
+}
+
+.round-s {
+  border-radius: 9px !important;
 }
 
 .fw-700 {
@@ -67,6 +97,10 @@ code {
 
 .fw-300 {
   font-weight: 300;
+}
+
+.fs-24 {
+  font-size: 24px;
 }
 
 .fs-20 {

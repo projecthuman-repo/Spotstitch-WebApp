@@ -1,16 +1,13 @@
-import React from "react";
-import './Wallet.css';
-import lawnmowercopy from '../../assets/lawnmowercopy.jpeg';
-
-import { Link, useNavigate } from "react-router-dom";
-
-import { BrowserRouter as Router, Switch, 
-    Route, Redirect,} from "react-router-dom";
-
-
-
+import React, { useState } from "react";
 import { loadStripe } from "@stripe/stripe-js";
+import { Col, Container, Row } from "react-bootstrap";
+import PageNav from "../../components/pageNav/PageNav";
+import PageSide from "../../components/pageNav/PageSide";
+import Payment from "./Payment";
+import Orders from "./Orders";
+import Refunds from "./Refunds";
 
+import './wallet.css';
 
 let stripePromise
 // Defer Stripe Loading
@@ -23,6 +20,10 @@ const getStripe = () => {
 };
 
 const Wallet = () => {
+    const sideTabs = ['Payment','Orders','Refunds & Returns']
+    const [sideTab, setSideTab] = useState(0)
+    const tabComponents = [<Payment />, <Orders />, <Refunds />]
+
 
     const item = {
         price: "price_1MbA29GiyeHuDZKsbhc6niv2",
@@ -45,8 +46,29 @@ const Wallet = () => {
     }
 
 
-return (
-    <div className="container">
+    return (
+        <Container className="mt-4">
+            <PageNav options={['Wallet']} />
+            <Row>
+                <Col lg={3}>
+                    <PageSide options={sideTabs} tabFn={setSideTab} tab={sideTab} />
+                </Col>
+                <Col lg={9}>
+                    {tabComponents[sideTab]}
+                </Col>
+            </Row>
+        </Container>
+        
+
+    )
+}
+
+export default Wallet
+
+
+/*
+
+<div className="container">
     
         <div className="title">
             Wallet
@@ -84,7 +106,4 @@ return (
     </div>
 
 
-)
-}
-
-export default Wallet
+*/

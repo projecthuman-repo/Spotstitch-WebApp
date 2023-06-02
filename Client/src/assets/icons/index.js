@@ -9,6 +9,8 @@ import removeBanner from './removeBanner.svg'
 import heart from './heart.svg'
 import paperAirplane from './paperAirplane.svg'
 import share from './share.svg'
+import mastercard from './Mastercard.svg'
+import visa from './Visa.svg'
 
 export {
     inventory,
@@ -21,5 +23,7 @@ export {
     removeBanner,
     heart,
     paperAirplane,
-    share
+    share,
+    mastercard,
+    visa
 }
