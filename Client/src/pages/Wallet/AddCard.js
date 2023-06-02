@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 
 import { Modal, Row, Col, Container, Form } from "react-bootstrap";
 
-import './wallet.css'
+import './Wallet.css'
 
 function AddCard() {
     const user = useSelector((state) => state.user);

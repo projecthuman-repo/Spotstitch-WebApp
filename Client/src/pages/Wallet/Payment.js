@@ -2,7 +2,7 @@ import { useState } from "react"
 import { Col, Container, Row } from "react-bootstrap"
 
 import { mastercard, visa } from "../../assets/icons"
-import './wallet.css'
+import './Wallet.css'
 import AddCard from "./AddCard"
 
 function Payment() {

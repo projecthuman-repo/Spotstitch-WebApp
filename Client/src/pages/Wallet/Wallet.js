@@ -7,7 +7,7 @@ import Payment from "./Payment";
 import Orders from "./Orders";
 import Refunds from "./Refunds";
 
-import './wallet.css';
+import './Wallet.css';
 
 let stripePromise
 // Defer Stripe Loading
