@@ -24,10 +24,10 @@ function Payment() {
                 <Col lg={6}>
                     <p>Cards</p>
                     {cards.map(card => {
-                        return <Container className="border-card mt-2 mb-3 py-2" height={180}>
+                        return <Container className="border-card mt-2 mb-3 py-2" style={{minHeight:"90px", height: "180px"}}>
                             <Row>
-                                <Col lg={9}>{card.number}</Col>
-                                <Col lg={3} className="d-flex flex-column">
+                                <Col lg={9} xs={9}>{card.number}</Col>
+                                <Col lg={3} xs={2} className="d-flex flex-column" style={{minHeight:"90px", height: "170px"}}>
                                     <img src={card.type} width={54} height={42}/>
                                     <button className="btn mt-auto btn-outline-0">...</button>
                                 </Col>

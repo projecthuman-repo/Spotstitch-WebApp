@@ -26,9 +26,12 @@ function Orders() {
             <Row className="m-3">
                 <Col lg={12}>Your Orders</Col>
             </Row>
+            <Row>
+                
+            </Row>
             {orders.map(order => {
-                return <Container className="m-3 border-card">
-                    <Row className="light">
+                return <div className="m-3 border-card">
+                    <Row className="light g-0">
                         <Col lg={3}>
                             <p>Order Date & Time</p>
                             <p>{order.date}</p>
@@ -49,12 +52,12 @@ function Orders() {
                             <img src={order.product.img} height={125} width={200} className="order-img" />
                         </Col>
                         <Col></Col>
-                        <Col className="float-end">
+                        <Col className="float-end d-flex flex-column">
                             <button>Write Review</button>
                             <button>Buy Again</button>
                         </Col>
                     </Row>
-                </Container>
+                </div>
             })}
 
 
