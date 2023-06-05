@@ -41,26 +41,6 @@ hr.white {
   border-radius: 13px;
 }
 
-.content-border-s {
-  border: 1px solid #B3B3B3 !important;
-}
-
-.content-border-l {
-  border: 2px solid #C4C4C4 !important;
-}
-
-.round-xl {
-  border-radius: 25px !important;
-}
-
-.round-l {
-  border-radius: 13px !important;
-}
-
-.round-s {
-  border-radius: 9px !important;
-}
-
 .overline {
   border: 1px solid #FFFFFF;
 }

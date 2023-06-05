@@ -87,7 +87,9 @@ function Home({ vendor = false }) {
                     layerExamples.map((layer) => { /* switch to api data here */
                       return <Row><Col>
                         <button
-                          className={filters.includes(layer) == true ? "btn post m-2 text-start w-100 shadow" : "btn bg-light m-2 text-start w-100"}
+                          className={filters.includes(layer) == true ? 
+                            "btn btn-outline-0 post m-2 text-start w-100 shadow" : 
+                            "btn btn-outline-0 bg-light m-2 text-start w-100"}
                           onClick={() => { editFilter(layer) }}>
                           <p className='nopadding fs-16 fw-400'>
                             {layer}

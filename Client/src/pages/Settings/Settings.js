@@ -6,55 +6,36 @@ import Security from "./Security";
 
 import './settings.css'
 import PageNav from "../../components/pageNav/PageNav";
+import PageSide from "../../components/pageNav/PageSide";
 
 function Settings() {
   const tabs = ['General', 'Account', 'Security']
-  const tabComponents = {
-    General: <General />,
-    Account: <Account />,
-    Security: <Security />
-  }
+  const tabComponents = [<General />, <Account />, <Security />]
 
-  const [currentTab, setCurrentTab] = useState(tabs[0])
+
+  const [currentTab, setCurrentTab] = useState(0)
 
 
   return (
-    <div>
-      <Container className="my-4">
-        <Row>
-          <Col lg={12}>
-            <PageNav options={['Settings']}/>
 
-            <Row>
-              <Col lg={3}>
-                <Card className="my-3 content-border-l round-s">
-                  <Card.Body className="nopadding">
-                    <div className="d-flex row justify-content-center my-3" >
-                      {tabs.map((tab) => {
-                        return (
-                          <Row className="nopadding my-1" id={tab}>
-                            <Col >
-                              <button className={currentTab == tab ? "btn light text-start w-100 px-3 py-1" : "btn text-start w-100 px-3 py-1"}
-                                onClick={() => setCurrentTab(tab)}>
-                                <p className="nopadding fs-16 fw-400"> {tab} </p>
-                              </button>
-                            </Col>
-                          </Row>
-                        );
-                      })}
-                    </div>
-                  </Card.Body>
-                </Card>
-              </Col>
+    <Container className="my-4">
+      <Row>
 
-              <Col lg={9}>
-                {tabComponents[currentTab]}
-              </Col>
-            </Row>
-          </Col>
-        </Row>
-      </Container>
-    </div>
+        <PageNav options={['Settings']} />
+
+
+        <Col lg={3}>
+          <PageSide options={tabs} tab={currentTab} tabFn={setCurrentTab} />
+        </Col>
+
+        <Col lg={9}>
+          {tabComponents[currentTab]}
+        </Col>
+
+
+      </Row>
+    </Container>
+
   );
 }
 
