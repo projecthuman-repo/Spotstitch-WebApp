@@ -3,20 +3,20 @@
 }
 
 .lighter {
-  background: #E6E6E6 !important;
+  background: #e6e6e6 !important;
 }
 
 .light {
-  background: #D9D9D9 !important;
+  background: #d9d9d9 !important;
 }
 
 .post {
-  background-color: #B3B3B3 !important;
+  background-color: #b3b3b3 !important;
 }
 
 .comment {
   border: 0;
-  background-color: #BBBBBB !important;
+  background-color: #bbbbbb !important;
 }
 
 .flip {
@@ -26,12 +26,10 @@
 
 .avatar {
   border-radius: 50%;
-  background: #D9D9D9;
+  background: #d9d9d9;
   border: 1px solid;
-  border-color: #D9D9D9;
+  border-color: #d9d9d9;
 }
-
-
 
 .t-light {
   color: #666666;
@@ -44,18 +42,18 @@ hr.white {
 }
 
 .content {
-  background: #D9D9D9;
-  border: 1px solid #B3B3B3;
+  background: #d9d9d9;
+  border: 1px solid #b3b3b3;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   border-radius: 13px;
 }
 
 .content-border-s {
-  border: 1px solid #B3B3B3 !important;
+  border: 1px solid #b3b3b3 !important;
 }
 
 .content-border-l {
-  border: 2px solid #C4C4C4 !important;
+  border: 2px solid #c4c4c4 !important;
 }
 
 .round-xl {
@@ -70,3 +68,19 @@ hr.white {
   border-radius: 9px !important;
 }
 
+.quick-messages {
+  position: sticky !important;
+  z-index: 10;
+  bottom: 0;
+  margin-left: 50%;
+  box-shadow: 0px 0px 10px gray;
+  /* bottom: 100vh; */
+}
+
+.notification-dot {
+  width: 15px;
+  height: 12px;
+  border-radius: 3px;
+  background-color: #8eaee9;
+  padding-left: 0px;
+}
