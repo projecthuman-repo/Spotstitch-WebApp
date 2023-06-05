@@ -18,7 +18,7 @@ export default function Topbar({ menuOpen, setMenuOpen }) {
   const [logoutUser] = useLogoutUserMutation();
   const location = useLocation()
   const nav = "mx-2 btn-nav text-center";
-  const active = "mx-2 btn-nav active text-center"
+  const active = "mx-2 btn-nav btn-active text-center"
   const links = [
     { path: '/', name: 'HOME' },
     { path: '/game', name: 'GAME' },

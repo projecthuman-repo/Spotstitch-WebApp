@@ -25,7 +25,7 @@ code {
   border-color: #D9D9D9;
 }
 
-.active {
+.btn-active {
   box-shadow: none;
   border-bottom: 8px solid rgb(142, 174, 233) !important;
   border-radius: 0 !important;

@@ -21,7 +21,7 @@ function PageNav({ options, tabFn, tab = 0, className='' }) {
                     <div className="d-flex justify-content-evenly">
                         {options.map((option, i) => {
                             return <button className={index == i ? 
-                            "btn-nav btn-outline-0 active p-3" : 
+                            "btn-nav btn-outline-0 btn-active p-3" : 
                             "btn-nav btn-outline-0 p-3"} onClick={() => tabOnChange(i)}>
                                 <p className='nopadding s-16 fw-500'>{option}</p></button>
                         })}
