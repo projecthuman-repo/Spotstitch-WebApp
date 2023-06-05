@@ -47,19 +47,19 @@ function Orders() {
                         <Col lg={2} className="float-end d-flex flex-column"><button className="btn btn-order bg-white m-2">Order Details</button></Col>
                     </Row>
                     <Row className="g-0 px-3 py-1 mb-3">
-                        <Col lg={10}>
-                            <div className="align-middle py-1   "><img src={cart} /> Seller name: {order.product.seller}</div>
+                        <Col lg={3}>
+                            <div className="align-middle py-1"><img src={cart} /> Seller name: {order.product.seller}</div>
 
-                            <img src={order.product.img} height={125} width={200} className="order-img d-inline" />
-                            <div className="d-inline px-3 align-top">
-                                <p>{order.product.name}</p>
-                                <p>{order.product.description}</p>
-
-                            </div>
+                            <img src={order.product.img} height={125} width={200} className="order-img" />
+                        </Col>
+                        <Col lg={7}>
+                            <br />
+                            <p className="my-1">{order.product.name}</p>
+                            <p>{order.product.description}</p>
                         </Col>
                         <Col lg={2} className="float-end d-flex flex-column">
-                            <button className="btn btn-order lighter m-2" >Write Review</button>
-                            <button className="btn btn-order lighter m-2">Buy Again</button>
+                            <button className="btn btn-order lighter m-2 mt-auto" >Write Review</button>
+                            <button className="btn btn-order lighter m-2 mb-auto">Buy Again</button>
                         </Col>
                     </Row>
                 </div>
