@@ -41,7 +41,7 @@ function SideNav() {
                 <Modal.Header className="border-no pb-0" closeButton>
 
                 </Modal.Header>
-                <Modal.Body className="mt-0 pt-0 mx-3">
+                <Modal.Body className="mt-0 pt-0 mx-3 d-flex flex-column">
                     <section>
                         <Row>
                             <Col lg={4} ><img className='avatar' src={''} height={88} width={88}></img></Col>
@@ -52,15 +52,15 @@ function SideNav() {
                             </Col>
                         </Row>
                         <Row className="mt-3">
-                            <Col lg={3} className="text-center">
+                            <Col lg={3} xs={4} className="text-center">
                                 <span>5</span>
                                 <p>Following</p>
                             </Col>
-                            <Col lg={3} className="text-center">
+                            <Col lg={3} xs={4} className="text-center">
                                 <span>5</span>
                                 <p>Followers</p>
                             </Col>
-                            <Col lg={3} className="text-center">
+                            <Col lg={3} xs={4} className="text-center">
                                 <span>5</span>
                                 <p>Layers</p>
                             </Col>
@@ -79,9 +79,8 @@ function SideNav() {
                         </Row>
                     </section>
 
-                    <section className="d-flex flex-column " style={{height: '40vh'}}>
-                        
-                        <Row className="mb-1 mt-auto"><Col><button className="btn nopadding mt-auto"><p className="fw-600 mb-0">Your Accounts</p></button></Col></Row>
+                    <section className="mt-auto">
+                        <Row className="mb-1"><Col><button className="btn nopadding mt-auto"><p className="fw-600 mb-0">Your Accounts</p></button></Col></Row>
                         {['Switch account', 'Add account', 'Convert to vendor'].map(option => {
                             return <Row><Col><button className="btn nopadding">{option}</button></Col></Row>
                         })}
