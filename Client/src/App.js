@@ -20,7 +20,7 @@ import VendorSetupComplete from './pages/VendorAccountSetup/VendorSetupCompleteA
 
 import PopupDialog from './pages/Layers/CreateNewLayer';
 
-import Navigation from './components/Navigation/Navigation'
+import Navigation from './components/Navigation/Navigation';
 import Home from './pages/Home/Home';
 import Login from './pages/Login/Login';
 import Profile from './pages/Profile/Profile';
@@ -41,6 +41,7 @@ import BookEvent from './pages/BookEvent/BookEvent';
 import CreateEvent from './pages/CreateEvent/CreateEvent';
 import Settings from './pages/Settings/Settings';
 import Inventory from './pages/Inventory/Inventory';
+import Messages from './pages/Messages/Messages';
 
 function App() {
   const [rooms, setRooms] = useState([]);
@@ -72,7 +73,11 @@ function App() {
       <BrowserRouter>
         {/* Navigation should be automatically added if user is valid, will not show
         nav bar when user needs to login/signup */}
-        {true && (<Navigation />) /* current set to true to test nav components, change to user for production */}
+        {
+          true && (
+            <Navigation />
+          ) /* current set to true to test nav components, change to user for production */
+        }
         <Routes>
           {!user && (
             <>
@@ -83,7 +88,10 @@ function App() {
           <Route path='/start' element={<Start />} />
           <Route path='/usersignup' element={<UserSignUp />} />
           <Route path='/accountsetup' element={<AccountSetup />} />
-          <Route path='/emailverification' element={<AccountEmailVerification />} />
+          <Route
+            path='/emailverification'
+            element={<AccountEmailVerification />}
+          />
           <Route path='/profileimage' element={<ProfileImage />} />
           <Route path='/accounttype' element={<AccountTypeSelection />} />
           <Route path='/bioinput' element={<BioInput />} />
@@ -94,8 +102,10 @@ function App() {
           <Route path='/vendortype' element={<VendorType />} />
           <Route path='/businessmethod' element={<BusinessMethod />} />
           <Route path='/vendorgoal' element={<VendorGoal />} />
-          <Route path='/vendorsetupcomplete' element={<VendorSetupComplete />} />
-
+          <Route
+            path='/vendorsetupcomplete'
+            element={<VendorSetupComplete />}
+          />
 
           <Route path='/' element={<Home />} />
 
@@ -103,6 +113,8 @@ function App() {
           <Route path='/events-event' element={<Event />} />
           <Route path='/events-bookevent' element={<BookEvent />} />
           <Route path='/events-createevent' element={<CreateEvent />} />
+
+          <Route path='/messages' element={<Messages />} />
 
           <Route path='/layer' element={<PopupDialog />} />
           <Route path='/chat' element={<Chat />} />

@@ -1,0 +1,27 @@
+.content-border-end {
+  border-right: 2px solid #c4c4c4;
+}
+
+.search-field {
+  border-radius: 15px !important;
+}
+
+.btn-lg-gray {
+  border-radius: 40px !important;
+  line-height: 50px !important;
+  font-size: 20px !important;
+  font-weight: bold !important;
+}
+
+.message-blob {
+  border-radius: 40px;
+}
+
+.message-blob > p {
+  margin: 0px;
+  padding: 10px;
+}
+
+.bg-e6 {
+  background-color: #e6e6e6 !important;
+}
