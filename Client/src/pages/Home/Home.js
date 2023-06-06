@@ -11,20 +11,13 @@ import {
   Popover,
   OverlayTrigger,
 } from 'react-bootstrap';
-import Navigation from '../../components/Navigation/Navigation';
-import { HiOutlinePencil } from 'react-icons/hi';
+
 import { HiOutlinePencil, HiOutlineChevronDoubleUp } from 'react-icons/hi';
 import { TfiEmail } from 'react-icons/tfi';
 
-import {
-  BsCameraVideo,
-  BsCloudUpload,
-  BsEmojiSmile,
-  BsImage,
-} from 'react-icons/bs';
+import { BsCameraVideo, BsCloudUpload, BsEmojiSmile, BsImage } from 'react-icons/bs';
 import { GoLocation } from 'react-icons/go';
 
-import avatar from './avatar.png';
 import placeHolder from '../../assets/holderimg.png';
 
 import UserContent from './UserContent';
@@ -60,7 +53,7 @@ function Home({ vendor = false }) {
   const layerExamples = ['these', 'are', 'test', 'layers', 'replace later'];
   const postExanples = ['', '', ''];
   const avatar = ''
-  
+
   const [quickMessageClicked, setQuickMessageClicked] = useState(true);
 
   const users = [
@@ -145,38 +138,23 @@ function Home({ vendor = false }) {
                         as='textarea'
                         placeholder='Share your life!'
                         rows={4}
-                      ></Form.Control>
+                      />
 
                       <Row className='px-1'>
                         <span>
-                          <button
-                            className='btn nopadding'
-                            onClick={addAttachment}
-                          >
+                          <button className='btn nopadding' onClick={addAttachment} >
                             <BsImage size={20} />
                           </button>
-                          <button
-                            className='btn nopadding'
-                            onClick={addAttachment}
-                          >
+                          <button className='btn nopadding' onClick={addAttachment} >
                             <BsCameraVideo size={20} />
                           </button>
-                          <button
-                            className='btn nopadding'
-                            onClick={addAttachment}
-                          >
+                          <button className='btn nopadding' onClick={addAttachment} >
                             <GoLocation size={20} />
                           </button>
-                          <button
-                            className='btn nopadding'
-                            onClick={addAttachment}
-                          >
+                          <button className='btn nopadding' onClick={addAttachment} >
                             <BsCloudUpload size={20} />
                           </button>
-                          <button
-                            className='btn nopadding'
-                            onClick={addAttachment}
-                          >
+                          <button className='btn nopadding' onClick={addAttachment} >
                             <BsEmojiSmile size={20} />
                           </button>
                         </span>
@@ -219,8 +197,8 @@ function Home({ vendor = false }) {
                     layerExamples.map((layer) => { /* switch to api data here */
                       return <Row><Col>
                         <button
-                          className={filters.includes(layer) == true ? 
-                            "btn btn-outline-0 post m-2 text-start w-100 shadow" : 
+                          className={filters.includes(layer) == true ?
+                            "btn btn-outline-0 post m-2 text-start w-100 shadow" :
                             "btn btn-outline-0 bg-light m-2 text-start w-100"}
                           onClick={() => { editFilter(layer) }}>
                           <p className='nopadding fs-16 fw-400'>
@@ -231,27 +209,6 @@ function Home({ vendor = false }) {
                       </Col></Row>
                     })
                   }
-                </div>
-              </Card.Body>
-            </Card>
-          </Col>
-
-          <Col lg='9'>
-            <Card className='mt-3 content-border-l round-s'>
-              <Card.Body className='nopadding'>
-                <div className='d-flex justify-content-evenly'>
-                  <button
-                    className={tab == 1 ? 'btn-nav active p-3' : 'btn-nav p-3'}
-                    onClick={() => tabOnChange(1)}
-                  >
-                    <p className='nopadding s-16 f-500'>For you</p>
-                  </button>
-                  <button
-                    className={tab == 2 ? 'btn-nav active p-3' : 'btn-nav p-3'}
-                    onClick={() => tabOnChange(2)}
-                  >
-                    <p className='nopadding s-16 f-500'>Following</p>
-                  </button>
                 </div>
               </Card.Body>
             </Card>
@@ -288,13 +245,16 @@ function Home({ vendor = false }) {
                     avatar={avatar}
                     user={'User Name'}
                     desc={'User Description'}
-                    body={`Lorem ipsum dolor sit amet consectetur. Eget libero a convallis ut. Nunc fermentum et nunc commodo pulvinar lectus imperdiet vel tellus. Dolor accumsan elit consectetur fringilla dignissim. Quis elit egestas vulputate nec etiam mauris vel vel. Quisque amet sociis odio est neque.
+                    body={`Lorem ipsum dolor sit amet consectetur. 
+                    Eget libero a convallis ut. Nunc fermentum et nunc commodo pulvinar lectus imperdiet vel tellus. 
+                    Dolor accumsan elit consectetur fringilla dignissim. Quis elit egestas vulputate nec etiam mauris vel vel. 
+                    Quisque amet sociis odio est neque.
                     #posttag #posttag`} />
                 )
               })
             }
             <div className='card quick-messages'>
-              <div class='card-header hover-pointer ps-2'>
+              <div className='card-header hover-pointer ps-2'>
                 <div className='d-flex'>
                   <div className='notification-dot' />
                   <p className='m-0 fs-18'>Messages</p>
@@ -314,7 +274,7 @@ function Home({ vendor = false }) {
                   </span>
                 </div>
               </div>
-              <div class='' hidden={quickMessageClicked}>
+              <div className='' hidden={quickMessageClicked}>
                 {users.map((user, index) => {
                   return (
                     <div className={'row my-3 px-3 hover-pointer'}>

@@ -47,17 +47,17 @@ function Orders() {
                         <Col lg={2} className="float-end d-flex flex-column"><button className="btn btn-order bg-white m-2">Order Details</button></Col>
                     </Row>
                     <Row className="g-0 px-3 py-1 mb-3">
-                        <Col lg={3}>
+                        <Col xl={3} lg={4} md={4} sm={6} xs={6}> 
                             <div className="align-middle py-1"><img src={cart} /> Seller name: {order.product.seller}</div>
 
                             <img src={order.product.img} height={125} width={200} className="order-img" />
                         </Col>
-                        <Col lg={7}>
+                        <Col xl={7} lg={6} md={4} sm={4} className="px-3">  
                             <br />
                             <p className="my-1">{order.product.name}</p>
                             <p>{order.product.description}</p>
                         </Col>
-                        <Col lg={2} className="float-end d-flex flex-column">
+                        <Col xl={2} lg={2} md={2} sm={2} className="float-end d-flex flex-column">
                             <button className="btn btn-order lighter m-2 mt-auto" >Write Review</button>
                             <button className="btn btn-order lighter m-2 mb-auto">Buy Again</button>
                         </Col>
