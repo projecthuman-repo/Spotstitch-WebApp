@@ -24,13 +24,6 @@
   transform: scaleX(-1);
 }
 
-.avatar {
-  border-radius: 50%;
-  background: #d9d9d9;
-  border: 1px solid;
-  border-color: #d9d9d9;
-}
-
 .t-light {
   color: #666666;
 }
@@ -46,26 +39,6 @@ hr.white {
   border: 1px solid #b3b3b3;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   border-radius: 13px;
-}
-
-.content-border-s {
-  border: 1px solid #b3b3b3 !important;
-}
-
-.content-border-l {
-  border: 2px solid #c4c4c4 !important;
-}
-
-.round-xl {
-  border-radius: 25px !important;
-}
-
-.round-l {
-  border-radius: 13px !important;
-}
-
-.round-s {
-  border-radius: 9px !important;
 }
 
 .quick-messages {
@@ -84,3 +57,13 @@ hr.white {
   background-color: #8eaee9;
   padding-left: 0px;
 }
+
+.overline {
+  border: 1px solid #FFFFFF;
+}
+
+.btn-outline-0 {
+  box-shadow:none !important;
+  outline:0px !important;
+}
+

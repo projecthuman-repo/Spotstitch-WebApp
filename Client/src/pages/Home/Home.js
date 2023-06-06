@@ -1,3 +1,4 @@
+
 import './home.css';
 import React, { useRef, useState } from 'react';
 import { useSelector } from 'react-redux';
@@ -16,6 +17,7 @@ import { GoLocation } from 'react-icons/go';
 import avatar from './avatar.png';
 import placeHolder from '../../assets/holderimg.png';
 
+
 import UserContent from './UserContent';
 import VendorConnections from './VendorConnections';
 import PageNav from '../../components/pageNav/PageNav';
@@ -28,6 +30,7 @@ function Home({ vendor = false }) {
 
   const layerExamples = ['these', 'are', 'test', 'layers', 'replace later'];
   const postExanples = ['', '', ''];
+  const avatar = ''
 
   const users = [
     {
@@ -70,10 +73,6 @@ function Home({ vendor = false }) {
       newFilters.splice(newFilters.indexOf(layerName), 1);
     else newFilters.push(layerName);
     setFilters(newFilters);
-  }
-
-  function tabOnChange(i) {
-    setTab(i);
   }
 
   function addAttachment(e) {
@@ -169,28 +168,23 @@ function Home({ vendor = false }) {
                       <HiOutlinePencil />
                     </button>
                   </div>
-                  <hr></hr>
-                  {layerExamples.map((layer) => {
-                    /* switch to api data here */
-                    return (
-                      <Row>
-                        <Col>
-                          <button
-                            className={
-                              filters.includes(layer) == true
-                                ? 'btn post m-2 text-start w-100 shadow'
-                                : 'btn bg-light m-2 text-start w-100'
-                            }
-                            onClick={() => {
-                              editFilter(layer);
-                            }}
-                          >
-                            <p className='nopadding fs-16 fw-400'>{layer}</p>
-                          </button>
-                        </Col>
-                      </Row>
-                    );
-                  })}
+                  <hr />
+                  {
+                    layerExamples.map((layer) => { /* switch to api data here */
+                      return <Row><Col>
+                        <button
+                          className={filters.includes(layer) == true ? 
+                            "btn btn-outline-0 post m-2 text-start w-100 shadow" : 
+                            "btn btn-outline-0 bg-light m-2 text-start w-100"}
+                          onClick={() => { editFilter(layer) }}>
+                          <p className='nopadding fs-16 fw-400'>
+                            {layer}
+                          </p>
+
+                        </button>
+                      </Col></Row>
+                    })
+                  }
                 </div>
               </Card.Body>
             </Card>
@@ -219,18 +213,19 @@ function Home({ vendor = false }) {
               </Col>
             </Row>
             {/* <VendorConnections /> test view */}
-            {postExanples.map((post) => {
-              /* switch to api data here */
-              return (
-                <UserContent
-                  img={placeHolder}
-                  avatar={avatar}
-                  user={'name'}
-                  desc={'desc'}
-                  body={'test'}
-                />
-              );
-            })}
+            {
+              postExanples.map((post) => { /* switch to api data here */
+                return (
+                  <UserContent
+                    img={placeHolder}
+                    avatar={avatar}
+                    user={'User Name'}
+                    desc={'User Description'}
+                    body={`Lorem ipsum dolor sit amet consectetur. Eget libero a convallis ut. Nunc fermentum et nunc commodo pulvinar lectus imperdiet vel tellus. Dolor accumsan elit consectetur fringilla dignissim. Quis elit egestas vulputate nec etiam mauris vel vel. Quisque amet sociis odio est neque.
+                    #posttag #posttag`} />
+                )
+              })
+            }
             <div className='card quick-messages'>
               <div class='card-header hover-pointer ps-2'>
                 <div className='d-flex'>

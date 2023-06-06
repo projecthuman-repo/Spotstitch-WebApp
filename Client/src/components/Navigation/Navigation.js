@@ -1,7 +1,7 @@
 import './Navigation.css'
 //import { Person, Mail } from "@material-ui/icons";
 import React, { useState } from "react";
-import { Nav, Navbar, Container, Button, NavDropdown, Form, Modal, Badge } from "react-bootstrap";
+import { Nav, Navbar, Container, Button, NavDropdown, Form, Modal, Badge, Row, Col } from "react-bootstrap";
 import { useLogoutUserMutation } from "../../services/appApi";
 import { useSelector } from "react-redux";
 import { LinkContainer } from "react-router-bootstrap";
@@ -17,8 +17,8 @@ export default function Topbar({ menuOpen, setMenuOpen }) {
   const user = useSelector((state) => state.user);
   const [logoutUser] = useLogoutUserMutation();
   const location = useLocation()
-  const nav = "mx-2 btn-nav";
-  const active = "mx-2 btn-nav active"
+  const nav = "mx-2 btn-nav text-center";
+  const active = "mx-2 btn-nav btn-active text-center"
   const links = [
     { path: '/', name: 'HOME' },
     { path: '/game', name: 'GAME' },
@@ -48,7 +48,8 @@ export default function Topbar({ menuOpen, setMenuOpen }) {
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
 
         <Navbar.Collapse id="basic-navbar-nav">
-          <Form className="d-flex">
+          <Nav>
+          <Form className="m-2">
             <div className="input-group">
               <input
                 className="form-control border-end-0 border"
@@ -62,6 +63,8 @@ export default function Topbar({ menuOpen, setMenuOpen }) {
               </span>
             </div>
           </Form>
+          </Nav>
+          
 
           <Nav
             className="ms-auto my-0 "
@@ -74,25 +77,35 @@ export default function Topbar({ menuOpen, setMenuOpen }) {
             }
           </Nav>
 
-          <div className={"vr"}></div>
-          <Nav>
-            <Nav.Item>
-              <button className="btn border-0" >
+          <div className='vr d-none d-sm-block d-xs-block m-2'></div>
+
+          <Nav className='mx-4'>
+            <Row>
+
+              <Col lg={3} className='g-0 mx-1 d-flex'>
+
                 <img
                   src=""
-                  className='avatar'
+                  className='avatar content-border-s shadow m-auto'
                   width={'40px'}
                   height={'40px'}>
                 </img>
-              </button>
-            </Nav.Item>
-            <Nav.Item>
-              <button className="btn border-0" ><IoNotificationsSharp size={20} /></button>
-              <Badge></Badge>
-            </Nav.Item>
-            <Nav.Item>
-              <SideNav />
-            </Nav.Item>
+
+              </Col>
+              <Col lg={3} className='g-0 mx-1 d-flex'>
+                <button className="btn m-auto" ><IoNotificationsSharp size={25} /></button>
+                <Badge></Badge>
+              </Col>
+              <Col lg={3} className='g-0 mx-1 d-flex'>
+                <div className="m-auto">
+                  <SideNav />
+                </div>
+
+              </Col>
+            </Row>
+
+
+
           </Nav>
         </Navbar.Collapse>
 
