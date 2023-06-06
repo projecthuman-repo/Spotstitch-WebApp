@@ -197,16 +197,7 @@ const CreateEvent = () => {
         </div>
         <div className='d-flex justify-content-center justify-content-md-end'>
           <p className='text-decoration-underline my-auto mx-3'>Save</p>
-          <button
-            className='btn py-2 px-4'
-            style={{
-              backgroundColor: '#e1e1e1',
-              borderRadius: '10px',
-              boxShadow: '0px 2px #8e8e8e',
-            }}
-          >
-            Publish
-          </button>
+          <button className='btn btn-shadow py-2 px-4'>Publish</button>
         </div>
       </div>
     </div>

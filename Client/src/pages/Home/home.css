@@ -67,3 +67,7 @@ hr.white {
   outline:0px !important;
 }
 
+.btn-layer:hover {
+  background-color: #f4f2f2;
+  cursor: pointer;
+}
