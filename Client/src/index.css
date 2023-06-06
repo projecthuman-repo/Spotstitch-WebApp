@@ -17,9 +17,16 @@ code {
   margin: 0 !important;
 }
 
-.active {
+.avatar {
+  border-radius: 50%;
+  background: #757575;
+  border: 1px solid;
+  border-color: #D9D9D9;
+}
+
+.btn-active {
   box-shadow: none;
-  border-bottom: 8px solid rgb(142, 174, 233) !important ;
+  border-bottom: 8px solid rgb(142, 174, 233) !important;
   border-radius: 0 !important;
 }
 
@@ -50,4 +57,85 @@ code {
   background-color: #e1e1e1 !important;
   border-radius: 5px !important;
   box-shadow: 0px 2px #8e8e8e;
+}
+
+.btn-outline-0 {
+  box-shadow: none !important;
+  outline: 0px !important;
+}
+
+.content-border-s {
+  border: 1px solid #B3B3B3 !important;
+}
+
+.content-border-l {
+  border: 2px solid #C4C4C4 !important;
+}
+
+.round-xl {
+  border-radius: 25px !important;
+}
+
+.round-l {
+  border-radius: 13px !important;
+}
+
+.round-s {
+  border-radius: 9px !important;
+}
+
+.fw-700 {
+  font-weight: 700;
+}
+
+.fw-600 {
+  font-weight: 600;
+}
+
+.fw-500 {
+  font-weight: 500;
+}
+
+.fw-400 {
+  font-weight: 400;
+}
+
+.fw-300 {
+  font-weight: 300;
+}
+
+.fs-24 {
+  font-size: 24px;
+}
+
+.fs-20 {
+  font-size: 20px;
+}
+
+.fs-18 {
+  font-size: 18px;
+}
+
+.fs-16 {
+  font-size: 16px;
+}
+
+.fs-15 {
+  font-size: 15px;
+}
+
+.fs-14 {
+  font-size: 14px;
+}
+
+.fs-12 {
+  font-size: 12px;
+}
+
+.fs-10 {
+  font-size: 10px;
+}
+
+.hover-pointer:hover {
+  cursor: pointer;
 }

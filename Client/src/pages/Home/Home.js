@@ -1,3 +1,4 @@
+
 import './home.css';
 import React, { useEffect, useRef, useState } from 'react';
 import { useSelector } from 'react-redux';
@@ -12,6 +13,9 @@ import {
 } from 'react-bootstrap';
 import Navigation from '../../components/Navigation/Navigation';
 import { HiOutlinePencil } from 'react-icons/hi';
+import { HiOutlinePencil, HiOutlineChevronDoubleUp } from 'react-icons/hi';
+import { TfiEmail } from 'react-icons/tfi';
+
 import {
   BsCameraVideo,
   BsCloudUpload,
@@ -26,6 +30,7 @@ import placeHolder from '../../assets/holderimg.png';
 import UserContent from './UserContent';
 import VendorConnections from './VendorConnections';
 import CreateLayerModal from './CreateLayerModal';
+import PageNav from '../../components/pageNav/PageNav';
 
 function Home({ vendor = false }) {
   const user = useSelector((state) => state.user);
@@ -54,6 +59,43 @@ function Home({ vendor = false }) {
 
   const layerExamples = ['these', 'are', 'test', 'layers', 'replace later'];
   const postExanples = ['', '', ''];
+  const avatar = ''
+  
+  const [quickMessageClicked, setQuickMessageClicked] = useState(true);
+
+  const users = [
+    {
+      name: 'User Name',
+      message: 'Last Message',
+      date: 'MM/DD/YY',
+      profilePic: 'photo.png',
+    },
+    {
+      name: 'Test User 1',
+      message: 'Last Message',
+      date: 'MM/DD/YY',
+      profilePic: 'photo.png',
+    },
+    {
+      name: 'Test User 2',
+      message: 'Last Message',
+      date: 'MM/DD/YY',
+      profilePic: 'photo.png',
+    },
+    {
+      name: 'User Name',
+      message: 'Last Message',
+      date: 'MM/DD/YY',
+      profilePic: 'photo.png',
+    },
+    {
+      name: 'User Name',
+      message: 'Last Message',
+      date: 'MM/DD/YY',
+      profilePic: 'photo.png',
+    },
+  ];
+
 
   const emotor = useRef();
 
@@ -75,8 +117,6 @@ function Home({ vendor = false }) {
 
   return (
     <div>
-      <Navigation />
-
       <Container className='my-4 '>
         <CreateLayerModal show={modalShow} onHide={() => setModalShow(false)} />
         <Row>
@@ -93,7 +133,7 @@ function Home({ vendor = false }) {
                     ></img>
                   </Col>
                   <Col lg={9}>
-                    <p className='nopadding s-15 f-500'>Username</p>
+                    <p className=' s-15 fw-500'>Username</p>
                   </Col>
                 </Row>
 
@@ -141,9 +181,8 @@ function Home({ vendor = false }) {
                           </button>
                         </span>
                       </Row>
-
-                      <button className='btn light float-end mt-4 round-l px-3 py-1 f-400'>
-                        <p className='s15 nopadding'>Post</p>
+                      <button className='btn light float-end mt-4 round-l px-3 py-1 fw-400'>
+                        <p className='fs-15 nopadding'>Post</p>
                       </button>
                     </Form.Group>
                   </Form>
@@ -176,27 +215,22 @@ function Home({ vendor = false }) {
                     </OverlayTrigger>
                   </div>
                   <hr></hr>
-                  {layerExamples.map((layer, index) => {
-                    /* switch to api data here */
-                    return (
-                      <Row key={index}>
-                        <Col>
-                          <button
-                            className={
-                              filters.includes(layer) == true
-                                ? 'btn post m-2 text-start w-100 shadow'
-                                : 'btn bg-light m-2 text-start w-100'
-                            }
-                            onClick={() => {
-                              editFilter(layer);
-                            }}
-                          >
-                            <p className='nopadding s16 f-400'>{layer}</p>
-                          </button>
-                        </Col>
-                      </Row>
-                    );
-                  })}
+                  {
+                    layerExamples.map((layer) => { /* switch to api data here */
+                      return <Row><Col>
+                        <button
+                          className={filters.includes(layer) == true ? 
+                            "btn btn-outline-0 post m-2 text-start w-100 shadow" : 
+                            "btn btn-outline-0 bg-light m-2 text-start w-100"}
+                          onClick={() => { editFilter(layer) }}>
+                          <p className='nopadding fs-16 fw-400'>
+                            {layer}
+                          </p>
+
+                        </button>
+                      </Col></Row>
+                    })
+                  }
                 </div>
               </Card.Body>
             </Card>
@@ -221,13 +255,20 @@ function Home({ vendor = false }) {
                 </div>
               </Card.Body>
             </Card>
+          </Col>
+
+          <Col lg='9'>
+            <PageNav
+              options={['For you', 'Following']}
+              tabFn={setTab}
+              tab={tab}
+            />
             <Row>
               <Col>
-                {filters.map((filter, index) => {
+                {filters.map((filter) => {
                   return (
                     <button
-                      key={index}
-                      className='btn light mx-2 my-2 s15 f-500'
+                      className='btn light mx-2 my-2 px-4 fs-15 fw-500'
                       onClick={() => {
                         editFilter(filter);
                       }}
@@ -239,19 +280,63 @@ function Home({ vendor = false }) {
               </Col>
             </Row>
             {/* <VendorConnections /> test view */}
-            {postExanples.map((post, index) => {
-              /* switch to api data here */
-              return (
-                <UserContent
-                  key={index}
-                  img={placeHolder}
-                  avatar={avatar}
-                  user={'name'}
-                  desc={'desc'}
-                  body={'test'}
-                />
-              );
-            })}
+            {
+              postExanples.map((post) => { /* switch to api data here */
+                return (
+                  <UserContent
+                    img={placeHolder}
+                    avatar={avatar}
+                    user={'User Name'}
+                    desc={'User Description'}
+                    body={`Lorem ipsum dolor sit amet consectetur. Eget libero a convallis ut. Nunc fermentum et nunc commodo pulvinar lectus imperdiet vel tellus. Dolor accumsan elit consectetur fringilla dignissim. Quis elit egestas vulputate nec etiam mauris vel vel. Quisque amet sociis odio est neque.
+                    #posttag #posttag`} />
+                )
+              })
+            }
+            <div className='card quick-messages'>
+              <div class='card-header hover-pointer ps-2'>
+                <div className='d-flex'>
+                  <div className='notification-dot' />
+                  <p className='m-0 fs-18'>Messages</p>
+                  <span className='ms-auto'>
+                    <TfiEmail className='me-3' size={25} />
+                    <HiOutlineChevronDoubleUp
+                      size={25}
+                      style={
+                        !quickMessageClicked
+                          ? { transform: 'rotate(180deg)' }
+                          : null
+                      }
+                      onClick={() =>
+                        setQuickMessageClicked(!quickMessageClicked)
+                      }
+                    />
+                  </span>
+                </div>
+              </div>
+              <div class='' hidden={quickMessageClicked}>
+                {users.map((user, index) => {
+                  return (
+                    <div className={'row my-3 px-3 hover-pointer'}>
+                      <div className='d-flex'>
+                        <div className='notification-dot' />
+                        <img
+                          src={require('../../assets/' + user.profilePic)}
+                          height={60}
+                        />
+                        <div className='d-flex flex-column ms-2'>
+                          <span className='my-auto'>
+                            <p className='m-0'>{user.name}</p>
+                            <p className='m-0'>{user.message}</p>
+                          </span>
+                        </div>
+                        <p className='ms-auto mb-0'>{user.date}</p>
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
           </Col>
         </Row>
       </Container>
