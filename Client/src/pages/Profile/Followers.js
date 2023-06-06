@@ -5,6 +5,7 @@ import { Modal, Row, Col, Container } from "react-bootstrap";
 import { Link } from "react-router-dom"
 
 import './profile.css'
+import PageNav from "../../components/pageNav/PageNav";
 
 function Followers({ text, startTab, numOfFollowers = 0 }) {
     const user = useSelector((state) => state.user);
@@ -45,12 +46,7 @@ function Followers({ text, startTab, numOfFollowers = 0 }) {
             >
                 <Modal.Header className="py-0 underline" closeButton>
                     <Row className="w-100">
-                        <div className="d-flex justify-content-evenly">
-                            <button className={tab == 0 ? "btn-nav active p-3" : "btn-nav p-3"} onClick={() => tabOnChange(0)}>
-                                <p className='nopadding s-16 fw-500'>Followers</p></button>
-                            <button className={tab == 1 ? "btn-nav active p-3" : "btn-nav p-3"} onClick={() => tabOnChange(1)}>
-                                <p className='nopadding s-16 fw-500'>Following</p></button>
-                        </div>
+                        <PageNav options={['Followers', 'Following']} tabFn={setTab} tab={tab} className="g-0"/>
                     </Row>
 
                 </Modal.Header>
@@ -58,15 +54,15 @@ function Followers({ text, startTab, numOfFollowers = 0 }) {
 
                     {['', '', ''].map(user => {
                         return <Row className="my-4 px-2">
-                            <Col lg={2}><img className="float-end avatar" src={''} height={61} width={61}/></Col>
-                            <Col lg={7}>
+                            <Col lg={2} sm={2} xs={3}><img className="float-end avatar" src={''} height={61} width={61}/></Col>
+                            <Col lg={7} sm={7} xs={9}>
                                 <div>Username</div>
                                 <div className="fs-12">Name</div>
                                 <div className="fs-11">Lorem ipsum dolor sit amet consectetur. 
                                     Dapibus mauris scelerisque egestas scelerisque lectus pellentesque ante. 
                                     Porttitor congue sed vivamus vel vulputate aliquet.</div>
                             </Col>
-                            <Col lg={2}><button className="btn btn-follower px-3 py-1">Following</button></Col>
+                            <Col lg={2} sm={2} className="d-flex py-2"><button className="btn btn-follower px-3 m-2 m-auto">Following</button></Col>
                         </Row>
                     })}
 
