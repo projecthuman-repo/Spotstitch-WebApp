@@ -30,7 +30,7 @@ const Profile = () => {
 
                     </Col>
                     <Col>
-                        <Row className="h-50 d-none d-sm-none d-md-none d-lg-block d-sm-block d-xm-block"></Row>
+                        <Row className="h-50 d-none d-lg-block"></Row>
                         <Row className="mt-2">
                             <Col lg={10} xs={10}>
                                 <div>
