@@ -1,0 +1,39 @@
+# Models
+- User
+    - id
+    - first name
+    - last name
+    - username
+    - password
+    - email
+    - bio
+    - avatarImg
+    - bannerImg
+    - address
+    - settings
+        - options
+    - layers
+        - user layers
+    - inventory
+        - items
+    - userType (regular or vendor)
+    - wallet
+        - card
+- Post
+    - t
+    - 
+- Message
+- Event
+
+- Orders
+    - id
+    - seller 
+    - product
+- Product 
+    - seller name
+    - product name
+    - description
+    - rating
+    - reviews
+    - features
+    - categories
