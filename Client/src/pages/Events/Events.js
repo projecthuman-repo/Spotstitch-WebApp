@@ -1,10 +1,12 @@
-import React from 'react';
+import React, { useState } from 'react';
 import ListingCard from '../../components/listingCard/ListingCard';
 import EventHeader from '../../components/eventHeader/EventHeader';
 import './event.css';
 import { useNavigate } from 'react-router-dom';
+import ItemCard from '../../components/listingCard/ItemCard';
 
 const Events = () => {
+  const [carouselTab, setCarouselTab] = useState(0);
   const navigate = useNavigate();
   const navigateToListing = (eventClicked) => {
     navigate('/events-event', { state: { event: eventClicked } });
@@ -42,6 +44,10 @@ const Events = () => {
     eventTags: ['General Tag', 'General Tag', 'General Tag'],
   };
 
+  const carouselItems = ['', '', '', '', '']
+  const priceFilters = ['All', '$0 - $20', '$20 - $50', '$50 - $100', '$100 and Above']
+  const Categories = ['Category Name', 'Category Name', 'Category Name', 'Category Name', 'Category Name', 'Category Name']
+  const eventListing = [event, event, event, event, event, event, event, event];
   return (
     <div className='container-fluid g-0'>
       <div
@@ -50,67 +56,29 @@ const Events = () => {
         data-bs-ride='carousel'
       >
         <div className='carousel-indicators'>
-          <button
-            type='button'
-            data-bs-target='#carouselIndicators'
-            data-bs-slide-to='0'
-            className='active'
-            aria-current='true'
-            aria-label='Slide 1'
-          ></button>
-          <button
-            type='button'
-            data-bs-target='#carouselIndicators'
-            data-bs-slide-to='1'
-            aria-label='Slide 2'
-          ></button>
-          <button
-            type='button'
-            data-bs-target='#carouselIndicators'
-            data-bs-slide-to='2'
-            aria-label='Slide 3'
-          ></button>
-          <button
-            type='button'
-            data-bs-target='#carouselIndicators'
-            data-bs-slide-to='3'
-            aria-label='Slide 4'
-          ></button>
-          <button
-            type='button'
-            data-bs-target='#carouselIndicators'
-            data-bs-slide-to='4'
-            aria-label='Slide 5'
-          ></button>
-          <button
-            type='button'
-            data-bs-target='#carouselIndicators'
-            data-bs-slide-to='5'
-            aria-label='Slide 6'
-          ></button>
+          {
+            carouselItems.map((slide, index) => {
+              return <button
+                type='button'
+                data-bs-target='#carouselIndicators'
+                className={index == carouselTab ? 'active' : ''}
+                data-bs-slide-to={`${index}`}
+                aria-current={index == carouselTab ? 'true' : ''}
+                aria-label={`Slide ${index + 1}`}
+              ></button>
+            })
+          }
         </div>
         <div className='carousel-inner'>
-          <div className='carousel-item active'>
-            <EventHeader event={event} page={'Events'} />
-          </div>
-          <div className='carousel-item'>
-            <EventHeader event={event1} page={'Events'} />
-          </div>
-          <div className='carousel-item'>
-            <EventHeader event={event} page={'Events'} />
-          </div>
-          <div className='carousel-item'>
-            <EventHeader event={event} page={'Events'} />
-          </div>
-          <div className='carousel-item'>
-            <EventHeader event={event} page={'Events'} />
-          </div>
-          <div className='carousel-item'>
-            <EventHeader event={event} page={'Events'} />
-          </div>
+          {
+            carouselItems.map((item, index) => {
+              return <div className={index == carouselTab ? 'carousel-item active' : 'carousel-item'}>
+                <EventHeader event={event} page={'Events'} />
+              </div>
+            })
+          }
         </div>
       </div>
-
       <div className='row g-0'>
         <div className='col-4 col-sm-3 col-md-2'>
           <div
@@ -126,135 +94,51 @@ const Events = () => {
 
             <div className='text-nowrap'>
               <p>Price Range</p>
-              <div className='form-check'>
-                <input type='radio' className='form-check-input' name='price' />
-                <label className='form-check-label'>All</label>
-              </div>
-              <div className='form-check'>
-                <input type='radio' className='form-check-input' name='price' />
-                <label className='form-check-label'>$0 - $20</label>
-              </div>
-              <div className='form-check'>
-                <input type='radio' className='form-check-input' name='price' />
-                <label className='form-check-label'>$20 - $50</label>
-              </div>
-              <div className='form-check'>
-                <input type='radio' className='form-check-input' name='price' />
-                <label className='form-check-label'>$50 - $100</label>
-              </div>
-            </div>
-            <div className='form-check'>
-              <input type='radio' className='form-check-input' name='price' />
-              <label className='form-check-label'>$100 and Above</label>
+              {
+                priceFilters.map((price, index) => {
+                  return <div className='form-check'>
+                    <input type='radio' className='form-check-input' name='price' id={`priceFilter_${index}`} />
+                    <label className='form-check-label'>{price}</label>
+                  </div>
+                })
+              }
             </div>
             <div className='d-block d-lg-flex mt-2 mx-2 mx-sm-0 text-center'>
-              <input
-                type='text'
-                className='form-control form-control-sm mx-1'
-                placeholder='$'
-              />
+              <input type='text' className='form-control form-control-sm mx-1' placeholder='$' />
               <span className='my-auto'>-</span>{' '}
-              <input
-                type='text'
-                className='form-control form-control-sm mx-1'
-                placeholder='$'
-              />
-              <button
-                className='btn btn-sm mt-2 my-lg-auto'
-                style={{
-                  backgroundColor: '#D9D9D9',
-                }}
-              >
+              <input type='text' className='form-control form-control-sm mx-1' placeholder='$' />
+              <button className='btn btn-sm mt-2 my-lg-auto' style={{ backgroundColor: '#D9D9D9', }} >
                 Go
               </button>
             </div>
             <hr style={{ color: '#757575' }} />
 
             <p>Categories</p>
-            <div className='form-check'>
-              <input
-                type='radio'
-                className='form-check-input'
-                name='category'
-              />
-              <label className='form-check-label'>Category Name</label>
-            </div>
-            <div className='form-check'>
-              <input
-                type='radio'
-                className='form-check-input'
-                name='category'
-              />
-              <label className='form-check-label'>Category Name</label>
-            </div>
-            <div className='form-check'>
-              <input
-                type='radio'
-                className='form-check-input'
-                name='category'
-              />
-              <label className='form-check-label'>Category Name</label>
-            </div>
-            <div className='form-check'>
-              <input
-                type='radio'
-                className='form-check-input'
-                name='category'
-              />
-              <label className='form-check-label'>Category Name</label>
-            </div>
-            <div className='form-check'>
-              <input
-                type='radio'
-                className='form-check-input'
-                name='category'
-              />
-              <label className='form-check-label'>Category Name</label>
-            </div>
-            <div className='form-check'>
-              <input
-                type='radio'
-                className='form-check-input'
-                name='category'
-              />
-              <label className='form-check-label'>Category Name</label>
-            </div>
-            <div className='form-check'>
-              <input
-                type='radio'
-                className='form-check-input'
-                name='category'
-              />
-              <label className='form-check-label'>Category Name</label>
-            </div>
+            {
+              Categories.map((category, index) => {
+                return <div className='form-check'>
+                  <input
+                    type='checkbox'
+                    className='form-check-input round-label'
+                    name={`${category}`}
+                    id={`categoryFilter_${index}`}
+                  />
+                  <label className='form-check-label'>Category Name</label>
+                </div>
+              })
+            }
+
           </div>
         </div>
         <div className='col-8 col-sm-9 col-md-10'>
           <div className='row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4  row-cols-xxl-5 g-0'>
-            <div className='col'>
-              <ListingCard event={event} thisClicked={navigateToListing} />
-            </div>
-            <div className='col'>
-              <ListingCard event={event1} thisClicked={navigateToListing} />
-            </div>
-            <div className='col'>
-              <ListingCard event={event} thisClicked={navigateToListing} />
-            </div>
-            <div className='col'>
-              <ListingCard event={event} thisClicked={navigateToListing} />
-            </div>
-            <div className='col'>
-              <ListingCard event={event} thisClicked={navigateToListing} />
-            </div>
-            <div className='col'>
-              <ListingCard event={event} thisClicked={navigateToListing} />
-            </div>
-            <div className='col'>
-              <ListingCard event={event} thisClicked={navigateToListing} />
-            </div>
-            <div className='col'>
-              <ListingCard event={event} thisClicked={navigateToListing} />
-            </div>
+            {
+              eventListing.map((e, index) => {
+                return <div className='col'>
+                  <ListingCard event={e} thisClicked={navigateToListing}/>
+                </div>
+              })
+            }
           </div>
         </div>
       </div>

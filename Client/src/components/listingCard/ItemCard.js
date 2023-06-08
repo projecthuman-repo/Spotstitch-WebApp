@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import './listingCard.css';
 import { Col } from 'react-bootstrap';
 
-const ItemCard = ({ item = {} }) => {
+const ItemCard = ({ item = {img, title, description, rating, tags} }) => {
     const [tags, setTags] = useState([]);
 
     useEffect(() => {
@@ -46,8 +46,8 @@ const ItemCard = ({ item = {} }) => {
 
 const EventTag = ({ tag }) => {
     return (
-        <Col className="light rounded-pill me-2 py-1 fs-10" lg={5}>
-            <span>
+        <Col className="light rounded-pill me-2 py-1 my-1 fs-10" lg={5} xs={10}>
+            <span className=''>
                 <div className='mx-1 d-inline'>{tag}</div>
                 <div className='float-end mx-1'>
                     <AiOutlineClose style={{ backgroundColor: 'white', borderRadius: '25px' }} />

@@ -9,3 +9,9 @@
 .carousel-indicators > .active {
   background-color: black !important;
 }
+
+.round-label {
+  background-color: #D9D9D9 !important;
+  border-radius: 50% !important;
+  cursor: pointer;
+}

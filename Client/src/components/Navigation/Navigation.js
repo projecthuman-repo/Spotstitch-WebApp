@@ -35,7 +35,7 @@ export default function Topbar({ menuOpen, setMenuOpen }) {
   return (
 
 
-    <Navbar className="shadow p-3 overflow-auto" expand="lg">
+    <Navbar className="p-3 overflow-auto nav-shadow" expand="lg">
       <Container className="d-flex justify-content-center" style={{ maxWidth: '1440px' }} fluid >
         <img
           src={logo}
