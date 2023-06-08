@@ -1,12 +1,16 @@
 # Models
-- User
+- UserInfo
     - id
     - first name
     - last name
     - username
     - password
     - email
-    - bio
+    
+- UserData
+    - id
+    - biography
+    - status
     - avatarImg
     - bannerImg
     - address
@@ -19,16 +23,40 @@
     - userType (regular or vendor)
     - wallet
         - card
+
 - Post
-    - t
-    - 
+    - id
+    - user
+    - userDescription
+    - image
+    - description
+    - tags
+    - comments
+    - likes
+
 - Message
+    - id
+    - date
+    - sender
+    - reciever
+    - content
+
 - Event
+    - host
+    - email
+    - eventName
+    - price
+    - description
+    - date
+    - time
+    - address
+    - tags
 
 - Orders
     - id
     - seller 
     - product
+    
 - Product 
     - seller name
     - product name
@@ -36,4 +64,10 @@
     - rating
     - reviews
     - features
-    - categories
+    - tags
+
+- address
+    - addressLine
+    - city
+    - province
+    - postalCode
