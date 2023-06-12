@@ -13,15 +13,15 @@
     - status
     - avatarImg
     - bannerImg
-    - address
+    - addresses[]
     - settings
         - options
-    - layers
+    - layers[]
         - user layers
-    - inventory
+    - inventory[]
         - items
     - userType (regular or vendor)
-    - wallet
+    - wallet[]
         - card
 
 - Post
@@ -30,7 +30,7 @@
     - userDescription
     - image
     - description
-    - tags
+    - tags[]
     - comments
     - likes
 
@@ -44,13 +44,16 @@
 - Event
     - host
     - email
-    - eventName
+    - title
     - price
     - description
     - date
-    - time
+    - eventType
+    - startTime
+    - endTime
+    - eventTime
     - address
-    - tags
+    - tags[]
 
 - Orders
     - id
@@ -64,10 +67,21 @@
     - rating
     - reviews
     - features
-    - tags
+    - tags[]
 
 - address
+    - name
     - addressLine
     - city
     - province
     - postalCode
+
+# Database
+- getEvents
+- getProducts
+
+# API Routes
+- GET
+- POST
+- PUT
+- DELETE
