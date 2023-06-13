@@ -12,7 +12,7 @@ Minimum requirement for app to function, some records may be missing.
 | Address | id, name, addressLines[], city, province, postalCode |
 | Chat | id, users[], history[], createdAt, createdBy |
 | Message | id, date, sender, recieverID, content |
-| Wallet | cardNum, cardOwner |
+| Wallet | userID, cardNum, cardOwner |
 | Layer | id, name, profileImage, banner, visibility, category, description, rules[] |
 | Product (Potential duplicate of inventoryItem) | sellerID, seller, productName, description rating, reviews, features, type, tags |
 | Inventory | id, userID, items[] |
@@ -44,6 +44,8 @@ List of endpoints needed for app to function
     getPostbyUser(userID: String)
     getPostbyID(postID: String)
     getPostbyLayer(layerID: String)
+    getPostsForUser(userInterests: String[])
+    getPostsFollowing(followedID: String[])
     createSpotstitchPost(userInput: PostInput)
     updateSpotstitchPost(userInput: PostInput)
     deleteSpotstitchPost(postID: String)
@@ -67,6 +69,7 @@ List of endpoints needed for app to function
     updateMessage(messageID: String)
     deleteMessage(messageID: String)
 - wallet
+    getSpotstitchWallet(userID: String)
     createSpotstitchWallet(userInput: SpotstitchWalletInput)
     updateSpotstitchWallet(userInput: SpotstitchWalletInput)
     deleteSpotstitchWallet(walletID: String)
