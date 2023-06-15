@@ -12,9 +12,9 @@ Minimum requirement for app to function, some records may be missing.
 | Address | id, name, addressLines[], city, province, postalCode |
 | Chat | id, users[], history[], createdAt, createdBy |
 | Message | id, date, sender, recieverID, content |
-| Wallet | userID, cardNum, cardOwner |
-| Layer | id, name, profileImage, banner, visibility, category, description, rules[] |
-| Product (Potential duplicate of inventoryItem) | sellerID, seller, productName, description rating, reviews, features, type, tags |
+| Wallet | userID, cards[{cardNum, cardOwner}] |
+| Layer | id, name, profileImage, banner, visibility, category, description, rules |
+| Product (Potential duplicate of inventoryItem) | sellerID, seller, productName, description rating, reviews, features, type, tags[] |
 | Inventory | id, userID, items[] |
 | InventoryItem | id, name, description, rating, tags[] |
 
