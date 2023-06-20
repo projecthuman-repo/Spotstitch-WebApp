@@ -2,6 +2,7 @@
 ## Models
 WIP schema models
 Minimum requirement for app to function, some records may be missing.
+Models will require a unique id to identify them to make it easier to reference other models.
 
 | Model | Records |
 |-|-|
@@ -91,8 +92,3 @@ List of endpoints needed for app to function
      
 ```
 
-# API Routes
-- GET
-- POST
-- PUT
-- DELETE
