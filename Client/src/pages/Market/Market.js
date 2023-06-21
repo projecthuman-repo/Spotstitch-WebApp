@@ -1,90 +1,87 @@
-import React from "react";
+import React, { useState } from "react";
 import './Market.css';
 import { Link, useNavigate } from "react-router-dom";
-
-
-import Table from "../../components/BasicTable";
+import { Col, Container, Row } from "react-bootstrap";
+import ItemCard from "../../components/listingCard/ItemCard";
 
 
 
 const Market = () => {
+    const [search, setSearch] = useState('')
+    const navigate = useNavigate();
+    const priceFilters = ['All', '$0 - $20', '$20 - $50', '$50 - $100', '$100 and Above']
+    const Categories = ['Category Name', 'Category Name', 'Category Name', 'Category Name', 'Category Name', 'Category Name']
+    const Items = ['1', '2', '3', '4', '5', '6', '7']
 
+    function toProduct(id) {
+        navigate(`/market/product?id=${id}`)
+    }
 
     {
 
         return (
-            <div className="container">
-
-                <div className="title">
-                    Market
-                </div>
-                <div className="body">
-                    <div className="leftbox">
-                    <Link to="/" className="lboxpayment">Home</Link>
-                    <Link to="/shopping-cart" className="lboxpayment">Shopping Cart</Link>
-                    <Link to="/product" className="lboxpayment">Product Detail</Link>
-
-                    <div className="searchbar">Search Filter</div>
-                    <input type="text" id="search"/>
-
-
-                    <div className="pricefilter">
-                        <div>Price Range Slider</div>
-
-                        <div className="price-content">
-                            <div>
-                                <label>Min</label>
-                                <p id="min-value">$50</p>
-                            </div>
-
-                            <div>
-                                <label>Max</label>
-                                <p id="max-value">$500</p>
-                            </div>
+            <Container className="my-4 ">
+                <Row>
+                    <Col className="content-border-s round-s py-3" lg={3}>
+                        <div>
+                            <p>Price Range</p>
+                            {
+                                priceFilters.map((price, index) => {
+                                    return <div className='form-check'>
+                                        <input type='radio' className='form-check-input' name='price' id={`priceFilter_${index}`} />
+                                        <label className='form-check-label'>{price}</label>
+                                    </div>
+                                })
+                            }
                         </div>
 
-                    </div>
-
-                        <div className="range-slider">
-                            <input type="range" className="min-price" value="100" min="10" max="500" step="10"/>
-                            <input type="range" className="max-price" value="250" min="10" max="500" step="10"/>
+                        <div className='d-block d-lg-flex mt-2 mx-2 mx-sm-0 text-center'>
+                            <input type='text' className='form-control form-control-sm mx-1' placeholder='$' />
+                            <span className='my-auto'>-</span>{' '}
+                            <input type='text' className='form-control form-control-sm mx-1' placeholder='$' />
+                            <button className='btn btn-sm mt-2 my-lg-auto' style={{ backgroundColor: '#D9D9D9', }} >
+                                Go
+                            </button>
                         </div>
-                        <div> Type Selection</div>
-                        <form action="#">
-                            <select name="languages" id="lang">
-                                <option value="food">Food</option>
-                                <option value="drink">Drink</option>
-
-                            </select>
-                            <input type="submit" value="Submit"/>
-                        </form>
-                    </div>
-
-
-
-
-
-                    <div className="rightbox">
-
-                        <div className="MarketTable">
+                        <hr style={{ color: '#757575' }} className="mb-1" />
+                        <div>
+                            <p className="py-1 m-0">Categories</p>
+                            {
+                                Categories.map((category, index) => {
+                                    return <div className='form-check'>
+                                        <input
+                                            type='checkbox'
+                                            className='form-check-input round-label'
+                                            name={`${category}`}
+                                            id={`categoryFilter_${index}`}
+                                        />
+                                        <label className='form-check-label'>Category Name</label>
+                                    </div>
+                                })
+                            }
 
                         </div>
 
+                    </Col>
+                    <Col>
+                        <Row>
+                            <p>{search == '' ? 'Top Listings' : search}</p>
+                            {
+                                Items.map(item => {
+                                    return <Col lg={3}>
+                                        <ItemCard item={{ img: '' }} link={()=>toProduct(item)}/>
+                                    </Col>
+                                })
+                            }
+                        </Row>
 
-                        <a className="checkoutlink">
-                            <button className="checkoutbutton">Previous Page</button>
-                            <button className="checkoutbutton">Next Page</button>
-                        </a>
 
 
-                    </div>
 
-                </div>
-                <div className="footer"></div>
+                    </Col>
+                </Row>
 
-
-            </div>
-
+            </Container>
 
         )
     }

@@ -39,9 +39,12 @@ import Events from './pages/Events/Events';
 import Event from './pages/Event/Event';
 import BookEvent from './pages/BookEvent/BookEvent';
 import CreateEvent from './pages/CreateEvent/CreateEvent';
+import Market from './pages/Market/Market'
 import Settings from './pages/Settings/Settings';
 import Inventory from './pages/Inventory/Inventory';
 import Messages from './pages/Messages/Messages';
+import ProductDetailPage from './pages/Market/Product';
+import ShoppingCart from './pages/Market/ShoppingCart';
 
 function App() {
   const [rooms, setRooms] = useState([]);
@@ -113,6 +116,10 @@ function App() {
           <Route path='/events-event' element={<Event />} />
           <Route path='/events-bookevent' element={<BookEvent />} />
           <Route path='/events-createevent' element={<CreateEvent />} />
+
+          <Route path='/market' element={<Market />} />
+          <Route path='/market/product' element={<ProductDetailPage />} />
+          <Route path='/cart' element={<ShoppingCart />} />
 
           <Route path='/messages' element={<Messages />} />
 

@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import './listingCard.css';
 import { Col } from 'react-bootstrap';
 
-const ItemCard = ({ item = {img, title, description, rating, tags} }) => {
+const ItemCard = ({ item = {img, title, description, rating, tags}, link }) => {
     const [tags, setTags] = useState([]);
 
     useEffect(() => {
@@ -21,6 +21,7 @@ const ItemCard = ({ item = {img, title, description, rating, tags} }) => {
         <div
             className='card my-3 listingCard'
             style={{ borderRadius: '20px' }}
+            onClick={link}
         >
             <img
                 src={item.img ? item.img : require('../../assets/holderimg.png')}
