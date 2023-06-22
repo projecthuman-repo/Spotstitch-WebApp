@@ -19,6 +19,10 @@ Models will require a unique id to identify them to make it easier to reference 
 | Inventory | id, userID, items[] |
 | InventoryItem | id, name, description, rating, tags[] |
 
+vendor 
+GameInventory
+ProductInventory
+
 # Database Server commands
 WIP API endpoints to mongoDB.
 List of endpoints needed for app to function
