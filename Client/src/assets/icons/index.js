@@ -12,6 +12,8 @@ import share from './share.svg'
 import mastercard from './Mastercard.svg'
 import visa from './Visa.svg'
 import cart from './Cart.svg'
+import plus from './plus.svg'
+import minus from './minus.svg'
 
 export {
     inventory,
@@ -27,5 +29,7 @@ export {
     share,
     mastercard,
     visa,
-    cart
+    cart,
+    plus,
+    minus
 }

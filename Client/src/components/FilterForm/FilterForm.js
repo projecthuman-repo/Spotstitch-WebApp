@@ -1,7 +1,7 @@
+import './FilterForm.css'
+
 function filterForm({ priceFilters = [], categories = [] }) {
-    return <div
-        className='border-filter p-2 mx-2 my-3'
-    >
+    return <div className='border-filter p-3 pb-4 mx-2 my-3'>
         <p>Events</p>
         <input type='text' className='form-control' />
 

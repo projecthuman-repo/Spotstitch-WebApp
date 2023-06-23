@@ -36,7 +36,7 @@ const Market = () => {
                     </Col>
                     <Col>
                         <Row>
-                            <p>{search == '' ? 'Top Listings' : search}</p>
+                            <p className="fs-18 fw-600">{search == '' ? 'Top Listings' : search}</p>
                             {
                                 Items.map(item => {
                                     return <Col lg={3}>
