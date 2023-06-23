@@ -8,8 +8,15 @@ import Recommendation from "./Recommendation";
 
 
 const Market = () => {
+    const navigate = useNavigate()
+
     const numItems = 0
     const price = 0
+
+
+    function proceedToCheckout() {
+        navigate('/cart/checkout')
+    }
 
     return (
         <Container className="my-4">
@@ -27,7 +34,7 @@ const Market = () => {
                 <Col lg={4}>
                     <div className="content-border-s round-s py-3 px-4">
                         <div className="fs-18 fw-600">Summary ({numItems} items): ${price}</div>
-                        <div><button className="btn-checkout my-3 py-2 w-100">Proceed to Checkout</button></div>
+                        <div><button className="btn-checkout my-3 py-2 w-100" onClick={proceedToCheckout}>Proceed to Checkout</button></div>
                         
                     </div>
 

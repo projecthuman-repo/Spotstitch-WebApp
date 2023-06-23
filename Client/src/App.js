@@ -45,6 +45,7 @@ import Inventory from './pages/Inventory/Inventory';
 import Messages from './pages/Messages/Messages';
 import ProductDetailPage from './pages/Market/Product';
 import ShoppingCart from './pages/Market/ShoppingCart';
+import Checkout from './pages/Market/Checkout';
 
 function App() {
   const [rooms, setRooms] = useState([]);
@@ -120,6 +121,7 @@ function App() {
           <Route path='/market' element={<Market />} />
           <Route path='/market/product' element={<ProductDetailPage />} />
           <Route path='/cart' element={<ShoppingCart />} />
+          <Route path='/cart/checkout' element={<Checkout />} />
 
           <Route path='/messages' element={<Messages />} />
 

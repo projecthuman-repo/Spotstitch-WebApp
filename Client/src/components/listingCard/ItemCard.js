@@ -4,8 +4,15 @@ import { useNavigate } from 'react-router-dom';
 import './listingCard.css';
 import { Col } from 'react-bootstrap';
 
-const ItemCard = ({ item = {img, title, description, rating, tags}, link }) => {
+const ItemCard = ({ item = {img, title: 'Listing Name', description: 'Description of the product', rating, tags}, link }) => {
     const [tags, setTags] = useState([]);
+
+    const itemEx = { 
+        title: 'Listing Name', 
+        description: 'Description of the product',
+        rating: 'Price: $$',
+        img: '', 
+        tags: ['tag','tag']}
 
     useEffect(() => {
 

@@ -4,20 +4,14 @@ import ItemCard from '../../components/listingCard/ItemCard';
 import PageNav from '../../components/pageNav/PageNav';
 
 import './ShoppingCart.css'
-/*
-import PaymentWindow from './PaymentWindow';
-import AddToCartButton from './AddToCartButton';
-import QuantitySelector from './QuantitySelector';
-import ProductDescription from './ProductDescription';
-import Pricing from './Pricing';
-import VendorRating from './VendorRating';
-*/
+import { useNavigate } from 'react-router-dom';
 
 function ProductDetailPage({ id }) {
     const [quantity, setQuantity] = useState(1);
     const [showPaymentWindow, setShowPaymentWindow] = useState(false);
     const [isAddedToCart, setIsAddedToCart] = useState(false);
     const [tab, setTab] = useState(0)
+    const navigate = useNavigate()
 
     function handleQuantityChange(newQuantity) {
         setQuantity(newQuantity);
@@ -25,6 +19,7 @@ function ProductDetailPage({ id }) {
 
     function handleBuyNow() {
         setShowPaymentWindow(true);
+        navigate('/cart')
     }
 
     function handleAddToCartClick() {
