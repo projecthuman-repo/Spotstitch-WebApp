@@ -6,7 +6,9 @@ Models will require a unique id to identify them to make it easier to reference 
 
 | Model | Records |
 |-|-|
-| User | id, firstName, lastName, username, password, email, biography, status, avatarImage, bannerImage, Addresses[], settings, Layers[], InventoryID, userType, Wallet[], Chats[], notifications[] |
+| User | id, firstName, lastName, username, password, email, biography, status, avatarImage, bannerImage, Addresses[], settings, Layers[], GameInventory, ProductInventory, userType, Wallet, Chats[], notifications[] |
+| Notifications | id, userId, description, state |
+| Vendor |  |
 | Post | id, user, userDescription, image, description, tags[], comments[], likes |
 | Event | host, email, title, price, description, date, eventType, startTime, endTime, eventTime, address, tags[] |
 | Orders | id, sellerID, productID, date, price |
@@ -15,13 +17,10 @@ Models will require a unique id to identify them to make it easier to reference 
 | Message | id, date, sender, recieverID, content |
 | Wallet | userID, cards[{cardNum, cardOwner}] |
 | Layer | id, name, profileImage, banner, visibility, category, description, rules |
-| Product (Potential duplicate of inventoryItem) | sellerID, seller, productName, description rating, reviews, features, type, tags[] |
-| Inventory | id, userID, items[] |
-| InventoryItem | id, name, description, rating, tags[] |
-
-vendor 
-GameInventory
-ProductInventory
+| ProductInventory | id, userID, Products[] |
+| Product | sellerID, seller, productName, description rating, reviews, features, type, tags[] |
+| GameInventory | id, userID, games[] |
+| Game | id, name, description, rating, tags[] |
 
 # Database Server commands
 WIP API endpoints to mongoDB.
