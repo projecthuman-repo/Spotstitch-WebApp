@@ -1,6 +1,6 @@
 import { Col, Container, Row } from "react-bootstrap"
 
-import './ShoppingCart.css'
+import './Market.css'
 
 function Checkout(){
     return <Container className="my-0">

@@ -4,8 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import ItemCard from '../../components/listingCard/ItemCard';
 import PageNav from '../../components/pageNav/PageNav';
 
-import './ShoppingCart.css'
-import './Product.css'
+import './Market.css'
 
 import StarRating from '../../components/StarRating';
 import { plus, minus } from '../../assets/icons';
@@ -26,7 +25,19 @@ function ProductDetailPage({ id }) {
         price: 15.99,
         rating: 4.0,
         reviews: [],
-        features: [],
+        features: [{
+            image: '',
+            name: 'feature name',
+            description: 'Lorem ipsum dolor sit amet consectetur. Accumsan a sit pretium id dictumst ut bibendum commodo.'
+        }, {
+            image: '',
+            name: 'feature name',
+            description: 'Lorem ipsum dolor sit amet consectetur. Accumsan a sit pretium id dictumst ut bibendum commodo.'
+        }, {
+            image: '',
+            name: 'feature name',
+            description: 'Lorem ipsum dolor sit amet consectetur. Accumsan a sit pretium id dictumst ut bibendum commodo.'
+        }],
         images: ['', '', '', '', '', '']
     }
 
@@ -44,6 +55,27 @@ function ProductDetailPage({ id }) {
         setIsAddedToCart(true);
     }
 
+    function Features() {
+        return <Row>
+            <div className='fw-600 fs-18 py-2'>Key Features</div>
+            {item.features.map(feature => {
+                return <>
+                    <Col lg={3}>
+                        <div className='img-feature' style={{ background: `url(${feature.image[0]}), #F4F2F2 ` }}></div>
+                        <div className='fw-600 fs-15'>{feature.name}</div>
+                        <div className='fw-400 fs-15'>{feature.description}</div>
+                    </Col>
+                    <Col lg={1}></Col>
+                </>
+            })}
+        </Row>
+
+    }
+
+    function Reviews() {
+        return <div></div>
+    }
+
     return (
         <Container className='my-4'>
             <Row>
@@ -52,8 +84,8 @@ function ProductDetailPage({ id }) {
                     <div className='content-border-s round-s p-3 px-4'>
                         <p>Category {'>'} Category {'>'} Category {'>'} Item</p>
                         <Row>
-                            <Col lg={4}>
-                                <img className='img-fluid img-product' src='' style={{ height: '320px', width: '320px' }} />
+                            <Col lg={5}>
+                                <div className='img-product' style={{ background: `url(${item.images[0]}), #F4F2F2 ` }}></div>
                                 <div className='row flex-row flex-nowrap overflow-auto p-2 px-2'>
                                     {item.images.map(img => {
                                         return <img className='img-preview my-1 me-1' src='' style={{ height: '59px', width: '59px' }} />
@@ -61,7 +93,7 @@ function ProductDetailPage({ id }) {
                                 </div>
 
                             </Col>
-                            <Col lg={8}>
+                            <Col lg={7}>
                                 <div className='fs-18 fw-600'>{item.name}</div>
                                 <div className='fs-16 fw-600'>{item.shortDesc}</div>
                                 <div>{item.seller}</div>
@@ -93,6 +125,8 @@ function ProductDetailPage({ id }) {
                             <PageNav options={['Descriptions', 'Reviews']}
                                 className='no-border justify-content-left'
                                 tabFn={setTab} tab={tab} />
+                            {tab == 0 && <Features />}
+                            {tab == 1 && <Reviews />}
                         </Row>
                     </div>
 
@@ -104,5 +138,7 @@ function ProductDetailPage({ id }) {
         </Container>
     );
 }
+
+
 
 export default ProductDetailPage;

@@ -1,5 +1,45 @@
 .round-label {
-    background-color: #D9D9D9 !important;
-    border-radius: 50% !important;
-    cursor: pointer;
-  }
+  background-color: #D9D9D9 !important;
+  border-radius: 50% !important;
+  cursor: pointer;
+}
+
+.img-preview {
+  height: 59px;
+  width: 59px;
+  border: 1px solid #666666;
+  border-radius: 9px;
+}
+
+.img-product {
+  background-color: #F4F2F2;
+  height: 320px;
+}
+
+.img-feature {
+  height: 233px;
+
+}
+
+.img-cart {
+  background-color: #F4F2F2;
+  height: 155px;
+  width: 240px;
+  border-radius: 13px;
+}
+
+.btn-checkout {
+  border: 0px;
+  border-radius: 13px;
+  background: #E6E6E6;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+}
+
+.bg-checkout {
+  background: #F4F2F2;
+}
+
+
+.preview-scroll {
+  overflow-x: auto;
+}

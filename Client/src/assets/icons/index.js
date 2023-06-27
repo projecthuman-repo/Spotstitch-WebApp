@@ -14,7 +14,7 @@ import visa from './Visa.svg'
 import cart from './Cart.svg'
 import plus from './plus.svg'
 import minus from './minus.svg'
-
+import garbageCan from './delete.svg'
 export {
     inventory,
     messages,
@@ -31,5 +31,6 @@ export {
     visa,
     cart,
     plus,
-    minus
+    minus,
+    garbageCan
 }
