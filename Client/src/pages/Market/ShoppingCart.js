@@ -8,7 +8,7 @@ import Recommendation from "./Recommendation";
 import { garbageCan, minus, plus } from "../../assets/icons";
 
 
-const Market = () => {
+const ShoppingCart = () => {
     const navigate = useNavigate()
     const [items, setItems] = useState([{
         name: 'item name',
@@ -100,4 +100,4 @@ const Market = () => {
 
 }
 
-export default Market
+export default ShoppingCart

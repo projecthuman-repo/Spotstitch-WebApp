@@ -15,6 +15,9 @@ import cart from './Cart.svg'
 import plus from './plus.svg'
 import minus from './minus.svg'
 import garbageCan from './delete.svg'
+import chevronRight from './chevronRight.svg'
+import add from './add.svg'
+
 export {
     inventory,
     messages,
@@ -32,5 +35,7 @@ export {
     cart,
     plus,
     minus,
-    garbageCan
+    garbageCan,
+    chevronRight,
+    add
 }

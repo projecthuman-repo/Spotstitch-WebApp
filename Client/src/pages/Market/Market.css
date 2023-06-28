@@ -43,3 +43,7 @@
 .preview-scroll {
   overflow-x: auto;
 }
+
+.no-border {
+  border: 0
+}
