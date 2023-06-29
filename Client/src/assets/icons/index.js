@@ -17,6 +17,7 @@ import minus from './minus.svg'
 import garbageCan from './delete.svg'
 import chevronRight from './chevronRight.svg'
 import add from './add.svg'
+import checked from './checked.svg'
 
 export {
     inventory,
@@ -37,5 +38,6 @@ export {
     minus,
     garbageCan,
     chevronRight,
-    add
+    add,
+    checked
 }

@@ -44,6 +44,20 @@
   overflow-x: auto;
 }
 
-.no-border {
-  border: 0
+.btn-address-save {
+  background-color: #E6E6E6;
+  border-radius: 13px;
+  border: 0px;
+}
+
+.flip {
+  transform: (-1, 1);
+}
+
+.form-address {
+  border-radius: 10px !important;
+}
+
+.btn-delivery {
+  cursor: pointer;
 }

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { chevronRight } from "../../assets/icons";
+import { checked, chevronRight } from "../../assets/icons";
 import { Modal, Row } from "react-bootstrap";
 import AddAddressModal from "./AddAddressModal";
 
@@ -40,28 +40,28 @@ function ChangeAddressModal() {
                 backdrop="static"
                 size="lg"
             >
-                <Modal.Header className="py-0 no-border" closeButton>
-                    <Row>
-                        <div className="justify-content-center">Change Address</div>
+                <Modal.Header className="py-0 border-0" closeButton>
+                    <Modal.Title className="ms-auto p-3">
+                        <div className="mx-auto fs-24" style={{ color: '#333333' }}>Change Address</div>
+                    </Modal.Title>
 
-                    </Row>
+
                 </Modal.Header>
-                <Modal.Body className="">
-                    <div className="d-flex ">
+                <Modal.Body className="px-5 py-3">
+                    <div className="d-flex p-3">
                         <div className="d-flex flex-column">
                             <div>{address.name}</div>
                             <div>{address.addressLine}</div>
                             <div>{address.city}, {address.province} {address.postalCode}, {address.country}</div>
                             <div>{address.extension} {address.number}</div>
                         </div>
-                        <div className="ms-auto my-auto"><ChangeAddressModal /></div>
+                        <div className="ms-auto my-auto"><img src={checked}/></div>
                     </div>
 
-                    <div className="underline my-4"></div>
+                    <div className="underline my-3"></div>
 
                     <div className="d-flex ">
                         <AddAddressModal />
-                        <div className="ms-auto my-auto"><img src={chevronRight} /></div>
                     </div>
                 </Modal.Body>
 

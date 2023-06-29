@@ -4,6 +4,8 @@ import { useState } from "react"
 import './Market.css'
 import { chevronRight, garbageCan, minus, plus } from "../../assets/icons"
 import ChangeAddressModal from "./ChangeAddressModal"
+import DeliveryModal from "./DeliveryModal"
+import ChangeCardModal from "./ChangeCardModal"
 
 
 function Checkout() {
@@ -69,7 +71,7 @@ function Checkout() {
                             <div>Standard (CA$0.00)</div>
                             <div>Delivers 5 April - 6 April</div>
                         </div>
-                        <div className="ms-auto my-auto"><img src={chevronRight} /></div>
+                        <div className="ms-auto my-auto"><DeliveryModal /></div>
                     </div>
 
 
@@ -83,7 +85,7 @@ function Checkout() {
                         <div>Exp 03/27</div>
                     </div>
 
-                    <div className="ms-auto my-auto"><img src={chevronRight} /></div>
+                    <div className="ms-auto my-auto"><ChangeCardModal /></div>
                 </div>
 
                 <div>Review Items</div>
