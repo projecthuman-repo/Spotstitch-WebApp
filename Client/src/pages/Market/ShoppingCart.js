@@ -28,7 +28,7 @@ const ShoppingCart = () => {
     const price = 0
 
     function proceedToCheckout() {
-        navigate('/cart/checkout')
+        navigate('/market/cart/checkout')
     }
 
     function changeQuantity() {
@@ -46,7 +46,7 @@ const ShoppingCart = () => {
         <Container className="my-4">
             <Row>
                 <Col lg={8}>
-                    <div className="content-border-s round-s">
+                    <div className="content-border-l round-s">
                         <div className="underline px-4 py-3">
                             <div className="fs-18 fw-600">Shopping Cart</div>
                         </div>
@@ -84,7 +84,7 @@ const ShoppingCart = () => {
                     </div>
                 </Col>
                 <Col lg={4}>
-                    <div className="content-border-s round-s py-3 px-4">
+                    <div className="content-border-l round-s py-3 px-4">
                         <div className="fs-18 fw-600">Summary ({numItems} items): ${price}</div>
                         <div><button className="btn-checkout my-3 py-2 w-100" onClick={proceedToCheckout}>Proceed to Checkout</button></div>
 

@@ -48,7 +48,7 @@ function ProductDetailPage({ id }) {
 
     function handleBuyNow() {
         setShowPaymentWindow(true);
-        navigate('/cart')
+        navigate('/market/cart')
     }
 
     function handleAddToCartClick() {

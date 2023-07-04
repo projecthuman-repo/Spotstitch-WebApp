@@ -10,7 +10,7 @@ function Recommendation() {
         img: '', 
         tags: ['tag','tag']}
 
-    return <div className="content-border-s round-s py-2 px-4">
+    return <div className="content-border-l round-s py-2 px-4">
         <div className="fs-18 fw-600">More to Love</div>
         <ItemCard item={itemEx} className='p-2'/>
         <ItemCard item={itemEx} className='p-2'/>

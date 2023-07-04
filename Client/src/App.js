@@ -46,6 +46,8 @@ import Messages from './pages/Messages/Messages';
 import ProductDetailPage from './pages/Market/Product';
 import ShoppingCart from './pages/Market/ShoppingCart';
 import Checkout from './pages/Market/Checkout';
+import CreateListing from './pages/Market/CreateListing';
+import EditListing from './pages/Market/EditListing';
 
 function App() {
   const [rooms, setRooms] = useState([]);
@@ -120,8 +122,10 @@ function App() {
 
           <Route path='/market' element={<Market />} />
           <Route path='/market/product' element={<ProductDetailPage />} />
-          <Route path='/cart' element={<ShoppingCart />} />
-          <Route path='/cart/checkout' element={<Checkout />} />
+          <Route path='/market/cart' element={<ShoppingCart />} />
+          <Route path='/market/cart/checkout' element={<Checkout />} />
+          <Route path='/market/listings/create' element={<CreateListing />} />
+          <Route path='/market/listings/edit' element={<EditListing />} />
 
           <Route path='/messages' element={<Messages />} />
 

@@ -15,6 +15,11 @@ function AddCardModal() {
         setShow(true);
     };
 
+    function handleSave(e) {
+        e.preventDefault()
+        handleClose()
+    }
+
     return (
         <>
             <button className="btn" onClick={handleShow}><img src={add} className="px-3" />Add new credit/debit card</button>
@@ -87,7 +92,7 @@ function AddCardModal() {
 
                         <div className="underline my-4"></div>
                         <div className="d-flex">
-                            <button className="btn-address-save p-2 px-5 mx-auto">Save and continue</button>
+                            <button className="btn-address-save p-2 px-5 mx-auto" onClick={handleSave}>Save and continue</button>
                         </div>
 
 

@@ -34,6 +34,30 @@ function Checkout() {
         price: 11.50
     }])
 
+    const [deliveryType, setDeliveryType] = useState({
+        name: 'Standard',
+        price: 0.00,
+        startDate: '5 April',
+        endDate: '6 April'
+    })
+
+    const taxRate = 0.13
+
+    const getTotal = () => {
+        let total = 0
+        for (const item of items) {
+            total += item.price
+        }
+        return Number(total).toFixed(2)
+    }
+
+    const getDeliveryPrice = () => {
+        return deliveryType.price == 0 ? 'Free' : `CA $${Number(deliveryType.price).toFixed(2)}`
+    }
+    const getTax = () => {
+        return Number(getTotal() * taxRate).toFixed(2)
+    }
+
     const card = {
 
     }
@@ -112,15 +136,36 @@ function Checkout() {
                 })}
 
             </Col>
-            <Col lg={5} className="bg-checkout justify-content-center p-5">
-                <div className="p">
-                    <div>Order Summary</div>
-                    <div>Subtotal</div>
-                    <div>Delivery</div>
-                    <div className="underline">Estimated Tax</div>
-                    <div>Total</div>
-                    <button className="btn-checkout my-3 py-2 w-100">Confirm your order</button>
-                </div>
+            <Col lg={5} className="bg-checkout justify-content-center g-0 py-5">
+                <Row className="g-0 px-5 pt-3 underline">
+                    <div className="px-5">
+                        <div className="fs-20 fw-600 pb-4">Order Summary</div>
+
+                        <div className="pt-4 pb-3 d-flex flex-row">
+                            <div>Subtotal</div>
+                            <div className="ms-auto">CA ${getTotal()}</div>
+                        </div>
+                        <div className="pb-3 d-flex flex-row">
+                            <div className="">Delivery</div>
+                            <div className="ms-auto">{getDeliveryPrice()}</div>
+                        </div>
+                        <div className="pb-3 d-flex flex-row">
+                            <div className="">Estimated Tax</div>
+                            <div className="ms-auto">CA ${getTax()}</div>
+                        </div>
+                    </div>
+                </Row>
+
+                <Row className="g-0 px-5">
+                    <div className="px-5">
+                        <div className="d-flex flex-column">
+                            <div className="fw-700 fs-18 py-3 mb-5">Total</div>
+                            <button className="btn-checkout my-3 py-3 px-5">Confirm your order</button>
+                        </div>
+                    </div>
+
+                </Row>
+
 
             </Col>
         </Row>

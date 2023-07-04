@@ -18,6 +18,8 @@ import garbageCan from './delete.svg'
 import chevronRight from './chevronRight.svg'
 import add from './add.svg'
 import checked from './checked.svg'
+import addPhoto from './addPhoto.svg'
+import playVideo from './playVideo.svg'
 
 export {
     inventory,
@@ -39,5 +41,7 @@ export {
     garbageCan,
     chevronRight,
     add,
-    checked
+    checked,
+    addPhoto,
+    playVideo
 }
