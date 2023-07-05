@@ -124,8 +124,9 @@ function App() {
           <Route path='/market/product' element={<ProductDetailPage />} />
           <Route path='/market/cart' element={<ShoppingCart />} />
           <Route path='/market/cart/checkout' element={<Checkout />} />
-          <Route path='/market/listings/create' element={<CreateListing />} />
-          <Route path='/market/listings/edit' element={<EditListing />} />
+          <Route path='/market/mylistings' />
+          <Route path='/market/mylistings/create' element={<CreateListing />} />
+          <Route path='/market/mylistings/edit' element={<EditListing />} />
 
           <Route path='/messages' element={<Messages />} />
 

@@ -1,10 +1,41 @@
 import { Col, Container, Form, Row } from "react-bootstrap"
 import { addPhoto, playVideo } from "../../assets/icons"
-
+import { useRef, useState } from "react";
 import './Market.css'
+
 
 function CreateListing() {
     const boxStyle = 'content-border-l round-s m-1 p-2 pb-4 my-3'
+    const [photos, setPhotos] = useState([])
+    const [thumbnail, setThumbnail] = useState()
+    const [video, setVideo] = useState()
+    const inputRef = useRef();
+    const thumbRef = useRef();
+    const videoRef = useRef();
+
+    const handleUpload = () => { inputRef.current?.click(); };
+    const handleThumb = () => { thumbRef.current?.click(); };
+    const handleVideo = () => { videoRef.current?.click(); };
+
+    const handleThumbnailUpload = () => {
+        thumbRef.current?.files &&
+            setThumbnail(URL.createObjectURL(thumbRef.current.files[0]));
+    }
+
+    const handlePhotoUpload = () => {
+        if (inputRef.current?.files) {
+            let temp = [...photos];
+            temp.push(URL.createObjectURL(inputRef.current.files[0]))
+            setPhotos(temp)
+        }
+    };
+
+    const handleVideoUpload = () => {
+        videoRef.current?.files &&
+            setVideo(URL.createObjectURL(videoRef.current.files[0]));
+        console.log(videoRef.current?.files[0])
+    }
+
     return <Container className="content-border-l round-s my-4 px-5 py-4">
         <Row className="g-0">
             <div className="fs-18 fw-600">Create new Listing</div>
@@ -17,28 +48,30 @@ function CreateListing() {
 
                 <div className="fs-14">Add as many as you can so buyers can see every detail.</div>
                 <Row className="my-2">
-                    <Col lg={4} className="">
-                        <div className="img-new d-flex round-s" style={{ backgroundImage: `url(${''}), #D9D9D9` }}>
-                            <div className="d-flex flex-column m-auto">
+                    {photos.map((photo, index) => {
+                        return <Col lg={4} className="py-2" key={`photo_added_${index}`}>
+                            <div className="img-new d-flex round-s"
+                                style={{
+                                    backgroundImage: `url(${photo})`,
+                                    backgroundSize: 'cover'
+                                }}>
+
+                            </div>
+                        </Col>
+                    })}
+                    <Col lg={4} className="py-2">
+                        <div className="img-new d-flex round-s" style={{ backgroundImage: `url(${''})` }}>
+                            <button className="btn d-flex flex-column m-auto" onClick={handleUpload}>
+                                <input
+                                    ref={inputRef}
+                                    onChange={handlePhotoUpload}
+                                    className="d-none"
+                                    type="file"
+                                    accept="image/*"
+                                />
                                 <img src={addPhoto} className="mx-auto" />
                                 <div>Add photo</div>
-                            </div>
-                        </div>
-                    </Col>
-                    <Col lg={4} className="">
-                        <div className="img-new d-flex round-s" style={{ backgroundImage: `url(${''}), #D9D9D9` }}>
-                            <div className="d-flex flex-column m-auto">
-                                <img src={addPhoto} className="mx-auto" />
-                                <div>Add photo</div>
-                            </div>
-                        </div>
-                    </Col>
-                    <Col lg={4} className="">
-                        <div className="img-new d-flex round-s" style={{ backgroundImage: `url(${''}), #D9D9D9` }}>
-                            <div className="d-flex flex-column m-auto">
-                                <img src={addPhoto} className="mx-auto" />
-                                <div>Add photo</div>
-                            </div>
+                            </button>
                         </div>
                     </Col>
                 </Row>
@@ -46,16 +79,28 @@ function CreateListing() {
 
 
             </Col>
-            <Col lg={2}>
+            <Col lg={2} className="py-2">
                 <div className="fs-14">Adjust Thumbnail</div>
-                <div className="img-new d-flex round-s my-2" style={{ backgroundImage: `url(${''}), #D9D9D9` }}>
-                    <div className="d-flex flex-column m-auto">
+                <div className="img-new d-flex round-s my-2"
+                    style={{
+                        backgroundImage: `url(${thumbnail})`,
+                        backgroundSize: 'cover'
+                    }}>
+                    <button className="btn d-flex flex-column m-auto" onClick={handleThumb}>
+                        <input
+                            ref={thumbRef}
+                            onChange={handleThumbnailUpload}
+                            className="d-none"
+                            type="file"
+                            accept="image/*"
+                        />
                         <img src={addPhoto} className="mx-auto" />
                         <div>Add photo</div>
-                    </div>
+                    </button>
                 </div>
             </Col>
-            <Col lg={4}>
+            <Col lg={4} className=" py-2">
+                <div><br /></div>
                 <div className="fs-14">
                     Lorem ipsum dolor sit amet consectetur.
                     Risus molestie elit sit placerat nullam vulputate nibh facilisis proin.
@@ -71,11 +116,25 @@ function CreateListing() {
             <div className="fs-14">Bring your product to life with a 5 to 15 second video - it could help you drive more sales.
                 The video won't feature sound, so let your product do the talking!</div>
             <Col lg={3}>
-                <div className="img-new d-flex round-s my-2" style={{ backgroundImage: `url(${''}), #D9D9D9` }}>
-                    <div className="d-flex flex-column m-auto">
+                <div className="img-new d-flex round-s my-2">
+                    {video && (
+                            <video autoPlay={false} controls>
+                                <source src={video} type="video/mp4" />
+                                <source src={video} type="video/mkv" />
+                            </video>
+                    )}
+                    {!video && <button className="btn d-flex flex-column m-auto" onClick={handleVideo}>
+                        <input
+                            ref={videoRef}
+                            onChange={handleVideoUpload}
+                            className="d-none"
+                            type="file"
+                            accept="video/*"
+                        />
                         <img src={playVideo} className="mx-auto" />
                         <div>Add video</div>
-                    </div>
+                    </button>}
+
                 </div>
             </Col>
             <Col lg={6}>

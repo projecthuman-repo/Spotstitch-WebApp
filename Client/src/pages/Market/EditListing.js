@@ -1,5 +1,5 @@
 import { Col, Container, Form, Row } from "react-bootstrap"
-import { addPhoto, playVideo } from "../../assets/icons"
+import { addPhoto, cross, playVideo } from "../../assets/icons"
 
 import './Market.css'
 import ItemCard from "../../components/listingCard/ItemCard"
@@ -15,6 +15,8 @@ function EditListing() {
         tags: ['tag', 'tag']
     }
 
+    const photos = ['', '', '', '', '']
+
 
     return <Container className="my-4">
         <Row>
@@ -27,18 +29,32 @@ function EditListing() {
 
                     <Row className={boxStyle}>
                         <div className="fs-18 fw-600">Photos</div>
-                        <Col lg={10}>
+                        <Col lg={11}>
                             <Row className="my-2">
-                                {['', '', '', ''].map((img, index) => {
-                                    return <Col lg={3} className="" key={`edit-img-${index}`}>
-                                        <div className="img-new d-flex round-s" style={{ backgroundImage: `url(${''}), #D9D9D9` }}>
-                                            <div className="d-flex flex-column m-auto">
-                                                <img src={addPhoto} className="mx-auto" />
-                                                <div>Add photo</div>
+                                {photos.map((img, index) => {
+                                    return <Col lg={3} className="my-2" key={`edit-img-${index}`}>
+                                        <div className="img-edit d-flex round-s" style={{ backgroundImage: `url(${img}), #D9D9D9` }}>
+
+                                            <div className="d-flex flex-column m-auto ps-4">
+
+                                                <div className="fs-24 img-text-light">IMAGE</div>
+                                            </div>
+
+                                            <div className="d-flex flex-row p-2 ">
+                                                <img src={cross} className="ms-auto mb-auto " />
                                             </div>
                                         </div>
                                     </Col>
                                 })}
+                                <Col lg={3} className="my-2">
+                                    <div className="img-new d-flex round-s">
+                                        <div className="d-flex flex-column m-auto">
+                                            <img src={addPhoto} className="mx-auto" />
+                                            <div>Add photo</div>
+                                        </div>
+                                    </div>
+                                </Col>
+
                             </Row>
 
 
@@ -134,9 +150,7 @@ function EditListing() {
                                         </div>
                                     </Form.Group>
                                 </Col>
-                                <Col className="d-flex">
-                                    <button className="ms-auto mt-auto btn-publish p-2 px-5">Save Changes</button>
-                                </Col>
+                                
                             </Row>
 
                         </Form>

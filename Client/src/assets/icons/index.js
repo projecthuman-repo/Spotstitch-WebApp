@@ -20,6 +20,7 @@ import add from './add.svg'
 import checked from './checked.svg'
 import addPhoto from './addPhoto.svg'
 import playVideo from './playVideo.svg'
+import cross from './cross.svg'
 
 export {
     inventory,
@@ -43,5 +44,6 @@ export {
     add,
     checked,
     addPhoto,
-    playVideo
+    playVideo,
+    cross
 }

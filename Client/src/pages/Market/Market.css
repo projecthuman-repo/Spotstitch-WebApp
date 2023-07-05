@@ -22,6 +22,11 @@
 }
 
 .img-new {
+  background-color: #D9D9D9;
+  height: 170px;
+}
+
+.img-edit {
   background-color: #F4F2F2;
   height: 170px;
 }
@@ -71,4 +76,8 @@
 
 .btn-delivery {
   cursor: pointer;
+}
+
+.img-text-light {
+  color: #C2C2C2;
 }
