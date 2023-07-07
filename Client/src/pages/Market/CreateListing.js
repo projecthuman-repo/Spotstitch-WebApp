@@ -15,13 +15,12 @@ function CreateListing() {
     const thumbRef = useRef();
     const videoRef = useRef();
 
-    const handleUpload = () => { inputRef.current?.click(); };
-    const handleThumb = () => { thumbRef.current?.click(); };
-    const handleVideo = () => { videoRef.current?.click(); };
+    const handleInputClick = (ref) => {
+        ref.current?.click()
+    }
 
-    const handleThumbnailUpload = () => {
-        thumbRef.current?.files &&
-            setThumbnail(URL.createObjectURL(thumbRef.current.files[0]));
+    const handleFileChange = (ref, setRef) => {
+        ref.current?.files && setRef(URL.createObjectURL(ref.current.files[0]));
     }
 
     const handlePhotoUpload = () => {
@@ -32,11 +31,6 @@ function CreateListing() {
         }
     };
 
-    const handleVideoUpload = () => {
-        videoRef.current?.files &&
-            setVideo(URL.createObjectURL(videoRef.current.files[0]));
-        console.log(videoRef.current?.files[0])
-    }
 
     return <Container className="content-border-l round-s my-4 px-5 py-4">
         <Row className="g-0">
@@ -63,7 +57,7 @@ function CreateListing() {
                     })}
                     <Col lg={4} className="py-2">
                         <div className="img-new d-flex round-s" style={{ backgroundImage: `url(${''})` }}>
-                            <button className="btn d-flex flex-column m-auto" onClick={handleUpload}>
+                            <button className="btn d-flex flex-column m-auto" onClick={()=>{handleInputClick(inputRef)}}>
                                 <input
                                     ref={inputRef}
                                     onChange={handlePhotoUpload}
@@ -88,10 +82,10 @@ function CreateListing() {
                         backgroundImage: `url(${thumbnail})`,
                         backgroundSize: 'cover'
                     }}>
-                    <button className="btn d-flex flex-column m-auto" onClick={handleThumb}>
+                    <button className="btn d-flex flex-column m-auto" onClick={()=>{handleInputClick(thumbRef)}}>
                         <input
                             ref={thumbRef}
-                            onChange={handleThumbnailUpload}
+                            onChange={()=>{handleFileChange(thumbRef, setThumbnail)}}
                             className="d-none"
                             type="file"
                             accept="image/*"
@@ -126,10 +120,10 @@ function CreateListing() {
                                 <source src={video} type="video/mkv" />
                             </video>
                         )}
-                        {!video && <button className="btn d-flex flex-column m-auto video-preview" onClick={handleVideo}>
+                        {!video && <button className="btn d-flex flex-column m-auto video-preview" onClick={()=>{handleInputClick(videoRef)}}>
                             <input
                                 ref={videoRef}
-                                onChange={handleVideoUpload}
+                                onChange={()=>{handleFileChange(videoRef, setVideo)}}
                                 className="d-none"
                                 type="file"
                                 accept="video/*"

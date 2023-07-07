@@ -89,3 +89,7 @@
   max-height: 180px;
   max-width: 320px;
 }
+
+.btn-close {
+  cursor: pointer;
+}

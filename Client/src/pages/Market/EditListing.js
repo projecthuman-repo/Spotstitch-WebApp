@@ -3,9 +3,39 @@ import { addPhoto, cross, playVideo } from "../../assets/icons"
 
 import './Market.css'
 import ItemCard from "../../components/listingCard/ItemCard"
+import { useRef, useState } from "react"
 
 function EditListing() {
     const boxStyle = 'px-5 py-2'
+
+    const [photos, setPhotos] = useState([])
+    const [thumbnail, setThumbnail] = useState()
+    const [video, setVideo] = useState()
+    const inputRef = useRef();
+    const thumbRef = useRef();
+    const videoRef = useRef();
+
+    const handleInputClick = (ref) => {
+        ref.current?.click()
+    }
+
+    const handleFileChange = (ref, setRef) => {
+        ref.current?.files && setRef(URL.createObjectURL(ref.current.files[0]));
+    }
+
+    const handlePhotoUpload = () => {
+        if (inputRef.current?.files) {
+            let temp = [...photos];
+            temp.push(URL.createObjectURL(inputRef.current.files[0]))
+            setPhotos(temp)
+        }
+    };
+
+    const handlePhotoRemove = (index) => {
+        let temp = [...photos]
+        temp.splice(index, 1)
+        setPhotos(temp)
+    }
 
     const itemEx = {
         title: 'Listing Name',
@@ -14,8 +44,6 @@ function EditListing() {
         img: '',
         tags: ['tag', 'tag']
     }
-
-    const photos = ['', '', '', '', '']
 
 
     return <Container className="my-4">
@@ -33,25 +61,30 @@ function EditListing() {
                             <Row className="my-2">
                                 {photos.map((img, index) => {
                                     return <Col lg={3} className="my-2" key={`edit-img-${index}`}>
-                                        <div className="img-edit d-flex round-s" style={{ backgroundImage: `url(${img}), #D9D9D9` }}>
-
-                                            <div className="d-flex flex-column m-auto ps-4">
-
+                                        <div className="img-edit d-flex round-s"
+                                            style={{ backgroundImage: `url(${img})`, backgroundSize: 'cover' }}>
+                                            {!img && <div className="d-flex flex-column m-auto ps-5">
                                                 <div className="fs-24 img-text-light">IMAGE</div>
-                                            </div>
+                                            </div>}
 
-                                            <div className="d-flex flex-row p-2 ">
-                                                <img src={cross} className="ms-auto mb-auto " />
-                                            </div>
+                                            <img src={cross} className="ms-auto mb-auto p-2 btn-close" onClick={() => handlePhotoRemove(index)} />
+
                                         </div>
                                     </Col>
                                 })}
                                 <Col lg={3} className="my-2">
-                                    <div className="img-new d-flex round-s">
-                                        <div className="d-flex flex-column m-auto">
+                                    <div className="img-new d-flex round-s" style={{ backgroundImage: `url(${''})` }}>
+                                        <button className="btn d-flex flex-column m-auto" onClick={() => { handleInputClick(inputRef) }}>
+                                            <input
+                                                ref={inputRef}
+                                                onChange={handlePhotoUpload}
+                                                className="d-none"
+                                                type="file"
+                                                accept="image/*"
+                                            />
                                             <img src={addPhoto} className="mx-auto" />
                                             <div>Add photo</div>
-                                        </div>
+                                        </button>
                                     </div>
                                 </Col>
 
@@ -65,28 +98,45 @@ function EditListing() {
                     </Row>
                     <Row className={boxStyle}>
                         <div className="fs-18 fw-600">Video</div>
-                        <Col lg={3}>
-                            <div className="img-new d-flex round-s my-2" style={{ backgroundImage: `url(${''}), #D9D9D9` }}>
-                                <div className="d-flex flex-column m-auto">
-                                    <img src={playVideo} className="mx-auto" />
-                                    <div>Add video</div>
+                        <Col lg={10}>
+                            <div className='d-flex'>
+                                <div className="d-flex round-s my-2 video-preview">
+                                    {video && (
+                                        <video className="d-flex video-preview" autoPlay={false} controls muted>
+                                            <source src={video} type="video/mp4" />
+                                            <source src={video} type="video/mkv" />
+                                        </video>
+                                    )}
+                                    {!video && <button className="btn d-flex flex-column m-auto video-preview" onClick={() => { handleInputClick(videoRef) }}>
+                                        <input
+                                            ref={videoRef}
+                                            onChange={() => { handleFileChange(videoRef, setVideo) }}
+                                            className="d-none"
+                                            type="file"
+                                            accept="video/*"
+                                        />
+                                        <div className="m-auto">
+                                            <img src={playVideo} className="mx-auto" />
+                                            <div>Add video</div>
+                                        </div>
+
+                                    </button>}
+
+                                </div>
+                                <div className="fs-14 px-4 py-1">
+                                    Lorem ipsum dolor sit amet consectetur.
+                                    Risus molestie elit sit placerat nullam vulputate nibh facilisis proin.
+                                    Massa feugiat quam egestas feugiat morbi senectus diam placerat ultricies.
+                                    Magna morbi imperdiet amet arcu. Venenatis pellentesque amet gravida potenti in ac metus diam.
+                                    Donec amet leo egestas et sit amet ornare. Vestibulum pretium at nibh quam congue augue id.
+                                    In ullamcorper ut sed cursus nisi porta gravida iaculis et.
                                 </div>
                             </div>
-                        </Col>
-                        <Col lg={6}>
-                            <div className="fs-14">
-                                Lorem ipsum dolor sit amet consectetur.
-                                Risus molestie elit sit placerat nullam vulputate nibh facilisis proin.
-                                Massa feugiat quam egestas feugiat morbi senectus diam placerat ultricies.
-                                Magna morbi imperdiet amet arcu. Venenatis pellentesque amet gravida potenti in ac metus diam.
-                                Donec amet leo egestas et sit amet ornare. Vestibulum pretium at nibh quam congue augue id.
-                                In ullamcorper ut sed cursus nisi porta gravida iaculis et.
-                            </div>
+
                         </Col>
                     </Row>
                     <Row className={boxStyle}>
                         <div className="fs-18 fw-600">Listing Detail</div>
-                        <div className="fs-14">Tell the world all about your item and why they'll love it.</div>
                         <Form itemID="listing">
                             <Row>
                                 <Col>
@@ -150,9 +200,9 @@ function EditListing() {
                                         </div>
                                     </Form.Group>
                                 </Col>
-                                
-                            </Row>
 
+                            </Row>
+                            
                         </Form>
                     </Row>
                 </Container>
