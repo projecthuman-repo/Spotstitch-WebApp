@@ -81,3 +81,11 @@
 .img-text-light {
   color: #C2C2C2;
 }
+
+.video-preview {
+  background-color: #D9D9D9;
+  height: 180px;
+  width: 320px;
+  max-height: 180px;
+  max-width: 320px;
+}

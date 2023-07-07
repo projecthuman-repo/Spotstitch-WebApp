@@ -9,6 +9,8 @@ function CreateListing() {
     const [photos, setPhotos] = useState([])
     const [thumbnail, setThumbnail] = useState()
     const [video, setVideo] = useState()
+    const [category, setCategory] = useState([])
+    const [tags, setTags] = useState([])
     const inputRef = useRef();
     const thumbRef = useRef();
     const videoRef = useRef();
@@ -115,37 +117,41 @@ function CreateListing() {
             <div className="fs-18 fw-600">Video</div>
             <div className="fs-14">Bring your product to life with a 5 to 15 second video - it could help you drive more sales.
                 The video won't feature sound, so let your product do the talking!</div>
-            <Col lg={3}>
-                <div className="img-new d-flex round-s my-2">
-                    {video && (
-                            <video autoPlay={false} controls>
+            <Col lg={8}>
+                <div className='d-flex'>
+                    <div className="d-flex round-s my-2 video-preview">
+                        {video && (
+                            <video className="d-flex video-preview" autoPlay={false} controls muted>
                                 <source src={video} type="video/mp4" />
                                 <source src={video} type="video/mkv" />
                             </video>
-                    )}
-                    {!video && <button className="btn d-flex flex-column m-auto" onClick={handleVideo}>
-                        <input
-                            ref={videoRef}
-                            onChange={handleVideoUpload}
-                            className="d-none"
-                            type="file"
-                            accept="video/*"
-                        />
-                        <img src={playVideo} className="mx-auto" />
-                        <div>Add video</div>
-                    </button>}
+                        )}
+                        {!video && <button className="btn d-flex flex-column m-auto video-preview" onClick={handleVideo}>
+                            <input
+                                ref={videoRef}
+                                onChange={handleVideoUpload}
+                                className="d-none"
+                                type="file"
+                                accept="video/*"
+                            />
+                            <div className="m-auto">
+                                <img src={playVideo} className="mx-auto" />
+                                <div>Add video</div>
+                            </div>
 
+                        </button>}
+
+                    </div>
+                    <div className="fs-14 px-4 py-1">
+                        Lorem ipsum dolor sit amet consectetur.
+                        Risus molestie elit sit placerat nullam vulputate nibh facilisis proin.
+                        Massa feugiat quam egestas feugiat morbi senectus diam placerat ultricies.
+                        Magna morbi imperdiet amet arcu. Venenatis pellentesque amet gravida potenti in ac metus diam.
+                        Donec amet leo egestas et sit amet ornare. Vestibulum pretium at nibh quam congue augue id.
+                        In ullamcorper ut sed cursus nisi porta gravida iaculis et.
+                    </div>
                 </div>
-            </Col>
-            <Col lg={6}>
-                <div className="fs-14">
-                    Lorem ipsum dolor sit amet consectetur.
-                    Risus molestie elit sit placerat nullam vulputate nibh facilisis proin.
-                    Massa feugiat quam egestas feugiat morbi senectus diam placerat ultricies.
-                    Magna morbi imperdiet amet arcu. Venenatis pellentesque amet gravida potenti in ac metus diam.
-                    Donec amet leo egestas et sit amet ornare. Vestibulum pretium at nibh quam congue augue id.
-                    In ullamcorper ut sed cursus nisi porta gravida iaculis et.
-                </div>
+
             </Col>
         </Row>
         <Row className={boxStyle}>
