@@ -17,6 +17,7 @@
     "express": "^4.17.3",
     "mongoose": "^6.2.3",
     "nodemon": "^2.0.15",
+    "pino": "^8.14.1",
     "socket.io": "^4.4.1",
     "validator": "^13.7.0"
   }

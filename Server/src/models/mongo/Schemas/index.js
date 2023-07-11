@@ -17,5 +17,5 @@ module.exports = {
     Post,
     Product,
     Wallet,
-    
+    Inventory
 }
