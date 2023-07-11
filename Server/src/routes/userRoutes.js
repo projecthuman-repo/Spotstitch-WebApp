@@ -1,5 +1,6 @@
 const router = require('express').Router();
 const User = require('../models/User');
+const login = require('./api/user/login');
 
 // creating user
 router.post('/', async(req, res)=> {
@@ -22,17 +23,7 @@ router.post('/', async(req, res)=> {
 
 // login user
 
-router.post('/login', async(req, res)=> {
-  try {
-    const {email, password} = req.body;
-    const user = await User.findByCredentials(email, password);
-    user.status = 'online';
-    await user.save();
-    res.status(200).json(user);
-  } catch (e) {
-      res.status(400).json(e.message)
-  }
-})
+router.post('/login', login)
 
 
 module.exports = router
