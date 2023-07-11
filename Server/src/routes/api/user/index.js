@@ -4,7 +4,7 @@ const login = require('./api/user/login');
 const register = require('./api/user/register');
 
 // creating user
-router.post('/', register)
+router.post('/register', register)
 
 // login user
 router.post('/login', login)
