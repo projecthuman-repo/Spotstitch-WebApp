@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
-const login = require('./api/user/login');
-const register = require('./api/user/register');
+const login = require('./login');
+const register = require('./register');
 
 // creating user
 router.post('/register', register)

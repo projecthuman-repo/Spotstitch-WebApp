@@ -4,6 +4,12 @@ const express = require('express');
 const router = express.Router();
 const response = require('../response');
 
+// server host name
+const { hostname } = require('os');
+
+// version and author from package.json
+const { version, author } = require('../../package.json');
+
 /**
  * Expose all of our API routes on /v1/* to include an API version.
  */
@@ -19,7 +25,6 @@ router.get('/', (req, res) => {
     // Send a 200 'OK' response
     const success = response.createSuccessResponse({
       author,
-      githubUrl: 'https://github.com/ElusoryPaths/fragments',
       version,
       hostname: hostname(),
     });
