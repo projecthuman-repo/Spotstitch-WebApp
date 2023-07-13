@@ -84,7 +84,7 @@ const ShoppingCart = () => {
                     </div>
                 </Col>
                 <Col lg={4}>
-                    <div className="content-border-l round-s py-3 px-4">
+                    <div className="content-border-l round-s py-3 px-4 mb-3">
                         <div className="fs-18 fw-600">Summary ({numItems} items): ${price}</div>
                         <div><button className="btn-checkout my-3 py-2 w-100" onClick={proceedToCheckout}>Proceed to Checkout</button></div>
 

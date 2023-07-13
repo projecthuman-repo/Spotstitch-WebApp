@@ -147,15 +147,15 @@ function ProductDetailPage({ id }) {
                                 <Row className='my-3'>
                                     <Col lg={3}>
                                         <div>Quantity: </div>
-                                        <div className="align-middle d-inline">
-                                            <button className='btn m-0' onClick={() => changeQuantity(quantity - 1)}><img src={minus} /></button>
-                                            <div className="align-middle d-inline m-0">{quantity}</div>
-                                            <button className='btn m-0' onClick={() => changeQuantity(quantity + 1)}><img src={plus} /></button>
+                                        <div className="d-flex g-0">
+                                            <button className='btn m-0 ps-0 btn-outline-0' onClick={() => changeQuantity(quantity - 1)}><img src={minus} /></button>
+                                            <div className="my-auto">{quantity}</div>
+                                            <button className='btn m-0 btn-outline-0' onClick={() => changeQuantity(quantity + 1)}><img src={plus} /></button>
                                         </div>
                                     </Col>
                                     <Col>
-                                        <button className='btn-checkout py-2 px-5 m-2 float-end'>Add to cart</button>
-                                        <button className='btn-checkout py-2 px-5 m-2 float-end' onClick={handleBuyNow}>Buy now</button>
+                                        <button className='btn-checkout py-2 px-4 m-2 float-end'>Add to cart</button>
+                                        <button className='btn-checkout py-2 px-4 m-2 float-end' onClick={handleBuyNow}>Buy now</button>
 
                                     </Col>
 

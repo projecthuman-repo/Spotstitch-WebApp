@@ -2,6 +2,7 @@ import { Col, Container, Form, Row } from "react-bootstrap"
 import { addPhoto, playVideo } from "../../assets/icons"
 import { useRef, useState } from "react";
 import './Market.css'
+import ProductDetailPage from "./Product";
 
 
 function CreateListing() {
@@ -223,6 +224,17 @@ function CreateListing() {
             </Form>
         </Row>
     </Container>
+}
+
+
+
+function Preview() {
+    return <Container>
+        <Row>
+            <ProductDetailPage />
+        </Row>
+    </Container>
+    
 }
 
 export default CreateListing
