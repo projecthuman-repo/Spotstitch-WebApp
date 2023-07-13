@@ -73,7 +73,50 @@ function ProductDetailPage({ id }) {
     }
 
     function Reviews() {
-        return <div></div>
+        const pre = require('../../assets/holderimg.png')
+        const reviews = [{
+            name: 'Jane Doe',
+            image: pre,
+            avatar: '',
+            relation: 'Relation to item (buyer/seller)',
+            title: 'Review Title / First Line Made Bold',
+            body: 'Lorem ipsum dolor sit amet consectetur. Accumsan a sit pretium id dictumst ut bibendum commodo.',
+            rating: 4,
+            tags: []
+        }, {
+            name: 'Jane Doe',
+            image: pre,
+            avatar: '',
+            relation: 'Relation to item (buyer/seller)',
+            title: 'Review Title / First Line Made Bold',
+            body: 'Lorem ipsum dolor sit amet consectetur. Accumsan a sit pretium id dictumst ut bibendum commodo.',
+            rating: 4,
+            tags: []
+        }]
+        return <div>
+            {reviews.map(review => {
+                return <div className='content-border-l round-s d-flex flex-row p-3 mb-2'>
+                    <div className='me-3'><img src={review.image} className='img-review round-s '/></div>
+                    <div className='d-flex flex-column'>
+                        <div className='d-flex flex-row'>
+                            <div className='p-2'><img className='avatar img-avatar' src={review.avatar}></img></div>
+                            <div className='d-flex flex-column my-auto p-2'>
+                                <div className='fs-15'>{review.name}</div>
+                                <div className='fs-12 fw-400'>{review.relation}</div>
+                            </div>
+                        </div>
+
+                        <div className='fs-15 p-2'>{review.title}</div>
+                        <div className='fs-15 fw-400 p-2'>{review.body}</div>
+
+                    </div>
+                    <div className='d-flex ms-auto flex-row pe-3'>
+                        <StarRating ratings={review.rating} disabled={true} />
+                        <div className='fs-15 px-2'>{review.rating}</div>
+                    </div>
+                </div>
+            })}
+        </div>
     }
 
     return (

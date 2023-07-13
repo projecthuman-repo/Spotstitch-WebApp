@@ -16,8 +16,23 @@
   height: 320px;
 }
 
+.img-review {
+  background-color: #F4F2F2;
+  width: 230px;
+  height: 230px;
+  border: 0;
+}
+
 .img-feature {
   height: 233px;
+}
+
+.img-avatar {
+  height: 61px;
+  width: 61px;
+  border: 0 !important;
+  background-color: #757575;
+  box-shadow: 0px 4px 4px 0px #00000040;
 
 }
 
@@ -49,6 +64,9 @@
   background: #F4F2F2;
 }
 
+.bg-review {
+  background: #F4F2F2;
+}
 
 .preview-scroll {
   overflow-x: auto;
@@ -89,6 +107,7 @@
   max-height: 180px;
   max-width: 320px;
 }
+
 
 .btn-close {
   cursor: pointer;
