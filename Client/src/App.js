@@ -39,15 +39,20 @@ import Events from './pages/Events/Events';
 import Event from './pages/Event/Event';
 import BookEvent from './pages/BookEvent/BookEvent';
 import CreateEvent from './pages/CreateEvent/CreateEvent';
-import Market from './pages/Market/Market'
+
 import Settings from './pages/Settings/Settings';
 import Inventory from './pages/Inventory/Inventory';
 import Messages from './pages/Messages/Messages';
-import ProductDetailPage from './pages/Market/Product';
-import ShoppingCart from './pages/Market/ShoppingCart';
-import Checkout from './pages/Market/Checkout';
-import CreateListing from './pages/Market/CreateListing';
-import EditListing from './pages/Market/EditListing';
+
+import { 
+  Market,
+  ShoppingCart, 
+  Checkout, 
+  CreateListing, 
+  EditListing, 
+  ProductDetailPage 
+} from './pages/Market';
+
 
 function App() {
   const [rooms, setRooms] = useState([]);

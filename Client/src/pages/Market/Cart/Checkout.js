@@ -1,8 +1,8 @@
 import { Col, Container, Modal, Row } from "react-bootstrap"
 import { useState } from "react"
 
-import './Market.css'
-import { chevronRight, garbageCan, minus, plus } from "../../assets/icons"
+import '../Market.css'
+import { chevronRight, garbageCan, minus, plus } from "../../../assets/icons"
 import ChangeAddressModal from "./ChangeAddressModal"
 import DeliveryModal from "./DeliveryModal"
 import ChangeCardModal from "./ChangeCardModal"

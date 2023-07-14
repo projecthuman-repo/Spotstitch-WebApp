@@ -1,8 +1,8 @@
 import { Col, Container, Form, Row } from "react-bootstrap"
-import { addPhoto, playVideo } from "../../assets/icons"
+import { addPhoto, playVideo } from "../../../assets/icons"
 import { useRef, useState } from "react";
-import './Market.css'
-import ProductDetailPage from "./Product";
+import '../Market.css'
+import ProductDetailPage from "../Product/Product";
 
 
 function CreateListing() {

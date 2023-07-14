@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { add, checked, chevronRight } from "../../assets/icons";
+import { add, checked, chevronRight } from "../../../assets/icons";
 import { Modal, Row } from "react-bootstrap";
 import AddCardModal from "./AddCardModal";
 

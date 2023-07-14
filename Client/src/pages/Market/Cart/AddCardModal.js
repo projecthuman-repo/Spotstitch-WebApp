@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { Col, Form, Modal, Row } from "react-bootstrap";
-import { add, chevronRight } from "../../assets/icons";
+import { add, chevronRight } from "../../../assets/icons";
 
-import './Market.css'
+import '../Market.css'
 
 function AddCardModal() {
     const [show, setShow] = useState(false);

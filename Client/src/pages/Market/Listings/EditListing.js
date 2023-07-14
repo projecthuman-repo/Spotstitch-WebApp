@@ -1,8 +1,8 @@
 import { Col, Container, Form, Row } from "react-bootstrap"
-import { addPhoto, cross, playVideo } from "../../assets/icons"
+import { addPhoto, cross, playVideo } from "../../../assets/icons"
 
-import './Market.css'
-import ItemCard from "../../components/listingCard/ItemCard"
+import '../Market.css'
+import ItemCard from "../../../components/listingCard/ItemCard"
 import { useRef, useState } from "react"
 
 function EditListing() {

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { checked, chevronRight } from "../../assets/icons";
+import { checked, chevronRight } from "../../../assets/icons";
 import { Modal, Row } from "react-bootstrap";
 
 function DeliveryModal() {
