@@ -13,7 +13,7 @@ const StarRating = ({ratings, disabled = false}) => {
       {[1, 2, 3, 4, 5].map((star) => (
         <Star
           key={star}
-          filled={star <= rating}
+          filled={star <= rating }
           onClick={() => handleStarClick(star)}
         />
       ))}

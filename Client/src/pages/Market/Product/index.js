@@ -1,5 +1,6 @@
 import ProductDetailPage from "./Product";
-
+import Details from "./Details";
 export {
-    ProductDetailPage
+    ProductDetailPage,
+    Details
 }

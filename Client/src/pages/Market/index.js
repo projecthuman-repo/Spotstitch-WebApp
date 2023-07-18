@@ -1,5 +1,5 @@
 import { Checkout, ShoppingCart } from './Cart'
-import { CreateListing, EditListing } from './Listings'
+import { CreateListing, EditListing, Preview } from './Listings'
 import { ProductDetailPage } from './Product'
 import { Market } from './Market'
 
@@ -9,5 +9,6 @@ export {
     ShoppingCart,
     CreateListing,
     EditListing,
+    Preview,
     ProductDetailPage
 }

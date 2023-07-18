@@ -3,6 +3,7 @@ import { addPhoto, playVideo } from "../../../assets/icons"
 import { useRef, useState } from "react";
 import '../Market.css'
 import ProductDetailPage from "../Product/Product";
+import { useNavigate } from "react-router-dom";
 
 
 function CreateListing() {
@@ -12,6 +13,7 @@ function CreateListing() {
     const [video, setVideo] = useState()
     const [category, setCategory] = useState([])
     const [tags, setTags] = useState([])
+    const navigate = useNavigate()
     const inputRef = useRef();
     const thumbRef = useRef();
     const videoRef = useRef();
@@ -31,6 +33,10 @@ function CreateListing() {
             setPhotos(temp)
         }
     };
+
+    const handleSubmit = (e) => {
+        navigate('/market/mylistings/preview')
+    }
 
 
     return <Container className="content-border-l round-s my-4 px-5 py-4">
@@ -217,7 +223,7 @@ function CreateListing() {
                         </Form.Group>
                     </Col>
                     <Col className="d-flex">
-                        <button className="ms-auto mt-auto btn-publish p-2 px-5">Publish</button>
+                        <button className="ms-auto mt-auto btn-publish p-2 px-5" onClick={handleSubmit}>Publish</button>
                     </Col>
                 </Row>
 

@@ -50,7 +50,8 @@ import {
   Checkout, 
   CreateListing, 
   EditListing, 
-  ProductDetailPage 
+  ProductDetailPage, 
+  Preview
 } from './pages/Market';
 
 
@@ -132,6 +133,7 @@ function App() {
           <Route path='/market/mylistings' />
           <Route path='/market/mylistings/create' element={<CreateListing />} />
           <Route path='/market/mylistings/edit' element={<EditListing />} />
+          <Route path='/market/mylistings/preview' element={<Preview />} />
 
           <Route path='/messages' element={<Messages />} />
 
