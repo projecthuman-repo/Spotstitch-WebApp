@@ -21,6 +21,7 @@ import checked from './checked.svg'
 import addPhoto from './addPhoto.svg'
 import playVideo from './playVideo.svg'
 import cross from './cross.svg'
+import options from './options.svg'
 
 export {
     inventory,
@@ -45,5 +46,6 @@ export {
     checked,
     addPhoto,
     playVideo,
-    cross
+    cross,
+    options
 }

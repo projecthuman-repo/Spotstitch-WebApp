@@ -53,6 +53,10 @@
   border-radius: 13px;
 }
 
+.img-listing {
+  border-radius: 20px 0px 0px 20px;
+}
+
 .btn-checkout {
   border: 0px;
   border-radius: 13px;
@@ -84,16 +88,28 @@
   box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
 }
 
+
+.btn-delivery {
+  cursor: pointer;
+}
+
+.btn-close {
+  cursor: pointer;
+}
+
+.listing-card{
+  background: #FFFFFF;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 20px !important;
+}
+
+
 .flip {
   transform: (-1, 1);
 }
 
 .form-address {
   border-radius: 10px !important;
-}
-
-.btn-delivery {
-  cursor: pointer;
 }
 
 .img-text-light {
@@ -108,7 +124,3 @@
   max-width: 320px;
 }
 
-
-.btn-close {
-  cursor: pointer;
-}

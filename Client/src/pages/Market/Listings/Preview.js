@@ -18,9 +18,10 @@ function Preview() {
     }
 
     function CardPreview() {
-        return <Row className="d-flex">
+
+        return <Container className=""><Row className="d-flex">
             <Col lg={3} className="mx-auto">
-                <ItemCard item={itemEx} link={setShow} />
+                <ItemCard item={itemEx} link={switchPreview} />
                 <div className="d-flex flex-column">
                     <div className="mx-auto p-2 flex-row">
                     </div>
@@ -29,20 +30,23 @@ function Preview() {
                 </div>
             </Col>
         </Row>
+        </Container>
     }
 
     function ProductPreview() {
-        return <Row className="d-flex py-4">
-            <Col className="mx-auto" lg={9}>
-                <Details />
-            </Col>
-
-        </Row>
+        return <Container className="my-4">
+            <button className='btn btn-outline-0' onClick={switchPreview}>{'<'} Save to Draft and Open Editor</button>
+            <Row className="d-flex py-4">
+                <Col className="mx-auto" lg={9}>
+                    <Details preview/>
+                </Col>
+            </Row>
+        </Container>
     }
 
-    return <Container className="my-4">
-        {show ? <ProductPreview /> : <CardPreview />}
-    </Container>
+    return <>{show ? <ProductPreview /> : <CardPreview />}</>
+
+
 }
 
 export default Preview

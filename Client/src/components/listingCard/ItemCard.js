@@ -4,8 +4,14 @@ import { useNavigate } from 'react-router-dom';
 import './listingCard.css';
 import './itemCard.css'
 import { Col } from 'react-bootstrap';
+import EventTag from './EventTag';
 
-const ItemCard = ({ className = '', item = { img, title: 'Listing Name', description: 'Description of the product', info, tags }, link }) => {
+const ItemCard = ({
+    className = '',
+    item = { img, title: 'Listing Name', description: 'Description of the product', info, tags },
+    link,
+    imgPosition = 0 }) => {
+
     const [tags, setTags] = useState([]);
 
     const itemEx = {
@@ -17,7 +23,6 @@ const ItemCard = ({ className = '', item = { img, title: 'Listing Name', descrip
     }
 
     useEffect(() => {
-
         if (item.tags) {
             setTags(
                 item.tags.map((tag, index) => (
@@ -26,6 +31,7 @@ const ItemCard = ({ className = '', item = { img, title: 'Listing Name', descrip
             );
         }
     }, []);
+
     return (
         <div className='card my-3 listingCard item g-0' onClick={link} >
 
@@ -37,7 +43,7 @@ const ItemCard = ({ className = '', item = { img, title: 'Listing Name', descrip
                 <p className='card-text mb-1 fs-14'>
                     {item.description}
                     <br />
-                    {item.rating}
+                    {item.info}
                 </p>
                 <div className='row row-cols-2 g-0 mt-1 '>
                     {tags.length > 0 ? tags : null}
@@ -47,17 +53,6 @@ const ItemCard = ({ className = '', item = { img, title: 'Listing Name', descrip
     );
 };
 
-const EventTag = ({ tag }) => {
-    return (
-        <Col className="light rounded-pill me-2 py-1 my-1 fs-10" lg={5} xs={10}>
-            <span className=''>
-                <div className='mx-1 d-inline'>{tag}</div>
-                <div className='float-end mx-1'>
-                    <AiOutlineClose style={{ backgroundColor: 'white', borderRadius: '25px' }} />
-                </div>
-            </span>
-        </Col>
-    );
-};
+
 
 export default ItemCard;

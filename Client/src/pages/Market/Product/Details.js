@@ -8,7 +8,7 @@ import '../Market.css'
 import StarRating from '../../../components/StarRating';
 import { plus, minus } from '../../../assets/icons';
 
-function Details({ id, product }) {
+function Details({ id, product, preview }) {
     const [quantity, setQuantity] = useState(0);
     const [tab, setTab] = useState(0)
     const navigate = useNavigate()
@@ -43,11 +43,12 @@ function Details({ id, product }) {
     }
 
     function handleBuyNow() {
-        setShowPaymentWindow(true);
+        if (preview) return
         navigate('/market/cart')
     }
 
-    function handleAddToCartClick() {
+    function handleAddToCart() {
+        if (preview) return
         setIsAddedToCart(true);
     }
 
@@ -144,7 +145,7 @@ function Details({ id, product }) {
                         </div>
                     </Col>
                     <Col>
-                        <button className='btn-checkout py-2 px-4 m-2 float-end'>Add to cart</button>
+                        <button className='btn-checkout py-2 px-4 m-2 float-end' onClick={handleAddToCart}>Add to cart</button>
                         <button className='btn-checkout py-2 px-4 m-2 float-end' onClick={handleBuyNow}>Buy now</button>
 
                     </Col>

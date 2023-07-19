@@ -51,9 +51,9 @@ import {
   CreateListing, 
   EditListing, 
   ProductDetailPage, 
-  Preview
+  Preview,
+  Listings
 } from './pages/Market';
-
 
 function App() {
   const [rooms, setRooms] = useState([]);
@@ -130,9 +130,9 @@ function App() {
           <Route path='/market/product' element={<ProductDetailPage />} />
           <Route path='/market/cart' element={<ShoppingCart />} />
           <Route path='/market/cart/checkout' element={<Checkout />} />
-          <Route path='/market/mylistings' />
+          <Route path='/market/mylistings' element={<Listings />}/>
           <Route path='/market/mylistings/create' element={<CreateListing />} />
-          <Route path='/market/mylistings/edit' element={<EditListing />} />
+          <Route path='/market/mylistings/edit/:id' element={<EditListing />} />
           <Route path='/market/mylistings/preview' element={<Preview />} />
 
           <Route path='/messages' element={<Messages />} />
