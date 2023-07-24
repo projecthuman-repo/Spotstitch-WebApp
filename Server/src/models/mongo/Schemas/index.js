@@ -6,7 +6,8 @@ const Order = require('./Order')
 const Post = require('./Post')
 const Product = require('./Product')
 const Wallet = require('./Wallet')
-const Inventory = require('./Inventory')
+const ProductInventory = require('./ProductInventory')
+const GameInventory = require('./GameInventory')
 
 module.exports = {
     Address,
@@ -17,5 +18,6 @@ module.exports = {
     Post,
     Product,
     Wallet,
-    Inventory
+    ProductInventory,
+    GameInventory
 }

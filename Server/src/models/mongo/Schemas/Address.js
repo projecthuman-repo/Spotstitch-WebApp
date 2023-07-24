@@ -37,7 +37,6 @@ const updateAddress = async (addressId, address) => {
     } catch (err) {
         throw new Error("Error finding user")
     }  
-}
-
+} 
 
 module.exports = Address
