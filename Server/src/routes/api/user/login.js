@@ -1,4 +1,4 @@
-const User = require('../../../models');
+const {User} = require('../../../model');
 
 /** 
  * POST Request, login user

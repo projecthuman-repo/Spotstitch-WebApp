@@ -7,16 +7,14 @@ const MessageSchema = new mongoose.Schema({
   updatedOn: String,
 })
 
-const Message = mongoose.model('Message', MessageSchema);
-
 /**
  * Create and send a new message to a chat
  * 
  * @param {string} chatId id of chat to send message
  * @param {*} content content of message
- * @returns newly created message id
+ * @returns newly created message
  */
-const createMessage = async (chatId, content) => {
+MessageSchema.statics.createMessage = async (chatId, content) => {
   try {
     const msg = new Message({
       chatId: chatId,
@@ -25,27 +23,30 @@ const createMessage = async (chatId, content) => {
       updatedOn: new Date()
     })
     await msg.save()
-    return msg._id
+    return msg
   } catch (err) {
     throw new Error('Error creating new message')
   }
 }
-const updateMessage = async (messageId, ctx) => {
+
+MessageSchema.methods.updateMessage = async function(ctx) {
   try {
-    const msg = Message.findById(messageId)
-    msg.content = ctx
-    msg.updatedOn = new Date()
-    await msg.save()
+    this.updatedOn = new Date()
+    this.content = ctx
+    await this.save()
   } catch (err) {
     throw new Error('Error updating new message')
   }
 }
-const deleteMessage = async (messageId) => {
+
+MessageSchema.methods.deleteMessage = async function() {
   try {
-    await Message.findByIdAndDelete(messageId)
+    await this.delete()
   } catch (err) {
     throw new Error('Error deleting message')
   }
  }
+
+const Message = mongoose.model('Message', MessageSchema);
 
 module.exports = Message

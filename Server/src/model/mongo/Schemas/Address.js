@@ -9,9 +9,7 @@ const AddressSchema = new mongoose.Schema({
     postalCode: String
 })
 
-const Address = mongoose.model('Address', AddressSchema);
-
-const getAddresses = async (userId) => {
+AddressSchema.statics.getAddresses = async (userId) => {
     try {
         const result = await Address.find({userId: userId})
         return result
@@ -20,7 +18,7 @@ const getAddresses = async (userId) => {
     }   
 }
 
-const createAddress = async (address) => {
+AddressSchema.statics.createAddress = async (address) => {
     try {
         const addr = new Address(address)
         await addr.save()
@@ -30,13 +28,15 @@ const createAddress = async (address) => {
     
 }
 
-const updateAddress = async (addressId, address) => {
+AddressSchema.statics.updateAddress = async (addressId, address) => {
     try {
-        const result = await Address.findByIdAndUpdate({_id: addressId}, address)
+        const result = await Address.findByIdAndUpdate(addressId, address)
         return result
     } catch (err) {
         throw new Error("Error finding user")
     }  
 } 
+
+const Address = mongoose.model('Address', AddressSchema);
 
 module.exports = Address

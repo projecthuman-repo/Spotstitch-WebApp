@@ -18,9 +18,12 @@ WalletSchema.statics.getUserWallet = async (userID) => {
     }
 }
 
-WalletSchema.statics.addCard = async (userId, card = { cardNum, cardOwner }) => {
+WalletSchema.methods.addCard = async (userId, card = { cardNum: '', cardOwner: '' }) => {
     try {
         let wallet = await Wallet.findOne({ userId }).exec()
+        if (!card.cardNum && !card.cardOwner) throw new Error('No card info given')
+        // add verifictation method for card here
+
         if (wallet) {
             for (const c of wallet.cards) {
                 if (c.cardNum == card.cardNum) throw new Error('Duplicate card')
