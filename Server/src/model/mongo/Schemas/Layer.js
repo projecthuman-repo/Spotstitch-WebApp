@@ -16,6 +16,15 @@ const LayerSchema = new mongoose.Schema({
     rules: String
 })
 
+LayerSchema.statics.createLayer = () => {
+
+}
+
+LayerSchema.methods.updateLayer = function() {
+    
+}
+
+
 const Layer = mongoose.model('Layer', LayerSchema);
 
 module.exports = Layer

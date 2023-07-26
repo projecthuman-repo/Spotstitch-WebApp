@@ -13,25 +13,34 @@ const ProductSchema = new mongoose.Schema({
     quantity: Number
 })
 
-ProductSchema.statics.getProducts = () => {
+ProductSchema.statics.getProducts = async () => {
     try {
-        
+        return await Product.find()
     } catch (error) {
         throw new Error(error)
     }
 }
 
-ProductSchema.statics.getProduct = () => {
+ProductSchema.statics.getProduct = async (productId) => {
     try {
-        
+        return await Product.findById(productId)
     } catch (error) {
         throw new Error(error)
     }
 }
 
-ProductSchema.statics.createProduct = () => {
+ProductSchema.statics.createProduct = async () => {
     try {
-        
+        const prod = new Product()
+        await prod.save()
+    } catch (error) {
+        throw new Error(error)
+    }
+}
+
+ProductSchema.methods.updateProduct = async function (product) {
+    try {
+        await this.update(product)
     } catch (error) {
         throw new Error(error)
     }

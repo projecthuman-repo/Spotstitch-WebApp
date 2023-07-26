@@ -8,6 +8,17 @@ const WalletSchema = new mongoose.Schema({
     }]
 })
 
+
+WalletSchema.statics.createWallet = async (userId) => {
+    try {
+        const wallet = new Wallet({ userId: userId, cards: [] })
+        wallet.save()
+        return wallet
+    } catch (err) {
+        throw new Error(err)
+    }
+}
+
 WalletSchema.statics.getUserWallet = async (userID) => {
     try {
         const wallet = await Wallet.findOne({ userID }).exec()
@@ -18,28 +29,16 @@ WalletSchema.statics.getUserWallet = async (userID) => {
     }
 }
 
-WalletSchema.methods.addCard = async (userId, card = { cardNum: '', cardOwner: '' }) => {
+WalletSchema.methods.addCard = async function(card = { cardNum: '', cardOwner: '' }) {
     try {
-        let wallet = await Wallet.findOne({ userId }).exec()
-        if (!card.cardNum && !card.cardOwner) throw new Error('No card info given')
-        // add verifictation method for card here
-
-        if (wallet) {
-            for (const c of wallet.cards) {
-                if (c.cardNum == card.cardNum) throw new Error('Duplicate card')
-            }
-
-            wallet.cards.push(card)
-            return wallet
-        } else {
-            wallet = new Wallet({ userId: userId, cards: [card] })
-
-            wallet.save()
-            return wallet
-        }
+        this.cards.push(card)
     } catch (err) {
         throw new Error(err)
     }
+}
+
+WalletSchema.methods.removeCard = async function() {
+
 }
 
 const Wallet = mongoose.model('Wallet', WalletSchema);

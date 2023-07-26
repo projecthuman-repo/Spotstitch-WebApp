@@ -2,12 +2,17 @@
 const { Event } = require('../../src/model')
 const mongoose = require('mongoose');
 
-mongoose.connect(process.env.JEST_URI, (err) => {
-    if (err) console.log(err)
-    console.log('connected');
-});
+
 
 describe('Event model', () => {
+    beforeAll(async () => {
+        await mongoose.connect(process.env.JEST_URI);
+    })
+
+    afterAll(async () => {
+        await mongoose.connection.close();
+    });
+
     describe('accessing', () => {
         test('getting empty list', async () => {
             const res = await Event.getEvents()
@@ -30,11 +35,8 @@ describe('Event model', () => {
     describe('deleting', () => {
         test('', async () => {
             await Event.deleteAllEvents()
-            mongoose.connection.close()
         })
     })
 
-    afterAll(async () => {
-        await mongoose.connection.close();
-    });
+    
 })
