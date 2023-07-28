@@ -26,6 +26,15 @@ OrderSchema.statics.createOrder = async (order) => {
     }
 }
 
+OrderSchema.methods.setStatus = async function(status) {
+    try {
+        this.status = status
+        await this.save()
+    } catch (err) {
+        throw new Error(err)
+    }
+}
+
 OrderSchema.methods.refundOrder = () => {
 
 }

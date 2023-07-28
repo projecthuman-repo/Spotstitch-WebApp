@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const MessageSchema = new mongoose.Schema({
   chatId: String,
   content: String,
-  date: String,
+  createdOn: String,
   updatedOn: String,
 })
 
@@ -19,7 +19,7 @@ MessageSchema.statics.createMessage = async (chatId, content) => {
     const msg = new Message({
       chatId: chatId,
       content: content,
-      date: new Date(),
+      createdOn: new Date(),
       updatedOn: new Date()
     })
     await msg.save()
@@ -29,7 +29,7 @@ MessageSchema.statics.createMessage = async (chatId, content) => {
   }
 }
 
-MessageSchema.methods.updateMessage = async function(ctx) {
+MessageSchema.methods.editMessage = async function(ctx) {
   try {
     this.updatedOn = new Date()
     this.content = ctx

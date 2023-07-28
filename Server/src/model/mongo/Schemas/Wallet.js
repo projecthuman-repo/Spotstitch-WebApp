@@ -37,8 +37,19 @@ WalletSchema.methods.addCard = async function(card = { cardNum: '', cardOwner: '
     }
 }
 
-WalletSchema.methods.removeCard = async function() {
-
+WalletSchema.methods.removeCard = async function(cardNum) {
+    try {
+        for (const index in this.cards) {
+            if (this.cards[index].cardNum == cardNum) {
+                this.cards.splice(index, 1)
+                this.save()
+                return
+            }
+        }
+        throw new Error('Could not find card in wallet')
+    } catch (err) {
+        throw new Error(err)
+    }
 }
 
 const Wallet = mongoose.model('Wallet', WalletSchema);

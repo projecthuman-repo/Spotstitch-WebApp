@@ -37,6 +37,15 @@ AddressSchema.statics.updateAddress = async (addressId, address) => {
     }  
 } 
 
+AddressSchema.methods.removeAddress = async function() {
+    try {
+        await this.delete()
+    } catch (err) {
+        throw new Error("Error finding user")
+    }  
+    
+}
+
 const Address = mongoose.model('Address', AddressSchema);
 
 module.exports = Address
