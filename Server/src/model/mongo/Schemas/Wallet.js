@@ -19,7 +19,7 @@ WalletSchema.statics.createWallet = async (userId) => {
     }
 }
 
-WalletSchema.statics.getUserWallet = async (userID) => {
+WalletSchema.statics.getWallet = async (userID) => {
     try {
         const wallet = await Wallet.findOne({ userID }).exec()
         return wallet
@@ -32,21 +32,28 @@ WalletSchema.statics.getUserWallet = async (userID) => {
 WalletSchema.methods.addCard = async function(card = { cardNum: '', cardOwner: '' }) {
     try {
         this.cards.push(card)
+        await this.save()
     } catch (err) {
         throw new Error(err)
     }
 }
 
-WalletSchema.methods.removeCard = async function(cardNum) {
+WalletSchema.methods.removeCard = async function(idx) {
     try {
-        for (const index in this.cards) {
-            if (this.cards[index].cardNum == cardNum) {
-                this.cards.splice(index, 1)
-                this.save()
-                return
-            }
+        this.cards.splice(idx, 1)
+        await this.save()
+    } catch (err) {
+        throw new Error(err)
+    }
+}
+
+WalletSchema.methods.preview = async function() {
+    try {
+        const cards = []
+        for (const c of this.cards) {
+            cards.push(c.slice(-4))
         }
-        throw new Error('Could not find card in wallet')
+        return cards
     } catch (err) {
         throw new Error(err)
     }
