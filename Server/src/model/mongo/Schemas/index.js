@@ -8,6 +8,7 @@ const Product = require('./Product')
 const Wallet = require('./Wallet')
 const ProductInventory = require('./ProductInventory')
 const GameInventory = require('./GameInventory')
+const User = require('./User')
 
 module.exports = {
     Address,
@@ -19,5 +20,6 @@ module.exports = {
     Product,
     Wallet,
     ProductInventory,
-    GameInventory
+    GameInventory,
+    User
 }

@@ -5,10 +5,13 @@ const { createErrorResponse } = require('../../../response');
 module.exports = async (req, res) => {
     try {
         
-        const { chatId } = req.body
-        const chat = await Chat.getChat(chatId)
+        const { chatId, content, author } = req.body
+        const chat = await Chat.getChat(chatId) || new Chat()
         if (!chat) throw new Error()
 
+        const msg = Message.createMessage(chat._id, author, content)
+
+        chat.addToHistory(msg._id)
        
         res.status(201).json();
     } catch (e) {

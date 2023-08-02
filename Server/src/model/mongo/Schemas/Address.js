@@ -9,7 +9,16 @@ const AddressSchema = new mongoose.Schema({
     postalCode: String
 })
 
-AddressSchema.statics.getAddresses = async (userId) => {
+AddressSchema.statics.getAddress = async (addressId) => {
+    try {
+        const result = await Address.findById(addressId)
+        return result
+    } catch (err) {
+        throw new Error("Error finding user")
+    }   
+}
+
+AddressSchema.statics.getUserAddresses = async (userId) => {
     try {
         const result = await Address.find({userId: userId})
         return result
@@ -28,16 +37,16 @@ AddressSchema.statics.createAddress = async (address) => {
     
 }
 
-AddressSchema.statics.updateAddress = async (addressId, address) => {
+AddressSchema.methods.updateAddress = async function(addressId, address) {
     try {
-        const result = await Address.findByIdAndUpdate(addressId, address)
-        return result
+        this.update(address)
+        return this
     } catch (err) {
         throw new Error("Error finding user")
     }  
 } 
 
-AddressSchema.methods.removeAddress = async function() {
+AddressSchema.methods.deleteAddress = async function() {
     try {
         await this.delete()
     } catch (err) {

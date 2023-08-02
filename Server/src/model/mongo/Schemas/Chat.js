@@ -48,6 +48,15 @@ ChatSchema.methods.addToHistory = async function (messageId) {
     }
 }
 
+ChatSchema.methods.deleteMessage = async function (id) {
+    try {
+        this.history.splice(this.history.indexOf(id), 1)
+        this.save()
+    } catch (err) {
+        throw new Error('Error creating new chat')
+    }
+}
+
 ChatSchema.methods.deleteChat = async function () {
     try {
         await this.delete()
