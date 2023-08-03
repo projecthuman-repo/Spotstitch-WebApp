@@ -47,6 +47,7 @@ MessageSchema.methods.editMessage = async function(ctx) {
     this.updatedOn = new Date()
     this.content = ctx
     await this.save()
+    return this
   } catch (err) {
     throw new Error('Error updating new message')
   }
