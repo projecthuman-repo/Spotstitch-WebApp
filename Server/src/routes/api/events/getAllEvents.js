@@ -5,14 +5,13 @@ const { createErrorResponse } = require('../../../response');
 module.exports = async (req, res) => {
     try {
         
-        const { eventId } = req.body
-        const event = Event.getEvents()
-        if (!event) throw new Error()
+        const events = await Event.getEvents()
+        if (!events) throw new Error('No events found')
 
         
-        res.status(201).json(event);
+        res.status(201).json(events);
     } catch (e) {
-        logger.error({e}, 'Error adding address')
+        logger.error({e}, e.message)
         res.status(400).json(e)
         
     }

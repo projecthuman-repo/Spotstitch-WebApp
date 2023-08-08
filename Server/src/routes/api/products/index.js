@@ -1,5 +1,5 @@
 const express = require('express');
-const all = require('./all');
+const allProducts = require('./allProducts');
 
 // Create a router on which to mount our API endpoints
 const router = express.Router();
@@ -9,7 +9,7 @@ const router = express.Router();
  */
 
 // get all products
-router.get('/all', all)
+router.get('/all', allProducts)
 
 // create new product
 router.post('/create')

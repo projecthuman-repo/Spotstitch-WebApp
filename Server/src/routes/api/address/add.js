@@ -12,7 +12,7 @@ module.exports = async (req, res) => {
         }
         const adr = Address.createAddress(info)
         
-        if (!adr) throw new Error(createErrorResponse(400, 'Could not create message'))
+        if (!adr) throw new Error(createErrorResponse(400, 'Could not create address'))
        
         res.status(201).json();
     } catch (e) {

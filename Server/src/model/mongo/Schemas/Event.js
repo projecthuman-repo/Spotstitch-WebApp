@@ -70,6 +70,7 @@ EventSchema.statics.deleteAllEvents = async () => {
         throw new Error(err)
     }
 }
+
 EventSchema.statics.deleteAllEventsFromId = async (hostId) => {
     try {
         await Event.deleteMany({ hostId: hostId }).exec()

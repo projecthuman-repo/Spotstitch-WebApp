@@ -6,7 +6,7 @@ module.exports = async (req, res) => {
     try {
         
         const { eventId } = req.body
-        const event = Event.getEvent(eventId)
+        const event = await Event.getEvent(eventId)
         if (!event) throw new Error()
 
         

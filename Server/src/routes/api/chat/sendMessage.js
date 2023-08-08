@@ -6,7 +6,7 @@ module.exports = async (req, res) => {
     try {
         
         const { chatId, content, author } = req.body
-        const chat = await Chat.getChat(chatId) || new Chat()
+        const chat = await Chat.getChat(chatId)
         if (!chat) throw new Error()
 
         const msg = Message.createMessage(chat._id, author, content)

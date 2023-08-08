@@ -14,9 +14,14 @@ ex. to access user would be /v1/user
 #### chat
 
 #### events
+
+
 #### inventory
+
 #### posts
+
 #### products
+
 #### layer
 
 #### wallet

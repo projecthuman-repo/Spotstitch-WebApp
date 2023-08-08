@@ -10,7 +10,7 @@ module.exports = async (req, res) => {
 
         adr.updateAddress(address)
         
-        if (!adr) throw new Error(createErrorResponse(400, 'Could not create message'))
+        if (!adr) throw new Error(createErrorResponse(400, 'Could not edit address'))
        
         res.status(201).json();
     } catch (e) {

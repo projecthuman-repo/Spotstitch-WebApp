@@ -1,6 +1,8 @@
 const express = require('express');
 const getAllEvents = require('./getAllEvents');
 const getEvent = require('./getEvent');
+const hostEvent = require('./hostEvent');
+const cancelEvent = require('./cancelEvent');
 
 
 // Create a router on which to mount our API endpoints
@@ -16,15 +18,14 @@ router.get('/all', getAllEvents)
 // get event by id
 router.get('/:id', getEvent)
 
+// create new event
+router.post('/create', hostEvent)
 
-// create new product
-router.post('/create')
-
-// update existing product
+// update existing event 
 router.put('/update')
 
-// delete existing product
-router.delete('/delete')
+// delete existing event
+router.delete('/cancel', cancelEvent)
 
 
 // Export our routes
