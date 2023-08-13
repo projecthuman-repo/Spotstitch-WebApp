@@ -25,6 +25,22 @@ function Listings() {
         img: tempImg,
         tags: ['tag', 'tag'],
         quantity: 200
+    }, {
+        _id: 2,
+        title: 'Listing Name',
+        description: 'Description of the product \n Lorem ipsum dolor sit amet consectetur. Mi suspendisse in in quis viverra.',
+        info: 'Price: $$',
+        img: tempImg,
+        tags: ['tag', 'tag'],
+        quantity: 200
+    }, {
+        _id: 3,
+        title: 'Listing Name',
+        description: 'Description of the product \n Lorem ipsum dolor sit amet consectetur. Mi suspendisse in in quis viverra.',
+        info: 'Price: $$',
+        img: tempImg,
+        tags: ['tag', 'tag'],
+        quantity: 200
     }]
 
     function toProduct(id) {
@@ -55,7 +71,7 @@ function Listings() {
                         <p className="fs-18 fw-600">{search == '' ? `Your Listings: ${Items.length}` : search}</p>
                         {
                             Items.map((item) => {
-                                return <Col lg={6}>
+                                return <Col lg={6} className="p-3">
                                     <Row className="listing-card g-0">
                                         <Col lg={6} class="ratio ratio-1x1">
                                             <img src={item.img} className="img-fluid img-listing" />
@@ -70,7 +86,7 @@ function Listings() {
                                                                 <img src={options} />
                                                             </Dropdown.Toggle>
                                                             <Dropdown.Menu>
-                                                                <Dropdown.Item onClick={() => HandleEdit(item._id)}>Edit</Dropdown.Item>
+                                                                <Dropdown.Item onClick={() => HandleEdit(item._id)}>Edit Listing</Dropdown.Item>
                                                             </Dropdown.Menu>
                                                         </Dropdown>
                                                     </div>
@@ -78,8 +94,8 @@ function Listings() {
 
                                                 <div className="fs-14 fw-400">{item.description}</div>
                                                 <div className="mt-auto">
-                                                    <div className="fs-14 fw-400">QTY: {item.quantity}</div>
-                                                    <div className="fs-14">{item.info}</div>
+                                                    <div className="fs-14 fw-400 pt-2">QTY: {item.quantity}</div>
+                                                    <div className="fs-14 fw-500 py-3">{item.info}</div>
                                                     <div className='row row-cols-2 g-0 mt-1 '>
                                                         {item.tags.map((tag, index) => {
                                                             return <EventTag key={`item_${index}`} tag={tag} />
