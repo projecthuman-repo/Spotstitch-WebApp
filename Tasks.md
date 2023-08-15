@@ -5,6 +5,7 @@
 |Update frontend to match new figma designs| 3 days |incomplete|
 |Create service to utilize backend routes| 2 days |incomplete|
 |Update frontend to use service to connect to backend| 1 week |incomplete|
+|Touch up features of frontend UI|3 days|incomplete|
 | | | |
 |Update documentation on API routes| 2 days |incomplete|
 |Update schema to match requirements| 1 week |incomplete|
