@@ -14,7 +14,7 @@ GameInventorySchema.statics.createProductInventory = async (userId) => {
     }
 }
 
-GameInventorySchema.methods.addProduct = async function(gameId) {
+GameInventorySchema.methods.addGame = async function(gameId) {
     try {
         this.games.push(gameId)
         await this.save()
@@ -23,7 +23,7 @@ GameInventorySchema.methods.addProduct = async function(gameId) {
     }
 }
 
-GameInventorySchema.methods.removeProduct = async function(gameId) {
+GameInventorySchema.methods.removeGame = async function(gameId) {
     try {
         this.games.splice(this.games.indexOf(gameId), 1);
         await this.save()

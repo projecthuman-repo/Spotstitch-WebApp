@@ -9,8 +9,6 @@ module.exports = async (req, res) => {
         const post = await Post.getPost(postId)
         if (!post) throw new Error('Could not find post')
 
-        post.deletePost()
-
         res.status(201).json(post);
     } catch (e) {
         logger.error({ e }, e.message)

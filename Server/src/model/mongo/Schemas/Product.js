@@ -29,9 +29,9 @@ ProductSchema.statics.getProduct = async (productId) => {
     }
 }
 
-ProductSchema.statics.createProduct = async () => {
+ProductSchema.statics.createProduct = async (productDetails) => {
     try {
-        const prod = new Product()
+        const prod = new Product(productDetails)
         await prod.save()
     } catch (error) {
         throw new Error(error)
