@@ -13,7 +13,7 @@ module.exports = async (req, res) => {
 
         chat.addToHistory(msg._id)
        
-        res.status(201).json();
+        res.status(201).json(msg);
     } catch (e) {
         logger.error({e}, 'Error sending message')
         res.status(400).json(createErrorResponse(400, 'Error sending message'))

@@ -34,12 +34,23 @@ LayerSchema.statics.getLayers = async () => {
     }
 }
 
-LayerSchema.statics.createLayer = () => {
-
+LayerSchema.statics.createLayer = async (content) => {
+    try {
+        const layer = new Layer(content)
+        await layer.save()
+        return layer
+    } catch (err) {
+        throw new Error(err)
+    }
 }
 
-LayerSchema.methods.updateLayer = function() {
-    
+LayerSchema.methods.updateLayer = async function(id, content) {
+    try {
+        await this.update(content)
+        return this
+    } catch (err) {
+        throw new Error(err)
+    }
 }
 
 

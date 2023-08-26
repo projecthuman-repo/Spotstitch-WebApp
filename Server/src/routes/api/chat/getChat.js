@@ -5,7 +5,7 @@ const { createErrorResponse } = require('../../../response');
 module.exports = async (req, res) => {
     try {
         
-        const { chatId, } = req.body
+        const { chatId } = req.params
 
         const chat = await Chat.getChat(chatId)
         if (!chat) throw new Error()

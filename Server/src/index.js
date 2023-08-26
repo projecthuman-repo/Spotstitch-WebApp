@@ -20,5 +20,8 @@ process.on('unhandledRejection', (reason, promise) => {
   throw reason;
 });
 
+// Connect to our database
+require('./connection')
+
 // Start our server
 require('./server');

@@ -4,10 +4,10 @@ const { createErrorResponse } = require('../../../response');
 
 module.exports = async (req, res) => {
     try {
-        
-        const { msgId, content } = req.body
+        const { messageId } = req.params
+        const { content } = req.body
 
-        const msg = Message.getMessage(msgId)
+        const msg = Message.getMessage(messageId)
 
         msg.editMessage(content)
        

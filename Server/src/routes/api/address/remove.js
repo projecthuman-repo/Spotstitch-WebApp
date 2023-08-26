@@ -5,7 +5,7 @@ const { createErrorResponse } = require('../../../response');
 module.exports = async (req, res) => {
     try {
         
-        const { address, addressId } = req.body
+        const { addressId } = req.body
         const adr = Address.getAddress(addressId)
 
         adr.deleteAddress()

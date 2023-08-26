@@ -5,9 +5,9 @@ const { createErrorResponse } = require('../../../response');
 module.exports = async (req, res) => {
     try {
         
-        const { msgId } = req.body
+        const { messageId } = req.params
 
-        const msg = await Message.getMessage(msgId)
+        const msg = await Message.getMessage(messageId)
 
         if (!msg) throw new Error(createErrorResponse(400, 'Could not find message'))
 

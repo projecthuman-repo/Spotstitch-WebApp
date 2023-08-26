@@ -5,9 +5,9 @@ const getChat = require('./getChat');
 const deleteMessage = require('./deleteMessage');
 const router = express.Router();
 
-router.get('/chat', getChat)
-router.put('/message/edit', editMessage)
+router.get('/:chatId', getChat)
+router.put('/message/:messageId/edit', editMessage)
 router.post('/message/send', sendMessage)
-router.delete('/message/delete', deleteMessage)
+router.delete('/message/:messageId/delete', deleteMessage)
 
 module.exports = router

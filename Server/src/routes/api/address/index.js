@@ -7,7 +7,7 @@ const remove = require('./remove');
 const router = express.Router();
 
 router.post('/add', add)
-router.put('./edit', edit)
-router.delete('./remove', remove)
+router.put('/edit', edit)
+router.delete('/remove', remove)
 
 module.exports = router

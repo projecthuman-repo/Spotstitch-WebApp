@@ -5,8 +5,8 @@ const { createErrorResponse } = require('../../../response');
 module.exports = async (req, res) => {
     try {
         
-        const { event } = req.body
-        const event = await Event.createEvent(event)
+        const { eventInfo } = req.body
+        const event = await Event.createEvent(eventInfo)
         if (!event) throw new Error()
 
         
