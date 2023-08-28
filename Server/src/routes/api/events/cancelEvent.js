@@ -5,7 +5,7 @@ const { createErrorResponse } = require('../../../response');
 module.exports = async (req, res) => {
     try {
         
-        const { eventId } = req.body
+        const { eventId } = req.params
         const event = await Event.getEvent(eventId)
         if (!event) throw new Error()
         await event.deleteEvent()

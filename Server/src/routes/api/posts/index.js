@@ -22,12 +22,14 @@ router.get('/:postId', getPost)
 
 router.post('/create', createPost)
 
+
 router.post('/:postId/comment', createPost)
+
 
 router.put('/:postId/update', updatePost)
 
 
-router.delete('/delete', deletePost)
+router.delete('/:postId/delete', deletePost)
 
 
 // Export our routes

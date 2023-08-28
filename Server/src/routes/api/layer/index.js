@@ -17,7 +17,6 @@ router.get('/:layerId' )
 
 router.post('/create')
 
-router.post()
 
 router.put('/:layerId/update')
 

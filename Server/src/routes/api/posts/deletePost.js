@@ -4,7 +4,7 @@ const { createErrorResponse } = require('../../../response');
 
 module.exports = async (req, res) => {
     try {
-        const { postId } = req.body
+        const { postId } = req.params
 
         const post = await Post.getPost(postId)
         if (!post) throw new Error('Could not find post')

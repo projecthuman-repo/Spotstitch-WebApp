@@ -4,7 +4,8 @@ const { createErrorResponse } = require('../../../response');
 
 module.exports = async (req, res) => {
     try {
-        const { productId, userId } = req.body
+        const { productId } = req.params
+        const { userId } = req.body
 
         const product = await Product.getProduct(productId)
         if (!product) throw new Error('Could not find product')

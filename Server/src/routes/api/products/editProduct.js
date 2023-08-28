@@ -1,10 +1,11 @@
-const { Product, ProductInventory } = require('../../../model');
+const { Product } = require('../../../model');
 const logger = require('../../../logger');
 const { createErrorResponse } = require('../../../response');
 
 module.exports = async (req, res) => {
     try {
-        const { productId, productInfo } = req.body
+        const { productId } = req.params
+        const { productInfo } = req.body
 
         const product = await Product.getProduct(productId)
         if (!product) throw new Error('Could not find product')

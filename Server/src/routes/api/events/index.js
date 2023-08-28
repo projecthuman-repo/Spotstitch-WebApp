@@ -3,6 +3,7 @@ const getAllEvents = require('./getAllEvents');
 const getEvent = require('./getEvent');
 const hostEvent = require('./hostEvent');
 const cancelEvent = require('./cancelEvent');
+const updateEvent = require('./updateEvent');
 
 
 // Create a router on which to mount our API endpoints
@@ -22,10 +23,10 @@ router.get('/:eventId', getEvent)
 router.post('/create', hostEvent)
 
 // update existing event 
-router.put('/update')
+router.put('/:eventId/update', updateEvent)
 
 // delete existing event
-router.delete('/cancel', cancelEvent)
+router.delete('/:eventId/cancel', cancelEvent)
 
 
 // Export our routes
