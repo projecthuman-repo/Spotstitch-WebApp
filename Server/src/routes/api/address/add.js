@@ -4,8 +4,8 @@ const { createErrorResponse } = require('../../../response');
 
 module.exports = async (req, res) => {
     try {
-        
-        const { user, address } = req.body
+        const { user } = req.params
+        const { address } = req.body
         const info = {
             ...address,
             userId: user

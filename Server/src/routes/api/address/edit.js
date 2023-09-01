@@ -4,9 +4,9 @@ const { createErrorResponse } = require('../../../response');
 
 module.exports = async (req, res) => {
     try {
-        
-        const { address, addressId } = req.body
-        const adr = Address.getAddress(addressId)
+        const { addressId } = req.params
+        const { address } = req.body
+        const adr = await Address.getAddress(addressId)
 
         adr.updateAddress(address)
         

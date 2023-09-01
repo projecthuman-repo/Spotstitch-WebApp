@@ -5,7 +5,7 @@ const ProductInventorySchema = new mongoose.Schema({
     products: [String]
 })
 
-ProductInventorySchema.statics.getInventory = async (id) => {
+ProductInventorySchema.statics.getProductInventory = async (id) => {
     try {
         const inv = await this.find({userId: id})
         return inv

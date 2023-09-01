@@ -16,9 +16,9 @@ const LayerSchema = new mongoose.Schema({
     rules: String
 })
 
-LayerSchema.statics.getLayer = async (id) => {
+LayerSchema.statics.getLayer = async (layerId) => {
     try {
-        const layer = await this.findById(id)
+        const layer = await this.findById(layerId)
         return layer
     } catch (err) {
         throw new Error(err)
@@ -44,9 +44,18 @@ LayerSchema.statics.createLayer = async (content) => {
     }
 }
 
-LayerSchema.methods.updateLayer = async function(id, content) {
+LayerSchema.methods.updateLayer = async function(content) {
     try {
         await this.update(content)
+        return this
+    } catch (err) {
+        throw new Error(err)
+    }
+}
+
+LayerSchema.methods.deleteLayer = async function() {
+    try {
+        await this.delete()
         return this
     } catch (err) {
         throw new Error(err)

@@ -76,23 +76,6 @@ UserSchema.statics.findByCredentials = async function (email, password) {
   return user
 }
 
-/**
- * | User | 
- * id, 
- * firstName, 
- * lastName, 
- * username, 
- * password, 
- * email, 
- * biography, 
- * status, 
- * avatarImage, 
- * bannerImage, 
-
- * settings, 
-
- */
-
 const User = mongoose.model('User', UserSchema);
 
 module.exports = User

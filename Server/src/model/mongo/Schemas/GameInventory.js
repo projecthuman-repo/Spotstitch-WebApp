@@ -5,7 +5,17 @@ const GameInventorySchema = new mongoose.Schema({
     games: [String]
 })
 
-GameInventorySchema.statics.createProductInventory = async (userId) => {
+GameInventorySchema.statics.getGameInventory = async (id) => {
+    try {
+        const inv = await this.find({userId: id})
+        return inv
+        
+    } catch (err) {
+        throw new Error(err)
+    }
+}
+
+GameInventorySchema.statics.createGameInventory = async (userId) => {
     try {
         const inv = new GameInventory({userId: userId, games: []})
         await inv.save()

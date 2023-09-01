@@ -21,7 +21,7 @@ WalletSchema.statics.createWallet = async (userId) => {
 
 WalletSchema.statics.getWallet = async (userID) => {
     try {
-        const wallet = await Wallet.findOne({ userID }).exec()
+        const wallet = await Wallet.findOne({ userID })
         return wallet
     } catch (err) {
         console.log(err)
