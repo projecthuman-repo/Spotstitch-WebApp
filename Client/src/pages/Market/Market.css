@@ -1,147 +1,126 @@
-.container{
-    margin-top: 8%;
-    margin-left: 10%;
-    margin-right: 10%;
+.round-label {
+  background-color: #D9D9D9 !important;
+  border-radius: 50% !important;
+  cursor: pointer;
 }
 
-
-
-.title {
-    font-size: 30px;
-    display: flex;
-    border-radius: 15px;
-    border: 3px solid #cad5bc;
-    font-weight: bold;
-    width:auto;
-    height: 50px;
-    justify-content: center;
-    align-items: center;
-    text-decoration-line: underline ;
-    text-decoration-thickness: 5px;
-    text-decoration-color: rgb(82, 82, 232) ;
-
+.img-preview {
+  height: 59px;
+  width: 59px;
+  border: 1px solid #666666;
+  border-radius: 9px;
 }
 
-.body{
-
-    margin-top: 5%;
-    display: flex;
-
+.img-product {
+  background-color: #F4F2F2;
+  height: 320px;
 }
 
-.leftbox {
-    margin-right: 3%;
-    border: 3px solid #cad5bc;
-    border-radius: 15px;
-    height: 600px;
-    width: 20%;
-
-    padding-top: 10px;
-    padding-bottom: 10px;
-    display:grid;
-    justify-content: center;
-    align-items: center;
-
-}
-.lboxpayment{
-    background-color: rgb(170, 163, 163);
-
-}
-a:visited {
-    color: black;
-}
-a:link { text-decoration: none; }
-/* mouse over link */
-a:hover {
-    background-color: rgb(170, 163, 163);
+.img-review {
+  background-color: #F4F2F2;
+  width: 230px;
+  height: 230px;
+  border: 0;
 }
 
-/* selected link
-  not functional right now
-*/
-a:active {
-    background-color: grey;
+.img-feature {
+  height: 233px;
 }
 
-.rightbox {
-    display:flex;
-    flex-direction: column;
-    border: 3px solid #607986;
-    border-radius: 15px;
-    height: 650px;
-    width: 85%;
-    overflow: auto;
-
+.img-avatar {
+  height: 61px;
+  width: 61px;
+  border: 0 !important;
+  background-color: #757575;
+  box-shadow: 0px 4px 4px 0px #00000040;
 
 }
 
-.rboxtitle{
-    display: flex;
-    align-items: center;
-    padding-left: 15px;
-    border-bottom: 6px solid #cad5bc;;
-    height: 40px;
-    width: 100% -15px;
-    font-weight: bold;
-    font-size: 20px;
-
-
+.img-new {
+  background-color: #D9D9D9;
+  height: 170px;
 }
 
-.itemtitle{
-    display: flex;
-    justify-content: center;
+.img-edit {
+  background-color: #F4F2F2;
+  height: 170px;
+}
+
+.img-cart {
+  background-color: #F4F2F2;
+  height: 155px;
+  width: 240px;
+  border-radius: 13px;
+}
+
+.img-listing {
+  border-radius: 20px 0px 0px 20px;
+}
+
+.btn-checkout {
+  border: 0px;
+  border-radius: 13px;
+  background: #E6E6E6;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+}
+
+.bg-checkout {
+  background: #F4F2F2;
+}
+
+.bg-review {
+  background: #F4F2F2;
+}
+
+.preview-scroll {
+  overflow-x: auto;
+}
+
+.btn-address-save {
+  background-color: #E6E6E6;
+  border-radius: 13px;
+  border: 0px;
+}
+
+.btn-publish {
+  border: 0px;
+  background-color: #E6E6E6;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
 }
 
 
-
-.lawnmower{
-    margin-left: auto;
-    margin-right: auto;
-    width: auto;
-    height: 150px;
+.btn-delivery {
+  cursor: pointer;
 }
 
-.price{
-    margin-top: 10px;
-    text-align: center;
+.btn-close {
+  cursor: pointer;
 }
 
-.checkoutlink{
-    margin-top: auto;
+.listing-card{
+  background: #FFFFFF;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 20px !important;
 }
 
 
-
-.checkoutbutton{
-    border-radius: 12px;
-    margin-top: auto;
-    text-align: center;
-    color: white;
-    background-color:#639eb2;
-    width: 10%;
-    height: 35px;
-    font-size: 20px;
-    border: none;
-    margin-bottom: 1px;
-    margin-right: 50px;
-    margin-left: 230px;
+.flip {
+  transform: (-1, 1);
 }
 
-.checkoutbutton:hover {
-    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
-    opacity: 2;
+.form-address {
+  border-radius: 10px !important;
 }
 
-.footer{
-    height: 100px;
+.img-text-light {
+  color: #C2C2C2;
 }
 
-.rboxtitle{
-    text-align: center;
+.video-preview {
+  background-color: #D9D9D9;
+  height: 180px;
+  width: 320px;
+  max-height: 180px;
+  max-width: 320px;
 }
 
-.search{
-    width: 160px;
-    height: 50px;
-}

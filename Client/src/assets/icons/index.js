@@ -12,6 +12,16 @@ import share from './share.svg'
 import mastercard from './Mastercard.svg'
 import visa from './Visa.svg'
 import cart from './Cart.svg'
+import plus from './plus.svg'
+import minus from './minus.svg'
+import garbageCan from './delete.svg'
+import chevronRight from './chevronRight.svg'
+import add from './add.svg'
+import checked from './checked.svg'
+import addPhoto from './addPhoto.svg'
+import playVideo from './playVideo.svg'
+import cross from './cross.svg'
+import options from './options.svg'
 
 export {
     inventory,
@@ -27,5 +37,15 @@ export {
     share,
     mastercard,
     visa,
-    cart
+    cart,
+    plus,
+    minus,
+    garbageCan,
+    chevronRight,
+    add,
+    checked,
+    addPhoto,
+    playVideo,
+    cross,
+    options
 }
