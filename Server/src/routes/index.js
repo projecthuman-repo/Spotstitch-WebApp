@@ -4,6 +4,8 @@ const express = require('express');
 const router = express.Router();
 const response = require('../response');
 
+// router.use(express.json());
+
 // server host name
 const { hostname } = require('os');
 

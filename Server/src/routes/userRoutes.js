@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const User = require('../models/User');
+const User = require('../model/mongo/Schemas/User');
 const login = require('./api/user/login');
 
 // creating user
