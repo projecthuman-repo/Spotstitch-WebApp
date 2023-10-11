@@ -12,6 +12,7 @@ module.exports = async (req, res) => {
             password: req.body.email,
             picture: req.body.pictue,
         });
+        await User.create(user);
         res.status(201).json(user);
         
     } catch (e) {
