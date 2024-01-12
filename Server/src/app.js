@@ -10,14 +10,10 @@ const pino = require("pino-http")({
   logger,
 });
 
-const userRoutes = require("./routes/userRoutes");
-
 // Create an express app instance we can use to attach middleware and HTTP routes
 const app = express();
 
 app.use(express.json());
-
-app.use("/api", userRoutes);
 
 // Use logging middleware
 app.use(pino);
