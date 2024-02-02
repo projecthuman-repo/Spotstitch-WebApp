@@ -6,6 +6,8 @@ require('dotenv').config();
 // We want to log any crash cases so we can debug later from logs.
 const logger = require('./logger');
 
+const { connectToDatabases } = require('./connection');
+
 // If we're going to crash because of an uncaught exception, log it first.
 // https://nodejs.org/api/process.html#event-uncaughtexception
 process.on('uncaughtException', (err, origin) => {
@@ -21,7 +23,7 @@ process.on('unhandledRejection', (reason, promise) => {
 });
 
 // Connect to our database
-require('./connection')
+connectToDatabases();
 
 // Start our server
 require('./server');

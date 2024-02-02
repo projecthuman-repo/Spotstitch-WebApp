@@ -1,17 +1,53 @@
 const mongoose = require('mongoose');
 
-if (process.env.MONGO_URI && process.NODE_ENV === 'production') {
-   mongoose
-      .connect(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true, })
-      .then(() => console.log("Connected to MongoDB"))
-      .catch(err => console.log(err));
-} else if (process.env.LOCAL_URI && process.NODE_ENV !== 'production') {
-   mongoose
-      .connect(process.env.LOCAL_URI, { useNewUrlParser: true, useUnifiedTopology: true, })
-      .then(() => console.log("Connected to local database"))
-      .catch(err => console.log(err));
-} else {
-   throw new Error('')
-}
+// Connection options (optional)
+const dbOptions = {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+};
 
-module.exports = mongoose
+const MONGODB_URL =
+  process.NODE_ENV === 'production'
+    ? process.env.MONGO_URI
+    : process.env.LOCAL_URI;
+
+console.log('MONGODB_URL', MONGODB_URL);
+
+const connectToSpotstitchDatabase = async () => {
+  try {
+    await mongoose.connect(MONGODB_URL, dbOptions);
+    console.log('Connected to the default database');
+  } catch (error) {
+    throw new Error(`Connecting to the default database: ${error}`);
+  }
+};
+
+// Create a connection to the CrossPlatform database
+const crossPlatformDatabase = mongoose.createConnection(
+  process.env.DATABASE_CROSS_PLATFORM_CONNECTION,
+  dbOptions
+);
+
+const connectToCrossPlatformDatabase = async () => {
+  try {
+    await crossPlatformDatabase.asPromise();
+    console.log('Connected to the CrossPlatform database');
+  } catch (error) {
+    throw new Error(`Connecting to the CrossPlatform database: ${error}`);
+  }
+};
+
+// Connect to all databases
+const connectToDatabases = async () => {
+  try {
+    await connectToSpotstitchDatabase();
+    await connectToCrossPlatformDatabase();
+  } catch (error) {
+    console.error(error);
+  }
+};
+
+module.exports = {
+  connectToDatabases,
+  crossPlatformDatabase,
+};
