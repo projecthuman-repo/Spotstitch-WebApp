@@ -1,20 +1,53 @@
 const jwt = require('jsonwebtoken');
-const { secretKey } = process.env.JWT_SECRET_KEY; // You'll need to provide your secret key
+const jwtSecret = process.env.JWT_SECRET;
 
-function authorizationMiddleware(req, res, next) {
-  const token = req.headers['authorization'];
+// Create a token with the user id and email
+// expiresIn is a string that describes the time until the token expires
+const createToken = (id, email, expiresIn) => {
+  const payload = { id, email };
+  const token = jwt.sign(payload, jwtSecret, {
+    expiresIn,
+  });
+  return token;
+};
 
-  if (!token) {
-    return res.status(401).json({ message: 'Authorization token is missing.' });
+// Verify the token and call next if successful
+const verifyToken = async (req, res, next) => {
+  let token;
+
+  if (
+    req.headers &&
+    req.headers.authorization &&
+    req.headers.authorization.startsWith('Bearer')
+  ) {
+    token = req.headers.authorization.split(' ')[1];
+  } else if (req.cookies.jwt) {
+    // TODO: Testing with frontend
+    token = req.cookies.jwt;
   }
 
-  try {
-    const decoded = jwt.verify(token, secretKey);
-    req.user = decoded; // Store the decoded user information in the request object
-    next(); // Call the next middleware
-  } catch (err) {
-    return res.status(403).json({ message: 'Invalid authorization token.' });
+  if (!token || token.trim() === '') {
+    return res.status(401).json({ message: 'Token not received' });
   }
-}
 
-module.exports = authorizationMiddleware;
+  // Verify the token
+  return new Promise((resolve, reject) => {
+    return jwt.verify(token, jwtSecret, (err, decoded) => {
+      if (err) {
+        reject(err.message);
+        return res.status(401).json({ message: 'Token expired' });
+      } else {
+        console.log('Token verified');
+        resolve();
+
+        // Use it in the next middleware to ensure the user is authorized
+        res.locals.jwtData = decoded;
+
+        // Call the next middleware
+        return next();
+      }
+    });
+  });
+};
+
+module.exports = { createToken, verifyToken };

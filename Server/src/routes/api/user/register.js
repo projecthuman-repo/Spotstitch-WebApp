@@ -8,7 +8,7 @@ module.exports = async (req, res) => {
       email: req.body.email,
       phoneNumber: req.body.phoneNumber,
       password: req.body.password,
-      picture: req.body.pictue,
+      picture: req.body.picture,
     });
     await User.create(user);
 

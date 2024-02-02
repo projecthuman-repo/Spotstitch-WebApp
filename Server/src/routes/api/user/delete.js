@@ -3,16 +3,17 @@ const { CrossPlatformUser } = require('../../../model');
 
 module.exports = async (req, res) => {
   try {
-    // TODO: check if the user is authorized
-
-    const id = req.params.id;
-    const user = await User.findByIdAndDelete(id);
+    const user = await User.findById(req.params.id);
     if (!user) {
       throw new Error('User not found');
     }
+    if (user._id.toString() !== res.locals.jwtData.id) {
+      throw new Error('Permission denied');
+    }
+    await user.delete();
 
     const crossPlatformUser = await CrossPlatformUser.findOne({
-      spotstitchUserId: id,
+      spotstitchUserId: user._id,
     });
     crossPlatformUser.spotstitchUserId = '';
     await crossPlatformUser.save();
