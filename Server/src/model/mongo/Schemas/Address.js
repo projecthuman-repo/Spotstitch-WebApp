@@ -37,7 +37,7 @@ AddressSchema.statics.createAddress = async (address) => {
     
 }
 
-AddressSchema.methods.updateAddress = async function(addressId, address) {
+AddressSchema.methods.updateAddress = async function(address) {
     try {
         this.update(address)
         return this
