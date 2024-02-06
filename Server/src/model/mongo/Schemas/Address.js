@@ -37,22 +37,20 @@ AddressSchema.statics.createAddress = async (address) => {
     
 }
 
-AddressSchema.methods.updateAddress = async function(address) {
+AddressSchema.statics.updateAddress = async function(addressId, address) {
     try {
-        this.update(address)
-        return this
+        await Address.findByIdAndUpdate(addressId, address)
     } catch (err) {
-        throw new Error("Error finding user")
+        throw new Error("Error finding Address")
     }  
 } 
 
-AddressSchema.methods.deleteAddress = async function() {
+AddressSchema.statics.deleteAddress = async function(addressId) {
     try {
-        await this.delete()
+        await Address.findByIdAndDelete(addressId)
     } catch (err) {
         throw new Error("Error finding user")
     }  
-    
 }
 
 const Address = mongoose.model('Address', AddressSchema);

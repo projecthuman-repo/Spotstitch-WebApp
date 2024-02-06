@@ -6,17 +6,17 @@ const mongoose = require('mongoose');
 
 describe('Event model', () => {
     beforeAll(async () => {
+        await mongoose.disconnect();
         await mongoose.connect(process.env.JEST_URI);
     })
 
     afterAll(async () => {
-        await mongoose.connection.close();
+        await mongoose.disconnect();
     });
 
     describe('accessing', () => {
         test('getting empty list', async () => {
             const res = await Event.getEvents()
-            console.log(res)
             expect(res.length).toBe(0)
         })
     })
