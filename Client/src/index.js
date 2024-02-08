@@ -9,17 +9,19 @@ import { PersistGate } from "redux-persist/integration/react";
 import persistStore from "redux-persist/es/persistStore";
 import store from "./store";
 
+import "leaflet/dist/leaflet.css";
+
 const persistedStore = persistStore(store);
 
 ReactDOM.render(
-    <React.StrictMode>
-        <Provider store={store}>
-            <PersistGate loading={null} persistor={persistedStore}>
-                <App />
-            </PersistGate>
-        </Provider>
-    </React.StrictMode>,
-    document.getElementById("root")
+	<React.StrictMode>
+		<Provider store={store}>
+			<PersistGate loading={null} persistor={persistedStore}>
+				<App />
+			</PersistGate>
+		</Provider>
+	</React.StrictMode>,
+	document.getElementById("root")
 );
 
 // If you want to start measuring performance in your app, pass a function
