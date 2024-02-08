@@ -59,7 +59,6 @@ describe('Address model', () => {
     describe('updating', () => {
         test('update existing address', async () => {
             const id = await Address.getUserAddresses(1)
-            const old = await Address.getAddress(id[0]._id)
             await Address.updateAddress(id[0]._id, newAddr)
             const res = await Address.getAddress(id[0]._id)
             expect(res.userId).toEqual(newAddr.userId)
