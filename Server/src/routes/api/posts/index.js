@@ -9,10 +9,6 @@ const deletePost = require('./deletePost')
 // Create a router on which to mount our API endpoints
 const router = express.Router();
 
-/**
- * Define routes for products below
- */
-
 // get all Posts
 router.get('/all', allPosts)
 

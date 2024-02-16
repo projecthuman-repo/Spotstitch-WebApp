@@ -10,9 +10,10 @@ ex. to access user would be /v1/user
 /v1/user/register
 
 #### address
-/v1/address/add
-/v1/address/edit
-/v1/address/remove
+/v1/address/:userId/get
+/v1/address/:userId/add
+/v1/address/:addressId/edit
+/v1/address/:addressId/delete
 
 #### chat
 /v1/chat/:chatId

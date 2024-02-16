@@ -4,15 +4,13 @@ const { createErrorResponse, createSuccessResponse } = require('../../../respons
 
 module.exports = async (req, res) => {
     try {
-        const { addressId } = req.params
-        const { address } = req.body
-        const adr = await Address.getAddress(addressId)
+        const { userId } = req.params
 
-        await adr.updateAddress(address)
+        const addr = await Address.getUserAddresses(userId)
+
+        if (!addr) throw new Error(createErrorResponse(400, 'Could not find address'))
         
-        if (!adr) throw new Error(createErrorResponse(400, 'Could not edit address'))
-       
-        res.status(201).json(createSuccessResponse(adr));
+        res.status(200).json(createSuccessResponse({addresses: addr}));
     } catch (e) {
         logger.error({e}, 'Error adding address')
         res.status(400).json(e)

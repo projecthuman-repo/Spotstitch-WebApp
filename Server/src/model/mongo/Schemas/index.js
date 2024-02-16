@@ -10,7 +10,7 @@ const ProductInventory = require('./ProductInventory');
 const GameInventory = require('./GameInventory');
 const User = require('./User');
 const CrossPlatformUser = require('./crossPlatform/User');
-
+const Settings = require('./Settings')
 module.exports = {
   Address,
   Chat,
@@ -24,4 +24,5 @@ module.exports = {
   GameInventory,
   User,
   CrossPlatformUser,
+  Settings,
 };

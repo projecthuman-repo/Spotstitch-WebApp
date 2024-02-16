@@ -29,8 +29,9 @@ AddressSchema.statics.getUserAddresses = async (userId) => {
 
 AddressSchema.statics.createAddress = async (address) => {
     try {
-        const addr = new Address(address)
-        await addr.save()
+        const result = new Address(address)
+        await result.save()
+        return result
     } catch (err) {
         throw new Error('Could not save address')
     }

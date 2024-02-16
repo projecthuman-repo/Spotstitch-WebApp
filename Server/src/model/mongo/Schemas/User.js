@@ -1,10 +1,20 @@
 const mongoose = require('mongoose');
 const { isEmail } = require('validator');
 const bcrypt = require('bcrypt');
+const Settings = require('./Settings');
+const Wallet = require('./Wallet')
 
 const UserSchema = new mongoose.Schema(
   {
-    name: {
+    username: {
+      type: String,
+      required: [true, "Can't be blank"],
+    },
+    firstName: {
+      type: String,
+      required: [true, "Can't be blank"],
+    },
+    lastName: {
       type: String,
       required: [true, "Can't be blank"],
     },
@@ -36,20 +46,24 @@ const UserSchema = new mongoose.Schema(
       type: String,
       default: 'online',
     },
+    userType: {
+      type: String,
+      required: [true, "Can't be blank"],
+    },
     addresses: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Address' }],
     Layers: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Layer' }],
-    GameInventory: [
+    gameInventory: [
       { type: mongoose.Schema.Types.ObjectId, ref: 'GameInventory' },
     ],
-    ProductInventory: [
+    productInventory: [
       { type: mongoose.Schema.Types.ObjectId, ref: 'ProductInventory' },
     ],
-    userType: String,
-    Wallet: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Wallet' }],
-    Chats: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Chat' }],
+    wallet: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Wallet' }],
+    chats: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Chat' }],
     notifications: [
       { type: mongoose.Schema.Types.ObjectId, ref: 'Notification' },
     ],
+    settings: { type: mongoose.Schema.Types.ObjectId, ref: 'Settings' }
   },
   { minimize: false }
 );
@@ -84,6 +98,15 @@ UserSchema.statics.findByCredentials = async function (email, password) {
   if (!isMatch) throw new Error('invalid email or password');
   return user;
 };
+
+UserSchema.statics.createNewUser = async function () {
+  const user = new User()
+  const settings = await Settings.createSettings(user._id)
+  const wallet = await Wallet.create(user._id)
+  
+  user.settings = settings._id
+  user.wallet = wallet._id
+}
 
 const User = mongoose.model('User', UserSchema);
 

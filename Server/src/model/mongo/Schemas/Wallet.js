@@ -71,11 +71,11 @@ WalletSchema.methods.removeCard = async function(idx) {
     }
 }
 
-WalletSchema.methods.preview = async function() {
+WalletSchema.methods.preview = function() {
     try {
         const cards = []
         for (const c of this.cards) {
-            cards.push(c.slice(-4))
+            cards.push(c.cardNumber.slice(-4))
         }
         return cards
     } catch (err) {
