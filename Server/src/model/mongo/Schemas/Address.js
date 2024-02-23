@@ -1,7 +1,11 @@
 const mongoose = require('mongoose');
 
 const AddressSchema = new mongoose.Schema({
-    userId: String,
+    userId: {
+        type: String,
+        unique: true,
+        required: true
+    },
     addressLines: [String],
     city: String,
     province: String,
@@ -29,30 +33,29 @@ AddressSchema.statics.getUserAddresses = async (userId) => {
 
 AddressSchema.statics.createAddress = async (address) => {
     try {
-        const addr = new Address(address)
-        await addr.save()
+        const result = new Address(address)
+        await result.save()
+        return result
     } catch (err) {
         throw new Error('Could not save address')
     }
     
 }
 
-AddressSchema.methods.updateAddress = async function(addressId, address) {
+AddressSchema.statics.updateAddress = async function(addressId, address) {
     try {
-        this.update(address)
-        return this
+        await Address.findByIdAndUpdate(addressId, address)
     } catch (err) {
-        throw new Error("Error finding user")
+        throw new Error("Error finding Address")
     }  
 } 
 
-AddressSchema.methods.deleteAddress = async function() {
+AddressSchema.statics.deleteAddress = async function(addressId) {
     try {
-        await this.delete()
+        await Address.findByIdAndDelete(addressId)
     } catch (err) {
         throw new Error("Error finding user")
     }  
-    
 }
 
 const Address = mongoose.model('Address', AddressSchema);

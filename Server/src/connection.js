@@ -11,7 +11,10 @@ const MONGODB_URL =
     ? process.env.MONGO_URI
     : process.env.LOCAL_URI;
 
-console.log('MONGODB_URL', MONGODB_URL);
+const CROSSPLATFORM_URL =
+  process.NODE_ENV === 'production'
+    ? process.env.DATABASE_CROSS_PLATFORM_CONNECTION
+    : process.env.LOCAL_URI;
 
 const connectToSpotstitchDatabase = async () => {
   try {
@@ -24,7 +27,7 @@ const connectToSpotstitchDatabase = async () => {
 
 // Create a connection to the CrossPlatform database
 const crossPlatformDatabase = mongoose.createConnection(
-  process.env.DATABASE_CROSS_PLATFORM_CONNECTION,
+  CROSSPLATFORM_URL,
   dbOptions
 );
 

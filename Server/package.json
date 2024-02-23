@@ -6,6 +6,7 @@
   "scripts": {
     "test:watch": "jest -c jest.config.js --runInBand --watch --",
     "test": "jest -c jest.config.js --runInBand --",
+    "test:async": "jest -c jest.config.js --runInBand --detectOpenHandles --",
     "coverage": "jest -c jest.config.js --runInBand --coverage",
     "lint": "eslint --config .eslintrc.js src/** tests/unit/**/*.js",
     "start": "node src/index.js",

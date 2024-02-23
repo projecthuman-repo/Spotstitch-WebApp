@@ -9,6 +9,6 @@ router.use('/events', require('./events'))
 router.use('/posts', require('./posts'))
 router.use('/inventory', require('./inventory'))
 router.use('/wallet', require('./wallet'))
-
+router.use('/settings', require('./settings'))
 
 module.exports = router

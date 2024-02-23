@@ -8,7 +8,19 @@ const app = require('../../src/app');
 // Get the version and author from our package.json
 const { version, author } = require('../../package.json');
 
+// Get mongoose to disconnect existing connections
+const mongoose = require("mongoose")
+
 describe('/ health check', () => {
+  beforeAll(async () => {
+    await mongoose.disconnect();
+    await mongoose.connect(process.env.JEST_URI);
+  })
+
+  afterAll(async () => {
+    await mongoose.disconnect();
+  });
+  
   test('should return HTTP 200 response', async () => {
     const res = await request(app).get('/');
     expect(res.statusCode).toBe(200);

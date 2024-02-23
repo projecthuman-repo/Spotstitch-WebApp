@@ -8,10 +8,10 @@ module.exports = async (req, res) => {
 
         const post = await Post.getPosts()
         if (!post) throw new Error('Could not find post')
-        res.status(201).json(post);
+        res.status(200).json(post);
     } catch (e) {
         logger.error({ e }, e.message)
-        res.status(400).json(e)
+        res.status(400).json(createErrorResponse(400, "Could not fetch posts"))
 
     }
 }

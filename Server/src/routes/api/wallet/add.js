@@ -1,5 +1,6 @@
 const{ Wallet } = require('../../../model');
-const logger = require('../../../logger')
+const logger = require('../../../logger');
+const { createErrorResponse } = require('../../../response');
 
 module.exports = async (req, res) => {
     try {
@@ -12,6 +13,6 @@ module.exports = async (req, res) => {
         res.status(201).json(wallet.preview());
     } catch (e) {
         logger.error({e}, 'Error adding card')
-        res.status(400).json('Error adding card')
+        res.status(400).json(createErrorResponse(400, 'Error adding card'))
     }
 }
