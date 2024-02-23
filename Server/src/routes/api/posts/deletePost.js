@@ -11,7 +11,7 @@ module.exports = async (req, res) => {
 
         post.deletePost()
 
-        res.status(201).json(post);
+        res.status(200).json(post);
     } catch (e) {
         logger.error({ e }, e.message)
         res.status(400).json(e)

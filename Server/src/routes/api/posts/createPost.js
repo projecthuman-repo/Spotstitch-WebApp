@@ -16,7 +16,7 @@ module.exports = async (req, res) => {
         res.status(201).json(post);
     } catch (e) {
         logger.error({ e }, e.message)
-        res.status(400).json(e)
+        res.status(400).json(createErrorResponse(400, "Error creating post"))
 
     }
 }

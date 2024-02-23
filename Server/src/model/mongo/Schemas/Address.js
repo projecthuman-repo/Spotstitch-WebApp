@@ -1,7 +1,11 @@
 const mongoose = require('mongoose');
 
 const AddressSchema = new mongoose.Schema({
-    userId: String,
+    userId: {
+        type: String,
+        unique: true,
+        required: true
+    },
     addressLines: [String],
     city: String,
     province: String,

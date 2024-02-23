@@ -3,6 +3,7 @@ const mongoose = require('mongoose');
 const SettingsSchema = new mongoose.Schema({
     userId: {
         type: String,
+        unique: true,
         required: true
     },
     general: {
@@ -36,7 +37,9 @@ const SettingsSchema = new mongoose.Schema({
 
 SettingsSchema.statics.getSettings = async (userId) => {
     try {
-        return await Settings.find({ userId: userId })
+        const setting = await Settings.findOne({ userId: userId })
+        if (setting) return setting
+        else throw new Error('Invalid settings, User doesnt not exist')
     } catch (err) {
         throw new Error(err)
     }
@@ -57,6 +60,15 @@ SettingsSchema.methods.updateSettings = async function (settings) {
         this.account = settings.account
         this.security = settings.security
         await this.save()
+    } catch (err) {
+        throw new Error(err)
+    }
+}
+
+SettingsSchema.statics.deleteSettings = async function (userId) {
+    try {
+        const res = await Settings.findOneAndDelete({userId: userId})
+        return res
     } catch (err) {
         throw new Error(err)
     }
