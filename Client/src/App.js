@@ -56,6 +56,7 @@ import {
 } from "./pages/Market";
 import NotificationsPage from "./pages/NotificationsPage/NotificationsPage.jsx";
 import HomePosts from "./pages/HomePosts/HomePosts.jsx";
+import ExplorePage from "./pages/ExplorePage/ExplorePage.jsx";
 
 function App() {
 	const [rooms, setRooms] = useState([]);
@@ -189,6 +190,8 @@ function App() {
 
 					<Route path="/settings" element={<Settings />} />
 					<Route path="/inventory" element={<Inventory />} />
+
+					<Route path="/explore" element={<ExplorePage />} />
 				</Routes>
 			</BrowserRouter>
 		</AppContext.Provider>
