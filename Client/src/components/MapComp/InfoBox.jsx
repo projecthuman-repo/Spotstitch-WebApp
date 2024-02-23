@@ -59,7 +59,7 @@ const InfoBox = ({info}) => {
             <Subtitle className=' fw-semibold '>Event Description</Subtitle>
             <Subtitle>{info.description}</Subtitle>
         </DescriptionContainer>
-        <div className="w-50 p-2 ps-3 d-flex justify-content-around">
+        <div className="w-md-50 p-2 ps-3 d-flex justify-content-around">
             <EventButton>View Event</EventButton>
             <EventButton>Get Tickets</EventButton>
         </div>

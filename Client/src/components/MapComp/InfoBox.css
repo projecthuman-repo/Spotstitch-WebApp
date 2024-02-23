@@ -1,11 +1,9 @@
-
-
 .popup{
     position: absolute;
-    
-    right: 48px;
-    top: 580px;
-    height: 260px;
+    overflow: auto;
+    right: 0px;
+    bottom: 0px;
+    height: 45%;
     width: 50%;
     z-index: 1000;
 
@@ -14,7 +12,11 @@
     border-radius: 5px 0px 0px 0px;
     color: black;
 }
-
+@media only screen and (max-width: 768px) {
+    .popup {
+        width: 100%;
+    }
+}
 /* 
 * {
     border: 1px solid red;

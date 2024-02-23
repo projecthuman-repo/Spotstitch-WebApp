@@ -41,7 +41,7 @@ const MapComp = ({ locations }) => {
   };
 
   return (
-    <div>
+    <div className=' position-relative '>
       <GoogleMap
         mapContainerStyle={mapContainerStyle}
         zoom={13}
