@@ -1,19 +1,29 @@
-import React from 'react';
+import React, { useState, useRef } from 'react';
 import { GoogleMap, useLoadScript, Marker } from '@react-google-maps/api';
+import InfoBox from './InfoBox';
 
 const libraries = ['places'];
 const mapContainerStyle = {
-  width: '80%',
+  width: '100%',
   height: '100vh',
 };
 
 const MapComp = ({ locations }) => {
-  const center = locations.length > 0 ? locations[0] : { lat: 0, lng: 0 };
+  const initialCenter = locations.length > 0 ? locations[0] : { lat: 0, lng: 0 };
+  const [infoData, setInfoData] = useState(null);
+  const [map, setMap] = useState(null);
 
   const { isLoaded, loadError } = useLoadScript({
     googleMapsApiKey: process.env.REACT_APP_GOOGLE_PLACES_API,
     libraries,
   });
+
+  const mapRef = useRef(null);
+
+  const onMapLoad = React.useCallback((map) => {
+    mapRef.current = map;
+    setMap(map);
+  }, []);
 
   if (loadError) {
     return <div>Error loading maps</div>;
@@ -23,20 +33,30 @@ const MapComp = ({ locations }) => {
     return <div>Loading maps</div>;
   }
 
+  const handleMarkerClick = (location) => {
+    if (map) {
+      map.panTo({ lat: location.lat, lng: location.lng });
+    }
+    setInfoData(location);
+  };
+
   return (
     <div>
       <GoogleMap
         mapContainerStyle={mapContainerStyle}
         zoom={13}
-        center={center}
+        center={initialCenter}
+        onLoad={onMapLoad}
       >
         {locations.map((location, index) => (
           <Marker
             key={index}
             position={{ lat: location.lat, lng: location.lng }}
+            onClick={() => handleMarkerClick(location)}
           />
         ))}
       </GoogleMap>
+      {infoData && <InfoBox info={infoData} />}
     </div>
   );
 };
