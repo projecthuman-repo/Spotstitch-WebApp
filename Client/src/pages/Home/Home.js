@@ -1,5 +1,5 @@
 import "./home.css";
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import {
 	Col,
 	Container,
@@ -20,9 +20,21 @@ import {
 } from "react-icons/bs";
 import { GoLocation } from "react-icons/go";
 import CreateLayerModal from "./CreateLayerModal";
-import { Outlet } from "react-router-dom";
+import { Outlet, useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
 
 function Home({ vendor = false }) {
+	const navigate = useNavigate();
+	let userState = useSelector((state) => state.user);
+
+	if (!userState) {
+		navigate("/login");
+		return <div>loading</div>;
+	}
+	console.log(first);
+	const { user } = userState;
+	const dispatch = useDispatch();
+
 	const [filters, setFilters] = useState([]);
 	const [modalShow, setModalShow] = useState(false);
 	const [popoverShow, setPopoverShow] = useState(false);
@@ -80,12 +92,17 @@ function Home({ vendor = false }) {
 										<img
 											className="avatar shadow"
 											src={avatar}
-											width={56}
-											height={56}
+											width={50}
+											height={50}
 										></img>
 									</Col>
-									<Col lg={9}>
-										<p className=" s-15 fw-500">Username</p>
+									<Col
+										lg={9}
+										className="ps-3 pt-2 overflow-auto d-flex justify-content-center align-items-center "
+									>
+										<p className="fw-500">
+											{user.username}
+										</p>
 									</Col>
 								</Row>
 

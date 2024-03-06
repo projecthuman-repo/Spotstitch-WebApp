@@ -31,7 +31,7 @@ import Refunds from "./pages/Refunds/Refunds";
 import RefundsPolicy from "./pages/RefundsPolicy/RefundsPolicy";
 import TransactionHistory from "./pages/TransactionHistory/TransactionHistory";
 import { useSelector } from "react-redux";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { AppContext, socket } from "./context/appContext";
 import Menu from "./components/Menu";
 import ShopSetup from "./features/ShopSetup";
@@ -66,6 +66,7 @@ function App() {
 	const [privateMemberMsg, setPrivateMemberMsg] = useState({});
 	const [newMessages, setNewMessages] = useState({});
 	const user = useSelector((state) => state.user);
+
 	const [menuOpen, setMenuOpen] = useState(false);
 	return (
 		<AppContext.Provider
