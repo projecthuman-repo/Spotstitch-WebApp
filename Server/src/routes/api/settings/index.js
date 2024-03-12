@@ -4,6 +4,6 @@ const updateSettings = require('./updateSettings');
 const router = express.Router();
 
 router.get('/:userId', getSettings)
-router.post('/update/:userId', updateSettings)
+router.post('/:userId/update', updateSettings)
 
 module.exports = router

@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const AddressSchema = new mongoose.Schema({
     userId: {
         type: String,
-        unique: true,
+
         required: true
     },
     addressLines: [String],
@@ -37,14 +37,16 @@ AddressSchema.statics.createAddress = async (address) => {
         await result.save()
         return result
     } catch (err) {
-        throw new Error('Could not save address')
+        
+        throw new Error(`Could not save address: ${err}`)
     }
     
 }
 
 AddressSchema.statics.updateAddress = async function(addressId, address) {
     try {
-        await Address.findByIdAndUpdate(addressId, address)
+        const result = await Address.findByIdAndUpdate(addressId, address)
+        return result
     } catch (err) {
         throw new Error("Error finding Address")
     }  

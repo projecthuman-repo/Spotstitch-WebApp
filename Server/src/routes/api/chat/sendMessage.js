@@ -1,7 +1,7 @@
 const{ Message, Chat } = require('../../../model');
 const logger = require('../../../logger');
 const { createErrorResponse } = require('../../../response');
-
+const socket = require('../../../socket')
 module.exports = async (req, res) => {
     try {
         
@@ -11,7 +11,9 @@ module.exports = async (req, res) => {
 
         const msg = Message.createMessage(chat._id, author, content)
 
-        chat.addToHistory(msg._id)
+        chat.addMessage(msg._id)
+        const io = socket.getSocket()
+        io.to(chatId).emit('send message', chatId, content, author)
        
         res.status(201).json(msg);
     } catch (e) {

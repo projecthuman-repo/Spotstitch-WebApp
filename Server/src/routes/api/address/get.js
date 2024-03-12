@@ -10,7 +10,7 @@ module.exports = async (req, res) => {
 
         if (!addr) throw new Error(createErrorResponse(400, 'Could not find address'))
         
-        res.status(200).json(createSuccessResponse({addresses: addr}));
+        res.status(200).json(createSuccessResponse({address: addr}));
     } catch (e) {
         logger.error({e}, 'Error adding address')
         res.status(400).json(e)
