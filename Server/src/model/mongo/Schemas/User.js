@@ -16,11 +16,11 @@ const UserSchema = new mongoose.Schema(
       index: true,
       validate: [isEmail, 'invalid email'],
     },
-    phoneNumber: {
-      type: String,
-      unique: true,
-      required: [true, "Can't be blank"],
-    },
+    // phoneNumber: {
+    //   type: String,
+    //   unique: true,
+    //   required: [true, "Can't be blank"],
+    // },
     password: {
       type: String,
       required: [true, "Can't be blank"],
@@ -79,8 +79,9 @@ UserSchema.methods.toJSON = function () {
 UserSchema.statics.findByCredentials = async function (email, password) {
   const user = await User.findOne({ email });
   if (!user) throw new Error('invalid email or password');
+  console.log(user.password + " : " + password)
 
-  const isMatch = await bcrypt.compare(password, user.password);
+  const isMatch = password === user.password;
   if (!isMatch) throw new Error('invalid email or password');
   return user;
 };
