@@ -1,7 +1,6 @@
 
 // Connect chatting server
 const { Server } = require("socket.io");
-const { http } = require('http');
 const { Chat, Message } = require("./model");
 const io = new Server()
 let serverSocket;
