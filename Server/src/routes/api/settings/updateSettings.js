@@ -4,13 +4,13 @@ const { createErrorResponse, createSuccessResponse } = require('../../../respons
 
 module.exports = async (req, res) => {
     try {
-        
+        // make sure the user is authenticated and we can find their ID
         const userId = res?.locals?.jwtData?.id
         if (!userId) throw new Error('Invalid user ID')
         
         const { settings } = req.body
 
-        // make sure a valid user exists
+        // make sure the settings for the user exists
         const update = await Settings.getSettings(userId)
         if (!update) throw new Error("User does not exist")
 

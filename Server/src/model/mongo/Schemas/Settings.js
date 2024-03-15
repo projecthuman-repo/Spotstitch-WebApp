@@ -57,9 +57,9 @@ SettingsSchema.statics.createSettings = async (userId) => {
 
 SettingsSchema.methods.updateSettings = async function (settings) {
     try {
-        this.general = settings.general
-        this.account = settings.account
-        this.security = settings.security
+        if (settings.general) this.general = settings.general
+        if (settings.account) this.account = settings.account
+        if (settings.security) this.security = settings.security
         await this.save()
     } catch (err) {
         throw new Error(err)
