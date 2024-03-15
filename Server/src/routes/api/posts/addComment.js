@@ -5,6 +5,7 @@ const { createErrorResponse } = require('../../../response');
 
 module.exports = async (req, res) => {
     try {
+        
         const { postId } = req.params
         const { comment } = req.body
 

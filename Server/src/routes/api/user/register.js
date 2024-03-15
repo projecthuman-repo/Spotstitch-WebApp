@@ -1,14 +1,18 @@
 const { User } = require('../../../model');
 const { CrossPlatformUser } = require('../../../model');
+const { createSuccessResponse } = require('../../../response');
 
 module.exports = async (req, res) => {
   try {
     const user = new User({
-      name: req.body.name,
+      username: req.body.username,
+      firstName: req.body.firstName,
+      lastName: req.body.lastName,
       email: req.body.email,
       phoneNumber: req.body.phoneNumber,
       password: req.body.password,
       picture: req.body.picture,
+      userType: req.body.userType
     });
     await User.create(user);
 
@@ -29,8 +33,8 @@ module.exports = async (req, res) => {
       });
       await newCrossPlatformUser.save();
     }
-
-    res.status(201).json(user);
+    const success = createSuccessResponse({ user: user })
+    res.status(201).json(success);
   } catch (e) {
     let msg;
     if (e.code == 11000) {

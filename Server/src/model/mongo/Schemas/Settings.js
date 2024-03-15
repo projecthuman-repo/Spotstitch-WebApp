@@ -47,8 +47,9 @@ SettingsSchema.statics.getSettings = async (userId) => {
 
 SettingsSchema.statics.createSettings = async (userId) => {
     try {
-        const settings = new Settings({userId: userId})
+        const settings = new Settings({ userId: userId })
         await settings.save()
+        return settings
     } catch (err) {
         throw new Error(err)
     }
@@ -67,7 +68,7 @@ SettingsSchema.methods.updateSettings = async function (settings) {
 
 SettingsSchema.statics.deleteSettings = async function (userId) {
     try {
-        const res = await Settings.findOneAndDelete({userId: userId})
+        const res = await Settings.findOneAndDelete({ userId: userId })
         return res
     } catch (err) {
         throw new Error(err)

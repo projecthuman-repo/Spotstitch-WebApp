@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 
 const ChatSchema = new mongoose.Schema({
     users: [String],
-    history: [String],
+    history: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Message' }],
     createdAt: String,
     createdBy: String
 })
@@ -16,17 +16,37 @@ ChatSchema.statics.getChat = async (id) => {
     }
 }
 
+ChatSchema.statics.getUserChat = async (userId) => {
+    try {
+        const chat = await Chat.find({ users: userId })
+        return chat
+    } catch (err) {
+        throw new Error('Error creating new chat')
+    }
+}
+
 ChatSchema.statics.createChat = async ({ users = [], messages = [] }) => {
     try {
         const chat = new Chat({
             users: users,
             history: messages,
-            createdAt: new Date()
+            createdAt: new Date(),
         })
         await chat.save()
         return chat
     } catch (err) {
-        throw new Error('Error creating new chat')
+        throw new Error('Error creating new chat: ' + err)
+    }
+}
+
+ChatSchema.methods.getHistory = async function () {
+    try {
+        if (!Chat.populated('Message')) {
+            await Chat.populate('Message')
+        }
+        return this.history
+    } catch (err) {
+        throw new Error('Error getting chat history')
     }
 }
 
@@ -39,7 +59,7 @@ ChatSchema.methods.addUserToChat = async function (userId) {
     }
 }
 
-ChatSchema.methods.addToHistory = async function (messageId) {
+ChatSchema.methods.addMessage = async function (messageId) {
     try {
         this.history.push(messageId)
         await this.save()

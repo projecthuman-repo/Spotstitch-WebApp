@@ -3,7 +3,7 @@ const getSettings = require('./getSettings');
 const updateSettings = require('./updateSettings');
 const router = express.Router();
 
-router.get('/:userId', getSettings)
-router.post('/update/:userId', updateSettings)
+router.get('/', getSettings)
+router.post('/update', updateSettings)
 
 module.exports = router
