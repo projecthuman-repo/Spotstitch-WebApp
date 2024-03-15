@@ -5,7 +5,7 @@ const ProductSchema = new mongoose.Schema({
     seller: String,
     productName: String,
     description: String,
-    rating: String,
+    rating: Number,
     reviews: [String],
     features: String,
     type: String,
@@ -41,6 +41,7 @@ ProductSchema.statics.createProduct = async (productDetails) => {
 ProductSchema.methods.updateProduct = async function (product) {
     try {
         await this.update(product)
+        return this
     } catch (error) {
         throw new Error(error)
     }
@@ -59,7 +60,9 @@ ProductSchema.methods.sellProduct = (qty) => {
 
 ProductSchema.methods.deleteProduct = async () => {
     try {
+        const item = this
         await this.delete().exec()
+        return item
     } catch (error) {
         throw new Error(error)
     }
