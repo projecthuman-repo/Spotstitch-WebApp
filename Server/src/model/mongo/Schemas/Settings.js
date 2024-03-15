@@ -49,6 +49,7 @@ SettingsSchema.statics.createSettings = async (userId) => {
     try {
         const settings = new Settings({ userId: userId })
         await settings.save()
+        return settings
     } catch (err) {
         throw new Error(err)
     }

@@ -9,9 +9,11 @@ const logger = require('../../../logger')
  */
 module.exports = async (req, res) => {
     try {
-        const { id, cardIndex } = req.body
+        const userId = res?.locals?.jwtData?.id
+        if (!userId) throw new Error('Invalid user ID')
+        const { cardIndex } = req.body
         
-        const wallet = await Wallet.getWallet(id);
+        const wallet = await Wallet.getWallet(userId);
         
         if (!wallet) throw new Error("Wallet does not exist")
 

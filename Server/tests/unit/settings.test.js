@@ -1,6 +1,9 @@
 
-const { Settings } = require('../../src/model')
+const { Settings } = require('../../src/model');
 const mongoose = require('mongoose');
+const request = require('supertest');
+const app = require('../../src/app');
+const { createToken } = require('../../src/authorization/auth');
 
 const defaultSettings = {
     userId: '1',
@@ -24,9 +27,9 @@ const defaultSettings = {
 
     },
     security: {
-        visibility: { type: Boolean, default: true },
+        visibility: true,
         viewable: {
-            anyone: { type: Boolean, default: false },
+            anyone: false,
             friends: { type: Boolean, default: true },
             friendsOfFriends: { type: Boolean, default: true },
         }
@@ -46,25 +49,26 @@ describe('Settings', () => {
 
     describe('model', () => {
         test('getting invalid settings', async () => {
-            expect(async () => { 
-                await Settings.getSettings('1') 
+            expect(async () => {
+                await Settings.getSettings('2')
             }).rejects.toThrow()
         })
         test('creating new user settings', async () => {
             const res = await Settings.createSettings('1')
+            expect(res.security.visibility).toEqual(defaultSettings.security.visibility)
         })
         test('creating duplicate user settings', async () => {
-            expect(async () => { 
-                await Settings.createSettings('1')
+            expect(async () => {
+                const res = await Settings.createSettings('1')
             }).rejects.toThrow()
         })
         test('getting user settings', async () => {
             const res = await Settings.getSettings('1')
-            expect(res)
+            expect(res.security.visibility).toEqual(defaultSettings.security.visibility)
         })
         test('updating user settings', async () => {
             const res = await Settings.getSettings('1')
-            
+
             expect(res)
         })
         test('deleting user settings', async () => {
@@ -77,8 +81,26 @@ describe('Settings', () => {
 
 
     describe('Routes', () => {
+        test('Accessing GET route without authorization', () => {
+            request(app).get('/v1/settings').expect(401)
+        })
+        test('Accessing GET route with invalid Token', async () => {
+            const res = await request(app)
+                .get('/v1/settings')
+                .set('Authorization', `Bearer ${'hi'}`)
+            expect(res.status).toEqual(401)
+        })
         test('getting', async () => {
-
+            await Settings.createSettings('1')
+            const token = createToken('1', 'user1@email.com', '7d')
+            const res = await request(app)
+                .get('/v1/settings')
+                .set('Authorization', `Bearer ${token}`)
+            console.log(res.body)
+            await Settings.deleteSettings('1')
+            expect(res.body)
+            expect(res.body.settings.userId).toEqual('1')
+            
         })
 
     })

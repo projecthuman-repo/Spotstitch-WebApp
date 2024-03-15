@@ -1,14 +1,15 @@
 const express = require('express');
+const { verifyToken } = require('../../authorization/auth');
 const router = express.Router();
 
 router.use('/user', require('./user'))
-router.use('/products', require('./products'))
-router.use('/address', require('./address'))
-router.use('/chat', require('./chat'))
-router.use('/events', require('./events'))
-router.use('/posts', require('./posts'))
-router.use('/inventory', require('./inventory'))
-router.use('/wallet', require('./wallet'))
-router.use('/settings', require('./settings'))
+router.use('/products', verifyToken, require('./products'))
+router.use('/address', verifyToken, require('./address'))
+router.use('/chat', verifyToken, require('./chat'))
+router.use('/events', verifyToken, require('./events'))
+router.use('/posts', verifyToken, require('./posts'))
+router.use('/inventory', verifyToken, require('./inventory'))
+router.use('/wallet', verifyToken, require('./wallet'))
+router.use('/settings', verifyToken, require('./settings'))
 
 module.exports = router
