@@ -90,7 +90,7 @@ describe('Settings', () => {
                 .set('Authorization', `Bearer ${'hi'}`)
             expect(res.status).toEqual(401)
         })
-        test('getting', async () => {
+        test('getting user settings', async () => {
             await Settings.createSettings('1')
             const token = createToken('1', 'user1@email.com', '7d')
             const res = await request(app)
