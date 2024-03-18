@@ -1,19 +1,24 @@
 const { Post } = require('../../../model');
 const logger = require('../../../logger');
-const { createErrorResponse } = require('../../../response');
+const { createErrorResponse, createSuccessResponse } = require('../../../response');
 
 
 module.exports = async (req, res) => {
     try {
+        // make sure the user is authenticated and we can find their ID
+        const userId = res?.locals?.jwtData?.id
+        if (!userId) throw new Error('Invalid user ID')
 
         const { postData } = req.body
+        postData.userId = userId
+        postData.comments = []
 
-        // add validation here
-
+        // attempt to create new post using post data from client
         const post = await Post.createPost(postData)
-        if (!post) throw new Error('Could not find post')
+        if (!post) throw new Error('Could not create post')
 
-        res.status(201).json(post);
+        // return newly created post back to client
+        res.status(201).json(createSuccessResponse({ post: post }));
     } catch (e) {
         logger.error({ e }, e.message)
         res.status(400).json(createErrorResponse(400, "Error creating post"))

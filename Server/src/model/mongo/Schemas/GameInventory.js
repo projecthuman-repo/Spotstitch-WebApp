@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 const GameInventorySchema = new mongoose.Schema({ 
-    userID: String, 
+    userId: String, 
     games: [String]
 })
 

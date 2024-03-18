@@ -1,12 +1,16 @@
 const mongoose = require('mongoose');
 
 const ProductSchema = new mongoose.Schema({
-    sellerID: String,
+    sellerId: String,
     seller: String,
     productName: String,
     description: String,
     rating: Number,
-    reviews: [String],
+    reviews: [{
+        by: String,
+        content: String,
+        rating: Number
+    }],
     features: String,
     type: String,
     tags: [String],
