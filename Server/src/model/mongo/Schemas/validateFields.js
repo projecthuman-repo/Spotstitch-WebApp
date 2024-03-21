@@ -9,7 +9,7 @@
  * 
  * @returns an empty array if verified or list of missing fields if not 
  */
-const validateFields = (schema, obj, ignore) => {
+const validateFields = (schema, obj, ignore = []) => {
     const paths = Object.keys(schema.paths);
     const missing = []
     for (const path of paths) {
@@ -20,6 +20,7 @@ const validateFields = (schema, obj, ignore) => {
     }
     return missing
 }
+
 /**
  * Update existing fields with matching fields in the new object.
  * Only fields that exist in the model will be updated

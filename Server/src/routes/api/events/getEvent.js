@@ -13,7 +13,7 @@ module.exports = async (req, res) => {
 
         res.status(201).json(createSuccessResponse({ event: event }));
     } catch (e) {
-        logger.error({ error: e.message }, 'Error adding address')
+        logger.error({ error: e.message }, "Could not find event")
         res.status(400).json(createErrorResponse(400, "Could not find event"))
 
     }

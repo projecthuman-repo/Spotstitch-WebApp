@@ -13,8 +13,8 @@ module.exports = async (req, res) => {
 
         // ensure all fields required to create an event are present
         const ignore = ['createdOn']
-        const valid = validateFields(Event.schema, eventInfo, ignore)
-        if (valid) throw new Error(`Missing required fields: ${valid.toString()}`)
+        const missing = validateFields(Event.schema, eventInfo, ignore)
+        if (missing) throw new Error(`Missing required fields: ${missing.toString()}`)
 
         // attempt to create new event
         const event = await Event.createEvent(eventInfo)
@@ -22,8 +22,7 @@ module.exports = async (req, res) => {
 
         res.status(201).json(createSuccessResponse({ event: event }));
     } catch (e) {
-        logger.error({ error: e.message }, e.message)
+        logger.error({ error: e.message }, "Could not create event")
         res.status(400).json(createErrorResponse(400, "Could not create event"))
-
     }
 }

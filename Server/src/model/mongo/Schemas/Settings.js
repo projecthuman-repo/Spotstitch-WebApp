@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const { updateFields } = require('./validateFields');
 
 const SettingsSchema = new mongoose.Schema({
     userId: {
@@ -57,9 +58,7 @@ SettingsSchema.statics.createSettings = async (userId) => {
 
 SettingsSchema.methods.updateSettings = async function (settings) {
     try {
-        if (settings.general) this.general = settings.general
-        if (settings.account) this.account = settings.account
-        if (settings.security) this.security = settings.security
+        updateFields(this, settings)
         await this.save()
     } catch (err) {
         throw new Error(err)

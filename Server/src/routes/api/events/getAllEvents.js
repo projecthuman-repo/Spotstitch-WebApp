@@ -5,14 +5,14 @@ const { createErrorResponse, createSuccessResponse } = require('../../../respons
 module.exports = async (req, res) => {
     try {
         const { filters } = req.body
-        
+
         // search for events by filters
         const events = await Event.getEvents(filters)
         if (!events) throw new Error('No events found')
 
         res.status(201).json(createSuccessResponse({ events: events }));
     } catch (e) {
-        logger.error({ error: e.message }, e.message)
+        logger.error({ error: e.message }, "Could not find events")
         res.status(400).json(createErrorResponse(400, "Could not find events"))
 
     }

@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const { updateFields } = require('./validateFields');
 
 const PostSchema = new mongoose.Schema({
     userId: {
@@ -60,7 +61,8 @@ PostSchema.methods.updateImage = async function (newImg) {
 
 PostSchema.methods.updatePost = async function (post) {
     try {
-        await this.update(post)
+        updateFields(this, post)
+        await this.save()
     } catch (err) {
         throw new Error(err)
     }
@@ -76,6 +78,7 @@ PostSchema.methods.addComment = async function (userId, comment) {
         }
         this.comments.push(post)
         await this.save()
+        return this
     } catch (err) {
         throw new Error(err)
     }

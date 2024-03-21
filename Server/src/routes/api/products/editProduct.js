@@ -1,4 +1,4 @@
-const { Product } = require('../../../model');
+const { Product, validateFields } = require('../../../model');
 const logger = require('../../../logger');
 const { createErrorResponse, createSuccessResponse } = require('../../../response');
 
@@ -11,6 +11,10 @@ module.exports = async (req, res) => {
 
         const { productId } = req.params
         const { product } = req.body
+
+        // ensure all fields required to create the model are present
+        const missing = validateFields(Product.schema, product)
+        if (missing) throw new Error(`Missing required fields: ${missing.toString()}`)
 
         // make sure the product exists and the user owns the product
         const edit = await Product.getProduct(productId)

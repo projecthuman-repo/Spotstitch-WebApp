@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const { updateFields } = require('./validateFields');
 
 const LayerSchema = new mongoose.Schema({
     layerName: String,
@@ -46,7 +47,9 @@ LayerSchema.statics.createLayer = async (content) => {
 
 LayerSchema.methods.updateLayer = async function(content) {
     try {
-        await this.update(content)
+        updateFields(this, content)
+        await this.save()
+
         return this
     } catch (err) {
         throw new Error(err)

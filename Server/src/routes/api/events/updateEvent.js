@@ -21,7 +21,7 @@ module.exports = async (req, res) => {
         
         res.status(201).json(createSuccessResponse({ event: update }));
     } catch (e) {
-        logger.error({ error: e.message }, e.message)
+        logger.error({ error: e.message }, "Could not update event")
         res.status(400).json(createErrorResponse(400, "Could not update event"))
         
     }

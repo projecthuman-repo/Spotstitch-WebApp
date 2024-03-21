@@ -1,4 +1,4 @@
-const { Post } = require('../../../model');
+const { Post, validateFields } = require('../../../model');
 const logger = require('../../../logger');
 const { createErrorResponse, createSuccessResponse } = require('../../../response');
 
@@ -12,6 +12,10 @@ module.exports = async (req, res) => {
         const { postData } = req.body
         postData.userId = userId
         postData.comments = []
+
+        // ensure all fields required to create an event are present
+        const missing = validateFields(Post, postData)
+        if (missing) throw new Error(`Missing required fields: ${missing.toString()}`)
 
         // attempt to create new post using post data from client
         const post = await Post.createPost(postData)

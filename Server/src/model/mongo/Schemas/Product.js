@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const { updateFields } = require('./validateFields');
 
 const ProductSchema = new mongoose.Schema({
     sellerId: String,
@@ -44,7 +45,8 @@ ProductSchema.statics.createProduct = async (productDetails) => {
 
 ProductSchema.methods.updateProduct = async function (product) {
     try {
-        await this.update(product)
+        updateFields(this, product)
+        await this.save()
         return this
     } catch (error) {
         throw new Error(error)

@@ -21,7 +21,7 @@ module.exports = async (req, res) => {
         // send back deleted event to user
         res.status(201).json(createSuccessResponse({ event: event }));
     } catch (e) {
-        logger.error({ error: e.message }, e.message)
+        logger.error({ error: e.message }, "Could not cancel event")
         res.status(400).json(createErrorResponse(400, "Could not cancel event"))
         
     }
