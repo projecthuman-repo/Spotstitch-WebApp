@@ -12,6 +12,7 @@ const GameInventory = require('./GameInventory');
 const User = require('./User');
 const CrossPlatformUser = require('./crossPlatform/User');
 const Settings = require('./Settings')
+const { validateFields, updateFields } = require('./validateFields')
 
 module.exports = {
   Address,
@@ -28,4 +29,6 @@ module.exports = {
   User,
   CrossPlatformUser,
   Settings,
+  validateFields,
+  updateFields
 };

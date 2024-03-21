@@ -1,19 +1,28 @@
 const{ Event } = require('../../../model');
 const logger = require('../../../logger');
-const { createErrorResponse } = require('../../../response');
+const { createErrorResponse, createSuccessResponse } = require('../../../response');
 
 module.exports = async (req, res) => {
     try {
         
         const { eventId } = req.params
+
+        // make sure the user is authenticated and we can find their ID
+        const userId = res?.locals?.jwtData?.id
+        if (!userId) throw new Error('Invalid user ID')
+
+        // confirm that the event exists and that the user owns the event
         const event = await Event.getEvent(eventId)
-        if (!event) throw new Error()
+        if (!event) throw new Error('Could not find event')
+        if (event.hostId != userId) throw new Error('User is not hosting this event')
+
         await event.deleteEvent()
         
-        res.status(201).json(event);
+        // send back deleted event to user
+        res.status(201).json(createSuccessResponse({ event: event }));
     } catch (e) {
-        logger.error({e}, 'Error adding address')
-        res.status(400).json(e)
+        logger.error({ error: e.message }, "Could not cancel event")
+        res.status(400).json(createErrorResponse(400, "Could not cancel event"))
         
     }
 }

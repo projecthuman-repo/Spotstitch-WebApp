@@ -1,19 +1,20 @@
-const{ Event } = require('../../../model');
+const { Event } = require('../../../model');
 const logger = require('../../../logger');
-const { createErrorResponse } = require('../../../response');
+const { createErrorResponse, createSuccessResponse } = require('../../../response');
 
 module.exports = async (req, res) => {
     try {
-        
-        const { eventId } = req.params
-        const event = await Event.getEvent(eventId)
-        if (!event) throw new Error()
 
-        
-        res.status(201).json(event);
+        const { eventId } = req.params
+
+        // attempt to find event from id
+        const event = await Event.getEvent(eventId)
+        if (!event) throw new Error('Could not find event')
+
+        res.status(201).json(createSuccessResponse({ event: event }));
     } catch (e) {
-        logger.error({e}, 'Error adding address')
-        res.status(400).json(e)
-        
+        logger.error({ error: e.message }, "Could not find event")
+        res.status(400).json(createErrorResponse(400, "Could not find event"))
+
     }
 }

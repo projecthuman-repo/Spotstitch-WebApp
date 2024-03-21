@@ -1,19 +1,20 @@
 const mongoose = require('mongoose');
-
+const { updateFields } = require('./validateFields');
 
 const EventSchema = new mongoose.Schema({
-    hostId: String,
-    hostName: String,
-    email: String,
-    title: String,
-    price: String,
-    description: String,
-    date: String,
-    eventType: String,
-    startTime: String,
-    endTime: String,
+    hostId: { type: String, required: true },
+    hostName: { type: String, required: true },
+    email: { type: String, required: true },
+    title: { type: String, required: true },
+    price: { type: String, required: true },
+    description: { type: String, required: true },
+    createdOn: { type: String },
+    date: { type: String, required: true },
+    eventType: { type: String, required: true },
+    startTime: { type: String, required: true },
+    endTime: { type: String, required: true },
     eventTime: String,
-    address: String,
+    address: { type: String, required: true },
     tags: [String]
 })
 
@@ -26,9 +27,9 @@ EventSchema.statics.getEvent = async (eventId) => {
     }
 }
 
-EventSchema.statics.getEvents = async () => {
+EventSchema.statics.getEvents = async (filters = "") => {
     try {
-        const result = await Event.find().exec()
+        const result = await Event.find({ tags: { $all: filters } })
         return result
     } catch (err) {
         throw new Error("Error finding events:" + err)
@@ -38,6 +39,7 @@ EventSchema.statics.getEvents = async () => {
 EventSchema.statics.createEvent = async (event) => {
     try {
         const evt = new Event(event)
+        evt.createdOn = new Date()
         await evt.save()
         return evt
     } catch (err) {
@@ -48,7 +50,8 @@ EventSchema.statics.createEvent = async (event) => {
 
 EventSchema.methods.updateEvent = async function (event) {
     try {
-        await this.updateOne(event)
+        updateFields(this, event)
+        await this.save()
     } catch (err) {
         console.log(err)
         throw new Error("Error updating event:" + err)

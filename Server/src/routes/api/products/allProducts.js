@@ -1,12 +1,17 @@
 const { Product } = require("../../../model")
 const logger = require('../../../logger')
+const { createErrorResponse, createSuccessResponse } = require("../../../response")
+
+// get all products
 module.exports = async (req, res) => {
     try {
-        const { userId } = req.body
-        const products = await Product.getProducts(userId)
-        res.status(201).json(products);
+        // attemp to get all products
+        const products = await Product.getProducts()
+        if (!products) throw new Error('Could not fetch products')
+
+        res.status(200).json(createSuccessResponse({ products: products }));
     } catch (e) {
         logger.error({ e }, e.message)
-        res.status(400).json(e)
+        res.status(400).json(createErrorResponse(e.message))
     }
 }

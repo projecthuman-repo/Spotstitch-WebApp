@@ -1,12 +1,17 @@
 const mongoose = require('mongoose');
+const { updateFields } = require('./validateFields');
 
 const ProductSchema = new mongoose.Schema({
-    sellerID: String,
+    sellerId: String,
     seller: String,
     productName: String,
     description: String,
-    rating: String,
-    reviews: [String],
+    rating: Number,
+    reviews: [{
+        by: String,
+        content: String,
+        rating: Number
+    }],
     features: String,
     type: String,
     tags: [String],
@@ -40,7 +45,9 @@ ProductSchema.statics.createProduct = async (productDetails) => {
 
 ProductSchema.methods.updateProduct = async function (product) {
     try {
-        await this.update(product)
+        updateFields(this, product)
+        await this.save()
+        return this
     } catch (error) {
         throw new Error(error)
     }
@@ -59,7 +66,9 @@ ProductSchema.methods.sellProduct = (qty) => {
 
 ProductSchema.methods.deleteProduct = async () => {
     try {
+        const item = this
         await this.delete().exec()
+        return item
     } catch (error) {
         throw new Error(error)
     }

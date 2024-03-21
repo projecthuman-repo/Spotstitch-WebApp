@@ -1,15 +1,15 @@
 const mongoose = require('mongoose');
+const { updateFields } = require('./validateFields');
 
 const PostSchema = new mongoose.Schema({
     userId: {
         type: String,
-        unique: true,
         required: true
     },
     username: String,
     userDescription: String,
     image: {
-        data: Buffer,
+        data: String,
         contentType: String
     },
     description: String,
@@ -31,9 +31,9 @@ PostSchema.statics.getPost = async (id) => {
     }
 }
 
-PostSchema.statics.getPosts = async () => {
+PostSchema.statics.getPosts = async (filters = "") => {
     try {
-        const result = await Post.find();
+        const result = await Post.find({ tags: { $all: filters } });
         return result;
     } catch (err) {
         throw new Error("Error getting posts");
@@ -61,17 +61,24 @@ PostSchema.methods.updateImage = async function (newImg) {
 
 PostSchema.methods.updatePost = async function (post) {
     try {
-        await this.update(post)
+        updateFields(this, post)
+        await this.save()
     } catch (err) {
         throw new Error(err)
     }
 }
 
 
-PostSchema.methods.addComment = async function (comment) {
+PostSchema.methods.addComment = async function (userId, comment) {
     try {
-        this.comments.push(comment)
+        const post = {
+            by: userId,
+            content: comment,
+            likes: 0
+        }
+        this.comments.push(post)
         await this.save()
+        return this
     } catch (err) {
         throw new Error(err)
     }
