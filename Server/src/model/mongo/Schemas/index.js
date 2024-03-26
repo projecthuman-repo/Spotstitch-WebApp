@@ -11,6 +11,7 @@ const ProductInventory = require('./ProductInventory');
 const GameInventory = require('./GameInventory');
 const User = require('./User');
 const CrossPlatformUser = require('./crossPlatform/User');
+const CrossPlatformEvent = require('./crossPlatform/Event');
 const Settings = require('./Settings')
 const { validateFields, updateFields } = require('./validateFields')
 
@@ -28,6 +29,7 @@ module.exports = {
   GameInventory,
   User,
   CrossPlatformUser,
+  CrossPlatformEvent,
   Settings,
   validateFields,
   updateFields
