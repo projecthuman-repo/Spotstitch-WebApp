@@ -4,6 +4,7 @@ const login = require('./login');
 const register = require('./register');
 const update = require('./update');
 const deleteUser = require('./delete');
+const createCrossEvent = require('./createCrossEvent');
 const { verifyToken } = require('../../../authorization/auth');
 
 // creating user
@@ -17,5 +18,8 @@ router.put('/:id', verifyToken, update);
 
 // delete user
 router.delete('/:id', verifyToken, deleteUser);
+
+// test route
+router.post('/createCrossEvent', createCrossEvent);
 
 module.exports = router;
