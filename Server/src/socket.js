@@ -2,6 +2,8 @@
 // Connect chatting server
 const { Server } = require("socket.io");
 const { Chat, Message } = require("./model");
+const { verifyToken } = require("./authorization/auth");
+const { createSuccessResponse, createErrorResponse } = require("./response");
 const io = new Server()
 let serverSocket;
 /**
@@ -11,23 +13,55 @@ let serverSocket;
  */
 const createSocketServerInstance = async (server) => {
     io.attach(server)
+    io.engine.use((req, res, next) => {
+        //verifyToken(req, res, next)
+        next();
+    });
     io.on('connection', (socket) => {
         serverSocket = socket
 
-        socket.on('connected', (userId) => {
-
+        socket.on('connect to rooms', async (userId, callback) => {
+            callback = typeof callback == "function" ? callback : () => { };
+            try {
+                const rooms = await Chat.getUserChats(userId)
+                for (const room of rooms) {
+                    socket.join(room._id)
+                }
+                callback(createSuccessResponse({ rooms: rooms }))
+            }
+            catch (error) {
+                callback(createErrorResponse(400, error.message));
+            }
         })
 
         // Create new chat
-        socket.on('create chat', async (users, cb) => {
-            const chat = await Chat.createChat({ users: users })
-            socket.emit('new chat', chat._id)
-            cb(chat._id)
+        socket.on('create chat', async (users, callback) => {
+            callback = typeof callback == "function" ? callback : () => { };
+            
+            try {
+                const chat = await Chat.createChat({ users: users })
+                if (!chat) throw new Error('Chat could not be created')
+
+                for (const user of users) {
+                    socket.emit('connected', user)
+                }
+
+                callback(createSuccessResponse({ chatId: chat._id }))
+            }
+            catch (error) {
+                callback(createErrorResponse(400, error.message));
+            }
         })
 
-        socket.on('get rooms', async (userId, ) => {
-            const rooms = await Chat.getUserChat(userId)
-            socket.emit('user rooms', rooms)
+        socket.on('get chats', async (userId, callback) => {
+            callback = typeof callback == "function" ? callback : () => { };
+            try {
+                const rooms = await Chat.getUserChats(userId)
+                callback(createSuccessResponse({ rooms: rooms }))
+            }
+            catch (error) {
+                callback(createErrorResponse(400, error.message));
+            }
         })
 
         socket.on('open chat', async (chatId) => {
@@ -36,18 +70,43 @@ const createSocketServerInstance = async (server) => {
             io.to(chatId).emit('open chat', chat.getHistory(), chatId)
         })
 
-        socket.on('update chat', async (chatId, messageId, content) => {
-            const chat = await Chat.getChat(chatId)
-            const message = await Message.getMessage(messageId)
-            message.editMessage(content)
-            io.to(chatId).emit('edit message', content, chatId)
+
+        socket.on('update message', async (chatId, messageId, content, callback) => {
+            callback = typeof callback == "function" ? callback : () => { };
+            try {
+                const message = await Message.getMessage(messageId)
+                message.editMessage(content)
+                io.to(chatId).emit('message edited', {
+                    chatId: chatId,
+                    content: content
+                })
+                callback(createSuccessResponse({ message: message }))
+            }
+            catch (error) {
+                callback(createErrorResponse(400, error.message));
+            }
+
         })
 
-        socket.on('send message', async (chatId, author, content) => {
-            const chat = await Chat.getChat(chatId)
-            const message = await Message.createMessage(chatId, author, content)
-            chat.addMessage(message._id)
-            io.to(chatId).emit('send message', content, chatId, author)
+        socket.on('send message', async (chatId, author, content, callback) => {
+            callback = typeof callback == "function" ? callback : () => { };
+            try {
+                const chat = await Chat.getChat(chatId)
+                if (!chat) throw new Error("Could not find chat")
+
+                const message = await Message.createMessage(chatId, author, content)
+                if (!message) throw new Error("Error creating new message")
+
+                chat.addMessage(message._id)
+                
+                const clients = io.sockets.adapter.rooms.get(chatId);
+                console.log(clients)
+                io.to(chatId).emit('message sent', chatId, author, content)
+                callback(createSuccessResponse({ message: message, clients: clients }))
+            }
+            catch (error) {
+                callback(createErrorResponse(400, error.message));
+            }
         });
 
         socket.on("typing", (room) => socket.in(room).emit("typing"));
