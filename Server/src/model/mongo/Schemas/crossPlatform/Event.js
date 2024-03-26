@@ -2,21 +2,24 @@ const mongoose = require('mongoose');
 const { crossPlatformDatabase } = require('../../../../connection');
 
 const eventSchema = new mongoose.Schema({
-  eventID: {
+  hostId: {
     type: String,
     required: true,
+  },
+  hostName: {
+    type: String,
+    default: 'New Event',
   },
   email: {
     type: String,
     required: true,
     unique: true,
   },
-  location: {
+  address: {
     type: String,
   },
   phoneNumber: {
     type: String,
-    required: true,
     unique: true,
   },
   description: {
@@ -28,12 +31,16 @@ const eventSchema = new mongoose.Schema({
 });
 
 eventSchema.statics.findById = async function (id) {
-  const event = await CrossPlatformUser.findOne({ eventID: id });
-  if (!event) throw new Error('invalid email, cross platform user does not exist');
-  else{
-    console.log('Event found');
+  const event = await this.findOne({ eventID: id }); // Use `this` to refer to the model.
+  if (!event) {
+    console.log('Event not found');
+    throw new Error('Event not found');
+  } else {
+    console.log('Event found:', event);
+    return event;
   }
 };
+
 
 // EventSchema.statics.createNewEvent = async function () {
 //   const user = new User()
