@@ -6,6 +6,7 @@ const update = require('./update');
 const deleteUser = require('./delete');
 const createCrossEvent = require('./createCrossEvent');
 const readAllCrossEvents = require('./readAllCrossEvents');
+const readAllEvents = require('./readAllEvents');
 const getCrossEvent = require('./getCrossEvent');
 const deleteCrossEvent = require('./deleteCrossEvent');
 const updateBothEvents = require('./updateBothEvents');
@@ -28,6 +29,9 @@ router.post('/createCrossEvent', createCrossEvent);
 
 // test route
 router.get('/readAllCrossEvents', readAllCrossEvents);
+
+// test route
+router.get('/readAllEvents', readAllEvents);
 
 // get one cross plat even
 router.get('/getCrossEvent/:id', getCrossEvent);

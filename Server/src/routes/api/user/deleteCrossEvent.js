@@ -1,38 +1,40 @@
-const mongoose = require('mongoose');
 const { Event, CrossPlatformEvent } = require('../../../model');
+const logger = require('../../../logger');
+const { createErrorResponse, createSuccessResponse } = require('../../../response');
+const mongoose = require('mongoose');
 
 module.exports = async (req, res) => {
-    const session = await mongoose.startSession();
-    try {
-        await session.startTransaction();
-        const { hostId } = req.params;
+  const session = await mongoose.startSession(); // Start a session for the transaction
+  try {
+    session.startTransaction(); // Start the transaction
+    const { eventId: hostId } = req.params;
+    // // Ensure the user is authenticated and we can find their ID
+    // const userId = res?.locals?.jwtData?.id;
+    // if (!userId) throw new Error('Invalid user ID');
 
-        // Find the event in the Event database
-        const spotStitchEvent = await Event.findOne({ hostId: hostId }, null, { session });
+    // Confirm that the events exist and that the user owns the events
+    const crossEvent = await CrossPlatformEvent.findOne({ _id: hostId, hostId: userId }).session(session);
+    if (!crossEvent) throw new Error('Could not find cross-platform event');
 
-        // Find the event in the CrossPlatformEvent database
-        const crossPlatformEvent = await CrossPlatformEvent.findOne({ hostId: hostId }, null, { session });
+    const event = await Event.findOne({ _id: hostId, hostId: userId }).session(session);
+    if (!event) throw new Error('Could not find event');
 
-        // Delete the event from the Event database if it exists
-        if (spotStitchEvent) {
-            await spotStitchEvent.deleteOne({ session });
-        }
+    // If the events exist and are owned by the user, delete them using their respective methods
+    if (crossEvent) await crossEvent.deleteEvent();
+    if (event) await event.deleteEvent();
 
-        // Delete the event from the CrossPlatformEvent database if it exists
-        if (crossPlatformEvent) {
-            await crossPlatformEvent.deleteOne({ session });
-            await session.commitTransaction();
-            res.status(200).json({ status: "success", message: 'Event successfully deleted from CrossPlatformEvent.' });
-        } else {
-            // If no crossPlatformEvent exists, no need to commit transaction or delete anything.
-            await session.abortTransaction(); 
-            res.status(404).json({ status: "error", error: { code: 404, message: 'Event not found in CrossPlatformEvent.' } });
-        }
-    } catch (e) {
-        await session.abortTransaction();
-        console.error("Error during event deletion", e);
-        res.status(400).json({ status: "error", error: { code: 400, message: e.message || "Could not delete event" } });
-    } finally {
-        await session.endSession();
-    }
+    // Commit the transaction to ensure both documents are deleted atomically
+    await session.commitTransaction();
+
+    // Respond back to the user
+    res.status(200).json(createSuccessResponse({ message: 'Event successfully deleted' }));
+  } catch (e) {
+    // Abort the transaction in case of an error
+    session.abortTransaction();
+    logger.error({ error: e.message }, "Could not cancel event");
+    res.status(400).json(createErrorResponse(400, e.message));
+  } finally {
+    // End the session
+    session.endSession();
+  }
 };

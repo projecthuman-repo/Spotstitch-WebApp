@@ -32,6 +32,7 @@ EventSchema.statics.getEvents = async (filters = "") => {
         const result = await Event.find({ tags: { $all: filters } })
         return result
     } catch (err) {
+        console.log(err);
         throw new Error("Error finding events:" + err)
     }
 }
