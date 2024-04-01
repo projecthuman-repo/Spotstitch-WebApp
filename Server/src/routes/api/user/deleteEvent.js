@@ -5,13 +5,13 @@ const { createErrorResponse, createSuccessResponse } = require('../../../respons
 
 module.exports = async (req, res) => {
     try {
-        const { eventId } = req.params;
+        const { eventId: hostId} = req.params;
         // const userId = res?.locals?.jwtData?.id;
         // if (!userId) throw new Error('Invalid user ID');
 
         // Confirm that the event exists and that the user owns the event in SpotStitch
-        const event = await Event.getEvent(eventId);
-        console.log(`Attempting to cancel event with ID: ${eventId}`);
+        const event = await Event.getEvent(hostId);
+        console.log(`Attempting to cancel event with ID: ${hostId}`);
 
         if (!event) throw new Error('Could not find event');
         // if (event.hostId != userId) throw new Error('User is not hosting this event');

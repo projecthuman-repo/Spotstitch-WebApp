@@ -18,20 +18,33 @@ const EventSchema = new mongoose.Schema({
     tags: [String]
 })
 
-EventSchema.statics.getEvent = async (eventId) => {
-    try {
-        const result = await Event.findById(eventId).exec()
-        return result
-    } catch (err) {
-        throw new Error("Error finding events:" + err)
-    }
-}
+// EventSchema.statics.getEvent = async (eventId) => {
+//     try {
+//         const result = await Event.findById(eventId).exec()
+//         return result
+//     } catch (err) {
+//         throw new Error("Error finding events:" + err)
+//     }
+// }
+
+
+    EventSchema.statics.getEvent = async (hostId) => {
+        try {
+            // Adjust the query to search by hostId instead of _id
+            const result = await Event.findOne({ hostId: hostId }).exec();
+            return result;
+        } catch (err) {
+            throw new Error("Error finding event by hostId: " + err);
+        }
+    };
+
 
 EventSchema.statics.getEvents = async (filters = "") => {
     try {
         const result = await Event.find({ tags: { $all: filters } })
         return result
     } catch (err) {
+        console.log(err);
         throw new Error("Error finding events:" + err)
     }
 }
@@ -60,7 +73,7 @@ EventSchema.methods.updateEvent = async function (event) {
 
 EventSchema.methods.deleteEvent = async function () {
     try {
-        await this.delete()
+        await this.remove()
     } catch (err) {
         throw new Error("Error deleting event:" + err)
     }

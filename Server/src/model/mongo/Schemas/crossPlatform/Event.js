@@ -1,6 +1,5 @@
 const mongoose = require('mongoose');
 const { crossPlatformDatabase } = require('../../../../connection');
-
 const eventSchema = new mongoose.Schema({
   hostId: {
     type: String,
@@ -42,15 +41,14 @@ eventSchema.statics.findById = async function (id) {
 };
 
 
-// EventSchema.statics.createNewEvent = async function () {
-//   const user = new User()
-//   const settings = await Settings.createSettings(user._id)
-//   const wallet = await Wallet.create(user._id)
-
-//   user.settings = settings._id
-//   user.wallet = wallet._id
-// }
-
 const CrossPlatformEvent = crossPlatformDatabase.model('CrossPlatformEvent', eventSchema);
+eventSchema.methods.deleteEvent = async function () {
+  try {
+      await this.delete()
+  } catch (err) {
+      throw new Error("Error deleting event:" + err)
+  }
+}
+
 
 module.exports = CrossPlatformEvent;
