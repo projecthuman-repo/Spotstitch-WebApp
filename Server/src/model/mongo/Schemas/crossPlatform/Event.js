@@ -30,7 +30,7 @@ const eventSchema = new mongoose.Schema({
 });
 
 eventSchema.statics.findById = async function (id) {
-  const event = await this.findOne({ eventID: id }); // Use `this` to refer to the model.
+  const event = await this.findOne({ hostId: id }); // Use `this` to refer to the model.
   if (!event) {
     console.log('Event not found');
     throw new Error('Event not found');
