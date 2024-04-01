@@ -8,7 +8,7 @@ const createCrossEvent = require('./createCrossEvent');
 const readAllCrossEvents = require('./readAllCrossEvents');
 const readAllEvents = require('./readAllEvents');
 const getCrossEvent = require('./getCrossEvent');
-const deleteCrossEvent = require('./deleteCrossEvent');
+const deleteEvent = require('./deleteCrossEvent');
 const updateBothEvents = require('./updateBothEvents');
 const { verifyToken } = require('../../../authorization/auth');
 
@@ -37,7 +37,7 @@ router.get('/readAllEvents', readAllEvents);
 router.get('/getCrossEvent/:id', getCrossEvent);
 
 // delete a cross plat event
-router.delete('/deleteCrossEvent/:eventId', deleteCrossEvent);
+router.delete('/deleteCrossEvent/:eventId', deleteEvent);
 
 // update both crossplat and spotstitch instances of an event
 router.put('/updateBothEvents/:eventId', updateBothEvents);
