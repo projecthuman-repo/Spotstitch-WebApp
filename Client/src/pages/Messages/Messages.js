@@ -1,95 +1,82 @@
 import React, { useEffect, useState } from 'react';
+import { useImmer, useImmerReducer } from 'use-immer'
 import PageNav from '../../components/pageNav/PageNav';
 import { Col, Container, Form, Row } from 'react-bootstrap';
 import './messages.css';
 import { MdOutlineSearch } from 'react-icons/md';
 import { HiOutlinePhoto, HiOutlineFaceSmile } from 'react-icons/hi2';
 import { BsSend } from 'react-icons/bs';
+import ChatTile from './ChatTile';
+import socket from '../../services/socket';
+import { sendMessage, createChat, connect, getChats, getChat } from '../../services/chatApp'
+import MessageHistory from './MessageHistory';
+import chatReducer from './chatReducer';
+import socketEvents from '../../services/socketEvents';
 
 const Messages = () => {
-  const [rightScreen, setRightScreen] = useState([]);
-  const [messageClicked, setMessageClicked] = useState([]);
+  const [currentChat, setCurrentChat] = useState("");
+  const [chatHistory, updateChatHistory] = useImmer([])
+  const [pending, setPending] = useState(false)
+  const [chatList, dispatch] = useImmerReducer(chatReducer, {})
 
-  const users = [
-    {
-      name: 'User Name',
-      message: 'Last Message',
-      date: 'MM/DD/YY',
-      profilePic: 'photo.png',
-    },
-    {
-      name: 'Test User 1',
-      message: 'Last Message',
-      date: 'MM/DD/YY',
-      profilePic: 'photo.png',
-    },
-    {
-      name: 'Test User 2',
-      message: 'Last Message',
-      date: 'MM/DD/YY',
-      profilePic: 'photo.png',
-    },
-    {
-      name: 'User Name',
-      message: 'Last Message',
-      date: 'MM/DD/YY',
-      profilePic: 'photo.png',
-    },
-    {
-      name: 'User Name',
-      message: 'Last Message',
-      date: 'MM/DD/YY',
-      profilePic: 'photo.png',
-    },
-    {
-      name: 'User Name',
-      message: 'Last Message',
-      date: 'MM/DD/YY',
-      profilePic: 'photo.png',
-    },
-    {
-      name: 'User Name',
-      message: 'Last Message',
-      date: 'MM/DD/YY',
-      profilePic: 'photo.png',
-    },
-    {
-      name: 'User Name',
-      message: 'Last Message',
-      date: 'MM/DD/YY',
-      profilePic: 'photo.png',
-    },
-    {
-      name: 'User Name',
-      message: 'Last Message',
-      date: 'MM/DD/YY',
-      profilePic: 'photo.png',
-    },
-  ];
+  useEffect(async () => {
 
-  useEffect(() => {
-    setRightScreen(<NewMessage />);
-    const tempMessages = Array(users.length).fill(false);
-    setMessageClicked(tempMessages);
-
-    // users.forEach((element, index) => {
-    //   tempMessages[index] = false;
-    //   setMessageClicked(tempMessages);
-    // });
-  }, []);
-
-  const onMessageClick = (user, index) => {
-    const newMessageClick = Array(messageClicked.length).fill(false);
-    setRightScreen(<ClickedMessage user={user} />);
-    if (messageClicked[index] === false) {
-      newMessageClick.splice(index, 1, true);
-    } else {
-      setRightScreen(<NewMessage />);
+    async function onMessageRecieved(chatId, message) {
+      dispatch({
+        type: socketEvents.messageSent,
+        chatId: chatId,
+        message: message
+      })
+      if (currentChat == chatId) {
+        updateChatHistory(prev => {
+          prev.push(message)
+        })
+      }
     }
-    setMessageClicked(newMessageClick);
+
+    async function onChatCreated(chat) {
+      dispatch({
+        type: socketEvents.chatCreated,
+        chatId: chat._id,
+        chat: chat
+      })
+    }
+
+    async function onGetAllChats(chats) {
+      dispatch({
+        type: socketEvents.chatGetAll,
+        chats: chats
+      })
+    }
+
+    socket.onAny((event, ...args) => {
+      console.log(`got ${event}`)
+    })
+
+    socket.on(socketEvents.messageSent, onMessageRecieved)
+    socket.on(socketEvents.chatCreated, onChatCreated)
+    socket.on(socketEvents.chatSentAll, onGetAllChats)
+
+    await connect()
+    await getChats()
+
+    return () => {
+      socket.off(socketEvents.messageSent, onMessageRecieved)
+      socket.off(socketEvents.chatCreated, onChatCreated)
+      socket.off(socketEvents.chatSentAll, onGetAllChats)
+    };
+  }, [currentChat]);
+
+  const onChatClick = async (chat, chatId, index) => {
+    setCurrentChat(chatId)
+    updateChatHistory(chatList[chatId].history)
   };
 
-  const NewMessage = () => {
+  const chatArray = () => {
+    return Object.values(chatList)
+  }
+
+  const NewChat = () => {
     return (
       <div className='my-auto mx-auto px-5' style={{ width: '60%' }}>
         <h3>Select a message</h3>
@@ -99,40 +86,18 @@ const Messages = () => {
     );
   };
 
-  const ClickedMessage = ({ user }) => {
-    console.log(user.name);
-    return (
-      <div className='d-flex flex-column'>
-        <div className='mb-auto text-center'>
-          <h5 className='mt-3'>{user.name}</h5>
-        </div>
-        <div className='d-flex flex-column mt-auto'>
-          <div className='d-flex ms-auto message-blob bg-e6'>
-            <p>{user.message}</p>
-          </div>
-          <p className='ms-auto mb-0 fs-14'>{user.date}</p>
-          <div className='d-flex flex-column mt-auto'>
-            <div className='input-group search-field bg-e6 my-3'>
-              <span className='input-group-text search-field bg-e6 border-0'>
-                <HiOutlinePhoto />
-              </span>
-              <span className='input-group-text search-field bg-e6 border-0'>
-                <HiOutlineFaceSmile />
-              </span>
-              <Form.Control
-                className='search-field bg-e6 border-0'
-                type='search'
-                placeholder='Send a message...'
-              />
-              <span className='input-group-text search-field bg-e6 border-0'>
-                <BsSend />
-              </span>
-            </div>
-          </div>
-        </div>
-      </div>
-    );
-  };
+  const onMessage = async (event) => {
+    event.preventDefault()
+    const message = event.target.message.value
+    if (!message) return
+    event.target.reset()
+    const res = await sendMessage(currentChat, message)
+    console.log(res)
+  }
+
+  const onCreateChat = () => {
+    createChat(['1', '2'])
+  }
 
   return (
     <div className='container mt-5'>
@@ -153,36 +118,68 @@ const Messages = () => {
               />
             </div>
           </div>
-
-          {users.map((user, index) => {
+          <div className='row m-2'>
+            <button className='btn btn-outline-0 bg-e6' onClick={onCreateChat}>New Message</button>
+          </div>
+          {chatArray().length > 0 && chatArray().map((chat, index) => {
             return (
               <div
                 className={
-                  messageClicked.at(index) === true
+                  currentChat === chat._id
                     ? 'row my-3 bg-e6 px-5 hover-pointer'
                     : 'row my-3 px-5 hover-pointer'
                 }
-                onClick={() => onMessageClick(user, index)}
+                onClick={() => onChatClick(chat, chat._id, index)}
+                key={chat._id}
               >
                 <div className='d-flex'>
                   <img
-                    src={require('../../assets/' + user.profilePic)}
+                    src={require('../../assets/photo.png')}
                     height={60}
                   />
                   <div className='d-flex flex-column ms-2'>
                     <span className='my-auto'>
-                      <p className='m-0'>{user.name}</p>
-                      <p className='m-0'>{user.message}</p>
+
+                      <p className='m-0'>{chat.users}</p>
+                      <p className='m-0'>{chat.history[-1]}</p>
                     </span>
                   </div>
-                  <p className='ms-auto mb-0'>{user.date}</p>
+                  <p className='ms-auto mb-0'>date</p>
                 </div>
               </div>
-            );
+            )
           })}
+
         </Col>
         <Col lg='6'>
-          <Row className='h-100'>{rightScreen}</Row>
+          <Row className='h-100'>
+            {!currentChat && <NewChat />}
+            {currentChat &&
+              <div className='d-flex flex-column'>
+                <MessageHistory history={chatHistory} key={currentChat} />
+
+                <div className='d-flex flex-column mt-auto py-3'>
+                  <form className='input-group search-field bg-e6 my-3' onSubmit={onMessage}>
+                    <span className='input-group-text search-field bg-e6 border-0'>
+                      <HiOutlinePhoto />
+                    </span>
+                    <span className='input-group-text search-field bg-e6 border-0'>
+                      <HiOutlineFaceSmile />
+                    </span>
+                    <Form.Control
+                      name='message'
+                      className='search-field bg-e6 border-0'
+                      type='search'
+                      placeholder='Send a message...'
+                    />
+                    <span className='input-group-text search-field bg-e6 border-0'>
+                      <button type='submit' className='btn btn-outline-0 px-2'><BsSend /></button>
+                    </span>
+                  </form>
+                </div>
+              </div>
+            }
+          </Row>
         </Col>
       </Row>
     </div>

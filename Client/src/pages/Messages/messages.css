@@ -25,3 +25,8 @@
 .bg-e6 {
   background-color: #e6e6e6 !important;
 }
+
+.btn-outline-0 {
+  box-shadow: none !important;
+  outline: 0px !important;
+}

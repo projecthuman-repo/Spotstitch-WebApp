@@ -123,8 +123,8 @@ describe("Messaging system", () => {
         test('should send a message', async () => {
 
             const id = await clientSocket.emitWithAck('create chat', ['5', '6'])
-            await clientSocket.emitWithAck('send message', id.chatId, '5', 'hi')
-            await clientSocket.emitWithAck('send message', id.chatId, '6', 'how are you')
+            await clientSocket.emitWithAck('message send', id.chatId, '5', 'hi')
+            await clientSocket.emitWithAck('message send', id.chatId, '6', 'how are you')
 
             const chat = await Chat.getChat(id.chatId)
             const messages = await chat.getHistory()
@@ -139,7 +139,7 @@ describe("Messaging system", () => {
             clientSocket.emit('connect to rooms', 'a', (res) => {
                 clientSocket.emit('create chat', ['a','b'], (res) => {
                     id = res.chatId
-                    clientSocket.emit('send message', id, 'b', 'hi, this is b', (res) => {
+                    clientSocket.emit('message send', id, 'b', 'hi, this is b', (res) => {
                         console.log(res)
                     })
                 })

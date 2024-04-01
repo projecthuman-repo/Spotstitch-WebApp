@@ -40,7 +40,6 @@ ChatSchema.statics.createChat = async ({ users = [] }) => {
 
 ChatSchema.methods.getHistory = async function () {
     try {
-
         return this.history
     } catch (err) {
         throw new Error('Error getting chat history')
