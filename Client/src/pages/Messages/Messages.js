@@ -12,46 +12,28 @@ import { sendMessage, createChat, connect, getChats, getChat } from '../../servi
 import MessageHistory from './MessageHistory';
 import chatReducer from './chatReducer';
 import socketEvents from '../../services/socketEvents';
+import { useDispatch, useSelector } from 'react-redux';
+import { chatCreated, updateChats, updateCurrentChat, messageRecieved } from '../../features/Chat/chatSlice';
 
 const Messages = () => {
-  const [currentChat, setCurrentChat] = useState("");
-  const [chatHistory, updateChatHistory] = useImmer([])
+  const currentChat = useSelector(state => state.chat.currentChat)
+  const chatHistory = useSelector(state => state.chat.chatHistory)
+  const chatList = useSelector(state => state.chat.chatList)
   const [pending, setPending] = useState(false)
-  const [chatList, dispatch] = useImmerReducer(chatReducer, {})
+  const dispatch = useDispatch()
 
   useEffect(async () => {
-
     async function onMessageRecieved(chatId, message) {
-      dispatch({
-        type: socketEvents.messageSent,
-        chatId: chatId,
-        message: message
-      })
-      if (currentChat == chatId) {
-        updateChatHistory(prev => {
-          prev.push(message)
-        })
-      }
+      dispatch(messageRecieved({ chatId: chatId, message: message }))
     }
 
     async function onChatCreated(chat) {
-      dispatch({
-        type: socketEvents.chatCreated,
-        chatId: chat._id,
-        chat: chat
-      })
+      dispatch(chatCreated({ chat: chat }))
     }
 
     async function onGetAllChats(chats) {
-      dispatch({
-        type: socketEvents.chatGetAll,
-        chats: chats
-      })
+      dispatch(updateChats({ chats: chats }))
     }
-
-    socket.onAny((event, ...args) => {
-      console.log(`got ${event}`)
-    })
 
     socket.on(socketEvents.messageSent, onMessageRecieved)
     socket.on(socketEvents.chatCreated, onChatCreated)
@@ -65,11 +47,10 @@ const Messages = () => {
       socket.off(socketEvents.chatCreated, onChatCreated)
       socket.off(socketEvents.chatSentAll, onGetAllChats)
     };
-  }, [currentChat]);
+  }, []);
 
   const onChatClick = async (chat, chatId, index) => {
-    setCurrentChat(chatId)
-    updateChatHistory(chatList[chatId].history)
+    dispatch(updateCurrentChat({ chatId: chatId }))
   };
 
   const chatArray = () => {

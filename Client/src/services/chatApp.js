@@ -2,7 +2,7 @@ import socket from "./socket";
 import socketEvents from "./socketEvents";
 
 const connect = async () => {
-    const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjEiLCJlbWFpbCI6InVzZXIxQGdtYWlsLmNvbSIsImlhdCI6MTcxMTY2MjY5NCwiZXhwIjoxNzEyMjY3NDk0fQ.s6U-rbXNOEXMuGl9hSwcCRlsszpRzsXnfSEXw93lWco'
+    const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjEiLCJlbWFpbCI6InVzZXIxQGdtYWlsLmNvbSIsImlhdCI6MTcxMjI3MDk5NywiZXhwIjoxNzEyODc1Nzk3fQ.opHLqRCAwmi-JsixcIoJ-QrLYQSsfyli0n3oj9vNWa4'
     localStorage.getItem('jwtToken')
     socket.emit('connected', token)
 }
