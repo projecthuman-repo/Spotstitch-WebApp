@@ -1,5 +1,6 @@
 import { configureStore } from "@reduxjs/toolkit";
 import userSlice from "./features/userSlice";
+import chatSlice from "./features/Chat/chatSlice";
 import appApi from "./services/appApi";
 
 // persist our store
@@ -27,7 +28,10 @@ const persistedReducer = persistReducer(persistConfig, reducer);
 // creating the store
 
 const store = configureStore({
-    reducer: persistedReducer,
+    reducer: {
+        user: userSlice,
+        chat: chatSlice
+    },
     middleware: [thunk, appApi.middleware],
 });
 

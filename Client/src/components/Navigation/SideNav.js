@@ -70,7 +70,7 @@ function SideNav() {
                         <Row>
                             {
                                 links.map(link => {
-                                    return <Link to={link.destination} className="btn text-start my-1" onClick={handleClose}><Row>
+                                    return <Link key={link.name} to={link.destination} className="btn text-start my-1" onClick={handleClose}><Row>
                                         <Col sm={1} lg={1} className="mx-2"><img src={link.icon}></img></Col>
                                         <Col sm={5} lg={6} className="fs-20">{link.name}</Col>
                                     </Row></Link>
@@ -82,11 +82,11 @@ function SideNav() {
                     <section className="mt-auto">
                         <Row className="mb-1"><Col><button className="btn nopadding mt-auto"><p className="fw-600 mb-0">Your Accounts</p></button></Col></Row>
                         {['Switch account', 'Add account', 'Convert to vendor'].map(option => {
-                            return <Row><Col><button className="btn nopadding">{option}</button></Col></Row>
+                            return <Row key={option}><Col><button className="btn nopadding">{option}</button></Col></Row>
                         })}
                         <Row><Col><button className="btn nopadding mt-3"><p className="fw-600 mb-0">More Options</p></button></Col></Row>
                         {['See terms of service', 'See privacy policy'].map(option => {
-                            return <Row><Col><button className="btn nopadding">{option}</button></Col></Row>
+                            return <Row key={option}><Col><button className="btn nopadding">{option}</button></Col></Row>
                         })}
 
                         <Row>

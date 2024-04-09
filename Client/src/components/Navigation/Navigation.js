@@ -87,6 +87,7 @@ export default function Topbar({ menuOpen, setMenuOpen }) {
 						{links.map((link) => {
 							return (
 								<Nav.Link
+									key={link.name}
 									href={link.path}
 									className={
 										location.pathname == link.path

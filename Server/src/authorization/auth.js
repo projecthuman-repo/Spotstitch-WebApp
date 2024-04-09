@@ -50,4 +50,19 @@ const verifyToken = async (req, res, next) => {
 
 };
 
-module.exports = { createToken, verifyToken };
+const decodeToken = async (token) => {
+  return jwt.verify(token, jwtSecret, (err, decoded) => {
+    if (err) {
+      logger.error({ error: err.message }, "Invalid Token")
+      //reject(err.message);
+      return createErrorResponse(401, 'Unauthorized');
+    } else {
+      logger.info({}, "Token verified")
+      //resolve();
+
+      // Use it in the next middleware to ensure the user is authorized
+      return decoded;
+    }
+  })
+}
+module.exports = { createToken, verifyToken, decodeToken };

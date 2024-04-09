@@ -4,7 +4,6 @@ const ChatSchema = new mongoose.Schema({
     users: [String],
     history: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Message' }],
     createdAt: String,
-    createdBy: String
 })
 
 ChatSchema.statics.getChat = async (id) => {
@@ -12,38 +11,35 @@ ChatSchema.statics.getChat = async (id) => {
         const chat = await Chat.findById(id)
         return chat
     } catch (err) {
-        throw new Error('Error creating new chat')
+        throw new Error('Error getting chat: '+id)
     }
 }
 
-ChatSchema.statics.getUserChat = async (userId) => {
+ChatSchema.statics.getUserChats = async (userId) => {
     try {
         const chat = await Chat.find({ users: userId })
         return chat
     } catch (err) {
-        throw new Error('Error creating new chat')
+        throw new Error('Error getting user chats')
     }
 }
 
-ChatSchema.statics.createChat = async ({ users = [], messages = [] }) => {
+ChatSchema.statics.createChat = async ({ users = [] }) => {
     try {
         const chat = new Chat({
             users: users,
-            history: messages,
+            history: [],
             createdAt: new Date(),
         })
         await chat.save()
         return chat
     } catch (err) {
-        throw new Error('Error creating new chat: ' + err)
+        throw new Error('Error creating new chat: ' + err.message)
     }
 }
 
 ChatSchema.methods.getHistory = async function () {
     try {
-        if (!Chat.populated('Message')) {
-            await Chat.populate('Message')
-        }
         return this.history
     } catch (err) {
         throw new Error('Error getting chat history')
@@ -73,7 +69,7 @@ ChatSchema.methods.deleteMessage = async function (id) {
         this.history.splice(this.history.indexOf(id), 1)
         this.save()
     } catch (err) {
-        throw new Error('Error creating new chat')
+        throw new Error('Error deleting message')
     }
 }
 
@@ -81,7 +77,7 @@ ChatSchema.methods.deleteChat = async function () {
     try {
         await this.delete()
     } catch (err) {
-        throw new Error('Error creating new chat')
+        throw new Error('Error deleting chat')
     }
 }
 
