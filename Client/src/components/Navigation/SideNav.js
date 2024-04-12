@@ -1,13 +1,16 @@
 import React, { useState } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { RxHamburgerMenu } from 'react-icons/rx'
 import { Modal, Row, Col, Container } from "react-bootstrap";
 import { Link } from "react-router-dom"
 import { inventory, messages, profile, settings, wallet } from '../../assets/icons'
+import { logout } from "../../features/User/userSlice";
+import { resetChats } from "../../features/Chat/chatSlice";
 
 
 function SideNav() {
     const user = useSelector((state) => state.user);
+    const dispatch = useDispatch()
     const links = [
         { icon: profile, name: "Profile", destination: "/profile" },
         { icon: messages, name: "Messages", destination: "/messages" },
@@ -25,6 +28,13 @@ function SideNav() {
     const handleShow = () => {
         setShow(true);
     };
+
+    const handleLogout = () => {
+        console.log("logging out")
+        dispatch(logout())
+        dispatch(resetChats())
+        window.location.reload();
+    }
 
     return (
         <>
@@ -90,7 +100,7 @@ function SideNav() {
                         })}
 
                         <Row>
-                            <Col className="mt-5"><button className="btn nopadding">Log Out</button></Col>
+                            <Col className="mt-5"><button className="btn nopadding" onClick={handleLogout}>Log Out</button></Col>
                         </Row>
                     </section>
 

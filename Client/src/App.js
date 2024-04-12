@@ -1,7 +1,8 @@
 import logo from "./logo.svg";
 import "./App.css";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-
+import { BrowserRouter, Routes, Route, createBrowserRouter, redirect, Navigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { useEffect, useState } from "react";
 import Start from "./pages/Start/Start";
 import UserSignUp from "./pages/Start/UserSignUpA2";
 import AccountSetup from "./pages/Start/AccountSetupA3";
@@ -22,15 +23,13 @@ import PopupDialog from "./pages/Layers/CreateNewLayer";
 
 import Navigation from "./components/Navigation/Navigation";
 import Home from "./pages/Home/Home";
-import Login from "./pages/Login/Login";
 import Profile from "./pages/Profile/Profile";
-import Signup from "./pages/Signup/Signup";
+
 import Wallet from "./pages/Wallet/Wallet";
 import Refunds from "./pages/Refunds/Refunds";
 import RefundsPolicy from "./pages/RefundsPolicy/RefundsPolicy";
 import TransactionHistory from "./pages/TransactionHistory/TransactionHistory";
-import { useSelector } from "react-redux";
-import { useState } from "react";
+
 import Menu from "./components/Menu";
 import ShopSetup from "./features/ShopSetup";
 import Events from "./pages/Events/Events";
@@ -57,121 +56,93 @@ import HomePosts from "./pages/HomePosts/HomePosts.jsx";
 import ExplorePage from "./pages/ExplorePage/ExplorePage.jsx";
 
 function App() {
-	const [rooms, setRooms] = useState([]);
-	const [currentRoom, setCurrentRoom] = useState([]);
-	const [members, setMembers] = useState([]);
-	const [messages, setMessages] = useState([]);
-	const [privateMemberMsg, setPrivateMemberMsg] = useState({});
-	const [newMessages, setNewMessages] = useState({});
 	const user = useSelector((state) => state.user);
+	const token = useSelector((state) => state.user.token)
 	const [menuOpen, setMenuOpen] = useState(false);
+
+	// ensure access only to authenticated users
+	const Auth = ({ children }) => {
+		if (!token) {
+			return <Navigate to={"/start"} />
+		}
+		return children;
+	};
+	// ensure access only to new users who need to register
+	const Logged = ({ children }) => {
+		if (token) {
+			return <Navigate to={"/"} />
+		}
+		return children;
+	}
+
 	return (
 		<BrowserRouter>
 			{/* Navigation should be automatically added if user is valid, will not show
-        nav bar when user needs to login/signup */}
-			{
-				true && (
-					<Navigation />
-				) /* current set to true to test nav components, change to user for production */
-			}
+        nav bar when user needs to login/signup */
+		/* current set to true to test nav components, change to user for production */}
+			{token && <Navigation />}
 			<Routes>
-				{!user && (
-					<>
-						<Route path="/login" element={<Login />} />
-						<Route path="/signup" element={<Signup />} />
-					</>
-				)}
-				<Route path="/start" element={<Start />} />
-				<Route path="/usersignup" element={<UserSignUp />} />
-				<Route path="/accountsetup" element={<AccountSetup />} />
-				<Route
-					path="/emailverification"
-					element={<AccountEmailVerification />}
-				/>
-				<Route path="/profileimage" element={<ProfileImage />} />
-				<Route
-					path="/accounttype"
-					element={<AccountTypeSelection />}
-				/>
-				<Route path="/bioinput" element={<BioInput />} />
-				<Route path="/connectsocial" element={<ConnectSocial />} />
-				<Route
-					path="/categoryselection"
-					element={<CategorySelection />}
-				/>
-				<Route path="/findlayer" element={<FindLayer />} />
-				<Route
-					path="/vendoraccountsetup"
-					element={<VendorAccountSetup />}
-				/>
-				<Route path="/vendortype" element={<VendorType />} />
-				<Route
-					path="/businessmethod"
-					element={<BusinessMethod />}
-				/>
-				<Route path="/vendorgoal" element={<VendorGoal />} />
-				<Route
-					path="/vendorsetupcomplete"
-					element={<VendorSetupComplete />}
-				/>
+				<Route path="/start"
+					element={<Logged><Start /></Logged>} />
+				<Route path="/usersignup"
+					element={<Logged><UserSignUp /></Logged>} />
+				<Route path="/accountsetup"
+					element={<Logged><AccountSetup /></Logged>} />
+				<Route path="/emailverification"
+					element={<Logged><AccountEmailVerification /></Logged>} />
+				<Route path="/profileimage"
+					element={<Logged><ProfileImage /></Logged>} />
+				<Route path="/accounttype"
+					element={<Logged><AccountTypeSelection /></Logged>} />
+				<Route path="/bioinput"
+					element={<Logged><BioInput /></Logged>} />
+				<Route path="/connectsocial"
+					element={<Logged><ConnectSocial /></Logged>} />
+				<Route path="/categoryselection"
+					element={<Logged><CategorySelection /></Logged>} />
+				<Route path="/findlayer"
+					element={<Logged><FindLayer /></Logged>} />
+				<Route path="/vendoraccountsetup"
+					element={<Logged><VendorAccountSetup /></Logged>} />
+				<Route path="/vendortype"
+					element={<Logged><VendorType /></Logged>} />
+				<Route path="/businessmethod"
+					element={<Logged><BusinessMethod /></Logged>} />
+				<Route path="/vendorgoal"
+					element={<Logged><VendorGoal /></Logged>} />
+				<Route path="/vendorsetupcomplete"
+					element={<Logged><VendorSetupComplete /></Logged>} />
 
-				<Route path="/" element={<Home />}>
+				{/* These routes will require the user to be logged in to access */}
+				<Route path="/" element={<Auth><Home /></Auth>}>
 					<Route path="/" element={<HomePosts />} />
-					<Route
-						path="/notifications"
-						element={<NotificationsPage />}
+					<Route path="/notifications" element={<NotificationsPage />}
 					/>
 				</Route>
+				<Route path="/events" element={<Auth><Events /></Auth>} />
+				<Route path="/events-event" element={<Auth><Event /></Auth>} />
+				<Route path="/events-bookevent" element={<Auth><BookEvent /></Auth>} />
+				<Route path="/events-createevent" element={<Auth><CreateEvent /></Auth>} />
+				<Route path="/market" element={<Auth><Market /></Auth>} />
+				<Route path="/market/product" element={<Auth><ProductDetailPage /></Auth>} />
+				<Route path="/market/cart" element={<Auth><ShoppingCart /></Auth>} />
+				<Route path="/market/cart/checkout" element={<Auth><Checkout /></Auth>} />
+				<Route path="/market/mylistings" element={<Auth><Listings /></Auth>} />
+				<Route path="/market/mylistings/create" element={<Auth><CreateListing /></Auth>} />
+				<Route path="/market/mylistings/edit/:id" element={<Auth><EditListing /></Auth>} />
+				<Route path="/market/mylistings/preview" element={<Auth><Preview /></Auth>} />
+				<Route path="/messages" element={<Auth><Messages /></Auth>} />
+				<Route path="/layer" element={<Auth><PopupDialog /></Auth>} />
+				<Route path="/profile" element={<Auth><Profile /></Auth>} />
+				<Route path="/wallet" element={<Auth><Wallet /></Auth>} />
+				<Route path="/refunds" element={<Auth><Refunds /></Auth>} />
+				<Route path="/refundspolicy" element={<Auth><RefundsPolicy /></Auth>} />
+				<Route path="/transaction" element={<Auth><TransactionHistory /></Auth>} />
+				<Route path="/shopsetup" element={<Auth><ShopSetup /></Auth>} />
+				<Route path="/settings" element={<Auth><Settings /></Auth>} />
+				<Route path="/inventory" element={<Auth><Inventory /></Auth>} />
+				<Route path="/explore" element={<Auth><ExplorePage /></Auth>} />
 
-				<Route path="/events" element={<Events />} />
-				<Route path="/events-event" element={<Event />} />
-				<Route path="/events-bookevent" element={<BookEvent />} />
-				<Route
-					path="/events-createevent"
-					element={<CreateEvent />}
-				/>
-
-				<Route path="/market" element={<Market />} />
-				<Route
-					path="/market/product"
-					element={<ProductDetailPage />}
-				/>
-				<Route path="/market/cart" element={<ShoppingCart />} />
-				<Route
-					path="/market/cart/checkout"
-					element={<Checkout />}
-				/>
-				<Route path="/market/mylistings" element={<Listings />} />
-				<Route
-					path="/market/mylistings/create"
-					element={<CreateListing />}
-				/>
-				<Route
-					path="/market/mylistings/edit/:id"
-					element={<EditListing />}
-				/>
-				<Route
-					path="/market/mylistings/preview"
-					element={<Preview />}
-				/>
-
-				<Route path="/messages" element={<Messages />} />
-
-				<Route path="/layer" element={<PopupDialog />} />
-				<Route path="/profile" element={<Profile />} />
-				<Route path="/wallet" element={<Wallet />} />
-				<Route path="/refunds" element={<Refunds />} />
-				<Route path="/refundspolicy" element={<RefundsPolicy />} />
-				<Route
-					path="/transaction"
-					element={<TransactionHistory />}
-				/>
-				<Route path="/shopsetup" element={<ShopSetup />} />
-
-				<Route path="/settings" element={<Settings />} />
-				<Route path="/inventory" element={<Inventory />} />
-
-				<Route path="/explore" element={<ExplorePage />} />
 			</Routes>
 		</BrowserRouter>
 	);

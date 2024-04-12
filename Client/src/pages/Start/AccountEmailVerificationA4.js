@@ -1,10 +1,11 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./AccountEmailVerificationA4.css";
 import holderimg from "../../assets/holderimg.png";
 
 
 
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 const AccountEmailVerification = () => {
 
