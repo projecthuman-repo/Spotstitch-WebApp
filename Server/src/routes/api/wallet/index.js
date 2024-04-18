@@ -6,7 +6,7 @@ const remove = require('./remove');
 const get = require('./get')
 
 // get user wallet
-router.post('/', get)
+router.get('/', get)
 
 // add card to wallet
 router.post('/add', add)
