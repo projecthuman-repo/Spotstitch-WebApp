@@ -1,10 +1,14 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
+import { baseUrl, prepareHeaders } from './baseQuery';
+
+
 
 // Define a service for the user wallet using a base URL
 const walletApi = createApi({
     reducerPath: 'walletApi',
     baseQuery: fetchBaseQuery({
-        baseUrl: 'http://localhost:5001',
+        baseUrl: baseUrl,
+        prepareHeaders: prepareHeaders,
     }),
 
     endpoints: (builder) => ({

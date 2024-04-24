@@ -1,10 +1,11 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
+import { baseUrl, prepareHeaders } from './baseQuery';
 
-// Define a service for addresses using a base URL
 const addressApi = createApi({
     reducerPath: 'addressApi',
     baseQuery: fetchBaseQuery({
-        baseUrl: 'http://localhost:5001',
+        baseUrl: baseUrl,
+        prepareHeaders: prepareHeaders
     }),
 
     endpoints: (builder) => ({
