@@ -1,38 +1,59 @@
-import { configureStore } from "@reduxjs/toolkit";
-import userSlice from "./features/userSlice";
+import { combineReducers, configureStore } from "@reduxjs/toolkit";
+import userSlice from "./features/User/userSlice";
 import chatSlice from "./features/Chat/chatSlice";
-import appApi from "./services/appApi";
-
-// persist our store
+import loginApi from "./services/loginApi"
 import storage from "redux-persist/lib/storage";
-import { combineReducers } from "redux";
-import { persistReducer } from "redux-persist";
-import thunk from "redux-thunk";
+import {
+    persistReducer,
+    FLUSH,
+    REHYDRATE,
+    PAUSE,
+    PERSIST,
+    PURGE,
+    REGISTER,
+} from "redux-persist";
+import registerSlice from "./features/User/registerSlice";
+import userApi from "./services/userApi";
 
 // reducers
-const reducer = combineReducers({
+const appReducer = combineReducers({
     user: userSlice,
-    [appApi.reducerPath]: appApi.reducer,
+    register: registerSlice,
+    chat: chatSlice,
+    [loginApi.reducerPath]: loginApi.reducer,
+    [userApi.reducerPath]: userApi.reducer,
 });
+
+const rootReducer = (state, action) => {
+    if (action.type === "RESET") {
+        // for all keys defined in your persistConfig(s)
+        storage.removeItem('persist:root')
+        // storage.removeItem('persist:otherKey')
+        return appReducer(undefined, action);
+    }
+    return appReducer(state, action);
+};
 
 const persistConfig = {
     key: "root",
-    storage,
-    blackList: [appApi.reducerPath],
+    storage: storage,
+    whitelist: ['user', 'register', 'chat'],
+    blackList: [loginApi.reducerPath],
 };
 
 // persist our store
-
-const persistedReducer = persistReducer(persistConfig, reducer);
+const persistedReducer = persistReducer(persistConfig, rootReducer);
 
 // creating the store
 
 const store = configureStore({
-    reducer: {
-        user: userSlice,
-        chat: chatSlice
-    },
-    middleware: [thunk, appApi.middleware],
+    reducer: persistedReducer,
+    middleware: (getDefaultMiddleware) =>
+        getDefaultMiddleware({
+            serializableCheck: {
+                ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
+            },
+        }).concat([loginApi.middleware, userApi.middleware])
 });
 
 export default store;

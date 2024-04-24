@@ -14,7 +14,7 @@ const MONGODB_URL =
 const CROSSPLATFORM_URL =
   process.NODE_ENV === 'production'
     ? process.env.DATABASE_CROSS_PLATFORM_CONNECTION
-    : process.env.LOCAL_URI;
+    : process.env.LOGIN_TEST_URI;
 
 const connectToSpotstitchDatabase = async () => {
   try {

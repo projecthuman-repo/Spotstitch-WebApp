@@ -1,13 +1,16 @@
 import React, { useState } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { RxHamburgerMenu } from 'react-icons/rx'
 import { Modal, Row, Col, Container } from "react-bootstrap";
 import { Link } from "react-router-dom"
 import { inventory, messages, profile, settings, wallet } from '../../assets/icons'
 
+import store from "../../store";
+
 
 function SideNav() {
     const user = useSelector((state) => state.user);
+    const dispatch = useDispatch()
     const links = [
         { icon: profile, name: "Profile", destination: "/profile" },
         { icon: messages, name: "Messages", destination: "/messages" },
@@ -15,7 +18,13 @@ function SideNav() {
         { icon: wallet, name: "Wallet", destination: "/wallet" },
         { icon: settings, name: "Settings", destination: "/settings" }
     ]
-
+    const username = useSelector((state) => state.user.username); 
+    const picture = useSelector(state => state.user.picture)
+    const userType = useSelector((state) => state.user.userType); 
+    const email = useSelector((state) => state.user.email); 
+    const followers = useSelector((state) => state.user.followers); 
+    const following = useSelector((state) => state.user.following);
+    
     const [show, setShow] = useState(false);
 
     const handleClose = () => {
@@ -23,8 +32,16 @@ function SideNav() {
     };
 
     const handleShow = () => {
+        console.log(user)
         setShow(true);
     };
+
+    const handleLogout = () => {
+        console.log("logging out")
+        store.dispatch({type: "RESET"})
+        localStorage.clear()
+        window.location.reload();
+    }
 
     return (
         <>
@@ -44,20 +61,20 @@ function SideNav() {
                 <Modal.Body className="mt-0 pt-0 mx-3 d-flex flex-column">
                     <section>
                         <Row>
-                            <Col lg={4} ><img className='avatar' src={''} height={88} width={88}></img></Col>
+                            <Col lg={4} ><img className='avatar' src={picture} height={88} width={88}></img></Col>
                             <Col lg={8} >
-                                <p className="nopadding fs-16 fw-500 my-1">user</p>
-                                <p className="nopadding fs-15 fw-300 my-1">account type</p>
-                                <p className="nopadding fs-15 fw-400">email</p>
+                                <p className="nopadding fs-16 fw-500 my-1">{username || "user"}</p>
+                                <p className="nopadding fs-15 fw-300 my-1">{userType || "account type"}</p>
+                                <p className="nopadding fs-15 fw-400">{email || "email"}</p>
                             </Col>
                         </Row>
                         <Row className="mt-3">
                             <Col lg={3} xs={4} className="text-center">
-                                <span>5</span>
+                                <span>{following || 0}</span>
                                 <p>Following</p>
                             </Col>
                             <Col lg={3} xs={4} className="text-center">
-                                <span>5</span>
+                                <span>{followers || 0}</span>
                                 <p>Followers</p>
                             </Col>
                             <Col lg={3} xs={4} className="text-center">
@@ -90,7 +107,7 @@ function SideNav() {
                         })}
 
                         <Row>
-                            <Col className="mt-5"><button className="btn nopadding">Log Out</button></Col>
+                            <Col className="mt-5"><button className="btn nopadding" onClick={handleLogout}>Log Out</button></Col>
                         </Row>
                     </section>
 

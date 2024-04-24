@@ -1,16 +1,26 @@
-import React, { useState } from "react";
-import { useSelector } from "react-redux";
+import React, { useEffect, useRef, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 
-import { Modal, Row, Col, Container, Button, Form } from "react-bootstrap";
+import { Modal, Row, Col, Container, Button, Form, Image } from "react-bootstrap";
 import { Link } from "react-router-dom"
 
-import { editAvatar, editBanner, removeBanner } from "../../assets/icons";
+import { editAvatar, editBanner, removeBanner, settings } from "../../assets/icons";
+import { useUpdatePictureMutation } from "../../services/userApi";
+import { setUserData } from "../../features/User/userSlice";
 
 function AccountDetails() {
     const user = useSelector((state) => state.user);
+    const picture = useSelector(state => state.user.picture)
+    const imageRef = useRef()
+    const [image, setImage] = useState("")
     const [tab, setTab] = useState(1);
-
+    const [updatePicture, { }] = useUpdatePictureMutation()
     const [show, setShow] = useState(false);
+    const dispatch = useDispatch()
+
+    useEffect(() => {
+        setImage(picture)
+    }, [])
 
     const handleClose = () => {
         setShow(false);
@@ -22,6 +32,32 @@ function AccountDetails() {
 
     function tabOnChange(i) {
         setTab(i);
+    }
+
+    const convertToBase64 = async () => {
+        const reader = new FileReader()
+        reader.readAsDataURL(imageRef.current.files[0])
+        reader.onload = () => {
+            setImage(reader.result)
+        }
+    }
+
+    async function handleSubmit(e) {
+        e.preventDefault()
+        try {
+            const res = await updatePicture({ picture: image })
+            if (res.error) throw new Error(res.error)
+            if (res.data?.status == "ok") {
+                await dispatch(setUserData({ picture: image }))
+            }
+        } catch (error) {
+            console.log('rejected', error)
+        }
+
+    }
+
+    function handleChangeImage() {
+        imageRef.current.click()
     }
 
     return (
@@ -51,27 +87,52 @@ function AccountDetails() {
                 </Modal.Header>
                 <Modal.Body className="mt-0 pt-0 p-0">
                     <Row className="d-flex">
-                        <Form>
-                            <Form.Group>
-                                <div className="bg-banner row g-0 pt-5"
-                                    style={{ backgroundImage: `url(${''}), linear-gradient(#D9D9D9 100%, #FFFFFF 1%)` }}>
-                                    <Col lg={3} sm={6} xs={7}>
-                                        <div
-                                            className="avatar content-border-l mx-4 d-flex"
-                                            style={{ width: '139px', height: '139px', backgroundImage: `url(${''})` }}>
-                                                <img src={editAvatar} className="m-auto" width={30} height={30}/>
-                                        </div>
+                        <Form onSubmit={handleSubmit}>
+                            <Form.Group itemID="account.picture" hidden>
+                                <Form.Control
+                                    name="picture"
+                                    type='file'
+                                    ref={imageRef}
+                                    accept=".png,.jpg,.jpeg,.webp"
+                                    onChange={(e) => {
+                                        console.log(e.target.files[0])
+                                        if (e.target.files[0]) {
+                                            let buffer = e.target.files[0]
+                                            convertToBase64()
+                                        }
 
-                                    </Col>
-                                    <Col lg={6} className="d-flex justify-content-evenly" sm={6} xs={5}>
-                                        <img src={editBanner} className="" height={54} width={54} />
-                                        <img src={removeBanner} className="" height={54} width={54} />
-                                    </Col>
-                                    <Col lg={3} sm={0} xs={0}>
-                                    </Col>
-                                </div>
-
+                                    }} />
                             </Form.Group>
+                            <div className="bg-banner row g-0 pt-5"
+                                style={{ backgroundImage: `url(${''}), linear-gradient(#D9D9D9 100%, #FFFFFF 1%)` }}>
+                                <Col lg={3} sm={6} xs={7} className="d-flex">
+                                    <div className="position-relative">
+                                        <img
+                                            type="button"
+                                            className="avatar content-border-l mx-4"
+                                            src={image}
+                                            width={139}
+                                            height={139}
+                                            onClick={() => { handleChangeImage(); }}
+                                        />
+                                        <img
+                                            type="button"
+                                            className="position-absolute top-50 start-50 translate-middle"
+                                            src={editAvatar}
+                                            width={30}
+                                            eight={30}
+                                            onClick={() => { handleChangeImage(); }}
+                                        />
+                                    </div>
+
+                                </Col>
+                                <Col lg={6} className="d-flex justify-content-evenly" sm={6} xs={5}>
+                                    <img src={editBanner} className="" height={54} width={54} />
+                                    <img src={removeBanner} className="" height={54} width={54} />
+                                </Col>
+                                <Col lg={3} sm={0} xs={0}>
+                                </Col>
+                            </div>
 
                             <Form.Group className="mt-2 mx-4" itemID="account.name">
                                 <Form.Label>Name</Form.Label>
@@ -88,7 +149,7 @@ function AccountDetails() {
                                 <Form.Control type='input' placeholder="website" />
                             </Form.Group>
 
-                            <button className="btn btn-profile my-2 mx-4 float-end">Save</button>
+                            <button type="submit" className="btn btn-profile my-2 mx-4 float-end">Save</button>
 
                         </Form>
                     </Row>

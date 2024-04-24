@@ -4,11 +4,17 @@ const bcrypt = require('bcrypt');
 const Settings = require('./Settings');
 const Wallet = require('./Wallet')
 
+const VENDOR_TYPE = "vendor"
+const USER_TYPE = "personal"
+
 const UserSchema = new mongoose.Schema(
   {
     username: {
       type: String,
       required: [true, "Can't be blank"],
+    },
+    displayName: {
+      type: String,
     },
     firstName: {
       type: String,
@@ -38,6 +44,9 @@ const UserSchema = new mongoose.Schema(
     picture: {
       type: String,
     },
+    biography: {
+      type: String,
+    },
     newMessages: {
       type: Object,
       default: {},
@@ -48,6 +57,7 @@ const UserSchema = new mongoose.Schema(
     },
     userType: {
       type: String,
+      default: "personal",
       required: [true, "Can't be blank"],
     },
     addresses: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Address' }],
@@ -63,7 +73,11 @@ const UserSchema = new mongoose.Schema(
     notifications: [
       { type: mongoose.Schema.Types.ObjectId, ref: 'Notification' },
     ],
-    settings: { type: mongoose.Schema.Types.ObjectId, ref: 'Settings' }
+    settings: { type: mongoose.Schema.Types.ObjectId, ref: 'Settings' },
+
+    following: { type: [String], default: [] },
+    followers: { type: [String], default: [] },
+
   },
   { minimize: false }
 );
@@ -99,14 +113,71 @@ UserSchema.statics.findByCredentials = async function (email, password) {
   return user;
 };
 
-UserSchema.statics.createNewUser = async function () {
-  const user = new User()
-  const settings = await Settings.createSettings(user._id)
-  const wallet = await Wallet.create(user._id)
-  
-  user.settings = settings._id
-  user.wallet = wallet._id
+UserSchema.statics.createUser = async function (userData) {
+  try {
+    const dupe = await User.findOne({ username: userData.username })
+    if (dupe) throw new Error("Username already exists")
+
+    const user = new User(userData)
+    const settings = await Settings.createSettings(user._id)
+    const wallet = await Wallet.createWallet(user._id)
+
+    user.settings = settings._id
+    user.wallet = wallet._id
+
+    user.save()
+    return user
+  } catch (error) {
+    throw new Error(error)
+  }
+
 }
+
+UserSchema.statics.getUser = async function () {
+  
+}
+
+UserSchema.methods.getUserData = async function () {
+  const numFollowing = this.following?.length || 0
+  const numFollowers = this.followers?.length || 0
+  const userProfile = {
+    username: this.username,
+    displayName: this.displayName,
+    email: this.email,
+    picture: this.picture,
+    userType: this.userType,
+    settings: this.settings,
+    following: numFollowing,
+    followers: numFollowers,
+  }
+  return userProfile
+}
+
+UserSchema.methods.updatePicture = async function (image) {
+  try {
+    if (!image) throw new Error("No image given")
+    this.picture = image
+    await this.save()
+
+    return this.picture
+  } catch (error) {
+    throw new Error(error)
+  }
+}
+
+UserSchema.methods.updateAccountType = async function (type) {
+  try {
+    if (!type) throw new Error("No type given")
+    if (type != USER_TYPE || type != VENDOR_TYPE) throw new Error("Invalid type")
+    this.userType = type
+    await this.save()
+
+    return this.userType
+  } catch (error) {
+    throw new Error(error)
+  }
+}
+
 
 const User = mongoose.model('User', UserSchema);
 

@@ -45,8 +45,11 @@ const createSocketServerInstance = async (server) => {
 
         socket.on(userConnect, async (token) => {
             const user = await decodeToken(token)
-            socket.userId = user.id
-            socket.join(socket.userId)
+            if (user.id) {
+                logger.info({user}, "User connected to socket server")
+                socket.userId = user.id
+                socket.join(socket.userId)
+            }
         })
 
 
@@ -79,8 +82,10 @@ const createSocketServerInstance = async (server) => {
                 if (!chat) throw new Error('Chat could not be created')
                 logger.info({ socket: socket.userId }, 'new chat created')
 
+                io.to(socket.userId).emit(chatCreated, chat)
                 for (const user of users) {
                     io.to(user).emit(chatCreated, chat)
+                    logger.info({ user }, "New chat emitted")
                 }
 
                 callback(createSuccessResponse({ chatId: chat._id }))
@@ -147,7 +152,7 @@ const createSocketServerInstance = async (server) => {
                 if (!message) throw new Error("Error creating new message")
 
                 chat.addMessage(message._id)
-                
+
                 for (const user of chat.users) {
                     io.to(user).emit(messageSent, chatId, message)
                 }

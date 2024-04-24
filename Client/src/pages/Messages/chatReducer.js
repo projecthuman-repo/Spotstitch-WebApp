@@ -1,4 +1,4 @@
-import socketEvents from "../../services/socketEvents";
+import socketEvents from "../../services/chat/socketEvents";
 
 function chatReducer(draft, action) {
     switch (action.type) {

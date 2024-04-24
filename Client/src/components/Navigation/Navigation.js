@@ -26,6 +26,7 @@ import { Link, useLocation } from "react-router-dom";
 
 export default function Topbar({ menuOpen, setMenuOpen }) {
 	const user = useSelector((state) => state.user);
+	const picture = useSelector(state => state.user.picture)
 	const [logoutUser] = useLogoutUserMutation();
 	const location = useLocation();
 	const nav = "mx-2 btn-nav text-center";
@@ -107,7 +108,7 @@ export default function Topbar({ menuOpen, setMenuOpen }) {
 						<Row>
 							<Col lg={3} className="g-0 mx-1 d-flex">
 								<img
-									src=""
+									src={picture}
 									className="avatar content-border-s shadow m-auto"
 									width={"40px"}
 									height={"40px"}

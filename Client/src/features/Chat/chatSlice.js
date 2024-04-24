@@ -1,13 +1,15 @@
 import { createSlice } from "@reduxjs/toolkit";
-import socketEvents from "../../services/socketEvents";
+import socketEvents from "../../services/chat/socketEvents";
+
+const inital = {
+    chatList: {},
+    chatHistory: [],
+    currentChat: "",
+}
 
 const chatSlice = createSlice({
     name: 'chat',
-    initialState: {
-        chatList: {},
-        chatHistory: [],
-        currentChat: "",
-    },
+    initialState: inital,
     reducers: {
         updateCurrentChat: (state, action) => {
             const { chatId } = action.payload
@@ -18,7 +20,6 @@ const chatSlice = createSlice({
             const { history } = action.payload
             state.chatHistory = history
         },
-
         chatCreated: (state, action) => {
             const { chatId, chat } = action.payload
             state.chatList[chatId] = chat
@@ -34,9 +35,12 @@ const chatSlice = createSlice({
                 state.chatList[chat._id] = chat
             })
         },
+        reset: (state, action) => {
+            return inital
+        }
     }
 })
 
-export const { updateCurrentChat, chatCreated, messageRecieved, updateChats } = chatSlice.actions
+export const { updateCurrentChat, chatCreated, messageRecieved, updateChats, reset } = chatSlice.actions
 
 export default chatSlice.reducer
