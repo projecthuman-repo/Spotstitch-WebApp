@@ -4,9 +4,28 @@ import holderimg from "../../assets/holderimg.png";
 
 
 
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useUpdateAccountTypeMutation } from "../../services/userApi";
+import { useDispatch } from "react-redux";
 
 const AccountTypeSelection = () => {
+
+    const [updateAccountType, {}] = useUpdateAccountTypeMutation()
+    const navigate = useNavigate()
+    const dispatch = useDispatch()
+
+    const handleType = async (type) => {
+        try {
+            const res = await updateAccountType(type)
+            if (res.error) throw new Error(res.error.data.error.message)
+            console.log(res.data)
+            //dispatch()
+            if (type == 'vendor') navigate('/vendoraccountsetup')
+            else navigate('/bioinput')
+        } catch (error) {
+            console.log("rejected", error.message)
+        }
+    }
 
     return (
         <>
@@ -24,9 +43,11 @@ const AccountTypeSelection = () => {
             <div className="smalldescription">First, what type of account are you looking for at Spotstitch?</div>
             <br/><br/>
             <div className="accounttypebuttonbox">
-                <Link to='/bioinput' className="linkacctypebutton"> <button className="accounttypebutton">Personal Account</button></Link>
+
+                <button className="accounttypebutton" onClick={() => { handleType("personal") }}>Personal Account
+                </button>
                 <br/>
-                <Link to='/bioinput' className="linkacctypebutton">< button className="accounttypebutton">Vendor Account</button></Link>
+                < button className="accounttypebutton" onClick={() => { handleType("vendor") }}>Vendor Account</button>
             </div>
             <div className="botspace"></div>
             

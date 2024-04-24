@@ -8,15 +8,17 @@ import googlesignin from '../../assets/googlesignin.png';
 import facesignin from '../../assets/facesignin.png';
 import projectsignin from '../../assets/projectsignin.png';
 import { Link, useNavigate } from "react-router-dom";
-import { useLoginUserMutation } from "../../services/userApi";
+import { useLoginUserMutation } from "../../services/loginApi";
 import { useDispatch, useSelector } from "react-redux";
-import { login } from "../../features/User/userSlice";
+import { login, setUserData } from "../../features/User/userSlice";
+import { useGetUserProfileMutation } from "../../services/userApi";
 
 const Start = () => {
 
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [loginUser, { isLoading: isUpdating, isError }] = useLoginUserMutation();
+    const [getUserProfile, { }] = useGetUserProfileMutation();
     const user = useSelector(state => state.user)
     const dispatch = useDispatch()
     const navigate = useNavigate()
@@ -24,7 +26,6 @@ const Start = () => {
 
     const handleSubmit = async (event) => {
         event.preventDefault();
-        console.log(user)
         if (!password && !email) return
         // handle form submission here
         try {
@@ -32,18 +33,26 @@ const Start = () => {
                 username: email,
                 password: password
             }
-            console.log(secret)
             const res = await loginUser(secret)
-            const token = res.data.token
-            console.log("success", res)
-            dispatch(login({ token: token }))
-            if (res.error) {
-                throw new Error(res.error.data.error)
-            }
+            if (res.error) throw new Error(res.error.data.error)
+            
+            const token = res.data?.token
+            if (!token) throw new Error("Token not found")
+
+            // save login token for future access
+            await dispatch(login({ token: token }))
+
+            // get data from spotstitch database
+            const data = await getUserProfile()
+            console.log(data.data)
+            if (data.data?.status != "error") await dispatch(setUserData(data.data.user))
+            else throw new Error(data.error)
+
+            // navigate to home route
             navigate("/")
         } catch (error) {
             console.log("rejected", error.message)
-        }
+        } 
     }
 
     return (

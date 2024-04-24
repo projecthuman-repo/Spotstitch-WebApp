@@ -29,11 +29,10 @@ const UserSignUp = () => {
     const check = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,10}$/
 
     useEffect(() => {
-        setEmail(registerForm.email)
+        setEmail(localStorage.getItem("email"))
     }, [])
 
     useEffect(() => {
-
         if (check.test(password)) { setValid(true) }
         else { setValid(false) }
 

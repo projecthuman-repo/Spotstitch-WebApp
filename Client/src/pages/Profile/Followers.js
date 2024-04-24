@@ -52,8 +52,8 @@ function Followers({ text, startTab, numOfFollowers = 0 }) {
                 </Modal.Header>
                 <Modal.Body className="mt-0 pt-0 mx-3">
 
-                    {['', '', ''].map(user => {
-                        return <Row className="my-4 px-2">
+                    {['12', '23', '232'].map((user) => {
+                        return <Row className="my-4 px-2" key={`user_${user}`}>
                             <Col lg={2} sm={2} xs={3}><img className="float-end avatar" src={''} height={61} width={61}/></Col>
                             <Col lg={7} sm={7} xs={9}>
                                 <div>Username</div>

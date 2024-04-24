@@ -1,4 +1,4 @@
-import socket from "../../services/socket"
+import socket from "../../services/chat/socket"
 
 const ChatTile = (chat, curr) => {
   return (

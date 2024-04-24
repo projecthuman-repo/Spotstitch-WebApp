@@ -1,4 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
+import loginApi from "../../services/loginApi";
 import userApi from "../../services/userApi";
 
 export const userSlice = createSlice({
@@ -15,12 +16,13 @@ export const userSlice = createSlice({
         resetNotifications: (state, { payload }) => {
             delete state.newMessages[payload];
         },
-        logout: (state, action) => {
+        reset: (state, action) => {
             return {}
         },
         login: (state, action) => {
             const { token } = action.payload
             state.token = token
+            localStorage.setItem('token', token)
         },
         setUserData: (state, action) => {
             for (const key in action.payload) {
@@ -30,15 +32,16 @@ export const userSlice = createSlice({
     },
     extraReducers: (builder) => {
         // save user after signup
-        builder.addMatcher(userApi.endpoints.registerUser.matchFulfilled, (state, { payload }) => { console.log("registered") });
+        builder.addMatcher(loginApi.endpoints.registerUser.matchFulfilled, (state, { payload }) => { console.log("registered") });
         // save user after login
-        builder.addMatcher(userApi.endpoints.loginUser.matchFulfilled, (state, { payload }) => { state.token = payload.token });
+        builder.addMatcher(loginApi.endpoints.loginUser.matchFulfilled, (state, { payload }) => { state.token = payload.token });
+        builder.addMatcher(userApi.endpoints.getUserProfile.matchFulfilled, (state, { payload }) => { })
         // logout: destroy user session
-        builder.addMatcher(userApi.endpoints.logoutUser.matchFulfilled, (state, { payload }) => { });
+        builder.addMatcher(loginApi.endpoints.logoutUser.matchFulfilled, (state, { payload }) => { return {} });
         // default
         builder.addDefaultCase((state, action) => { })
     },
 });
 
-export const { addNotifications, resetNotifications, login, logout, setUserData, registerData } = userSlice.actions;
+export const { addNotifications, resetNotifications, login, reset, setUserData, registerData } = userSlice.actions;
 export default userSlice.reducer;

@@ -1,7 +1,7 @@
 import { combineReducers, configureStore } from "@reduxjs/toolkit";
 import userSlice from "./features/User/userSlice";
 import chatSlice from "./features/Chat/chatSlice";
-import userApi from "./services/userApi"
+import loginApi from "./services/loginApi"
 import storage from "redux-persist/lib/storage";
 import {
     persistReducer,
@@ -13,17 +13,19 @@ import {
     REGISTER,
 } from "redux-persist";
 import registerSlice from "./features/User/registerSlice";
+import userApi from "./services/userApi";
 
 // reducers
 const appReducer = combineReducers({
     user: userSlice,
     register: registerSlice,
     chat: chatSlice,
+    [loginApi.reducerPath]: loginApi.reducer,
     [userApi.reducerPath]: userApi.reducer,
 });
 
 const rootReducer = (state, action) => {
-    if (action.type === SIGNOUT_REQUEST) {
+    if (action.type === "RESET") {
         // for all keys defined in your persistConfig(s)
         storage.removeItem('persist:root')
         // storage.removeItem('persist:otherKey')
@@ -36,11 +38,11 @@ const persistConfig = {
     key: "root",
     storage: storage,
     whitelist: ['user', 'register', 'chat'],
-    blackList: [userApi.reducerPath],
+    blackList: [loginApi.reducerPath],
 };
 
 // persist our store
-const persistedReducer = persistReducer(persistConfig, appReducer);
+const persistedReducer = persistReducer(persistConfig, rootReducer);
 
 // creating the store
 
@@ -51,7 +53,7 @@ const store = configureStore({
             serializableCheck: {
                 ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
             },
-        }).concat([userApi.middleware])
+        }).concat([loginApi.middleware, userApi.middleware])
 });
 
 export default store;

@@ -8,6 +8,7 @@ const SettingsSchema = new mongoose.Schema({
         required: true
     },
     general: {
+        read: { type: Boolean, default: true },
         messages: {
             anyone: { type: Boolean, default: true },
             friends: { type: Boolean, default: true },
@@ -24,7 +25,11 @@ const SettingsSchema = new mongoose.Schema({
         }
     },
     account: {
-
+        facebook: { type: Boolean, default: false },
+        twitter: { type: Boolean, default: false },
+        instagram: { type: Boolean, default: false },
+        linkedIn: { type: Boolean, default: false },
+        google: { type: Boolean, default: false }
     },
     security: {
         visibility: { type: Boolean, default: true },

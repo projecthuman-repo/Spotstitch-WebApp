@@ -7,11 +7,11 @@ import { MdOutlineSearch } from 'react-icons/md';
 import { HiOutlinePhoto, HiOutlineFaceSmile } from 'react-icons/hi2';
 import { BsSend } from 'react-icons/bs';
 import ChatTile from './ChatTile';
-import socket from '../../services/socket';
-import { sendMessage, createChat, connect, getChats, getChat } from '../../services/chatApp'
+import socket from '../../services/chat/socket';
+import { sendMessage, createChat, connect, getChats, getChat } from '../../services/chat/chatApp'
 import MessageHistory from './MessageHistory';
 import chatReducer from './chatReducer';
-import socketEvents from '../../services/socketEvents';
+import socketEvents from '../../services/chat/socketEvents';
 import { useDispatch, useSelector } from 'react-redux';
 import { chatCreated, updateChats, updateCurrentChat, messageRecieved } from '../../features/Chat/chatSlice';
 
@@ -20,6 +20,7 @@ const Messages = () => {
   const chatHistory = useSelector(state => state.chat.chatHistory)
   const chatList = useSelector(state => state.chat.chatList)
   const [pending, setPending] = useState(false)
+  const user = useSelector(state => state.user)
   const dispatch = useDispatch()
 
   useEffect(async () => {
@@ -77,7 +78,7 @@ const Messages = () => {
   }
 
   const onCreateChat = () => {
-    createChat(['1', '2'])
+    createChat(["1", "2"])
   }
 
   return (

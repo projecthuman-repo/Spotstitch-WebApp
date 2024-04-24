@@ -6,8 +6,9 @@ import holderimg from "../../assets/holderimg.png";
 
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { useRegisterUserMutation } from "../../services/userApi";
+import { useRegisterUserMutation } from "../../services/loginApi";
 import { registerData, reset } from "../../features/User/registerSlice";
+import { useRegisterSpotstitchMutation } from "../../services/userApi";
 
 const AccountSetup = () => {
 
@@ -21,23 +22,41 @@ const AccountSetup = () => {
     const navigate = useNavigate()
     const registerForm = useSelector(state => state.register)
     const [registerUser, { isLoading: isUpdating, isError }] = useRegisterUserMutation()
+    const [registerSpotstitch, { }] = useRegisterSpotstitchMutation()
+
+    const selectCountries = ["Canada"]
+    const selectProvinces = [
+        "Alberta",
+        "British Columbia",
+        "Manitoba",
+        "New Brunswick",
+        "Newfoundland and Labrador",
+        "Northwest Territories",
+        "Nova Scotia",
+        "Nunavut",
+        "Ontario",
+        "Prince Edward Island",
+        "Quebec",
+        "Saskatchewan",
+        "Yukon"
+    ];
 
     useEffect(() => {
-        setFirstName(registerForm.firstName)
-        setLastName(registerForm.lastName)
-        setUsername(registerForm.username)
-        setPhoneNumber(registerForm.phoneNumber)
-        setState(registerForm.province)
-        setCountry(registerForm.country)
+        setFirstName(localStorage.getItem("firstName"))
+        setLastName(localStorage.getItem("lastName"))
+        setUsername(localStorage.getItem("username"))
+        setPhoneNumber(localStorage.getItem("phoneNumber"))
+        setState(localStorage.getItem("province"))
+        setCountry(localStorage.getItem("country"))
     }, [])
 
     const handleSubmit = async (event) => {
         event.preventDefault();
         // handle form submission here
-        dispatch(registerData({
+        await dispatch(registerData({
             username: event.target.username?.value,
             firstName: event.target.firstName?.value,
-            lastName: event.target.lastName?.value, 
+            lastName: event.target.lastName?.value,
             phoneNumber: event.target.phoneNumber?.value,
             country: event.target.country?.value,
             province: event.target.province?.value,
@@ -45,16 +64,19 @@ const AccountSetup = () => {
         }))
 
         try {
-            const res = await registerUser(registerForm)
-            console.log("success", res)
-            if (res.error) {
-                throw new Error(res.error.data.error)
+            const registerServerResponse = await registerUser(registerForm)
+            console.log("success", registerServerResponse.data)
+            if (registerServerResponse.error) {
+                throw new Error(registerServerResponse.error.data.error)
             }
+            const spotstitchServerResponse = await registerSpotstitch(registerForm)
+            console.log(spotstitchServerResponse.data)
+            dispatch(reset())
+            //localStorage.clear()
+
             navigate("/emailverification")
         } catch (error) {
             console.log("rejected", error.message)
-        } finally {
-            dispatch(reset())
         }
     }
 
@@ -72,7 +94,7 @@ const AccountSetup = () => {
                     <div className="signuptitle">Account Information</div>
                     <div className="signupdescription">We're designing and creating an open ecosystem; so innovative ideas can turn into world changing action.</div>
                     <form className="formsignin" onSubmit={handleSubmit}>
-                        
+
                         <input
                             className="email"
                             type="text"
@@ -130,33 +152,34 @@ const AccountSetup = () => {
                             }}
                         />
                         <br />
-                        <input
-                            className="email"
-                            type="text"
-                            placeholder="Country"
+                        <select className="email"
                             id="country"
                             name="country"
                             required
-                            value={country}
                             onChange={(event) => {
                                 localStorage.setItem(event.target.name, event.target.value)
-                                setCountry(event.target.value)}
-                            }
-                        />
+                                setCountry(event.target.value)
+                            }}
+                        >
+                            <option value="" disabled selected>Country</option>
+                            {selectCountries.map((country) => {
+                                return <option value={country}>{country}</option>
+                            })}
+                        </select>
                         <br />
-                        <input
-                            className="email"
-                            type="text"
-                            placeholder="State/Province"
+                        <select className="email"
                             id="province"
                             name="province"
                             required
-                            value={state}
                             onChange={(event) => {
                                 localStorage.setItem(event.target.name, event.target.value)
                                 setState(event.target.value)
-                            }}
-                        />
+                            }}>
+                            <option value="" disabled selected>State/Province</option>
+                            {selectProvinces.map((province) => {
+                                return <option value={province}>{province}</option>
+                            })}
+                        </select>
                         <br /><br />
                         <input className="signup" type="submit" value="Get Started"></input>
                     </form>

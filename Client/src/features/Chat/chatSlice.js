@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import socketEvents from "../../services/socketEvents";
+import socketEvents from "../../services/chat/socketEvents";
 
 const inital = {
     chatList: {},
@@ -35,12 +35,12 @@ const chatSlice = createSlice({
                 state.chatList[chat._id] = chat
             })
         },
-        resetChats: (state, action) => {
+        reset: (state, action) => {
             return inital
         }
     }
 })
 
-export const { updateCurrentChat, chatCreated, messageRecieved, updateChats, resetChats } = chatSlice.actions
+export const { updateCurrentChat, chatCreated, messageRecieved, updateChats, reset } = chatSlice.actions
 
 export default chatSlice.reducer

@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import userApi from "../../services/userApi";
+import loginApi from "../../services/loginApi";
 
 const inital = {
     email: "",
@@ -27,7 +27,7 @@ export const registerSlice = createSlice({
     },
     extraReducers: (builder) => {
         // reset form after completion
-        builder.addMatcher(userApi.endpoints.registerUser.matchFulfilled, (state, { payload }) => { return {} });
+        builder.addMatcher(loginApi.endpoints.registerUser.matchFulfilled, (state, { payload }) => { return {} });
         // default
         builder.addDefaultCase((state, action) => { })
     },

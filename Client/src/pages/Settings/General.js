@@ -1,9 +1,14 @@
 import { Col, Container, Form, InputGroup, Row } from "react-bootstrap";
+import { useDispatch, useSelector } from "react-redux";
+import { useGetUserProfileMutation } from "../../services/userApi";
+import { useEffect } from "react";
+import { setUserData } from "../../features/User/userSlice";
 
 function General() {
     const messages = ['Send read receipts']
     const allowedMessages = ['Anyone', 'Friends', 'Friends of friends', 'Trade requests']
     const notifications = ['All', 'Messages', 'Comments on my posts', 'Replies to my Comment', 'Trade request', 'New events']
+    const settings = useSelector(state => state.user.settings?.general)
 
 
     return <Container className="content-border-l round-s my-3 g-0">
