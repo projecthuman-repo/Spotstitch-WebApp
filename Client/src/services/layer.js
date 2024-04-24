@@ -1,10 +1,11 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
+import { baseUrl, prepareHeaders } from './baseQuery';
 
-// Define a service for layers using a base URL
 const layersApi = createApi({
     reducerPath: 'layersApi',
     baseQuery: fetchBaseQuery({
-        baseUrl: 'http://localhost:5001',
+        baseUrl: baseUrl,
+        prepareHeaders: prepareHeaders,
     }),
 
     endpoints: (builder) => ({
