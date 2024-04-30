@@ -7,8 +7,8 @@ const edit = require('./edit');
 const remove = require('./deleteAddress');
 const router = express.Router();
 
-router.get('/:userId/get', get)
-router.post('/:userId/add', add)
+router.get('/get', get)
+router.post('/add', add)
 router.put('/:addressId/edit', edit)
 router.delete('/:addressId/delete', remove)
 

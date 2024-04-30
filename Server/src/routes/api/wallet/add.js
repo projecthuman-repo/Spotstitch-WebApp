@@ -10,12 +10,16 @@ module.exports = async (req, res) => {
         if (!userId) throw new Error('Invalid user ID')
 
         const { card } = req.body
+        if (!card) throw new Error('Card not found in request')
 
-        // verify that there is an existing wallet for the user, if not create a new one
-        const wallet = await Wallet.getWallet(userId) || new Wallet(userId);
+        // verify that there is an existing wallet for the user
+        const wallet = await Wallet.getWallet(userId)
         if (!wallet) throw new Error('Could not fetch wallet')
-        wallet.addCard(card)
-
+        
+        // make sure attempt to add card succeeded 
+        const attempt = await wallet.addCard(card)
+        if (!attempt) throw new Error('Adding card failed')
+        
         res.status(201).json(createSuccessResponse({ wallet: wallet.preview() }));
     } catch (error) {
         logger.error({ error: error.message }, 'Error getting wallet')

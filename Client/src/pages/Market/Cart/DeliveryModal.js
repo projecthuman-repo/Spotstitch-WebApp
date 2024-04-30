@@ -50,7 +50,7 @@ function DeliveryModal() {
                 </Modal.Header>
                 <Modal.Body className="px-5 py-3">
                     {methods.map((method, index) => {
-                        return <div className="d-flex py-3">
+                        return <div className="d-flex py-3" key={`delivery_key_${method.name}_${index}`}>
                             <div onClick={()=>setSelected(index)} className="btn-delivery">
                                 <div>{method.name} (CA${Number(method.price).toFixed(2)})</div>
                                 <div className="fw-400 fs-14">Delivers {method.startDate} - {method.endDate}</div>

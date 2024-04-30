@@ -10,14 +10,14 @@ const addressApi = createApi({
 
     endpoints: (builder) => ({
         // Get an address by userId
-        getAddressByUserId: builder.query({
-            query: (userId) => `/addresses/${userId}/get`,
+        getAddress: builder.query({
+            query: () => `/address/get`,
         }),
 
         // Add a new address for a userId
         addAddress: builder.mutation({
-            query: ({ userId, address }) => ({
-                url: `/addresses/${userId}/add`,
+            query: (address) => ({
+                url: `/address/add`,
                 method: 'POST',
                 body: address,
             }),
@@ -26,7 +26,7 @@ const addressApi = createApi({
         // Edit an existing address by addressId
         editAddress: builder.mutation({
             query: ({ addressId, address }) => ({
-                url: `/addresses/${addressId}/edit`,
+                url: `/address/${addressId}/edit`,
                 method: 'PUT',
                 body: address,
             }),
@@ -35,7 +35,7 @@ const addressApi = createApi({
         // Delete an address by addressId
         deleteAddress: builder.mutation({
             query: (addressId) => ({
-                url: `/addresses/${addressId}/delete`,
+                url: `/address/${addressId}/delete`,
                 method: 'DELETE',
             }),
         }),
@@ -43,8 +43,8 @@ const addressApi = createApi({
 });
 
 export const {
-    useGetAddressByUserIdQuery,
-    useAddAddressForUserMutation,
+    useGetAddressQuery,
+    useAddAddressMutation,
     useEditAddressMutation,
     useDeleteAddressMutation,
 } = addressApi;

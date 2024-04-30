@@ -1,17 +1,20 @@
 const mongoose = require('mongoose');
+const logger = require('../../../logger');
 
 const WalletSchema = new mongoose.Schema({
     userId: {
         type: String,
         unique: true,
-        required: true
+        required: true,
+        select: false
     },
     cards: [{
-        cardNumber: String,
-        cardOwner: String
+        cardNumber: { type: String, required: true },
+        cardOwner: { type: String, required: true },
+        cardExpiry: { type: String },
+        cardType: { type: String }, // add required when verifcation added
     }]
 })
-
 
 WalletSchema.statics.createWallet = async (userId) => {
     try {
@@ -28,25 +31,35 @@ WalletSchema.statics.createWallet = async (userId) => {
 WalletSchema.statics.getWallet = async (userID) => {
     try {
         const wallet = await Wallet.findOne({ userId: userID })
-        if (wallet) return wallet
+        if (wallet) { return wallet }
         else return undefined
     } catch (err) {
         throw new Error(err)
     }
 }
 
-WalletSchema.statics.addCard = async function(userId, card = { cardNum: '', cardOwner: '' }) {
+WalletSchema.methods.addCard = async function (card = { cardNumber: '', cardOwner: '', cardType: '' }) {
     try {
-        const wallet = await Wallet.getWallet(userId)
-        wallet.cards.push(card)
-        await wallet.save()
-        return wallet
-    } catch (err) {
-        throw new Error(err)
+        // make sure the card doesn't already exist
+        let exists = false;
+        this.cards.map((walletCard) => {
+            if (walletCard.cardNumber == card.cardNumber) {
+                exists = true
+            }
+        })
+        if (exists) throw new Error('Card already exists')
+        this.cards.push(card)
+        // note - the card information should be hashed for security
+        // card should also be verified by their specific type
+        // add hash and verification here
+        await this.save()
+        return this
+    } catch (error) {
+        logger.error({}, error.message)
     }
 }
 
-WalletSchema.statics.removeCards = async function(userId) {
+WalletSchema.statics.removeCards = async function (userId) {
     try {
         const wallet = await Wallet.getWallet(userId)
         wallet.cards = []
@@ -57,7 +70,7 @@ WalletSchema.statics.removeCards = async function(userId) {
     }
 }
 
-WalletSchema.statics.deleteWallet = async function(userId) {
+WalletSchema.statics.deleteWallet = async function (userId) {
     try {
         const wallet = await Wallet.findOneAndDelete({ userId: userId })
         return wallet
@@ -66,20 +79,24 @@ WalletSchema.statics.deleteWallet = async function(userId) {
     }
 }
 
-WalletSchema.methods.removeCard = async function(idx) {
+WalletSchema.methods.removeCard = async function (idx) {
     try {
         this.cards.splice(idx, 1)
         await this.save()
+        return this
     } catch (err) {
         throw new Error(err)
     }
 }
 
-WalletSchema.methods.preview = function() {
+WalletSchema.methods.preview = function () {
     try {
         const cards = []
         for (const c of this.cards) {
-            cards.push(c.cardNumber.slice(-4))
+            cards.push({
+                cardNumber: c.cardNumber.slice(-4),
+                cardType: c.cardType
+            })
         }
         return cards
     } catch (err) {

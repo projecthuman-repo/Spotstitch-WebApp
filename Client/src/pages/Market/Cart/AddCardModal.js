@@ -3,9 +3,18 @@ import { Col, Form, Modal, Row } from "react-bootstrap";
 import { add, chevronRight } from "../../../assets/icons";
 
 import '../Market.css'
+import { useDispatch, useSelector } from "react-redux";
+import { useAddCardMutation } from "../../../services/wallet";
+import { setUserData } from "../../../features/User/userSlice";
 
 function AddCardModal() {
+    
     const [show, setShow] = useState(false);
+    const [addCard, {}] = useAddCardMutation()
+    const [cardNumber, setCardNumber] = useState("")
+    const [cardOwner, setCardOwner] = useState("")
+    const [cvv, setCVV] = useState("")
+    const dispatch = useDispatch()
 
     const handleClose = () => {
         setShow(false);
@@ -18,6 +27,27 @@ function AddCardModal() {
     function handleSave(e) {
         e.preventDefault()
         handleClose()
+    }
+
+    const handleSubmit = async (e) => {
+        e.preventDefault()
+        try {
+            const card = {
+                cardNumber: cardNumber,
+                cardOwner: cardOwner,
+                cardType: "" // add verify card type functionality 
+            }
+            const res = await addCard({ card: card })
+            if (res.error) throw new Error(res.error.data.error.message)
+            if (res.data?.status == "ok") {
+                const wallet = res.data?.wallet
+                await dispatch(setUserData({ wallet: wallet }))
+                window.location.reload();
+                handleClose()
+            }
+        } catch (error) {
+            console.log('rejected', error.message)
+        }
     }
 
     return (
@@ -41,7 +71,7 @@ function AddCardModal() {
                     </Modal.Title>
                 </Modal.Header>
                 <Modal.Body className="">
-                    <Form itemID="card">
+                    <Form itemID="card" onSubmit={handleSubmit}>
                         <Form.Group className="mt-2 mx-4" itemID="card.name">
                             <Form.Label>Email</Form.Label>
                             <Form.Control type='input' placeholder="" className="round-s" />
@@ -51,7 +81,8 @@ function AddCardModal() {
                             <Col lg={12}>
                                 <Form.Group className="mt-2 mx-4 form-address" itemID="card.number">
                                     <Form.Label>Card information</Form.Label>
-                                    <Form.Control type='input' placeholder="" className="round-s" />
+                                    <Form.Control type='input' placeholder="Card Number" className="round-s" value={cardNumber}
+                                    onChange={(e) => { setCardNumber(e.target.value) }}/>
                                 </Form.Group>
                             </Col>
                             <Col>
@@ -63,20 +94,16 @@ function AddCardModal() {
                             <Col>
                                 <Form.Group className="mt-2 me-4" itemID="card.cvc">
                                     
-                                    <Form.Control type='input' placeholder="CVC" className="round-s" />
+                                    <Form.Control type='input' placeholder="CCV" className="round-s" 
+                                    onChange={(e) => { setCVV(e.target.value) }}/>
                                 </Form.Group>
-
                             </Col>
-
-
-
-
                         </Row>
-
 
                         <Form.Group className="mt-2 mx-4" itemID="card.name">
                             <Form.Label>Name on card</Form.Label>
-                            <Form.Control type='input' placeholder="" className="round-s" />
+                            <Form.Control type='input' placeholder="" className="round-s" 
+                            onChange={(e) => { setCardOwner(e.target.value) }}/>
                         </Form.Group>
 
                         <Form.Group className="mt-2 mx-4" itemID="card.country">
@@ -92,7 +119,7 @@ function AddCardModal() {
 
                         <div className="underline my-4"></div>
                         <div className="d-flex">
-                            <button className="btn-address-save p-2 px-5 mx-auto" onClick={handleSave}>Save and continue</button>
+                            <button className="btn-address-save p-2 px-5 mx-auto" type="submit">Save and continue</button>
                         </div>
 
 
