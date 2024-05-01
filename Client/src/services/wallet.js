@@ -16,7 +16,7 @@ const walletApi = createApi({
         getWallet: builder.query({
             query: () => ({
                 url: '/wallet',
-                method: 'POST', // Ask Jacky why this is a POST and not GET in the backend
+                method: 'GET',
             }),
         }),
 

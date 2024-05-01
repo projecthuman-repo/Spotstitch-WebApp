@@ -140,6 +140,7 @@ UserSchema.statics.getUser = async function () {
 UserSchema.methods.getUserData = async function () {
   const numFollowing = this.following?.length || 0
   const numFollowers = this.followers?.length || 0
+  
   const userProfile = {
     username: this.username,
     displayName: this.displayName,

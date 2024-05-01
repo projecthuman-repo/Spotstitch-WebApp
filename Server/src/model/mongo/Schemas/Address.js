@@ -3,9 +3,10 @@ const { updateFields } = require('./index')
 const AddressSchema = new mongoose.Schema({
     userId: {
         type: String,
-
-        required: true
+        required: true,
+        select: false
     },
+    name: String,
     addressLines: [String],
     city: String,
     province: String,

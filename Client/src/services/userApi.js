@@ -3,10 +3,10 @@ import { baseUrl, prepareHeaders } from "./baseQuery";
 
 const userApi = createApi({
     reducerPath: "userApi",
-    baseQuery: fetchBaseQuery({ 
+    baseQuery: fetchBaseQuery({
         baseUrl: baseUrl,
         prepareHeaders: prepareHeaders,
-     }),
+    }),
     endpoints: (builder) => ({
         // finish login and fetch user profile information
         getUserProfile: builder.mutation({
@@ -41,6 +41,11 @@ const userApi = createApi({
     }),
 });
 
-export const { useGetUserProfileMutation, useRegisterSpotstitchMutation, useUpdatePictureMutation, useUpdateAccountTypeMutation } = userApi;
+export const {
+    useGetUserProfileMutation,
+    useRegisterSpotstitchMutation,
+    useUpdatePictureMutation,
+    useUpdateAccountTypeMutation
+} = userApi;
 
 export default userApi;

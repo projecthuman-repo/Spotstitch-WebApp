@@ -14,6 +14,8 @@ import {
 } from "redux-persist";
 import registerSlice from "./features/User/registerSlice";
 import userApi from "./services/userApi";
+import walletApi from "./services/wallet";
+import addressApi from "./services/address";
 
 // reducers
 const appReducer = combineReducers({
@@ -22,6 +24,8 @@ const appReducer = combineReducers({
     chat: chatSlice,
     [loginApi.reducerPath]: loginApi.reducer,
     [userApi.reducerPath]: userApi.reducer,
+    [walletApi.reducerPath]: walletApi.reducer,
+    [addressApi.reducerPath]: addressApi.reducer,
 });
 
 const rootReducer = (state, action) => {
@@ -53,7 +57,12 @@ const store = configureStore({
             serializableCheck: {
                 ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
             },
-        }).concat([loginApi.middleware, userApi.middleware])
+        }).concat([
+            loginApi.middleware, 
+            userApi.middleware,
+            walletApi.middleware,
+            addressApi.middleware
+        ])
 });
 
 export default store;

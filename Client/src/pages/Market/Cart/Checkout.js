@@ -1,14 +1,17 @@
 import { Col, Container, Modal, Row } from "react-bootstrap"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 
 import '../Market.css'
-import { chevronRight, garbageCan, minus, plus } from "../../../assets/icons"
+import { chevronRight, garbageCan, minus, plus, visa } from "../../../assets/icons"
 import ChangeAddressModal from "./ChangeAddressModal"
 import DeliveryModal from "./DeliveryModal"
 import ChangeCardModal from "./ChangeCardModal"
+import { useDispatch, useSelector } from "react-redux"
+import { setUserData } from "../../../features/User/userSlice"
 
 
 function Checkout() {
+    /* example address
     const address = {
         name: 'John Doe',
         addressLine: '13849 111 AVE',
@@ -18,7 +21,38 @@ function Checkout() {
         postalCode: 'V4H 0I8',
         number: '778-234-4827',
         extension: '+1'
-    }
+    }*/
+
+    const wallet = useSelector(state => state.user?.wallet)
+    const selectedCard = useSelector(state => state.user?.selectedCard)
+    const addresses = useSelector(state => state.user?.address)
+    const selectedAddress = useSelector(state => state.user?.selectedAddress)
+    const dispatch = useDispatch()
+
+    // check if wallet changed
+    useEffect(() => {
+        try {
+            // check if there is a selected card, if not choose first from wallet
+            if (!selectedCard && wallet?.length > 0) dispatch(setUserData({ selectedCard: { ...wallet[0], index: 0 } }))
+            // if wallet is empty there is no selected card
+            else if (!wallet || wallet?.length == 0) dispatch(setUserData({ selectedCard: undefined }))
+            // if selected card is not valid
+            else if (selectedCard && selectedCard.index >= wallet.length ||
+                selectedCard.cardNumber != wallet[selectedCard.index].cardNumber ||
+                selectedCard.cardOwner != wallet[selectedCard.index].cardOwner) {
+                dispatch(setUserData({ selectedCard: { ...wallet[0], index: 0 } }))
+            }
+        } catch (error) {
+            console.log(error)
+        }
+
+    }, [selectedCard, wallet])
+
+
+    useEffect(() => {
+        if (!selectedAddress && addresses) dispatch(setUserData({selectedAddress: addresses[0]}))
+    }, [selectedAddress])
+
 
     const [items, setItems] = useState([{
         name: 'item name',
@@ -58,12 +92,12 @@ function Checkout() {
         return Number(getTotal() * taxRate).toFixed(2)
     }
 
-    const card = {
-
-    }
-
-    function changeQuantity() {
-
+    function changeQuantity(index, value) {
+        const temp = [...items]
+        if (temp[index].quantity + value > 0) {
+            temp[index].quantity += value
+            setItems(temp)
+        }
     }
 
     function deleteItem(index) {
@@ -79,11 +113,14 @@ function Checkout() {
                 <div className="fw-600 fs-18 py-2">Shipping/billing address</div>
                 <div className="content-border-l round-l me-4 p-4">
                     <div className="d-flex ">
-                        <div className="d-flex flex-column">
-                            <div>{address.name}</div>
-                            <div>{address.addressLine}</div>
-                            <div>{address.city}, {address.province} {address.postalCode}, {address.country}</div>
-                            <div>{address.extension} {address.number}</div>
+                        <div className="d-flex flex-column"> 
+                        {selectedAddress && <>
+                            <div>{selectedAddress.name}</div>
+                            <div>{selectedAddress.addressLine}</div>
+                            <div>{selectedAddress.city}, {selectedAddress.province} {selectedAddress.postalCode}, {selectedAddress.country}</div>
+                            <div>{selectedAddress.extension} {selectedAddress.number}</div>
+                        </>}
+                        
                         </div>
                         <div className="ms-auto my-auto"><ChangeAddressModal /></div>
                     </div>
@@ -104,17 +141,25 @@ function Checkout() {
 
                 <div className="fw-600 fs-18 py-2">Payment Method</div>
                 <div className="d-flex content-border-l round-l me-4 p-4">
-                    <div className="d-flex flex-column">
-                        <div>Mastercard **** 4052 </div>
-                        <div>Exp 03/27</div>
-                    </div>
+                    {selectedCard && <>
+                        <div className="d-flex flex-column me-3">
+                            <img src={visa} />
+                        </div>
+                        <div className="d-flex flex-column">
+                            <div>{selectedCard.cardType || "Visa"} **** **** **** {selectedCard.cardNumber}</div>
+                            <div>Exp 03/27</div>
+                        </div>
+                    </>}
+                    {!selectedCard && <>
+                        Please add a payment method
+                    </>}
 
                     <div className="ms-auto my-auto"><ChangeCardModal /></div>
                 </div>
 
                 <div>Review Items</div>
                 {items.map((item, index) => {
-                    return <div className="d-flex py-2" id={`checkOutItem_${index}`}>
+                    return <div className="d-flex py-2" key={`checkOutItem_${index}`}>
                         <div className="img-cart" style={{ background: `url(${item.image}), #F4F2F2 ` }}>
 
                         </div>
@@ -123,9 +168,9 @@ function Checkout() {
                             <div>{item.description}</div>
                             <div>${item.price}</div>
                             <div className="align-middle d-inline">
-                                <button className='btn m-0' onClick={() => changeQuantity()}><img src={minus} /></button>
+                                <button className='btn m-0' onClick={() => changeQuantity(index, -1)}><img src={minus} /></button>
                                 <div className="align-middle d-inline m-0">{item.quantity}</div>
-                                <button className='btn m-0' onClick={() => changeQuantity()}><img src={plus} /></button>
+                                <button className='btn m-0' onClick={() => changeQuantity(index, 1)}><img src={plus} /></button>
                             </div>
                         </div>
                         <div className="mx-auto">
