@@ -21,8 +21,8 @@ const chatSlice = createSlice({
             state.chatHistory = history
         },
         chatCreated: (state, action) => {
-            const { chatId, chat } = action.payload
-            state.chatList[chatId] = chat
+            const { chat } = action.payload
+            state.chatList[chat._id] = chat
         },
         messageRecieved: (state, action) => {
             const { chatId, message } = action.payload

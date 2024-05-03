@@ -11,13 +11,13 @@ ChatSchema.statics.getChat = async (id) => {
         const chat = await Chat.findById(id)
         return chat
     } catch (err) {
-        throw new Error('Error getting chat: '+id)
+        throw new Error('Error getting chat: ' + id)
     }
 }
 
-ChatSchema.statics.getUserChats = async (userId) => {
+ChatSchema.statics.getUserChats = async (username) => {
     try {
-        const chat = await Chat.find({ users: userId })
+        const chat = await Chat.find({ users: { $elemMatch: { $eq: username } } })
         return chat
     } catch (err) {
         throw new Error('Error getting user chats')
@@ -26,13 +26,17 @@ ChatSchema.statics.getUserChats = async (userId) => {
 
 ChatSchema.statics.createChat = async ({ users = [] }) => {
     try {
-        const chat = new Chat({
-            users: users,
-            history: [],
-            createdAt: new Date(),
-        })
-        await chat.save()
-        return chat
+        const dupe = await Chat.findOne({ users: users })
+        if (dupe) { return dupe }
+        else {
+            const chat = new Chat({
+                users: users,
+                history: [],
+                createdAt: new Date(),
+            })
+            await chat.save()
+            return chat
+        }
     } catch (err) {
         throw new Error('Error creating new chat: ' + err.message)
     }

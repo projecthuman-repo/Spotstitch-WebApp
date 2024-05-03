@@ -4,7 +4,9 @@ import userApi from "../../services/userApi";
 
 export const userSlice = createSlice({
     name: "user",
-    initialState: {},
+    initialState: {
+        token: ""
+    },
     reducers: {
         addNotifications: (state, { payload }) => {
             if (state.newMessages[payload]) {
@@ -34,7 +36,7 @@ export const userSlice = createSlice({
         // save user after signup
         builder.addMatcher(loginApi.endpoints.registerUser.matchFulfilled, (state, { payload }) => { console.log("registered") });
         // save user after login
-        builder.addMatcher(loginApi.endpoints.loginUser.matchFulfilled, (state, { payload }) => { state.token = payload.token });
+        builder.addMatcher(loginApi.endpoints.loginUser.matchFulfilled, (state, { payload }) => {  });
         builder.addMatcher(userApi.endpoints.getUserProfile.matchFulfilled, (state, { payload }) => { })
         // logout: destroy user session
         builder.addMatcher(loginApi.endpoints.logoutUser.matchFulfilled, (state, { payload }) => { return {} });

@@ -10,10 +10,9 @@ import ChatTile from './ChatTile';
 import socket from '../../services/chat/socket';
 import { sendMessage, createChat, connect, getChats, getChat } from '../../services/chat/chatApp'
 import MessageHistory from './MessageHistory';
-import chatReducer from './chatReducer';
 import socketEvents from '../../services/chat/socketEvents';
 import { useDispatch, useSelector } from 'react-redux';
-import { chatCreated, updateChats, updateCurrentChat, messageRecieved } from '../../features/Chat/chatSlice';
+import { chatCreated, updateChats, updateCurrentChat, messageRecieved, reset } from '../../features/Chat/chatSlice';
 
 const Messages = () => {
   const currentChat = useSelector(state => state.chat.currentChat)
@@ -33,6 +32,7 @@ const Messages = () => {
     }
 
     async function onGetAllChats(chats) {
+      dispatch(reset())
       dispatch(updateChats({ chats: chats }))
     }
 
@@ -77,8 +77,9 @@ const Messages = () => {
     console.log(res)
   }
 
+  // edit to use correct list of users
   const onCreateChat = () => {
-    createChat(["1", "2"])
+    if (user.username) createChat([user.username, "user123"])
   }
 
   return (
@@ -122,7 +123,10 @@ const Messages = () => {
                   <div className='d-flex flex-column ms-2'>
                     <span className='my-auto'>
 
-                      <p className='m-0'>{chat.users}</p>
+                      <p className='m-0'>{chat.users?.map(u => {
+                        if (u != user.username) return `${u} `
+                      })
+                      }</p>
                       <p className='m-0'>{chat.history[-1]}</p>
                     </span>
                   </div>

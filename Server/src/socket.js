@@ -1,7 +1,7 @@
 
 // Connect chatting server
 const { Server } = require("socket.io");
-const { Chat, Message } = require("./model");
+const { Chat, Message, User } = require("./model");
 const { verifyToken, decodeToken } = require("./authorization/auth");
 const { createSuccessResponse, createErrorResponse } = require("./response");
 const logger = require("./logger");
@@ -44,11 +44,12 @@ const createSocketServerInstance = async (server) => {
 
 
         socket.on(userConnect, async (token) => {
-            const user = await decodeToken(token)
-            if (user.id) {
-                logger.info({user}, "User connected to socket server")
-                socket.userId = user.id
-                socket.join(socket.userId)
+            const tokenData = await decodeToken(token)
+            if (tokenData.id) {
+                logger.info({ auth: tokenData }, "User connected to socket server")
+                const user = await User.findById(tokenData.id)
+                socket.username = user.username
+                socket.join(socket.username)
             }
         })
 
@@ -56,14 +57,14 @@ const createSocketServerInstance = async (server) => {
         socket.on(chatConnect, async (callback) => {
             callback = typeof callback == "function" ? callback : () => { };
             try {
-                const chats = await Chat.getUserChats(socket.userId)
+                const chats = await Chat.getUserChats(socket.username)
 
-                socket.join(socket.userId)
+                socket.join(socket.username)
                 for (const chat of chats) {
                     socket.join(chat._id)
                 }
                 logger.info({
-                    user: socket.userId,
+                    user: socket.username,
                     chats: chats.map((room) => { return room._id })
                 }, 'Connecting to chats for user')
                 callback(createSuccessResponse({ chats: chats }))
@@ -80,12 +81,11 @@ const createSocketServerInstance = async (server) => {
             try {
                 const chat = await Chat.createChat({ users: users })
                 if (!chat) throw new Error('Chat could not be created')
-                logger.info({ socket: socket.userId }, 'new chat created')
+                logger.info({ to: users }, 'new chat created')
 
-                io.to(socket.userId).emit(chatCreated, chat)
                 for (const user of users) {
                     io.to(user).emit(chatCreated, chat)
-                    logger.info({ user }, "New chat emitted")
+                    logger.info({ to: user }, "New chat emitted")
                 }
 
                 callback(createSuccessResponse({ chatId: chat._id }))
@@ -98,11 +98,11 @@ const createSocketServerInstance = async (server) => {
         socket.on(chatGetAll, async (callback) => {
             callback = typeof callback == "function" ? callback : () => { };
             try {
-                const chats = await Chat.getUserChats(socket.userId)
+                const chats = await Chat.getUserChats(socket.username)
                 for (const chat of chats) {
                     if (!chat.populated('history')) await chat.populate('history')
                 }
-                io.to(socket.userId).emit(chatSentAll, chats)
+                io.to(socket.username).emit(chatSentAll, chats)
                 callback(createSuccessResponse({ chats: chats }))
             }
             catch (error) {
@@ -116,7 +116,7 @@ const createSocketServerInstance = async (server) => {
                 const chat = await Chat.getChat(chatId)
                 if (!chat.populated('history')) await chat.populate('history')
 
-                io.to(socket.userId).emit(chatOpened, chatId, chat.getHistory())
+                io.to(socket.username).emit(chatOpened, chatId, chat.getHistory())
                 callback(createSuccessResponse({ chat: chat }))
             }
             catch (error) {
@@ -148,7 +148,7 @@ const createSocketServerInstance = async (server) => {
                 const chat = await Chat.getChat(chatId)
                 if (!chat) throw new Error("Could not find chat")
 
-                const message = await Message.createMessage(chatId, socket.userId, content)
+                const message = await Message.createMessage(chatId, socket.username, content)
                 if (!message) throw new Error("Error creating new message")
 
                 chat.addMessage(message._id)

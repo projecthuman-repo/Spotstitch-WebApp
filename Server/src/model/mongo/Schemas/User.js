@@ -12,6 +12,7 @@ const UserSchema = new mongoose.Schema(
     username: {
       type: String,
       required: [true, "Can't be blank"],
+      unique: true
     },
     displayName: {
       type: String,

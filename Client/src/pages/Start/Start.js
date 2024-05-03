@@ -46,7 +46,7 @@ const Start = () => {
             const userData = await getUserProfile()
             console.log(userData)
             if (userData.data?.status != "error") await dispatch(setUserData(userData.data?.user))
-            else throw new Error(data.error)
+            else throw new Error(`error: ${data.error}`)
 
             // navigate to home route
             navigate("/")

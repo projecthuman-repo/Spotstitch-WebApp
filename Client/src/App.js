@@ -57,7 +57,7 @@ import ExplorePage from "./pages/ExplorePage/ExplorePage.jsx";
 
 function App() {
 	const user = useSelector((state) => state.user);
-	const token = useSelector((state) => state.user.token)
+	const token = useSelector((state) => state.user?.token)
 	const [menuOpen, setMenuOpen] = useState(false);
 
 	// ensure access only to authenticated users

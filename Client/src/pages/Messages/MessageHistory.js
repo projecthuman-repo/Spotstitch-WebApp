@@ -1,9 +1,9 @@
 const MessageHistory = ({ history = []}) => {
     return (
         <div>
-            {history.length > 0 && history.map(message => {
+            {history.length > 0 && history.map((message, index) => {
                 return (
-                    <div className='d-flex flex-column' key={message._id}>
+                    <div className='d-flex flex-column' key={`msg_${index}_${message._id}`}>
                         <div className='mb-auto text-center'>
                             <h5 className='mt-3'>{message.author}</h5>
                         </div>
