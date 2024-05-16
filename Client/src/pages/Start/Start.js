@@ -43,9 +43,9 @@ const Start = () => {
             await dispatch(login({ token: token }))
 
             // get data from spotstitch database
-            const data = await getUserProfile()
-            console.log(data.data)
-            if (data.data?.status != "error") await dispatch(setUserData(data.data.user))
+            const userData = await getUserProfile()
+            console.log(userData)
+            if (userData.data?.status != "error") await dispatch(setUserData(userData.data?.user))
             else throw new Error(data.error)
 
             // navigate to home route

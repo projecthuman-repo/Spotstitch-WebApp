@@ -14,8 +14,8 @@ const validateFields = (schema, obj, ignore = []) => {
     const missing = []
     for (const path of paths) {
         const shouldIgnore = ignore.includes(path) || path.startsWith('_')
-        if (!shouldIgnore) {
-            if (!obj[path]) missing.push(path)
+        if (!shouldIgnore && !obj[path]) {
+            missing.push(path)
         }
     }
     return missing

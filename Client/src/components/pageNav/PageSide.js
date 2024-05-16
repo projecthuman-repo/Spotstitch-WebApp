@@ -15,7 +15,7 @@ function PageSide({ options, tabFn, tab = 0, className = "" }) {
         <div className="d-flex row justify-content-center my-3 " >
             {options.map((option, i) => {
                 return (
-                    <Row className="nopadding my-1" id={`side_${option}_${i}`}>
+                    <Row className="nopadding my-1" id={`side_${option}_${i}`} key={`side_${option}_${i}`}>
                         <Col >
                             <button className={index == i ?
                                 "btn btn-outline-0 light text-start w-100 px-3 py-1" :

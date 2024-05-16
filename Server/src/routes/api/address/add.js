@@ -13,7 +13,7 @@ module.exports = async (req, res) => {
 
         // ensure all fields required to create an event are present
         const missing = validateFields(Address.schema, address)
-        if (missing) throw new Error(`Missing required fields: ${missing.toString()}`)
+        if (missing.length > 0) throw new Error(`Missing required fields: ${missing.toString()}`)
 
         // Make sure address is completed properly
         const addr = await Address.createAddress(address)

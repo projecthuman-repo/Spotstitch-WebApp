@@ -1,7 +1,10 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { checked, chevronRight } from "../../../assets/icons";
 import { Modal, Row } from "react-bootstrap";
 import AddAddressModal from "./AddAddressModal";
+import { useDispatch, useSelector } from "react-redux";
+import { useGetAddressQuery } from "../../../services/address";
+import { setUserData } from "../../../features/User/userSlice";
 
 function ChangeAddressModal() {
 
@@ -16,7 +19,18 @@ function ChangeAddressModal() {
         extension: '+1'
     }
 
+    const addresses = useSelector(state => state.user?.address)
+    const selectedAddress = useSelector(state => state.user?.selectedAddress)
+    const addressResponse = useGetAddressQuery().data
+    const dispatch = useDispatch()
+
     const [show, setShow] = useState(false);
+
+    useEffect(() => {
+        if (addressResponse) {
+            dispatch(setUserData({ address: addressResponse.address }))
+        }
+    }, [addressResponse])
 
     const handleClose = () => {
         setShow(false);
@@ -25,6 +39,17 @@ function ChangeAddressModal() {
     const handleShow = () => {
         setShow(true);
     };
+
+    const selectAddress = (address) => {
+        const exists = addresses?.filter((addr) => {
+            return addr._id == address._id
+        })
+        if (exists) {
+            dispatch(setUserData({ selectedAddress: address }))
+            console.log(address)
+        }
+        
+    }
 
     return (
         <>
@@ -48,15 +73,18 @@ function ChangeAddressModal() {
 
                 </Modal.Header>
                 <Modal.Body className="px-5 py-3">
-                    <div className="d-flex p-3">
-                        <div className="d-flex flex-column">
-                            <div>{address.name}</div>
-                            <div>{address.addressLine}</div>
-                            <div>{address.city}, {address.province} {address.postalCode}, {address.country}</div>
-                            <div>{address.extension} {address.number}</div>
+                    {addressResponse && addressResponse.address.map((address, index) => {
+                        return <div className="d-flex p-3" key={`address_checkout_${index}`} onClick={() => { selectAddress(address) }}>
+                            <div className="d-flex flex-column">
+                                <div>{address.name}</div>
+                                <div>{address.addressLine}</div>
+                                <div>{address.city}, {address.province} {address.postalCode}, {address.country}</div>
+                                <div>+1 {address.number}</div>
+                            </div>
+                            <div className="ms-auto my-auto">{selectedAddress && selectedAddress._id == address._id && <img src={checked} />}</div>
                         </div>
-                        <div className="ms-auto my-auto"><img src={checked}/></div>
-                    </div>
+                    })}
+
 
                     <div className="underline my-3"></div>
 

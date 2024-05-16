@@ -38,7 +38,6 @@ const verifyToken = async (req, res, next) => {
       return res.status(401).json(createErrorResponse(401, 'Unauthorized'));
     } else {
       logger.info({}, "Token verified")
-      //resolve();
 
       // attach spotstitch id to the request
       const user = await CrossPlatformUser.findById(decoded.id)
@@ -55,14 +54,17 @@ const verifyToken = async (req, res, next) => {
 };
 
 const decodeToken = async (token) => {
-  return jwt.verify(token, jwtSecret, (err, decoded) => {
+  return jwt.verify(token, jwtSecret, async (err, decoded) => {
     if (err) {
       logger.error({ error: err.message }, "Invalid Token")
       //reject(err.message);
       return createErrorResponse(401, 'Unauthorized');
     } else {
       logger.info({}, "Token verified")
-      //resolve();
+
+      // attach spotstitch id to the request
+      const user = await CrossPlatformUser.findById(decoded.id)
+      decoded.id = user.spotstitchUserId
 
       // Use it in the next middleware to ensure the user is authorized
       return decoded;
