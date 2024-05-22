@@ -5,8 +5,11 @@ const { createErrorResponse, createSuccessResponse } = require('../../../respons
 
 module.exports = async (req, res) => {
     try {
+
+        console.log("Update Image Code in api/user");
         // make sure the user is authenticated and we can find their ID
-        const userId = res?.locals?.jwtData?.id
+        const userId = res?.locals?.jwtData?.id;
+
         if (!userId) throw new Error('Invalid user ID')
 
         // check for image in request body
@@ -17,7 +20,7 @@ module.exports = async (req, res) => {
         const user = await User.findById(userId)
         logger.info({ id: userId }, "searching for user")
         if (!user) throw new Error("User does not exist")
-
+        console.log(user);
         // update user image
         const data = await user.updatePicture(picture)
 
