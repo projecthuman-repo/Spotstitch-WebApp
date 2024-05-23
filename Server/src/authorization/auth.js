@@ -9,13 +9,14 @@ const jwtSecret = process.env.JWT_SECRET;
 const createToken = (id, email, expiresIn) => {
   const payload = { id, email };
   const token = jwt.sign(payload, jwtSecret, {
-    expiresIn,
+    expiresIn: expiresIn,
   });
   return token;
 };
 
 // Verify the token and call next if successful
 const verifyToken = async (req, res, next) => {
+  
   let token;
   if (req?.headers?.authorization?.startsWith('Bearer')) {
     token = req.headers.authorization.split(' ')[1];
@@ -33,15 +34,17 @@ const verifyToken = async (req, res, next) => {
 
   return jwt.verify(token, jwtSecret, async (err, decoded) => {
     if (err) {
-      logger.error({ error: err.message }, "Invalid Token")
+      logger.error({ error: err.message }, "Invalid Token Yup")
       //reject(err.message);
       return res.status(401).json(createErrorResponse(401, 'Unauthorized'));
     } else {
       logger.info({}, "Token verified")
+      logger.info({decoded}, "Decoded")
 
       // attach spotstitch id to the request
       const user = await CrossPlatformUser.findById(decoded.id)
-      decoded.id = user.spotstitchUserId
+      logger.info({user}, "Decoded User")
+      user.spotstitchUserId ? decoded.id = user.spotstitchUserId :  decoded.id = user._id ;
 
       // Use it in the next middleware to ensure the user is authorized
       res.locals.jwtData = decoded;

@@ -158,7 +158,7 @@ UserSchema.methods.updatePicture = async function (image) {
   try {
     if (!image) throw new Error("No image given")
     this.picture = image
-    await this.save()
+    await this.save({ validateBeforeSave: false })
 
     return this.picture
   } catch (error) {
