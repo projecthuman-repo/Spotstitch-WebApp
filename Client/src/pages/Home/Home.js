@@ -46,7 +46,7 @@ function Home({ vendor = false }) {
 	);
 
 	const layerExamples = ["these", "are", "test", "layers", "replace later"];
-	const avatar = "";
+	const avatar = ""
 
 	function editFilter(layerName) {
 		const newFilters = [...filters];
@@ -80,8 +80,6 @@ function Home({ vendor = false }) {
 										<img
 											className="avatar shadow"
 											src={avatar}
-											width={56}
-											height={56}
 										></img>
 									</Col>
 									<Col lg={9}>
