@@ -64,6 +64,8 @@
 
 .searchbox{
     box-sizing: border-box;
+    padding-left: 10px;
+    padding-right: 10px;
     width: 400px;
     height: 60px;
     margin: auto;
