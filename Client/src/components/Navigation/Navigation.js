@@ -59,7 +59,7 @@ export default function Topbar({ menuOpen, setMenuOpen }) {
 					alt="Logo"
 				/>
 				<Navbar.Brand href="#" className="fs-16 fw-700">
-					SPOTSTITCH
+					SPOTSTICH
 				</Navbar.Brand>
 				<Navbar.Toggle aria-controls="responsive-navbar-nav" />
 
