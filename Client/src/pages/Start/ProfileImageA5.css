@@ -71,16 +71,10 @@
     padding-bottom: 20px;
 }
 
-.photo, .avatar{
+.photo{
     height: 260px;
     width: 260px;
     margin: auto;
-}
-
-.avatar{
-    border-radius: 0;
-    border: none;
-    cursor: pointer;
 }
 
 .skipnextbox{

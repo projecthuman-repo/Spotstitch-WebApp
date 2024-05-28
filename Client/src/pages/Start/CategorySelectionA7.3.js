@@ -54,7 +54,7 @@ import { Link } from "react-router-dom";
                     className="searchbox"
                     value={query}
                     onChange={handleInputChange}
-                    placeholder="Search"
+                    placeholder="   Search"
             />
             <br/>
 
