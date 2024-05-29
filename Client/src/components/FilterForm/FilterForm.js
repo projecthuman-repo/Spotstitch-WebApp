@@ -24,7 +24,7 @@ function filterForm({ priceFilters = [], categories = [] }) {
             <input type='text' className='form-control form-control-sm mx-1' placeholder='$' />
             <span className='my-auto'>-</span>{' '}
             <input type='text' className='form-control form-control-sm mx-1' placeholder='$' />
-            <button className='btn btn-sm mt-2 my-lg-auto' style={{ backgroundColor: '#D9D9D9', }} >
+            <button className='btn btn-primary btn-sm mt-2 my-lg-auto' data-bs-toggle="button" >
                 Go
             </button>
         </div>

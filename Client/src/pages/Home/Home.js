@@ -46,7 +46,7 @@ function Home({ vendor = false }) {
 	);
 
 	const layerExamples = ["these", "are", "test", "layers", "replace later"];
-	const avatar = ""
+	const avatar = require("./avatar.png")
 
 	function editFilter(layerName) {
 		const newFilters = [...filters];
@@ -137,7 +137,8 @@ function Home({ vendor = false }) {
 													</button>
 												</span>
 											</Row>
-											<button className="btn light float-end mt-4 round-l px-3 py-1 fw-400">
+											<button className="btn btn-outline-primary  float-end mt-4 round-l px-3 py-1 fw-400"
+											data-bs-toggle="button">
 												<p className="fs-15 nopadding">
 													Post
 												</p>
@@ -191,6 +192,7 @@ function Home({ vendor = false }) {
 																? "btn btn-outline-0 post m-2 text-start w-100 shadow"
 																: "btn btn-outline-0 bg-light m-2 text-start w-100"
 														}
+														// data-bs-toggle="button"
 														onClick={() => {
 															editFilter(layer);
 														}}

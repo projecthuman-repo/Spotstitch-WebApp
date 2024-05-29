@@ -72,11 +72,12 @@ const EventHeader = (props) => {
                 <button
                   onClick={navigateBookEvent}
                   className='btn btn-secondary btn-lg   py-1'
-                  style={{
-                    backgroundColor: '#666666',
-                    color: 'white',
-                    borderRadius: '8px',
-                  }}
+                  // style={{
+                  //   backgroundColor: '#666666',
+                  //   color: 'white',
+                  //   borderRadius: '8px',
+                  // }}
+                  data-bs-toggle="button"
                 >
                   <span className=' text-nowrap' style={{ fontSize: '36px' }}>
                     Book Now
