@@ -1,5 +1,5 @@
 import React from "react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "./Start.css";
 import holderimg from "../../assets/holderimg.png";
 import sslogo from '../../assets/sslogo.png';
@@ -12,6 +12,7 @@ import { useLoginUserMutation } from "../../services/loginApi";
 import { useDispatch, useSelector } from "react-redux";
 import { login, setUserData } from "../../features/User/userSlice";
 import { useGetUserProfileMutation } from "../../services/userApi";
+import { useGlobalContext } from '../../context/GlobalContext';
 
 const Start = () => {
 
@@ -19,22 +20,59 @@ const Start = () => {
     const [password, setPassword] = useState("");
     const [loginUser, { isLoading: isUpdating, isError }] = useLoginUserMutation();
     const [getUserProfile, { }] = useGetUserProfileMutation();
-    const user = useSelector(state => state.user)
-    const dispatch = useDispatch()
-    const navigate = useNavigate()
+    const user = useSelector(state => state.user);
+    const {
+        sent, setSent,
+        mainEmail, setMainEmail,
+        accPassword, setAccPassword,
+        switchUser, setSwitchUser
+      } = useGlobalContext();
+    
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        if (switchUser && sent != true) {
+            setEmail(switchUser);
+            setPassword(accPassword);
+            console.log(switchUser, switchUser.length,"switch user")
+            handleSwitch();
+        }
+    }, [switchUser]);
 
 
-    const handleSubmit = async (event) => {
-        event.preventDefault();
+
+    function deepCopy(obj) {
+        // Check if the value is an object or an array, and recursively copy it
+        if (obj && typeof obj === 'object') {
+            let copy = Array.isArray(obj) ? [] : {};
+            for (let key in obj) {
+                if (obj.hasOwnProperty(key)) {
+                    copy[key] = deepCopy(obj[key]);
+                }
+            }
+            return copy;
+        }
+        // If not an object, return the value itself
+        return obj;
+    }
+
+    async function submitForm(password,email){
         if (!password && !email) return
         // handle form submission here
         try {
             const secret = {
                 username: email,
-                password: password
+                password: password,
+                mainmail: sent == true ? mainEmail : "",
             }
+            if(sent == true)
+                setSent(!sent);
+            
+            
             const res = await loginUser(secret)
             if (res.error) throw new Error(res.error.data.error)
+            console.log("Ressponse: ",res)
             
             const token = res.data?.token
             if (!token) throw new Error("Token not found")
@@ -43,8 +81,18 @@ const Start = () => {
             await dispatch(login({ token: token }))
 
             // get data from spotstitch database
-            const userData = await getUserProfile()
-            console.log(userData)
+            let userData = await getUserProfile()
+            //userData.otherAccounts = res.data["otherAccounts"]
+            //userData.user["otherAccounts"] = res.data["otherAccounts"]
+            //userData.data.user.otherAccounts = res.data["otherAccounts"]
+            // if(Object.isFrozen(userData.data.user)){
+            //     userData.data.copyUser = {...userData.data.user}
+            //     console.log(Object.isFrozen(userData.data.copyUser))
+            // }
+            userData = deepCopy(userData);
+            console.log(Object.isFrozen(userData.data.user));
+            userData.data.user.otherAccounts = res.data["otherAccounts"]
+            console.log(userData,"userData")
             if (userData.data?.status != "error") await dispatch(setUserData(userData.data?.user))
             else throw new Error(data.error)
 
@@ -53,6 +101,16 @@ const Start = () => {
         } catch (error) {
             console.log("rejected", error.message)
         } 
+    }
+
+    function handleSwitch(){
+        console.log(email, password,"handle switch")
+        submitForm(accPassword,switchUser);
+    }
+
+    const handleSubmit = async (event) => {
+        event.preventDefault();
+        submitForm(password,email);
     }
 
     return (

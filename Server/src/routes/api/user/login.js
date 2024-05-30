@@ -7,12 +7,24 @@ const { createToken } = require('../../../authorization/auth');
 
 module.exports = async (req, res) => {
   try {
-    const { email, password } = req.body;
+    const { email, password, mainmail } = req.body;
     const user = await User.findByCredentials(email, password);
+
     user.status = 'online';
-    await user.save();
+
+    console.log("User: ", user);
+    // console.log("Main User: ", userByMainmail);
+
+    // if (userByMainmail && !user.otherAccounts.includes(userByMainmail._id)) {
+    //   user.otherAccounts.push(userByMainmail._id);
+    // }
+    
 
     const token = createToken(user._id.toString(), user.email, '7d');
+    user.token = token;
+
+    await user.save();
+    console.log(user);
 
     res.status(200).json({ user, token });
   } catch (e) {
