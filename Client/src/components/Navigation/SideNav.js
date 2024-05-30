@@ -2,15 +2,20 @@ import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { RxHamburgerMenu } from 'react-icons/rx'
 import { Modal, Row, Col, Container } from "react-bootstrap";
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import { inventory, messages, profile, settings, wallet } from '../../assets/icons'
 
 import store from "../../store";
 
+import { useGlobalContext } from '../../context/GlobalContext';
+
+
 
 function SideNav() {
     const user = useSelector((state) => state.user);
-    const dispatch = useDispatch()
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
+
     const links = [
         { icon: profile, name: "Profile", destination: "/profile" },
         { icon: messages, name: "Messages", destination: "/messages" },
@@ -24,6 +29,35 @@ function SideNav() {
     const email = useSelector((state) => state.user.email); 
     const followers = useSelector((state) => state.user.followers); 
     const following = useSelector((state) => state.user.following);
+    
+    const OtherAccountsList = () => {
+        // Retrieve otherAccounts from Redux store
+        const otherAccounts = useSelector((state) => state.user.otherAccounts);
+      
+        // Ensure otherAccounts is an object and not null
+        if (typeof otherAccounts !== 'object' || otherAccounts === null) {
+          return null;
+        }
+      
+        // Convert Object to Array
+        const otherAccountsArray = Object.entries(otherAccounts);
+        return otherAccountsArray;
+    }      
+    
+    const otherAccounts = OtherAccountsList();
+
+    // console.log("state.user", useSelector((state) =>state.user));
+    // console.log("Other Accs", otherAccounts);
+    // console.log("Other Accs 0", otherAccounts[0]);
+    // console.log("Other Accs 1", otherAccounts[0][1][0]);
+    
+
+    const {
+        sent, setSent,
+        mainEmail, setMainEmail,
+        accPassword, setAccPassword,
+        switchUser, setSwitchUser
+      } = useGlobalContext();
     
     const [show, setShow] = useState(false);
 
@@ -41,6 +75,25 @@ function SideNav() {
         store.dispatch({type: "RESET"})
         localStorage.clear()
         window.location.reload();
+    }
+
+    const handleAddAccount = () =>{
+        setMainEmail(email);
+        setSent(true);
+        handleClose();
+
+        store.dispatch({ type: "RESET" });
+        localStorage.clear();
+
+        navigate("/start");
+    }
+
+    const switchAccount = () =>{
+        
+        store.dispatch({ type: "RESET" });
+        localStorage.clear();
+
+        navigate("/start");
     }
 
     return (
@@ -106,7 +159,13 @@ function SideNav() {
                             return <Row key={option}><Col><button className="btn nopadding">{option}</button></Col></Row>
                         })}
 
+                        <Row className="mb-1"><Col><button className="btn nopadding mt-auto"><p className="fw-600 mb-0">Switch Accounts</p></button></Col></Row>
+                        {otherAccounts && otherAccounts.map((value) => {
+                            return <Row key={value[0]}><Col onClick={(e) => {setAccPassword(value[1][3]); setSwitchUser(value[1][0]); switchAccount()}}><button className="btn nopadding">{value[1][0]}</button></Col></Row>
+                        })}
+
                         <Row>
+                            <Col className="mt-5"><button className="btn nopadding" onClick={handleAddAccount}>Add Account</button></Col>
                             <Col className="mt-5"><button className="btn nopadding" onClick={handleLogout}>Log Out</button></Col>
                         </Row>
                     </section>
