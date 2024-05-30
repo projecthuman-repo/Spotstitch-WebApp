@@ -21,11 +21,16 @@ import {
 import { GoLocation } from "react-icons/go";
 import CreateLayerModal from "./CreateLayerModal";
 import { Outlet } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 function Home({ vendor = false }) {
 	const [filters, setFilters] = useState([]);
 	const [modalShow, setModalShow] = useState(false);
 	const [popoverShow, setPopoverShow] = useState(false);
+
+	const username = useSelector(state => state.user.username);
+	const avatar = useSelector(state => state.user.picture);
+
 
 	const popover = (
 		<Popover id="popover-basic" className="mt-5">
@@ -46,7 +51,6 @@ function Home({ vendor = false }) {
 	);
 
 	const layerExamples = ["these", "are", "test", "layers", "replace later"];
-	const avatar = "";
 
 	function editFilter(layerName) {
 		const newFilters = [...filters];
@@ -85,7 +89,7 @@ function Home({ vendor = false }) {
 										></img>
 									</Col>
 									<Col lg={9}>
-										<p className=" s-15 fw-500">Username</p>
+										<p className=" s-15 fw-500">{username}</p>
 									</Col>
 								</Row>
 

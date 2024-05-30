@@ -13,6 +13,11 @@ const Profile = () => {
     const picture = useSelector(state => state.user.picture)
     const followers = useSelector((state) => state.user.followers); 
     const following = useSelector((state) => state.user.following);
+    const firstName = useSelector((state) => state.user.firstName) || "First";
+    const lastName = useSelector((state) => state.user.lastName) || "Last";
+    console.log(user.firstName)
+    console.log(user)
+
     const [tab, setTab] = useState(0)
 
     const postExamples = ["", "", ""]
@@ -28,9 +33,9 @@ const Profile = () => {
                             <img src={picture} className="avatar content-border-l" height={235} width={235} />
                         </div>
                         <div>
-                            {username || "User name"}
+                            { firstName } { lastName }
                         </div>
-                        <div>@AccountName</div>
+                        <div>@{username}</div>
 
 
                     </Col>

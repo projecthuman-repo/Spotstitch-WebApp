@@ -23,11 +23,11 @@ function SideNav() {
         { icon: wallet, name: "Wallet", destination: "/wallet" },
         { icon: settings, name: "Settings", destination: "/settings" }
     ]
-    const username = useSelector((state) => state.user.username); 
-    const picture = useSelector(state => state.user.picture)
-    const userType = useSelector((state) => state.user.userType); 
-    const email = useSelector((state) => state.user.email); 
-    const followers = useSelector((state) => state.user.followers); 
+    const username = useSelector((state) => state.user.username);
+    const picture = useSelector(state => state.user.picture);
+    const userType = useSelector((state) => state.user.userType);
+    const email = useSelector((state) => state.user.email);
+    const followers = useSelector((state) => state.user.followers);
     const following = useSelector((state) => state.user.following);
     
     const OtherAccountsList = () => {
@@ -151,13 +151,15 @@ function SideNav() {
 
                     <section className="mt-auto">
                         <Row className="mb-1"><Col><button className="btn nopadding mt-auto"><p className="fw-600 mb-0">Your Accounts</p></button></Col></Row>
-                        {['Switch account', 'Add account', 'Convert to vendor'].map(option => {
+                        {['Convert to vendor'].map(option => {
                             return <Row key={option}><Col><button className="btn nopadding">{option}</button></Col></Row>
                         })}
                         <Row><Col><button className="btn nopadding mt-3"><p className="fw-600 mb-0">More Options</p></button></Col></Row>
                         {['See terms of service', 'See privacy policy'].map(option => {
                             return <Row key={option}><Col><button className="btn nopadding">{option}</button></Col></Row>
                         })}
+
+                        <br/>
 
                         <Row className="mb-1"><Col><button className="btn nopadding mt-auto"><p className="fw-600 mb-0">Switch Accounts</p></button></Col></Row>
                         {otherAccounts && otherAccounts.map((value) => {
