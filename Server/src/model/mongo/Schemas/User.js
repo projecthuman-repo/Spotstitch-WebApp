@@ -44,6 +44,9 @@ const UserSchema = new mongoose.Schema(
     picture: {
       type: String,
     },
+    token: {
+      type: String,
+    },
     biography: {
       type: String,
     },
@@ -60,6 +63,12 @@ const UserSchema = new mongoose.Schema(
       default: "personal",
       required: [true, "Can't be blank"],
     },
+    //otherAccounts: [{ type: mongoose.Schema.Types.ObjectId, ref: 'User' }],
+    otherAccounts: {
+      type: Map,
+      of: [String],
+      ref: 'User'
+  },
     addresses: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Address' }],
     Layers: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Layer' }],
     gameInventory: [
