@@ -21,6 +21,7 @@ const Messages = () => {
   const chatList = useSelector(state => state.chat.chatList)
   const [pending, setPending] = useState(false)
   const user = useSelector(state => state.user)
+  const userId = useSelector(state => state.user.id)
   const dispatch = useDispatch()
 
   useEffect(async () => {
@@ -78,7 +79,13 @@ const Messages = () => {
   }
 
   const onCreateChat = () => {
-    createChat(["1", "2"])
+
+    console.log(user)
+    console.log(user.id)
+    var member1 = user.id || "1";
+    var member2 = undefined || "2"; // Undefined is temp. Second member username
+
+    createChat([member1])
   }
 
   return (
