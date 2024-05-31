@@ -43,7 +43,7 @@ const CreateLayerModal = (props) => {
           </div>
         </Row>
         <Row className='my-auto'>
-          <div className='p-5' style={{ border: '1px solid #B3B3B3' }}>
+          <div className='p-5' style={{ border: '1px solid #B3B3B3', maxHeight: '50vh', overflowY: 'auto' }}>
             <Form>
               <Row>
                 <Col>
@@ -395,7 +395,7 @@ const CreateLayerModal = (props) => {
     >
       <Modal.Body
         className='d-flex flex-column p-sm-5'
-        style={{ height: '75vh' }}
+        style={{ minHeight: '100vh' }}
       >
         <SetupProgressBar step={currentStep} setCurrentStep={setCurrentStep} />
 

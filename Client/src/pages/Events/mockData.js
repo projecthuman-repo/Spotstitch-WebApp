@@ -12,8 +12,8 @@ export const events = [
         eventLocation: 'All Star Stadium',
         eventAddress: '851 China Town Road, Vancouver BC V4S 9LC',
         eventEmail: 'nullCompany@gmail.com',
-        eventPrice: '$$',
-        eventTags: ['General Tag', 'General Tag', 'General Tag', 'General Tag'],
+        eventPrice: '$99',
+        eventTags: ['Culture', 'General Tag', 'General Tag', 'General Tag'],
     },
     {
         eventTitle: 'Basketball Event',
@@ -29,6 +29,6 @@ export const events = [
         eventAddress: '851 China Town Road, Vancouver BC V4S 9LC',
         eventEmail: 'nullCompany@gmail.com',
         eventPrice: '$',
-        eventTags: ['General Tag', 'General Tag', 'General Tag'],
+        eventTags: ['Sports', 'General Tag', 'General Tag'],
       }
 ]
