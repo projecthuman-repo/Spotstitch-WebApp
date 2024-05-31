@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import ListingCard from '../../components/listingCard/ListingCard';
 import EventHeader from '../../components/eventHeader/EventHeader';
+import { events } from './mockData';
 import './event.css';
 import { useNavigate } from 'react-router-dom';
 import ItemCard from '../../components/listingCard/ItemCard';
@@ -11,43 +12,43 @@ const Events = () => {
   const navigateToListing = (eventClicked) => {
     navigate('/events-event', { state: { event: eventClicked } });
   };
-  let event = {
-    eventTitle: 'Cultural Celebration',
-    eventCompany: 'Null Company',
-    eventShortDescription:
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
-    eventLongDescription:
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
-    eventDate: 'Feb 17 2023',
-    eventStartTime: '1:30PM',
-    eventTime: '1:30PM - 6:00PM',
-    eventLocation: 'All Star Stadium',
-    eventAddress: '851 China Town Road, Vancouver BC V4S 9LC',
-    eventEmail: 'nullCompany@gmail.com',
-    eventPrice: '$$',
-    eventTags: ['General Tag', 'General Tag', 'General Tag', 'General Tag'],
-  };
-  let event1 = {
-    eventTitle: 'Basketball Event',
-    eventCompany: 'Null Company',
-    eventShortDescription:
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
-    eventLongDescription:
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
-    eventDate: 'Feb 17 2023',
-    eventStartTime: '1:30PM',
-    eventTime: '1:30PM - 6:00PM',
-    eventLocation: 'All Star Stadium',
-    eventAddress: '851 China Town Road, Vancouver BC V4S 9LC',
-    eventEmail: 'nullCompany@gmail.com',
-    eventPrice: '$',
-    eventTags: ['General Tag', 'General Tag', 'General Tag'],
-  };
+  // let event = {
+  //   eventTitle: 'Cultural Celebration',
+  //   eventCompany: 'Null Company',
+  //   eventShortDescription:
+  //     'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
+  //   eventLongDescription:
+  //     'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
+  //   eventDate: 'Feb 17 2023',
+  //   eventStartTime: '1:30PM',
+  //   eventTime: '1:30PM - 6:00PM',
+  //   eventLocation: 'All Star Stadium',
+  //   eventAddress: '851 China Town Road, Vancouver BC V4S 9LC',
+  //   eventEmail: 'nullCompany@gmail.com',
+  //   eventPrice: '$$',
+  //   eventTags: ['General Tag', 'General Tag', 'General Tag', 'General Tag'],
+  // };
+  // let event1 = {
+  //   eventTitle: 'Basketball Event',
+  //   eventCompany: 'Null Company',
+  //   eventShortDescription:
+  //     'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
+  //   eventLongDescription:
+  //     'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
+  //   eventDate: 'Feb 17 2023',
+  //   eventStartTime: '1:30PM',
+  //   eventTime: '1:30PM - 6:00PM',
+  //   eventLocation: 'All Star Stadium',
+  //   eventAddress: '851 China Town Road, Vancouver BC V4S 9LC',
+  //   eventEmail: 'nullCompany@gmail.com',
+  //   eventPrice: '$',
+  //   eventTags: ['General Tag', 'General Tag', 'General Tag'],
+  // };
 
-  const carouselItems = ['', '', '', '', '']
+  const carouselItems = ['', '']
   const priceFilters = ['All', '$0 - $20', '$20 - $50', '$50 - $100', '$100 and Above']
   const Categories = ['Category Name', 'Category Name', 'Category Name', 'Category Name', 'Category Name', 'Category Name']
-  const eventListing = [event, event, event, event, event, event, event, event];
+  const eventListing = events;
   return (
     <div className='container-fluid g-0'>
       <div
@@ -73,7 +74,7 @@ const Events = () => {
           {
             carouselItems.map((item, index) => {
               return <div className={index == carouselTab ? 'carousel-item active' : 'carousel-item'}>
-                <EventHeader event={event} page={'Events'} />
+                <EventHeader event={eventListing[index]} page={'Events'} />
               </div>
             })
           }
