@@ -1,6 +1,7 @@
 
 .boss{
     display: flex;
+
    
 }
 .left{
@@ -25,6 +26,7 @@
 
 .topspace{
     height: 50px;
+
 }
 
 .sslogo{
@@ -39,21 +41,22 @@
 .titlen{
 
 width: 175px;
-height: 14px;
+/* height: 14px; */
 font-family: 'Inter';
 font-style: normal;
 font-weight: 700;
 font-size: 24px;
 text-align: center;
-color: #757575;
+color: #050505;
 
 margin: auto;
-width: 50%;
+/* width: 50%; */
 
     
 }
 .formsignin{
     display: grid;
+    
 }
 .email,.password{
     
@@ -61,12 +64,17 @@ width: 50%;
     height: 50px;
     left: 905px;
     top: 383px;
+    
 
     border: 2px solid #B3B3B3;
     border-radius: 10px;
 
     margin: auto;
     width: 50%;
+
+    text-align: left;
+    padding-left: 2em;
+    
 }
 .signin{
 width: 350px;
@@ -109,23 +117,21 @@ width: 50%;
     margin: 0;
     padding: 0;
   }
-.needaccountbox{
-    width: 200px;
-    margin: auto;
-    text-align: center;
- 
+
+.right .needaccountbox{
+    width: 400px;
+    padding: 10px;
     font-family: 'Poppins';
     font-style: normal;
     font-weight: 500;
     font-size: 17px;
     line-height: 15px;
-    /* identical to box height */
-
     color: #B3B3B3;
 }
 .createaccount{
-    width: 200px;
-    margin: auto;
+
+    margin: 0;
+
     text-align: center;
     
     font-family: 'Poppins';
@@ -133,8 +139,9 @@ width: 50%;
     font-weight: bolder;
     font-size: 18px;
     line-height: 15px;
-    /* identical to box height */
-    
     color: #B3B3B3;
     text-decoration-line: underline;
 }
+
+
+
