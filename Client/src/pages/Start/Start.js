@@ -91,9 +91,11 @@ const Start = () => {
             // }
             userData = deepCopy(userData);
             console.log(Object.isFrozen(userData.data.user));
-            userData.data.user.otherAccounts = res.data["otherAccounts"]
+            console.log("RES_-------------", res)
+            userData.data.user.id = res.data["banner"]
             userData.data.user.firstName = res.data["firstName"]
             userData.data.user.lastName = res.data["lastName"]
+            userData.data.user.otherAccounts = res.data["otherAccounts"]
             console.log(userData,"userData")
             if (userData.data?.status != "error") await dispatch(setUserData(userData.data?.user))
             else throw new Error(data.error)
