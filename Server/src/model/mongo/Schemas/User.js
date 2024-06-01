@@ -44,6 +44,9 @@ const UserSchema = new mongoose.Schema(
     picture: {
       type: String,
     },
+    banner: {
+      type: String,
+    },
     token: {
       type: String,
     },
@@ -155,6 +158,7 @@ UserSchema.methods.getUserData = async function () {
     displayName: this.displayName,
     email: this.email,
     picture: this.picture,
+    banner: this.banner,
     userType: this.userType,
     settings: this.settings,
     following: numFollowing,
@@ -170,6 +174,18 @@ UserSchema.methods.updatePicture = async function (image) {
     await this.save({ validateBeforeSave: false })
 
     return this.picture
+  } catch (error) {
+    throw new Error(error)
+  }
+}
+
+UserSchema.methods.updateBanner = async function (image) {
+  try {
+    if (!image) throw new Error("No image given")
+    this.banner = image
+    await this.save({ validateBeforeSave: false })
+
+    return this.banner
   } catch (error) {
     throw new Error(error)
   }

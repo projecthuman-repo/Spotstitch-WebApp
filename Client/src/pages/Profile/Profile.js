@@ -11,6 +11,7 @@ const Profile = () => {
     const user = useSelector(state => state.user)
     const username = useSelector(state => state.user.username)
     const picture = useSelector(state => state.user.picture)
+    const banner = useSelector(state => state.user.banner)
     const followers = useSelector((state) => state.user.followers); 
     const following = useSelector((state) => state.user.following);
     const firstName = useSelector((state) => state.user.firstName) || "First";
