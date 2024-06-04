@@ -23,6 +23,28 @@ const userApi = createApi({
                 body: user
             }),
         }),
+        // updateDisplayName: builder.mutation({
+        //     query: (name) => ({
+        //         url: "/user/displayName",
+        //         method: "PUT",
+        //         body: name
+        //     }),
+        // }),
+
+        updateFirstName: builder.mutation({
+            query: (name) => ({
+                url: "/user/firstName",
+                method: "PUT",
+                body: name
+            }),
+        }),
+        updateLastName: builder.mutation({
+            query: (lastName) => ({
+                url: "/user/lastName",
+                method: "PUT",
+                body: lastName
+            }),
+        }),
         updatePicture: builder.mutation({
             query: (image) => ({
                 url: "/user/image",
@@ -44,7 +66,10 @@ const userApi = createApi({
 export const {
     useGetUserProfileMutation,
     useRegisterSpotstitchMutation,
+    useUpdateFirstNameMutation,
+    useUpdateLastNameMutation,
     useUpdatePictureMutation,
+    // useUpdateDisplayNameMutation,
     useUpdateAccountTypeMutation
 } = userApi;
 

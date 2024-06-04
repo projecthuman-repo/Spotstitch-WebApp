@@ -16,7 +16,6 @@ const Profile = () => {
     const following = useSelector((state) => state.user.following);
     const firstName = useSelector((state) => state.user.firstName) || "First";
     const lastName = useSelector((state) => state.user.lastName) || "Last";
-    console.log(user.firstName)
     console.log(user)
 
     const [tab, setTab] = useState(0)

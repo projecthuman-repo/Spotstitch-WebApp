@@ -90,6 +90,10 @@ const UserSchema = new mongoose.Schema(
     following: { type: [String], default: [] },
     followers: { type: [String], default: [] },
 
+    website: {
+      type: String
+    },
+
   },
   { minimize: false }
 );
@@ -156,6 +160,8 @@ UserSchema.methods.getUserData = async function () {
   const userProfile = {
     username: this.username,
     displayName: this.displayName,
+    firstName: this.firstName,
+    lastName: this.lastName,
     email: this.email,
     picture: this.picture,
     banner: this.banner,
@@ -165,6 +171,47 @@ UserSchema.methods.getUserData = async function () {
     followers: numFollowers,
   }
   return userProfile
+}
+
+
+// Search for "updateDisplayName" to find how to update
+//  This won't work for specifically displayName since the user does not have the displayName defined upon signing up
+//  Will change if the display name is defined 
+UserSchema.methods.updateDisplayName = async function (name) {
+  try {
+    if (!name) throw new Error("No name given")
+    this.displayName = name
+    await this.save()
+
+    return this.displayName
+  } catch (error) {
+    throw new Error(error)
+  }
+}
+
+UserSchema.methods.updateFirstName = async function (name) {
+  try {
+    if (!name) throw new Error("No name given")
+    this.firstName = name
+    await this.save()
+
+    return this.firstName
+  } catch (error) {
+    throw new Error(error)
+  }
+}
+
+
+UserSchema.methods.updateLastName = async function (name) {
+  try {
+    if (!name) throw new Error("No name given")
+    this.lastName = name
+    await this.save()
+
+    return this.lastName
+  } catch (error) {
+    throw new Error(error)
+  }
 }
 
 UserSchema.methods.updatePicture = async function (image) {

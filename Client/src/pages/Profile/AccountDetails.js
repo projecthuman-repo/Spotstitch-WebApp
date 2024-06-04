@@ -5,7 +5,7 @@ import { Modal, Row, Col, Container, Button, Form, Image } from "react-bootstrap
 import { Link } from "react-router-dom"
 
 import { editAvatar, editBanner, removeBanner, settings } from "../../assets/icons";
-import { useUpdatePictureMutation } from "../../services/userApi";
+import { useUpdatePictureMutation, useUpdateDisplayNameMutation, useUpdateFirstNameMutation, useUpdateLastNameMutation } from "../../services/userApi";
 import { setUserData } from "../../features/User/userSlice";
 
 function AccountDetails() {
@@ -15,6 +15,14 @@ function AccountDetails() {
     const [image, setImage] = useState("")
     const [tab, setTab] = useState(1);
     const [updatePicture, { }] = useUpdatePictureMutation()
+    // const [updateDisplayName, { }] = useUpdateDisplayNameMutation()
+    // const [displayName, setNameInput] = useState('');
+    const [updateFirstName, { }] = useUpdateFirstNameMutation()
+    const [updateLastName, { }] = useUpdateLastNameMutation()
+
+    const [firstName, setFirstNameInput] = useState('');
+    const [lastName, setLastNameInput] = useState('');
+
     const [show, setShow] = useState(false);
     const dispatch = useDispatch()
 
@@ -50,6 +58,28 @@ function AccountDetails() {
             if (res.data?.status == "ok") {
                 await dispatch(setUserData({ picture: image }))
             }
+
+
+            // const displayRes = await updateDisplayName({ displayName: displayName })
+            // if (displayRes.error) throw new Error(displayRes.error)
+            // if (displayRes.data?.status == "ok") {
+            //     await dispatch(setUserData({ displayName: displayName }))
+            // }
+            
+            const fNameRes = await updateFirstName({ firstName: firstName })
+            console.log(fNameRes)
+            if (fNameRes.error) throw new Error(fNameRes.error)
+            if (fNameRes.data?.status == "ok") {
+                await dispatch(setUserData({ firstName: firstName }))
+            }
+
+            const lNameRes = await updateLastName({ lastName: lastName })
+            if (lNameRes.error) throw new Error(lNameRes.error)
+            if (lNameRes.data?.status == "ok") {
+                await dispatch(setUserData({ lastName: lastName }))
+            }
+
+
         } catch (error) {
             console.log('rejected', error)
         }
@@ -59,6 +89,14 @@ function AccountDetails() {
     function handleChangeImage() {
         imageRef.current.click()
     }
+
+    const handleChangeFirstName = (e) => {
+        setFirstNameInput(e.target.value);
+    };
+
+    const handleChangeLastName = (e) => {
+        setLastNameInput(e.target.value);
+    };
 
     return (
         <>
@@ -135,10 +173,15 @@ function AccountDetails() {
                             </div>
 
                             <Form.Group className="mt-2 mx-4" itemID="account.name">
-                                <Form.Label>Name</Form.Label>
-                                <Form.Control type='input' placeholder="name" />
+                                <Form.Label>First Name</Form.Label>
+                                <Form.Control type='input' placeholder="first name" onChange={handleChangeFirstName}/>
                             </Form.Group>
 
+                            <Form.Group className="mt-2 mx-4" itemID="account.name">
+                                <Form.Label>Last Name</Form.Label>
+                                <Form.Control type='input' placeholder="last name" onChange={handleChangeLastName}/>
+                            </Form.Group>
+               
                             <Form.Group className="mt-2 mx-4" itemID="account.bio">
                                 <Form.Label>Bio</Form.Label>
                                 <Form.Control as="textarea" placeholder='old bio' rows={4} style={{ resize: 'none' }} />
