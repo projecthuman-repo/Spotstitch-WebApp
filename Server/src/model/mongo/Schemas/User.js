@@ -90,6 +90,8 @@ const UserSchema = new mongoose.Schema(
     following: { type: [String], default: [] },
     followers: { type: [String], default: [] },
 
+    posts: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Post' }],
+
   },
   { minimize: false }
 );
@@ -199,6 +201,30 @@ UserSchema.methods.updateAccountType = async function (type) {
     await this.save()
 
     return this.userType
+  } catch (error) {
+    throw new Error(error)
+  }
+}
+
+UserSchema.methods.updateChats = async function (chat) {
+  try {
+    if (!chat) throw new Error("No chat given")
+    this.chat.append(chat)
+    await this.save()
+
+    return this.chat
+  } catch (error) {
+    throw new Error(error)
+  }
+}
+
+UserSchema.methods.updatePosts = async function (post) {
+  try {
+    if (!post) throw new Error("No post given")
+    this.posts.append(post)
+    await this.save()
+
+    return this.posts
   } catch (error) {
     throw new Error(error)
   }
