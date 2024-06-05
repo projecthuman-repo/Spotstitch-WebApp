@@ -38,6 +38,21 @@ const userApi = createApi({
                 body: type
             }),
         }),
+
+        updatePost: builder.mutation({
+            query: (event) => ({
+                url: "/user/event",
+                method: "PUT",
+                body: type
+            }),
+        }),
+        updateEvent: builder.mutation({
+            query: (type) => ({
+                url: "/user/event",
+                method: "PUT",
+                body: type
+            }),
+        }),
     }),
 });
 
