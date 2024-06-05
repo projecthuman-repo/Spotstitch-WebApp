@@ -15,7 +15,8 @@ const EventSchema = new mongoose.Schema({
     endTime: { type: String, required: true },
     eventTime: String,
     address: { type: String, required: true },
-    tags: [String]
+    images: [{ type: String }],
+    tags: [ String ]
 })
 
 EventSchema.statics.getEvent = async (eventId) => {
