@@ -141,11 +141,12 @@ function Home({ vendor = false }) {
 													</button>
 												</span>
 											</Row>
-											<button className="btn btn-outline-primary  float-end mt-4 round-l px-3 py-1 fw-400"
-											data-bs-toggle="button">
+											<button className="postButton float-end mt-4 round-l px-3 py-1 fw-400" 
+											>
 												<p className="fs-15 nopadding">
 													Post
 												</p>
+
 											</button>
 										</Form.Group>
 									</Form>

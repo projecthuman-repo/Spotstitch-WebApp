@@ -26,6 +26,7 @@ const UserSignUp = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const registerForm = useSelector((state) => state.register);
+  const confirmPasswordRef = useRef(null);
   /* based on login servers, Passwords must be between 8-10 characters long, 
         have at least one uppercase letter, lowercase letter, number and symbol */
   const check =
@@ -97,13 +98,16 @@ const UserSignUp = () => {
               }}
             />
             {/* <br /> */}
-            {password && confirmPassword && !matching && (
-              <>
-
-              <p className="passwordMatch">
-                passwords do not match
-              </p>
-              </>
+            {confirmPassword&& password&& !matching && (
+              <Overlay target={confirmPasswordRef.current} show={true} placement="left" offset={[0,10]}>
+                {(props) => (
+                  <Tooltip id="button-tooltip" {...props} className="password-tooltip passwordMatch-overlay">
+                    <p className="passwordMatch">
+                      passwords do not match
+                    </p>
+                  </Tooltip>
+                )}
+              </Overlay>
             )}
             
             <input
@@ -119,9 +123,9 @@ const UserSignUp = () => {
             value={password}
             onChange={(event) => setPassword(event.target.value)}
           />
-            <Overlay target={target.current} show={isPasswordFocused} placement="left" >
+            <Overlay target={target.current} show={isPasswordFocused} placement="left" offset={[0, 10]}>
               {(props) => (
-                <Tooltip id="button-tooltip" {...props} className="password-tooltip">
+                <Tooltip id="button-tooltip" {...props} className="password-tooltip passwordRequirement-overlay">
                   <ul className="passwordRequirement">
                     <li>Passwords must be between 8-10 characters long</li>
                     <li>One uppercase letter</li>
@@ -141,6 +145,7 @@ const UserSignUp = () => {
               id="confirmpassword"
               name="confirmpassword"
               value={confirmPassword}
+              ref={confirmPasswordRef}
               onChange={(event) => setConfirmPassword(event.target.value)}
             />
             <br />
@@ -174,7 +179,7 @@ const UserSignUp = () => {
             </div>
             <br />
             <input
-              className="signup btn btn-primary"
+              className="signup"
               type="submit"
               value="Join Spotstitch"
             ></input>

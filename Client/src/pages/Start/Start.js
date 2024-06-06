@@ -76,28 +76,17 @@ const Start = () => {
             onChange={(event) => setEmail(event.target.value)}
           />
 
-            // get data from spotstitch database
-            let userData = await getUserProfile()
-            //userData.otherAccounts = res.data["otherAccounts"]
-            //userData.user["otherAccounts"] = res.data["otherAccounts"]
-            //userData.data.user.otherAccounts = res.data["otherAccounts"]
-            // if(Object.isFrozen(userData.data.user)){
-            //     userData.data.copyUser = {...userData.data.user}
-            //     console.log(Object.isFrozen(userData.data.copyUser))
-            // }
-            userData = deepCopy(userData);
-            console.log(Object.isFrozen(userData.data.user));
-            console.log("RES_-------------", res)
-            userData.data.user.id = res.data["banner"]
-            userData.data.user.firstName = res.data["firstName"]
-            userData.data.user.lastName = res.data["lastName"]
-            userData.data.user.otherAccounts = res.data["otherAccounts"]
-            console.log(userData,"userData")
-            if (userData.data?.status != "error") await dispatch(setUserData(userData.data?.user))
-            else throw new Error(data.error)
+          <input
+            className="password"
+            type="password"
+            placeholder="Password"
+            id="password"
+            name="password"
+            onChange={(event) => setPassword(event.target.value)}
+          />
 
           <input
-            className="signin btn btn-primary"
+            className="signin"
             type="submit"
             value="Sign In"
           />

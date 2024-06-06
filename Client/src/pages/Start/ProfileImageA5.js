@@ -101,7 +101,7 @@ const ProfileImage = () => {
             </button>
 
             <button
-              className="nextbutton btn btn-primary"
+              className="nextbutton"
               onClick={() => {
                 handleSubmit();
               }}
@@ -119,7 +119,7 @@ const ProfileImage = () => {
             <span className="bold">Terms of Service</span> apply.
           </div>
 
-          <div className="botspace"></div>
+          {/* <div className="botspace"></div> */}
         </div>
       </div>
     </>

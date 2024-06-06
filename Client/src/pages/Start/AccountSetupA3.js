@@ -99,7 +99,7 @@ const AccountSetup = () => {
           </div>
           <form className="formsignin" onSubmit={handleSubmit}>
             <input
-              className="email"
+              className="form-control"
               type="text"
               placeholder="First Name"
               id="firstName"
@@ -113,7 +113,7 @@ const AccountSetup = () => {
             />
             <br />
             <input
-              className="email"
+              className="form-control"
               type="text"
               placeholder="Last Name"
               id="lastName"
@@ -127,7 +127,7 @@ const AccountSetup = () => {
             />
             <br />
             <input
-              className="email"
+              className="form-control"
               type="text"
               placeholder="User Name"
               id="username"
@@ -141,7 +141,7 @@ const AccountSetup = () => {
             />
             <br />
             <input
-              className="email"
+              className="form-control"
               type="tel"
               placeholder="Phone Number"
               id="phoneNumber"
@@ -156,7 +156,7 @@ const AccountSetup = () => {
             />
             <br />
             <select
-              className="email"
+              className="form-control"
               id="country"
               name="country"
               required
@@ -174,7 +174,7 @@ const AccountSetup = () => {
             </select>
             <br />
             <select
-              className="email"
+              className="form-control"
               id="province"
               name="province"
               required
@@ -193,7 +193,7 @@ const AccountSetup = () => {
             <br />
             <br />
             <input
-              className="signup btn btn-primary"
+              className="signup"
               type="submit"
               value="Get Started"
             ></input>
