@@ -10,13 +10,9 @@ const updateImage = require('./updateImage');
 const updateAccountType = require('./updateAccountType');
 const updateFirstName = require('./updateFirstName');
 const updateLastName = require('./updateLastName');
-<<<<<<< Updated upstream
-// const updateDisplayName = require('./updateDisplayName');
-=======
 const updateBanner = require('./updateBanner');
 const updateWebsite = require('./updateWebsite');
 const updateBio = require('./updateBio');
->>>>>>> Stashed changes
 
 // get user profile
 router.get('/profile', verifyToken, getProfile)
@@ -27,12 +23,6 @@ router.post('/register', register);
 // login user
 router.post('/login', login);
 
-<<<<<<< Updated upstream
-// update user display name
-// router.put('/displayName', verifyToken, updateDisplayName)
-
-=======
->>>>>>> Stashed changes
 // update user first name
 router.put('/firstName', verifyToken, updateFirstName)
 

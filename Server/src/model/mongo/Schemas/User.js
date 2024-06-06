@@ -176,35 +176,11 @@ UserSchema.methods.getUserData = async function () {
   return userProfile
 }
 
-<<<<<<< Updated upstream
-
-// Search for "updateDisplayName" to find how to update
-//  This won't work for specifically displayName since the user does not have the displayName defined upon signing up
-//  Will change if the display name is defined 
-UserSchema.methods.updateDisplayName = async function (name) {
-  try {
-    if (!name) throw new Error("No name given")
-    this.displayName = name
-    await this.save()
-
-    return this.displayName
-  } catch (error) {
-    throw new Error(error)
-  }
-}
-
 UserSchema.methods.updateFirstName = async function (name) {
   try {
     if (!name) throw new Error("No name given")
-    this.firstName = name
-    await this.save()
-=======
-UserSchema.methods.updateFirstName = async function (name) {
-  try {
-    if (!name) throw new Error("No image given")
     this.firstName = name
     await this.save({ validateBeforeSave: false })
->>>>>>> Stashed changes
 
     return this.firstName
   } catch (error) {
@@ -212,20 +188,11 @@ UserSchema.methods.updateFirstName = async function (name) {
   }
 }
 
-<<<<<<< Updated upstream
-
 UserSchema.methods.updateLastName = async function (name) {
   try {
     if (!name) throw new Error("No name given")
     this.lastName = name
-    await this.save()
-=======
-UserSchema.methods.updateLastName = async function (name) {
-  try {
-    if (!name) throw new Error("No image given")
-    this.lastName = name
     await this.save({ validateBeforeSave: false })
->>>>>>> Stashed changes
 
     return this.lastName
   } catch (error) {

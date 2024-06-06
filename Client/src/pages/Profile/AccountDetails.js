@@ -5,11 +5,7 @@ import { Modal, Row, Col, Container, Button, Form, Image } from "react-bootstrap
 import { Link } from "react-router-dom"
 
 import { editAvatar, editBanner, removeBanner, settings } from "../../assets/icons";
-<<<<<<< Updated upstream
-import { useUpdatePictureMutation, useUpdateDisplayNameMutation, useUpdateFirstNameMutation, useUpdateLastNameMutation } from "../../services/userApi";
-=======
 import { useUpdateBioMutation, useUpdateFirstNameMutation, useUpdateLastNameMutation, useUpdatePictureMutation, useUpdateWebsiteMutation } from "../../services/userApi";
->>>>>>> Stashed changes
 import { setUserData } from "../../features/User/userSlice";
 
 function AccountDetails() {
@@ -21,11 +17,6 @@ function AccountDetails() {
     const [updatePicture, { }] = useUpdatePictureMutation()
     // const [updateDisplayName, { }] = useUpdateDisplayNameMutation()
     // const [displayName, setNameInput] = useState('');
-    const [updateFirstName, { }] = useUpdateFirstNameMutation()
-    const [updateLastName, { }] = useUpdateLastNameMutation()
-
-    const [firstName, setFirstNameInput] = useState('');
-    const [lastName, setLastNameInput] = useState('');
 
     const [show, setShow] = useState(false);
     const dispatch = useDispatch()
@@ -70,29 +61,6 @@ function AccountDetails() {
                     await dispatch(setUserData({ picture: image }))
                 }
             }
-<<<<<<< Updated upstream
-
-
-            // const displayRes = await updateDisplayName({ displayName: displayName })
-            // if (displayRes.error) throw new Error(displayRes.error)
-            // if (displayRes.data?.status == "ok") {
-            //     await dispatch(setUserData({ displayName: displayName }))
-            // }
-            
-            const fNameRes = await updateFirstName({ firstName: firstName })
-            console.log(fNameRes)
-            if (fNameRes.error) throw new Error(fNameRes.error)
-            if (fNameRes.data?.status == "ok") {
-                await dispatch(setUserData({ firstName: firstName }))
-            }
-
-            const lNameRes = await updateLastName({ lastName: lastName })
-            if (lNameRes.error) throw new Error(lNameRes.error)
-            if (lNameRes.data?.status == "ok") {
-                await dispatch(setUserData({ lastName: lastName }))
-            }
-
-=======
             
             if (firstName) {
                 const fNameRes = await updateFirstName({ firstName: firstName })
@@ -125,7 +93,6 @@ function AccountDetails() {
                     await dispatch(setUserData({ website: website }))
                 }
             }
->>>>>>> Stashed changes
 
         } catch (error) {
             console.log('rejected', error)
@@ -137,15 +104,6 @@ function AccountDetails() {
         imageRef.current.click()
     }
 
-<<<<<<< Updated upstream
-    const handleChangeFirstName = (e) => {
-        setFirstNameInput(e.target.value);
-    };
-
-    const handleChangeLastName = (e) => {
-        setLastNameInput(e.target.value);
-    };
-=======
     // Handle firstName, changes first name of user
     const [firstName, setFirstName] = useState('')
     const [updateFirstName, { }] = useUpdateFirstNameMutation()
@@ -175,7 +133,6 @@ function AccountDetails() {
         setWebsite(e.target.value)
     }
 
->>>>>>> Stashed changes
 
     return (
         <>
@@ -253,16 +210,12 @@ function AccountDetails() {
 
                             <Form.Group className="mt-2 mx-4" itemID="account.name">
                                 <Form.Label>First Name</Form.Label>
-<<<<<<< Updated upstream
-                                <Form.Control type='input' placeholder="first name" onChange={handleChangeFirstName}/>
-=======
                                 <Form.Control type='input' placeholder="first name" onChange={handleFirstName}/>
                             </Form.Group>
 
                             <Form.Group className="mt-2 mx-4" itemID="account.name">
                                 <Form.Label>Last Name</Form.Label>
                                 <Form.Control type='input' placeholder="last name" onChange={handleLastName}/>
->>>>>>> Stashed changes
                             </Form.Group>
 
                             <Form.Group className="mt-2 mx-4" itemID="account.name">

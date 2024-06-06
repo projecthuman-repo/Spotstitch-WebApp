@@ -109,13 +109,9 @@ export const {
     useUpdateFirstNameMutation,
     useUpdateLastNameMutation,
     useUpdatePictureMutation,
-<<<<<<< Updated upstream
-    // useUpdateDisplayNameMutation,
-=======
     useUpdateBannerMutation,
     useUpdateBioMutation,
     useUpdateWebsiteMutation,
->>>>>>> Stashed changes
     useUpdateAccountTypeMutation
 } = userApi;
 
