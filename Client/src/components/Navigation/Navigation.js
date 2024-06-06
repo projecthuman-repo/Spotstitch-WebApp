@@ -44,6 +44,14 @@ export default function Topbar({ menuOpen, setMenuOpen }) {
 		// redirect to home page
 		window.location.replace("/");
 	}
+
+
+	const [query, setQuery] = useState('')
+	const handleQuery = (e) => {
+		setQuery(e.target.value)
+	}
+
+
 	return (
 		<Navbar className="p-3 overflow-auto nav-shadow" expand="lg">
 			<Container
@@ -59,7 +67,7 @@ export default function Topbar({ menuOpen, setMenuOpen }) {
 					alt="Logo"
 				/>
 				<Navbar.Brand href="#" className="fs-16 fw-700">
-					SPOTSTICH
+					SPOTSTITCH
 				</Navbar.Brand>
 				<Navbar.Toggle aria-controls="responsive-navbar-nav" />
 
@@ -71,6 +79,7 @@ export default function Topbar({ menuOpen, setMenuOpen }) {
 									className="form-control border-end-0 border"
 									type="search"
 									placeholder="Search"
+									onChange={handleQuery}
 								/>
 								<span className="input-group-append">
 									<button

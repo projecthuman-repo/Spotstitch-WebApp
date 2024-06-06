@@ -9,6 +9,9 @@ import PageNav from "../../components/pageNav/PageNav";
 
 function Followers({ text, startTab, numOfFollowers = 0 }) {
     const user = useSelector((state) => state.user);
+    const following = useSelector((state) => state.user.following); // Use this for following (Look in mongoDB/Schema/User.js for fields)
+    const followers = useSelector((state) => state.user.followers); // Use this for followers
+
     const [tab, setTab] = useState(startTab);
 
     const [show, setShow] = useState(false);
@@ -51,6 +54,8 @@ function Followers({ text, startTab, numOfFollowers = 0 }) {
 
                 </Modal.Header>
                 <Modal.Body className="mt-0 pt-0 mx-3">
+
+                    {/* Placeholders below */}
 
                     {['12', '23', '232'].map((user) => {
                         return <Row className="my-4 px-2" key={`user_${user}`}>

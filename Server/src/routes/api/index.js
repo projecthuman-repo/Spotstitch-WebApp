@@ -3,6 +3,7 @@ const { verifyToken } = require('../../authorization/auth');
 const router = express.Router();
 
 router.use('/user', require('./user'))
+router.use('/users', require('./searchUsers'))
 router.use('/products', verifyToken, require('./products'))
 router.use('/address', verifyToken, require('./address'))
 router.use('/chat', verifyToken, require('./chat'))

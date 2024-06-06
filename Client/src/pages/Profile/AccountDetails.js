@@ -217,11 +217,6 @@ function AccountDetails() {
                                 <Form.Label>Last Name</Form.Label>
                                 <Form.Control type='input' placeholder="last name" onChange={handleLastName}/>
                             </Form.Group>
-
-                            <Form.Group className="mt-2 mx-4" itemID="account.name">
-                                <Form.Label>Last Name</Form.Label>
-                                <Form.Control type='input' placeholder="last name" onChange={handleChangeLastName}/>
-                            </Form.Group>
                
                             <Form.Group className="mt-2 mx-4" itemID="account.bio">
                                 <Form.Label>Bio</Form.Label>
