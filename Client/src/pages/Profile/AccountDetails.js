@@ -5,7 +5,11 @@ import { Modal, Row, Col, Container, Button, Form, Image } from "react-bootstrap
 import { Link } from "react-router-dom"
 
 import { editAvatar, editBanner, removeBanner, settings } from "../../assets/icons";
+<<<<<<< Updated upstream
 import { useUpdatePictureMutation, useUpdateDisplayNameMutation, useUpdateFirstNameMutation, useUpdateLastNameMutation } from "../../services/userApi";
+=======
+import { useUpdateBioMutation, useUpdateFirstNameMutation, useUpdateLastNameMutation, useUpdatePictureMutation, useUpdateWebsiteMutation } from "../../services/userApi";
+>>>>>>> Stashed changes
 import { setUserData } from "../../features/User/userSlice";
 
 function AccountDetails() {
@@ -25,6 +29,11 @@ function AccountDetails() {
 
     const [show, setShow] = useState(false);
     const dispatch = useDispatch()
+
+    // Use these to handle banner image upload from frontend (copy steps for picture, picture sets profile picture)
+    const banner = useSelector(state => state.user.banner)
+    const bannerImageRef = useRef()
+    const [bannerImg, setBanner] = useState("")
 
     useEffect(() => {
         setImage(picture)
@@ -53,11 +62,15 @@ function AccountDetails() {
     async function handleSubmit(e) {
         e.preventDefault()
         try {
-            const res = await updatePicture({ picture: image })
-            if (res.error) throw new Error(res.error)
-            if (res.data?.status == "ok") {
-                await dispatch(setUserData({ picture: image }))
+
+            if (image) {
+                const res = await updatePicture({ picture: image })
+                if (res.error) throw new Error(res.error)
+                if (res.data?.status == "ok") {
+                    await dispatch(setUserData({ picture: image }))
+                }
             }
+<<<<<<< Updated upstream
 
 
             // const displayRes = await updateDisplayName({ displayName: displayName })
@@ -79,6 +92,40 @@ function AccountDetails() {
                 await dispatch(setUserData({ lastName: lastName }))
             }
 
+=======
+            
+            if (firstName) {
+                const fNameRes = await updateFirstName({ firstName: firstName })
+                if (fNameRes.error) throw new Error(fNameRes.error)
+                if (fNameRes.data?.status == "ok") {
+                    await dispatch(setUserData({ firstName: firstName }))
+                }
+            }
+
+            if (lastName) {
+                const lNameRes = await updateLastName({ lastName: lastName })
+                if (lNameRes.error) throw new Error(lNameRes.error)
+                if (lNameRes.data?.status == "ok") {
+                    await dispatch(setUserData({ lastName: lastName }))
+                }
+            }
+
+            if (bio) {
+                const bioRes = await updateBio({ bio: bio })
+                if (bioRes.error) throw new Error(bioRes.error)
+                if (bioRes.data?.status == "ok") {
+                    await dispatch(setUserData({ bio: bio }))
+                }
+            }
+
+            if (website) {
+                const webRes = await updateWebsite({ website: website })
+                if (webRes.error) throw new Error(webRes.error)
+                if (webRes.data?.status == "ok") {
+                    await dispatch(setUserData({ website: website }))
+                }
+            }
+>>>>>>> Stashed changes
 
         } catch (error) {
             console.log('rejected', error)
@@ -90,6 +137,7 @@ function AccountDetails() {
         imageRef.current.click()
     }
 
+<<<<<<< Updated upstream
     const handleChangeFirstName = (e) => {
         setFirstNameInput(e.target.value);
     };
@@ -97,6 +145,37 @@ function AccountDetails() {
     const handleChangeLastName = (e) => {
         setLastNameInput(e.target.value);
     };
+=======
+    // Handle firstName, changes first name of user
+    const [firstName, setFirstName] = useState('')
+    const [updateFirstName, { }] = useUpdateFirstNameMutation()
+    const handleFirstName = (e)  => {
+        setFirstName(e.target.value)
+    }
+
+    // Handle lastName, changes last name of user
+    const [lastName, setLastName] = useState('')
+    const [updateLastName, { }] = useUpdateLastNameMutation()
+    const handleLastName = (e)  => {
+        setLastName(e.target.value)
+    }
+
+    // Handle bio, changes bio of user
+    const [bio, setBio] = useState('')
+    const [updateBio, { }] = useUpdateBioMutation()
+    const handleBio = (e)  => {
+        setBio(e.target.value)
+    }
+
+
+    // Handle website, changes website of user
+    const [website, setWebsite] = useState('')
+    const [updateWebsite, { }] = useUpdateWebsiteMutation()
+    const handleWebsite = (e)  => {
+        setWebsite(e.target.value)
+    }
+
+>>>>>>> Stashed changes
 
     return (
         <>
@@ -174,7 +253,16 @@ function AccountDetails() {
 
                             <Form.Group className="mt-2 mx-4" itemID="account.name">
                                 <Form.Label>First Name</Form.Label>
+<<<<<<< Updated upstream
                                 <Form.Control type='input' placeholder="first name" onChange={handleChangeFirstName}/>
+=======
+                                <Form.Control type='input' placeholder="first name" onChange={handleFirstName}/>
+                            </Form.Group>
+
+                            <Form.Group className="mt-2 mx-4" itemID="account.name">
+                                <Form.Label>Last Name</Form.Label>
+                                <Form.Control type='input' placeholder="last name" onChange={handleLastName}/>
+>>>>>>> Stashed changes
                             </Form.Group>
 
                             <Form.Group className="mt-2 mx-4" itemID="account.name">
@@ -184,12 +272,12 @@ function AccountDetails() {
                
                             <Form.Group className="mt-2 mx-4" itemID="account.bio">
                                 <Form.Label>Bio</Form.Label>
-                                <Form.Control as="textarea" placeholder='old bio' rows={4} style={{ resize: 'none' }} />
+                                <Form.Control as="textarea" placeholder='old bio' rows={4} style={{ resize: 'none' }} onChange={handleBio}/>
                             </Form.Group>
 
                             <Form.Group className="mt-2 mx-4" itemID="account.website">
                                 <Form.Label>Website</Form.Label>
-                                <Form.Control type='input' placeholder="website" />
+                                <Form.Control type='input' placeholder="website" onChange={handleWebsite}/>
                             </Form.Group>
 
                             <button type="submit" className="btn btn-profile my-2 mx-4 float-end">Save</button>

@@ -66,6 +66,10 @@ const UserSchema = new mongoose.Schema(
       default: "personal",
       required: [true, "Can't be blank"],
     },
+
+    website: { type: String },
+    bio: { type: String },
+
     //otherAccounts: [{ type: mongoose.Schema.Types.ObjectId, ref: 'User' }],
     otherAccounts: {
       type: Map,
@@ -162,6 +166,8 @@ UserSchema.methods.getUserData = async function () {
     email: this.email,
     picture: this.picture,
     banner: this.banner,
+    wesbite: this.website,
+    bio: this.bio,
     userType: this.userType,
     settings: this.settings,
     following: numFollowing,
@@ -170,6 +176,7 @@ UserSchema.methods.getUserData = async function () {
   return userProfile
 }
 
+<<<<<<< Updated upstream
 
 // Search for "updateDisplayName" to find how to update
 //  This won't work for specifically displayName since the user does not have the displayName defined upon signing up
@@ -191,6 +198,13 @@ UserSchema.methods.updateFirstName = async function (name) {
     if (!name) throw new Error("No name given")
     this.firstName = name
     await this.save()
+=======
+UserSchema.methods.updateFirstName = async function (name) {
+  try {
+    if (!name) throw new Error("No image given")
+    this.firstName = name
+    await this.save({ validateBeforeSave: false })
+>>>>>>> Stashed changes
 
     return this.firstName
   } catch (error) {
@@ -198,12 +212,20 @@ UserSchema.methods.updateFirstName = async function (name) {
   }
 }
 
+<<<<<<< Updated upstream
 
 UserSchema.methods.updateLastName = async function (name) {
   try {
     if (!name) throw new Error("No name given")
     this.lastName = name
     await this.save()
+=======
+UserSchema.methods.updateLastName = async function (name) {
+  try {
+    if (!name) throw new Error("No image given")
+    this.lastName = name
+    await this.save({ validateBeforeSave: false })
+>>>>>>> Stashed changes
 
     return this.lastName
   } catch (error) {
@@ -230,6 +252,30 @@ UserSchema.methods.updateBanner = async function (image) {
     await this.save({ validateBeforeSave: false })
 
     return this.banner
+  } catch (error) {
+    throw new Error(error)
+  }
+}
+
+UserSchema.methods.updateBio = async function (bio) {
+  try {
+    if (!bio) throw new Error("No image given")
+    this.bio = bio
+    await this.save({ validateBeforeSave: false })
+
+    return this.bio
+  } catch (error) {
+    throw new Error(error)
+  }
+}
+
+UserSchema.methods.updateWebsite = async function (website) {
+  try {
+    if (!website) throw new Error("No image given")
+    this.website = website
+    await this.save({ validateBeforeSave: false })
+
+    return this.website
   } catch (error) {
     throw new Error(error)
   }

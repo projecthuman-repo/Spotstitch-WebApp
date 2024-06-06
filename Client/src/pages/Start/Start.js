@@ -95,6 +95,8 @@ const Start = () => {
             userData.data.user.id = res.data["banner"]
             userData.data.user.firstName = res.data["firstName"]
             userData.data.user.lastName = res.data["lastName"]
+            userData.data.user.lastName = res.data["website"]
+            userData.data.user.lastName = res.data["lastNambio"]
             userData.data.user.otherAccounts = res.data["otherAccounts"]
             userData.data.user.displayName = res.data["displayName"]
             userData.data.user.bio = res.data["biography"]

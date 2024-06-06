@@ -53,6 +53,46 @@ const userApi = createApi({
             }),
         }),
 
+        updateFirstName: builder.mutation({
+            query: (name) => ({
+                url: "/user/firstName",
+                method: "PUT",
+                body: name
+            }),
+        }),
+
+        updateLastName: builder.mutation({
+            query: (name) => ({
+                url: "/user/lastName",
+                method: "PUT",
+                body: name
+            }),
+        }),
+
+        updateBanner: builder.mutation({
+            query: (name) => ({
+                url: "/user/banner",
+                method: "PUT",
+                body: name
+            }),
+        }),
+
+        updateWebsite: builder.mutation({
+            query: (website) => ({
+                url: "/user/website",
+                method: "PUT",
+                body: website
+            }),
+        }),
+
+        updateBio: builder.mutation({
+            query: (bio) => ({
+                url: "/user/bio",
+                method: "PUT",
+                body: bio
+            }),
+        }),
+
         updateAccountType: builder.mutation({
             query: (type) => ({
                 url: "/user/type",
@@ -69,7 +109,13 @@ export const {
     useUpdateFirstNameMutation,
     useUpdateLastNameMutation,
     useUpdatePictureMutation,
+<<<<<<< Updated upstream
     // useUpdateDisplayNameMutation,
+=======
+    useUpdateBannerMutation,
+    useUpdateBioMutation,
+    useUpdateWebsiteMutation,
+>>>>>>> Stashed changes
     useUpdateAccountTypeMutation
 } = userApi;
 
