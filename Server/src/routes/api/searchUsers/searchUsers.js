@@ -7,13 +7,13 @@ module.exports = async (req, res) => {
 
     const page = 1;
     const limit = parseInt(req.query.limit) || 5;
-    const search = req.query.search || ""; // Searches username
+    const search = req.query.search || ""; // searches username or by name
 
     const users = await User.find({username: {$regex: search, $options: "i"}}) // options "i" means ignore case sensitive
-        .skip(page * limit)
-        .limit(limit);
+      // currently no way to search by first and last name
+      .skip(page * limit)
+      .limit(limit);
 
-    
     const response = {
         eror: false,
         page: page+1,
