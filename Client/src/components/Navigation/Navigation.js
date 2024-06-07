@@ -45,10 +45,25 @@ export default function Topbar({ menuOpen, setMenuOpen }) {
 		window.location.replace("/");
 	}
 
+	async function handleSubmit(e) {
+        e.preventDefault()
+        try {
+			// const res = await searchUsers({ picture: image })
+			// if (res.error) throw new Error(res.error)
+			// if (res.data?.status == "ok") {
+			// 	await dispatch(setUserData({ picture: image }))
+			// }
+		} catch (error) {
+            console.log('rejected', error)
+        }
+	}
+
 
 	const [query, setQuery] = useState('')
 	const handleQuery = (e) => {
 		setQuery(e.target.value)
+
+
 	}
 
 

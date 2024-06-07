@@ -3,6 +3,8 @@ const { User } = require('../../../model');
 module.exports = async (req, res) => {
   try {
 
+    console.log(req)
+
     const page = 1;
     const limit = parseInt(req.query.limit) || 5;
     const search = req.query.search || ""; // Searches username

@@ -71,7 +71,7 @@ const AccountSetup = () => {
             }
             const spotstitchServerResponse = await registerSpotstitch(registerForm)
             console.log(spotstitchServerResponse.data)
-            dispatch(reset())
+            // dispatch(reset())
             //localStorage.clear()
 
             navigate("/emailverification")

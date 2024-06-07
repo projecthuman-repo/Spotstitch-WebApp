@@ -9,6 +9,21 @@ import { useSelector } from "react-redux";
 
 const AccountEmailVerification = () => {
 
+    const registerForm = useSelector(state => state.register)
+    const email = registerForm.email
+
+
+    console.log(registerForm)
+    console.log("Email is ", email)
+
+
+    const censorEmail = (email) => {
+        const [localPart, domain] = email.split('@');
+        const censoredLocalPart = localPart.substring(0, 2) + '***' + localPart.substring(localPart.length - 2);
+
+        return `${censoredLocalPart}@${domain}`;
+    };
+
     return (
         <>
         <div className="boss">
@@ -22,7 +37,7 @@ const AccountEmailVerification = () => {
 
             <div className="verifyacctitle">Verify your account</div>
             <br/>
-            <div className="verifydescription">A confirmation email has been sent to angela*****@gmail.com, click the link to verify</div>
+            <div className="verifydescription">A confirmation email has been sent to { censorEmail(email) } , click the link to verify</div>
             <br/>
             <div className="noemail">Didn't receive an email? Send again</div>
             <div className="botspace"></div>

@@ -1,7 +1,80 @@
-import React from 'react';
+import { React, useEffect, useState, useRef  } from 'react';
 import { MdOutlineAddAPhoto, MdOutlinePlayCircleOutline } from 'react-icons/md';
+import { useHostEventMutation } from '../../services/events'
+import { useSelector } from 'react-redux';
+
 
 const CreateEvent = () => {
+
+  const user = useSelector(state => state.user);
+
+
+  const imageRef = useRef()
+  const [eventImage, setEventImage] = useState('');
+
+
+
+
+  const [title, setTitle] = useState('')
+  const [desc, setDesc] = useState('')
+  const [price, setprice] = useState('')
+  const [date, setdate] = useState('')
+  const [eventType, setEventType] = useState('')
+  const [startTime, setStartTime] = useState('')
+  const [endTime, setEndTime] = useState('')
+  const [eventTime, setEventTime] = useState('')
+  const [address, setAddress] = useState('')
+  const [tags, setTags] = useState('')
+  let eventImages;
+  let i = 0;
+
+
+  const [eventImgURL, setEventImgURL] = useState('');
+
+  useEffect(() => {
+    setEventImage(eventImages)
+  }, [])
+
+  const convertToBase64 = async () => {
+    const reader = new FileReader()
+    reader.readAsDataURL(imageRef.current.files[0])
+    reader.onload = () => {
+      setEventImage(reader.result)
+    }
+}
+
+
+  const handleImageUpload = (e) => {
+    e.preventDefault()
+    imageRef.current.click()
+  }
+
+  const uploadImgDisplay = () => {
+    const uploadedImg = imageRef.current.files[0]
+
+    const cachedURL = URL.createObjectURL(uploadedImg)
+
+    setEventImgURL(cachedURL)
+  }
+
+  let event = {
+    hostId: user.id,
+    hostName: user.username,
+    email: user.email,
+    title: title,
+    price: price,
+    description: desc,
+    date: date,
+    eventType: eventType,
+    startTime: startTime,
+    endTime: endTime,
+    eventTime: eventTime,
+    address: address,
+    images: eventImages,
+    tags: tags
+  }
+ 
+
   return (
     <div className='container-fluid g-0'>
       <div
@@ -20,10 +93,27 @@ const CreateEvent = () => {
             <p>Add as many photos as you can so buyers can see every detail.</p>
             <div className='row row-cols-2 row-cols-sm-3 g-0'>
               <div className='col'>
-                <MediaSquare
-                  text={'Add Photo'}
-                  icon={<MdOutlineAddAPhoto size={50} />}
-                />
+
+                <img src={eventImgURL}/>
+
+                <form id='form'>
+                  <button 
+                    type='submit'
+                    onClick={handleImageUpload}
+                    className='d-flex rounded justify-content-center align-items-center me-3 mb-3'>
+
+                    <MediaSquare
+                      text={'Add Photo'}
+                      icon={<MdOutlineAddAPhoto size={50} />}
+                      />
+                  </button>
+                  <input
+                    type='file'
+                    ref={imageRef}
+                    accept=".png,.jpg,.jpeg,.webp"
+                    hidden
+                    onChange={uploadImgDisplay} />
+                </form>
               </div>
               <div className='col'>
                 <MediaSquare
