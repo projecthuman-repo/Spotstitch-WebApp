@@ -61,7 +61,8 @@ const VendorType = () => {
                 
             </label>
 
-            <br/><br/><br/>
+            {/* <br/><br/><br/> */}
+            <div className="whitespace-bottom"></div>
             <div className="skipnextbox">
                 <Link to='/businessmethod' className="linkskipbutton"><button className="skipbutton">Skip</button></Link>
 

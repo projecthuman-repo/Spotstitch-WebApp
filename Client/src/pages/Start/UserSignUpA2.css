@@ -48,7 +48,7 @@
     width: 350px;
     text-align: center;
     margin: auto;
-    width: 50%;
+
 
     padding-top: 50px;
     padding-bottom: 10px;
@@ -88,7 +88,7 @@
     border-radius: 10px;
 
     margin: auto;
-    width: 50%;
+
 }
 .right .password, .right .comfirmPassword{
     margin-top: 10px;

@@ -79,24 +79,26 @@
     grid-template-columns: repeat(2, 1fr);
     grid-template-rows: repeat(3, auto);
     grid-gap: 20px;
+    margin-top: 50px;
 }
 .categorybutton{
     width: 170px;
     height: 51px;
-   
 
-    background: #e2e1e1;
+    color: white;
+    background: #246EB9;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     border: none;
     border-radius: 6px;
 }
 .categorybutton-clicked{
+
     width: 170px;
     height: 51px;
     left: 861px;
     top: 488px;
     color: white;
-    background: #484848;
+    background: #081828;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     border-radius: 6px;
 }
@@ -104,15 +106,18 @@
 .space1{
     height: 150px;
 }
+.skipnextbox{
+    display: flex;
+    margin: auto;
+    width: 100%;
+}
 
-.skipnextbox1{
+.skipbutton{
     margin-left: auto;
     
 }
 
 .linknextbutton{
-    margin-left: auto;
-    margin-right: 80px;
-    width: 475px;
-    height: 50px;
+    border: none;
+    box-shadow: 0;;
 }

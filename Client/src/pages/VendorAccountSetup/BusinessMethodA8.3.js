@@ -61,7 +61,7 @@ const BusinessMethod = () => {
                 
             </label>
 
-            <br/><br/><br/>
+            <div className="whitespace-bottom"></div>
             <div className="skipnextbox">
                 <Link to='/vendorgoal' className="linkskipbutton"><button className="skipbutton">Skip</button></Link>
 

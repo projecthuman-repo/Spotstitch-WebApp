@@ -151,9 +151,7 @@ const VendorGoal = () => {
                 </label>
 
             </div>
-            <br />
-            <br />
-            <br />
+            <div className="whitespaceBottom"></div>
             <div className="skipnextbox">
                 <Link to="/vendorsetupcomplete" className="linkskipbutton">
                 <button className="skipbutton">Skip</button>

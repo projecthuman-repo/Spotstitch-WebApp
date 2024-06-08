@@ -24,7 +24,7 @@
 }
 
 .right .welcometitle1{
-    width: 500px;
+    /* width: 500px; */
     height: 76px;
   
 
@@ -32,12 +32,13 @@
     font-style: normal;
     font-weight: 500;
     font-size: 50px;
-    line-height: 125.5%;
+    line-height: 100%;
 
     color: #333333;
 
 
     margin: auto;
+    margin-bottom: 50px;
 }
 
 .smalldescription1{
@@ -50,7 +51,7 @@
 
 .right .welcometitle1, .right .smalldescription1, .right .socialscontainer {
     max-width: 100%;
-    margin: 20px auto;
+    margin: 25px auto;
 }
 
 .socialscontainer{
@@ -63,12 +64,25 @@
     height: 150px;
 }
 
-.skipnextbox1{
+.skipbutton{
     margin-left: auto;
+    color: grey;
+}
+.skipbutton:active{
+    color: #01271D;
 }
 
 .linknextbutton {
     margin: 20px 80px 20px auto;
     width: 475px;
     height: 50px;
+    background: #06D69F;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    color: #01271D;
+}
+
+.right .linknextbutton:active{
+    background-color: #01271D;
+    color: #06D69F;
+
 }

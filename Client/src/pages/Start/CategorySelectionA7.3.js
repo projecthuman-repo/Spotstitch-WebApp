@@ -56,7 +56,7 @@ import { Link } from "react-router-dom";
                     onChange={handleInputChange}
                     placeholder="   Search"
             />
-            <br/>
+
 
 
 

@@ -40,8 +40,7 @@
 }
 .titlen{
 
-width: 175px;
-/* height: 14px; */
+
 font-family: 'Inter';
 font-style: normal;
 font-weight: 700;
@@ -58,8 +57,7 @@ margin: auto;
     display: grid;
     
 }
-.email,.password{
-    
+.right .email,.right .password{
     width: 350px;
     height: 50px;
     left: 905px;
@@ -70,14 +68,14 @@ margin: auto;
     border-radius: 10px;
 
     margin: auto;
-    width: 50%;
+
 
     text-align: left;
     padding-left: 2em;
     
 }
 .right .signin{
-width: 350px;
+
 height: 50px;
 left: 905px;
 top: 523px;
@@ -86,8 +84,8 @@ box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 color: #01271D;
 
 border: none;
-margin: auto;
-width: 50%;
+margin:20px auto;
+width: 350px;
 border-radius: 10px;
 }
 .right .signin:active{
@@ -124,6 +122,7 @@ border-radius: 10px;
   }
 
 .right .needaccountbox{
+    margin: 10px auto;
     width: 400px;
     padding: 10px;
     font-family: 'Poppins';
