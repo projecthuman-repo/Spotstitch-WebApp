@@ -6,11 +6,13 @@ import AccountDetails from "./AccountDetails";
 import PageNav from '../../components/pageNav/PageNav'
 import UserPosts from "./UserPosts";
 import { useSelector } from "react-redux";
+// import picture from "./image-placeholder.jpg"
 
 const Profile = () => {
     const user = useSelector(state => state.user)
     const username = useSelector(state => state.user.username)
     const picture = useSelector(state => state.user.picture)
+    
     const banner = useSelector(state => state.user.banner)
     const followers = useSelector((state) => state.user.followers); 
     const following = useSelector((state) => state.user.following);
@@ -31,7 +33,7 @@ const Profile = () => {
                 <Row className="p-5 underline bg-profile">
                     <Col lg={3}>
                         <div>
-                            <img src={picture} className="avatar content-border-l" height={235} width={235} />
+                            <img src={picture} className="avatar-main content-border-l" height={235} width={235} />
                         </div>
                         <div>
                             { firstName } { lastName }

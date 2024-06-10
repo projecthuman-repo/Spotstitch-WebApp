@@ -19,7 +19,7 @@ const AccountTypeSelection = () => {
             const res = await updateAccountType(type)
             if (res.error) throw new Error(res.error.data.error.message)
             console.log(res.data)
-            //dispatch()
+            // dispatch()
             if (type == 'vendor') navigate('/vendoraccountsetup')
             else navigate('/bioinput')
         } catch (error) {

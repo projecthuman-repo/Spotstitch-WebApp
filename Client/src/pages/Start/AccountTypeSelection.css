@@ -67,16 +67,17 @@
     flex-direction: column;
 }
 .accounttypebutton{
-    width: 232px;
+    width: 500px;
     height: 86px;
 
     
     font-family: 'Poppins';
     font-style: normal;
     font-weight: 500;
-    font-size: 18px;
+    font-size: 30px;
     line-height: 27px;
     /* identical to box height */
+    margin: auto;
     margin-bottom: 10px;
     border: none;
     background: #06D69F;

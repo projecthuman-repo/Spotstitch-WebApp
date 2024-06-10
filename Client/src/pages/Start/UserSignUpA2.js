@@ -31,7 +31,7 @@ const UserSignUp = () => {
         have at least one uppercase letter, lowercase letter, number and symbol */
   const check =
     /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,10}$/;
-
+  const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
   useEffect(() => {
     setEmail(localStorage.getItem("email"));
   }, []);
@@ -89,7 +89,7 @@ const UserSignUp = () => {
               onChange={(event) => {
                 // localStorage.setItem("email", event.target.value);
                 // setEmail(event.target.value);
-                if (check.test(event.target.value)) {
+                if (emailRegex.test(event.target.value)) {
                   localStorage.setItem("email", event.target.value);
                   setEmail(event.target.value);
                 } else {

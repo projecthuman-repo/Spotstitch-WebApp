@@ -91,7 +91,7 @@ const Start = () => {
             value="Sign In"
           />
         </form>
-
+        
         <img className="lineor" src={orline} alt="orline" />
 
         <button className="googlebutton">
