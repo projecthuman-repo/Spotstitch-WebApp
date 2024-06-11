@@ -5,8 +5,11 @@ import { useState } from "react";
 
 
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 const VendorAccountSetup = () => {
+
+    const firstName = localStorage.firstName;
 
     return (
         <>
@@ -19,7 +22,7 @@ const VendorAccountSetup = () => {
         <div className="right">
             <div className="topspace"></div><div className="topspace"></div>
 
-            <div className="welcometitle">Welcome Angela! Let's get your shop setup.</div>
+            <div className="welcometitle">Welcome {firstName}! Let's get your shop setup.</div>
             <div className="space1"/><br/>
             <div className="smalldescription">Lorem ipsum dolor sit amet consectetur. Tellus libero diam sed neque nam libero tellus nec faucibus.</div>
  

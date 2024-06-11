@@ -9,12 +9,7 @@ import { useSelector } from "react-redux";
 
 const AccountEmailVerification = () => {
 
-    const registerForm = useSelector(state => state.register)
-    const email = registerForm.email
-
-
-    console.log(registerForm)
-    console.log("Email is ", email)
+    const email = localStorage.email
 
 
     const censorEmail = (email) => {

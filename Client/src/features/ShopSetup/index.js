@@ -4,7 +4,7 @@ import Progress from "./Progress"
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-import BusinessPreferences from "./Steps/BusinessPreferences"
+import BusinessPreferences from "./Steps/BusinessPreferencesA.8.6"
 
 
 function ShopSetup() {

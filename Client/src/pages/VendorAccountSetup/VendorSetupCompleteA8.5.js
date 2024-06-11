@@ -36,6 +36,8 @@ const VendorSetupComplete = () => {
                 <Link to="" className="linknextbutton">
                   <button className="nextbutton">Next</button>
                 </Link>
+
+                {/* Link To /shopSetup, needs a login or email verification token to proceed */}
           
             <div className="botspace"></div>
             </div>
