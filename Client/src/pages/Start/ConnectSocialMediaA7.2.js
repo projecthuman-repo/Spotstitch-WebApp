@@ -28,14 +28,14 @@ const ConnectSocial = () => {
                 <div className="right">
                     <div className="topspace" />
 
-                    <div className="welcometitle1">Connect your social media</div>
+                    <div className="welcometitle">Connect your social media</div>
 
                     <div className="smalldescription1">Link your accounts for a more immersive experience</div>
 
                     <div className="socialscontainer">
                         {socials.map((social, index) => (
-                            <button key={index} className="social">
-                                <img src={social.src} alt={social.alt} />
+                            <button key={index} className="social" >
+                                <img src={social.src} alt={social.alt}/>
                             </button>
                         ))}
                     </div>
@@ -43,12 +43,13 @@ const ConnectSocial = () => {
                     <div className="space1" />
 
                     <div className="skipnextbox">
-                        <Link to='/categoryselection' className="linkskipbutton">
-                            <button className="skipbutton">Skip</button>
-                        </Link>
+
 
                         <Link to='/categoryselection' className="linknextbutton">
                             <button className="nextbutton">Next</button>
+                        </Link>
+                        <Link to='/categoryselection' className="linkskipbutton">
+                            <button className="skipbutton">Skip</button>
                         </Link>
                     </div>
 

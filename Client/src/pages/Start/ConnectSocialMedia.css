@@ -54,10 +54,19 @@
     margin: 25px auto;
 }
 
-.socialscontainer{
-    max-width: 204px;
+.right .socialscontainer{
+
     margin: auto;
     display: grid;
+    border: none;
+}
+
+.right .socialscontainer .social {
+    border-radius: 50px;
+    border: 2px solid rgb(194, 190, 190);
+    overflow: hidden;
+    margin:auto ;
+    margin-bottom: 10px;
 }
 
 .space1{

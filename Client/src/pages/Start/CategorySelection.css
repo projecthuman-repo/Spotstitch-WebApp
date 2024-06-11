@@ -29,7 +29,7 @@
     height: 200px;
 }
 
-.welcometitle1{
+.right .welcometitle1{
    
     width: 400px;
     height: 76px;
@@ -40,22 +40,21 @@
     font-weight: 500;
     font-size: 60px;
     line-height: 125.5%;
-
     color: #333333;
-
-
+    text-align: center;
     margin: auto;
+    margin-bottom: 25px;
 
 }
 
-.smalldescription1{
+.right .smalldescription1{
     width: 400px;
     font-family: 'Poppins';
     font-style: normal;
     font-weight: 400;
     font-size: 16px;
     line-height: 24px;
-    
+    text-align: center;
     color: #333333;
     margin: auto;
     
@@ -108,12 +107,16 @@
 }
 .skipnextbox{
     display: flex;
+    flex-direction: column;
+    align-items: center;
     margin: auto;
+    height: 100px;
     width: 100%;
 }
 
 .skipbutton{
     margin-left: auto;
+    text-align: center;
     
 }
 
