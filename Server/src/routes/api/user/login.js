@@ -21,6 +21,8 @@ module.exports = async (req, res) => {
     
 
     const token = createToken(user._id.toString(), user.email, '7d');
+    // Copy this code to 
+
     user.token = token;
 
     await user.save();
