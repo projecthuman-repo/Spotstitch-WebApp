@@ -70,10 +70,10 @@ const userApi = createApi({
         }),
 
         updateBanner: builder.mutation({
-            query: (name) => ({
+            query: (image) => ({
                 url: "/user/banner",
                 method: "PUT",
-                body: name
+                body: image
             }),
         }),
 
@@ -110,8 +110,8 @@ export const {
     useUpdateLastNameMutation,
     useUpdatePictureMutation,
     useUpdateBannerMutation,
-    useUpdateBioMutation,
     useUpdateWebsiteMutation,
+    useUpdateBioMutation,
     useUpdateAccountTypeMutation
 } = userApi;
 

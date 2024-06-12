@@ -12,11 +12,13 @@ const Profile = () => {
     const username = useSelector(state => state.user.username)
     const picture = useSelector(state => state.user.picture)
     const banner = useSelector(state => state.user.banner)
-    const bio = useSelector(state => state.user.bio) || "Welcome to my profile!"
-    const followers = useSelector((state) => state.user.followers); 
+    const bio = useSelector(state => state.user.biography) || "Welcome to my profile!"
+    const followers = useSelector((state) => state.user.followers);
     const following = useSelector((state) => state.user.following);
     const firstName = useSelector((state) => state.user.firstName) || "First";
     const lastName = useSelector((state) => state.user.lastName) || "Last";
+
+    console.log(bio)
 
     const [tab, setTab] = useState(0)
 

@@ -35,11 +35,11 @@ router.put('/image', verifyToken, updateImage)
 // update user banner image
 router.put('/banner', verifyToken, updateBanner)
 
-// update user bio
-router.put('/website', verifyToken, updateBio)
-
 // update user website
 router.put('/website', verifyToken, updateWebsite)
+
+// update user bio
+router.put('/bio', verifyToken, updateBio)
 
 // update user type
 router.put('/type', verifyToken, updateAccountType)
