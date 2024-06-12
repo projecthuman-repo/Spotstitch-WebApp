@@ -37,18 +37,18 @@
     
 }
 
-.signuptitle{
+.right .signuptitle{
     font-family: 'Poppins';
     font-style: normal;
-    font-weight: bold;
+    /* font-weight: bold; */
     font-size: 24px;
     line-height: 36px;
-    color: #333333;
+    color: black;
 
     width: 350px;
     text-align: center;
     margin: auto;
-    width: 50%;
+
 
     padding-top: 50px;
     padding-bottom: 10px;
@@ -58,7 +58,7 @@
     font-family: 'Poppins';
     font-style: normal;
     font-weight: 400;
-    font-size: 14px;
+    font-size: 12px;
     line-height: 18px;
     
     color: #333333;
@@ -70,44 +70,67 @@
 
     padding-bottom: 20px;
 }
+.input-container {
+    display: flex;
+    flex-direction: column;
+    align-items: start; /* align items to the start of the container */
+}
 
-.email,.password{
+
+.right .email,.right .password{
     
     width: 350px;
     height: 50px;
     left: 905px;
     top: 383px;
-
+    
     border: 2px solid #B3B3B3;
     border-radius: 10px;
 
     margin: auto;
-    width: 50%;
-    
+
 }
+.right .password, .right .comfirmPassword{
+    margin-top: 10px;
+}
+
+
+.password-tooltip .tooltip-inner {
+    margin-right: 1em;
+    text-align: left !important;
+    white-space: pre-wrap !important;
+}
+
 .lacc{
     margin: auto;
     width: 50%;
+
 }
 .signup{
 width: 350px;
 height: 50px;
 left: 905px;
 top: 523px;
-background: #E6E6E6;
-box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-
-
+background: #06D59E;
+box-shadow: #01271D;
 border: none;
 margin: auto;
-
+border-radius: 10px;
 }
+.signup:active{
+    background-color: #01271D;
+    color: #06D59E;
+}
+
 .checkarea{
+
     display: flex;
-    
     width: 340px;
     margin: auto;
     width: 50%;
+    /* padding-left: 10px; */
+    margin-top: 15px;
+    margin-bottom: 15px;
 }
 .bold{
     font-weight: bold;
@@ -195,4 +218,12 @@ margin: auto;
 
 .botspace{
     height: 200px;
+}
+
+.tooltip.show.passwordRequirement-overlay .tooltip-inner {
+    background-color: #246EB9 !important;
+}
+
+.tooltip.passwordMatch-overlay .tooltip-inner{
+    background-color: #FE5F55 !important;
 }

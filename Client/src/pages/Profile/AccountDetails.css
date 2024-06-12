@@ -1,0 +1,16 @@
+.btn.btn-profile.Edit-Account-button {
+    background: #06D69F;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    color: #01271D;
+    transition: box-shadow 0.3s ease;
+}
+
+.btn.btn-profile.Edit-Account-button:hover {
+    box-shadow: 0px 6px 6px rgba(0, 0, 0, 0.25);
+}
+
+.btn.btn-profile.Edit-Account-button:active {
+    /* Styles for active state */
+    background-color: #01271D;
+    color: #06D69F;
+}

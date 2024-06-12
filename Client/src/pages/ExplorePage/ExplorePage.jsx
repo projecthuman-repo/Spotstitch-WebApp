@@ -5,7 +5,6 @@ import MapComp from '../../components/MapComp/MapComp'
 import { eventLocations } from './mockData'
 
 
-
 const Tag = styled.button`
     background-color: #D9D9D9;
     border-radius: 10px;
@@ -13,11 +12,9 @@ const Tag = styled.button`
     height: 40px;
     display: flex;
     border: none;
+    color: #000;
 
-    transition: background-color 0.3s;
-    &:hover {
-        background-color: #BDBDBD;
-    }
+
 `
 
 const ExplorePage = () => {
@@ -41,7 +38,8 @@ const ExplorePage = () => {
         <div className='d-flex mb-3 w-100 overflow-auto'>
             {tags.map((tag, i) => {
                 return (
-                    <Tag key={i} className='text-nowrap mt-2 mb-2 me-4  justify-content-around align-items-center border-1 border-primary'>
+                    <Tag key={i} className='btn btn-primary text-nowrap mt-2 mb-2 me-4  justify-content-around align-items-center border-1 border-primary'
+                    data-bs-toggle="button">
                         {tag}
                     </Tag>
                 )

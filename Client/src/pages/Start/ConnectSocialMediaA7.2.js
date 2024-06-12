@@ -10,62 +10,52 @@ import twitter from '../../assets/connectsocial/twitter.png'
 
 import { Link } from "react-router-dom";
 
-    const ConnectSocial = () => {
-    
-        
-    
+const ConnectSocial = () => {
+    const socials = [
+        { src: google, alt: "google" },
+        { src: facebook, alt: "facebook" },
+        { src: instagram, alt: "instagram" },
+        { src: twitter, alt: "twitter" },
+    ];
 
     return (
         <>
-        <div className="boss">
-        <div className="left">
-        <img className="holderimg" src={holderimg}  alt="holderimg"/>
-        </div>
+            <div className="boss">
+                <div className="left">
+                    <img className="holderimg" src={holderimg} alt="holderimg" />
+                </div>
+
+                <div className="right">
+                    <div className="topspace" />
+
+                    <div className="welcometitle">Connect your social media</div>
+
+                    <div className="smalldescription1">Link your accounts for a more immersive experience</div>
+
+                    <div className="socialscontainer">
+                        {socials.map((social, index) => (
+                            <button key={index} className="social" >
+                                <img src={social.src} alt={social.alt}/>
+                            </button>
+                        ))}
+                    </div>
+
+                    <div className="space1" />
+
+                    <div className="skipnextbox">
 
 
-        <div className="right">
-            <div className="topspace"></div><div className="topspace"></div>
+                        <Link to='/categoryselection' className="linknextbutton">
+                            <button className="nextbutton">Next</button>
+                        </Link>
+                        <Link to='/categoryselection' className="linkskipbutton">
+                            <button className="skipbutton">Skip</button>
+                        </Link>
+                    </div>
 
-            <div className="welcometitle1">Connect your social media</div>
-            <br/><br/><br/>
-            <div className="smalldescription1">Link your accounts for a more immersive experience</div>
-            <br/>
-            <div className="socialscontainer">
-                <button className="social">
-                    <img src={google} alt="google"  />
-                </button>
-                <br/>
-                <button className="social">
-                    <img src={facebook} alt="facebook"  />
-                </button>
-                <br/>
-                <button className="social">
-                    <img src={instagram} alt="instagrm"  />
-                </button>
-                <br/>
-                <button className="social">
-                    <img src={twitter} alt="twitter"  />
-                </button>
+                    <div className="botspace" />
+                </div>
             </div>
-        
-
-
-          
-     
-            
-            <div className="space1"/>
-            <div className="skipnextbox">
-                <Link to='/categoryselection' className="linkskipbutton"><button className="skipbutton">Skip</button></Link>
-
-                <Link to='/categoryselection' className="linknextbutton"><button className="nextbutton">Next</button></Link>
-
-            </div>
-            <div className="botspace"></div>
-            
-            
-        </div>
-
-        </div>
         </>
     )
 }

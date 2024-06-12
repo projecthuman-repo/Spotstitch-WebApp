@@ -23,7 +23,7 @@ const VendorType = () => {
 
 
         <div className="right">
-            <div className="topspace"></div>
+            <div className="topspace"></div><div className="topspace"></div>
 
             <div className="welcometitle">What brings you to Spotstitch?</div>
             <br/><br/><br/>
@@ -61,11 +61,13 @@ const VendorType = () => {
                 
             </label>
 
-            <br/><br/><br/>
+            {/* <br/><br/><br/> */}
+            <div className="whitespace-bottom"></div>
             <div className="skipnextbox">
-                <Link to='/businessmethod' className="linkskipbutton"><button className="skipbutton">Skip</button></Link>
+                
 
                 <Link to='/businessmethod' className="linknextbutton"><button className="nextbutton">Next</button></Link>
+                <Link to='/businessmethod' className="linkskipbutton"><button className="skipbutton">Skip</button></Link>
             </div>
             <div className="botspace"></div>
             

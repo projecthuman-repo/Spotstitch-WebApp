@@ -16,8 +16,18 @@ import { useDispatch, useSelector } from 'react-redux';
 import { chatCreated, updateChats, updateCurrentChat, messageRecieved } from '../../features/Chat/chatSlice';
 
 const Messages = () => {
-  const currentChat = useSelector(state => state.chat.currentChat)
-  const chatHistory = useSelector(state => state.chat.chatHistory)
+  const dummyChatHistory = [
+    { _id: 1, content: 'Hello', author: 'User1' },
+    { _id: 2, content: 'Hi', author: 'User2' },
+  ];
+
+  const dummyCurrentChat = { _id: 1, message: 'Hello', author: 'User1'};
+
+
+  const [chatHistory, setChatHistory] = useState(dummyChatHistory);
+  // const currentChat = useSelector(state => state.chat.currentChat)
+  const [currentChat, setCurrentChat] = useState(dummyCurrentChat);
+  // const chatHistory = useSelector(state => state.chat.chatHistory)
   const chatList = useSelector(state => state.chat.chatList)
   const [pending, setPending] = useState(false)
   const user = useSelector(state => state.user)
@@ -112,6 +122,16 @@ const Messages = () => {
           </div>
           {chatArray().length > 0 && chatArray().map((chat, index) => {
             return (
+              <ChatTile
+                key={chat._id}
+                chat={chat.content}
+                curr={currentChat}
+                onChatClick={() => onChatClick(chat, chat._id, index)}
+              />
+            )
+          })}
+          {chatArray().length > 0 && chatArray().map((chat, index) => {
+            return (
               <div
                 className={
                   currentChat === chat._id
@@ -145,8 +165,9 @@ const Messages = () => {
             {!currentChat && <NewChat />}
             {currentChat &&
               <div className='d-flex flex-column'>
-                <MessageHistory history={chatHistory} key={currentChat} />
-
+                {/* <MessageHistory history={chatHistory} key={currentChat} /> */}
+                <MessageHistory history={chatHistory} />
+                
                 <div className='d-flex flex-column mt-auto py-3'>
                   <form className='input-group search-field bg-e6 my-3' onSubmit={onMessage}>
                     <span className='input-group-text search-field bg-e6 border-0'>

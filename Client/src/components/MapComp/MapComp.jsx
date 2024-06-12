@@ -41,12 +41,17 @@ const MapComp = ({ locations }) => {
   };
 
   return (
-    <div className=' position-relative '>
+<div className='position-relative' >
       <GoogleMap
-        mapContainerStyle={mapContainerStyle}
+          mapContainerStyle={{
+            ...mapContainerStyle,
+            width: '25%',
+            borderRadius: '25px'
+          }}
         zoom={13}
         center={initialCenter}
         onLoad={onMapLoad}
+
       >
         {locations.map((location, index) => (
           <Marker

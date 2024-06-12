@@ -84,8 +84,6 @@ function Home({ vendor = false }) {
 										<img
 											className="avatar shadow"
 											src={avatar}
-											width={56}
-											height={56}
 										></img>
 									</Col>
 									<Col lg={9}>
@@ -143,10 +141,12 @@ function Home({ vendor = false }) {
 													</button>
 												</span>
 											</Row>
-											<button className="btn light float-end mt-4 round-l px-3 py-1 fw-400">
+											<button className="postButton float-end mt-4 round-l px-3 py-1 fw-400" 
+											>
 												<p className="fs-15 nopadding">
 													Post
 												</p>
+
 											</button>
 										</Form.Group>
 									</Form>
@@ -197,6 +197,7 @@ function Home({ vendor = false }) {
 																? "btn btn-outline-0 post m-2 text-start w-100 shadow"
 																: "btn btn-outline-0 bg-light m-2 text-start w-100"
 														}
+														// data-bs-toggle="button"
 														onClick={() => {
 															editFilter(layer);
 														}}

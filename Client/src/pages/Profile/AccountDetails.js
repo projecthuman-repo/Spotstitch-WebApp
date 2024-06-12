@@ -7,7 +7,7 @@ import { Link } from "react-router-dom"
 import { editAvatar, editBanner, removeBanner, settings } from "../../assets/icons";
 import { useUpdatePictureMutation } from "../../services/userApi";
 import { setUserData } from "../../features/User/userSlice";
-
+import './AccountDetails.css';
 function AccountDetails() {
     const user = useSelector((state) => state.user);
     const picture = useSelector(state => state.user.picture)
@@ -62,7 +62,15 @@ function AccountDetails() {
 
     return (
         <>
-            <button className="btn btn-profile" onClick={handleShow}>Edit Account</button>
+            <button 
+                className={`Edit-Account-button btn-profile btn`}  
+                onClick={() => {
+                    handleShow();
+                    // setIsActive(!isActive);
+                }}
+            >
+                Edit Account
+            </button>
 
             <Modal
                 show={show}

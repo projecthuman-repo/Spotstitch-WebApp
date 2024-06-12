@@ -1,6 +1,7 @@
 
 .boss{
     display: flex;
+
    
 }
 .left{
@@ -25,6 +26,7 @@
 
 .topspace{
     height: 50px;
+
 }
 
 .sslogo{
@@ -38,55 +40,63 @@
 }
 .titlen{
 
-width: 175px;
-height: 14px;
+
 font-family: 'Inter';
 font-style: normal;
 font-weight: 700;
 font-size: 24px;
 text-align: center;
-color: #757575;
+color: #06D6A0;
 
 margin: auto;
-width: 50%;
 
     
 }
 .formsignin{
     display: grid;
-}
-.email,.password{
     
+}
+.right .email,.right .password{
     width: 350px;
     height: 50px;
     left: 905px;
     top: 383px;
+    
 
     border: 2px solid #B3B3B3;
     border-radius: 10px;
 
     margin: auto;
-    width: 50%;
+
+
+    text-align: left;
+    padding-left: 2em;
+    
 }
-.signin{
-width: 350px;
+.right .signin{
+
 height: 50px;
 left: 905px;
 top: 523px;
-background: #E6E6E6;
+background: #06D69F;
 box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-
+color: #01271D;
 
 border: none;
-margin: auto;
-width: 50%;
+margin:20px auto;
+width: 350px;
+border-radius: 10px;
 }
+.right .signin:active{
+    background-color: #01271D;
+    color: #06D69F;
 
+}
 .lineor{
     width: 350px;
     
     margin: auto;
-    width: 50%;
+
 }
 
 
@@ -95,7 +105,6 @@ width: 50%;
     width: 364px;
     height: 40px;
     margin: auto;
-    width: 50%;
 
     
     border: none;
@@ -109,23 +118,22 @@ width: 50%;
     margin: 0;
     padding: 0;
   }
-.needaccountbox{
-    width: 200px;
-    margin: auto;
-    text-align: center;
- 
+
+.right .needaccountbox{
+    margin: 10px auto;
+    width: 400px;
+    padding: 10px;
     font-family: 'Poppins';
     font-style: normal;
     font-weight: 500;
     font-size: 17px;
     line-height: 15px;
-    /* identical to box height */
-
-    color: #B3B3B3;
+    color: #246EB9;
 }
-.createaccount{
-    width: 200px;
-    margin: auto;
+.right .createaccount{
+
+    margin: 0;
+
     text-align: center;
     
     font-family: 'Poppins';
@@ -133,8 +141,7 @@ width: 50%;
     font-weight: bolder;
     font-size: 18px;
     line-height: 15px;
-    /* identical to box height */
-    
-    color: #B3B3B3;
+    color: #246EB9;
     text-decoration-line: underline;
 }
+

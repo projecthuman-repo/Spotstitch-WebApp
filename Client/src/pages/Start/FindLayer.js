@@ -22,10 +22,10 @@ import { Link } from "react-router-dom";
         <div className="right">
             <div className="topspace"></div><div className="topspace"></div>
 
-            <div className="welcometitle1">Find your layer at Spotstitch!</div>
-            <br/><br/><br/>
+            <div className="welcometitle">Find your layer at Spotstitch!</div>
+            <div className="topspace"></div>
             <div className="smalldescription1">Layers are small communities with like-minded people. You can participate in group activities and projects here.</div>
-            <br/><br/>
+            <div className="topspace"></div>
             <div className="layerjoinbox">
               <button className="layerjoin">
                   <span class="textl">Layer Category</span>
@@ -53,10 +53,10 @@ import { Link } from "react-router-dom";
             
             <div className="space1"/>
             <div className="skipnextbox">
-                <Link to='/vendoraccountsetup' className="linkskipbutton"><button className="skipbutton">Skip</button></Link>
+                
 
                 <Link to='/vendoraccountsetup' className="linknextbutton"><button className="nextbutton">Next</button></Link>
-
+                <Link to='/vendoraccountsetup' className="linkskipbutton"><button className="skipbutton">Skip</button></Link>
             </div>
             <div className="botspace"></div>
             

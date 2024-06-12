@@ -29,36 +29,25 @@
     height: 200px;
 }
 
-.welcometitle{
+.right .welcometitle{
    
     width: 500px;
-    height: 76px;
-  
-
+    height: 126px;
+    font-size: 48px;
+    font-weight: 500;
+    line-height: 60.24px;
     font-family: 'Poppins';
     font-style: normal;
-    font-weight: 500;
-    font-size: 60px;
-    line-height: 125.5%;
-
+    text-align: center;
     color: #333333;
-
-
     margin: auto;
 
 }
 
-.smalldescription{
-    width: 500px;
-    font-family: 'Poppins';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 16px;
-    line-height: 24px;
-    
-    color: #333333;
+.right .smalldescription{
+
     margin: auto;
-    
+    margin-bottom:10px;
 }
 .input.placeholder{
     
@@ -66,34 +55,43 @@
 
 
 .addbiobox{
-    padding-bottom: 75px; /* Adjust the padding-top to move the text up */
-    
+    padding-bottom: 75px; 
+    padding-left: 10px;
     box-sizing: border-box;
     width: 500px;
     height: 125px;
-    margin: auto;
+    margin: 0px auto;
 
     border: 2px solid #C4C4C4;
     border-radius: 9px;
 }
-.space1{
-    height: 150px;
+.right .space1{
+    height: 25px;
 }
-.linknextbutton{
-    margin-left: auto;
-    margin-right: 80px;
-    width: 175px;
-    height: 50px;
-}
-.nextbutton{
-   
-    width: 175px;
-    height: 50px;
- 
 
-    background: #E6E6E6;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-    border:none;
-    margin-left: auto;
-    margin-right: 80px;
-    }
+.right .linknextbutton{
+    justify-self: end;
+    margin: auto;
+    width: 300px;
+    border-radius: 10px;
+    border: none;
+
+   
+
+}
+.right .nextbutton {
+    width: 300px;
+    height: 50px;
+    background: #06D69F; 
+    color: #01271D; 
+    border: none;
+    margin: auto;
+
+    
+}
+
+.right .nextbutton:active{
+    background-color: #01271D;
+    color: #06D69F;
+
+}

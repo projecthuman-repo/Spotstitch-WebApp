@@ -27,7 +27,7 @@ import { Link } from "react-router-dom";
           setQuery(event.target.value);
           onSearch(event.target.value);
         };
-    
+
 
     return (
         <>
@@ -41,11 +41,11 @@ import { Link } from "react-router-dom";
             <div className="topspace"></div><div className="topspace"></div>
 
             <div className="welcometitle1">Let's get you stitched in!</div>
-            <br/><br/><br/>
+            <div className="topspace"></div><div className="topspace"></div>
             <div className="smalldescription1">Find your seam. What brings you to Spotstitch?</div>
-            <br/>
-            <div className="smalldescription1">Select 3 or more.</div>
-            <br/>
+            {/* <div className="topspace"></div>
+            <div className="smalldescription1">Select 3 or more.</div> */}
+            <div className="topspace"></div>
 
             
             <input
@@ -56,7 +56,7 @@ import { Link } from "react-router-dom";
                     onChange={handleInputChange}
                     placeholder="   Search"
             />
-            <br/>
+
 
 
 
@@ -132,10 +132,17 @@ import { Link } from "react-router-dom";
             
             <div className="space1"/>
             <div className="skipnextbox">
+                
+
+                <Link to='/findlayer' className="linknextbutton">
+                <button className="nextbutton" 
+                  onClick={(event) => {
+                    if(buttonClickedIndices.length < 3) {
+                        event.preventDefault();
+                        alert("Please select 3 category or more");
+                    }
+                  }}>Next</button></Link>
                 <Link to='/findlayer' className="linkskipbutton"><button className="skipbutton">Skip</button></Link>
-
-                <Link to='/findlayer' className="linknextbutton"><button className="nextbutton">Next</button></Link>
-
             </div>
             <div className="botspace"></div>
             

@@ -23,7 +23,7 @@ const BusinessMethod = () => {
 
 
         <div className="right">
-            <div className="topspace"></div>
+            <div className="topspace"></div><div className="topspace"></div>
 
             <div className="welcometitle">What is your business method?</div>
             <br/><br/><br/>
@@ -61,11 +61,12 @@ const BusinessMethod = () => {
                 
             </label>
 
-            <br/><br/><br/>
+            <div className="whitespace-bottom"></div>
             <div className="skipnextbox">
-                <Link to='/vendorgoal' className="linkskipbutton"><button className="skipbutton">Skip</button></Link>
+                
 
                 <Link to='/vendorgoal' className="linknextbutton"><button className="nextbutton">Next</button></Link>
+                <Link to='/vendorgoal' className="linkskipbutton"><button className="skipbutton">Skip</button></Link>
             </div>
             <div className="botspace"></div>
             

@@ -72,9 +72,11 @@
 }
 
 .photo{
-    height: 260px;
-    width: 260px;
+    height: 260px !important;
+    width: 260px !important;
+    border-radius: 0 !important;
     margin: auto;
+    border: none !important;
 }
 
 .skipnextbox{
@@ -100,7 +102,7 @@
     color: #757575;
 }
 
-.nextbutton{
+.right .nextbutton{
     width: 175px;
     height: 100%;
     font-family: 'Poppins';
@@ -108,10 +110,18 @@
     font-weight: 500;
     font-size: 24px;
     line-height: 24px;
-
-color: #757575;
+    background: #06D69F;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    color: #01271D;
+    border: none;
+    width: 50%;
+    border-radius: 10px;
 }
+.right .nextbutton:active{
+    background-color: #01271D;
+    color: #06D69F;
 
+}
 
 
 
@@ -137,7 +147,7 @@ color: #757575;
 
 
 
-.policy2{
+.right .policy2{
     font-family: 'Poppins';
     font-style: normal;
     font-weight: 500;
@@ -149,9 +159,11 @@ color: #757575;
     color: #B3B3B3;
 
     width: 230px;
-    margin: auto;
+    margin-top: auto;
+
 }
 
 .botspace{
     height: 200px;
 }
+

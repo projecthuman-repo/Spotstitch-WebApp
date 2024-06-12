@@ -19,8 +19,6 @@
     height: 100vh;
     width: 50%;
     overflow: auto;
-    
-   
 }
 
 .topspace{
@@ -30,22 +28,22 @@
 .sslogo{
     display: block;
     margin: auto;
-    width: 50%;
+    /* width: 50%; */
     height: 100px;
     width: 100px;
     
     
 }
 
-.signuptitle{
+.right .signuptitle{
     font-family: 'Poppins';
     font-style: normal;
     font-weight: bold;
-    font-size: 24px;
+    font-size: 2em;
     line-height: 36px;
     color: #333333;
 
-    width: 350px;
+    /* width: 350px; */
     text-align: center;
     margin: auto;
     width: 50%;
@@ -54,39 +52,44 @@
     padding-bottom: 10px;
 }
 
-.signupdescription{
+.right .signupdescription{
     font-family: 'Poppins';
     font-style: normal;
     font-weight: 400;
     font-size: 14px;
     line-height: 18px;
     
-    color: #333333;
+    color:#636363;
 
-    width: 350px;
-    text-align: justify;
+    /* width: 350px; */
+    text-align: center;
     margin: auto;
     width: 50%;
 
     padding-bottom: 20px;
 }
-
+.formsignin{
+    font-family: 'Poppins';
+}
 .startbutt{
     height: 200px;
     width: 100px;
+
 }
 
-.email,.password{
+.right .form-control,.password, .signup{
     
-    width: 350px;
+    /* width: 350px; */
     height: 50px;
     left: 905px;
     top: 383px;
-
+    
     border: 2px solid #B3B3B3;
     border-radius: 10px;
 
     margin: auto;
+    margin-top: 5px;
+    margin-bottom: 5px;
     width: 50%;
     
 }
@@ -110,7 +113,9 @@
 }
 
 
-
+.signup{
+    border: none;
+}
 
 
 
