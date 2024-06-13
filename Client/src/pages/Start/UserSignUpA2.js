@@ -21,11 +21,13 @@ const UserSignUp = () => {
   const [confirmPassword, setConfirmPassword] = useState("");
   const [matching, setMatching] = useState(true);
   const [valid, setValid] = useState(true);
+  const [validEmail, setValidEmail] = useState(true);
   const [showPassword, setShowPassword] = useState(false);
   const [acceptedTerms, setAcceptedTerms] = useState(false);
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const registerForm = useSelector((state) => state.register);
+  const emailRef = useRef(null);
   const confirmPasswordRef = useRef(null);
   /* based on login servers, Passwords must be between 8-10 characters long, 
         have at least one uppercase letter, lowercase letter, number and symbol */
@@ -47,10 +49,23 @@ const UserSignUp = () => {
     else setMatching(false);
   }, [password, confirmPassword]);
 
+  useEffect(() => {
+    if (emailRegex.test(email)) {
+      setValidEmail(true);
+    } else {
+      setValidEmail(false);
+    }
+
+  }, [email]);
+
   const handleSubmit = (event) => {
     event.preventDefault();
+
+      console.log(validEmail)
+      console.log(email)
+
     // handle form submission here
-    if (!matching || !acceptedTerms || !valid) return;
+    if (!matching || !acceptedTerms || !valid || !validEmail) return;
     dispatch(
       registerData({
         email: event.target.email.value,
@@ -86,17 +101,14 @@ const UserSignUp = () => {
               name="email"
               required
               value={email}
+              ref={emailRef}
               onChange={(event) => {
                 // localStorage.setItem("email", event.target.value);
-                // setEmail(event.target.value);
-                if (emailRegex.test(event.target.value)) {
-                  localStorage.setItem("email", event.target.value);
-                  setEmail(event.target.value);
-                } else {
-                  console.log('Invalid email format');
-                }
+                setEmail(event.target.value);
+                
               }}
             />
+
             {/* <br /> */}
             {confirmPassword&& password&& !matching && (
               <Overlay target={confirmPasswordRef.current} show={true} placement="left" offset={[0,10]}>
