@@ -52,11 +52,6 @@ const UserSchema = new mongoose.Schema(
     },
     biography: {
       type: String,
-      default: "Welcome to my Profile!"
-    },
-    website: { 
-      type: String,
-      default: ""
     },
     newMessages: {
       type: Object,
@@ -71,6 +66,9 @@ const UserSchema = new mongoose.Schema(
       default: "personal",
       required: [true, "Can't be blank"],
     },
+
+    website: { type: String },
+    bio: { type: String },
 
     //otherAccounts: [{ type: mongoose.Schema.Types.ObjectId, ref: 'User' }],
     otherAccounts: {
@@ -168,8 +166,8 @@ UserSchema.methods.getUserData = async function () {
     email: this.email,
     picture: this.picture,
     banner: this.banner,
-    website: this.website,
-    biography: this.biography,
+    wesbite: this.website,
+    bio: this.bio,
     userType: this.userType,
     settings: this.settings,
     following: numFollowing,
@@ -180,7 +178,7 @@ UserSchema.methods.getUserData = async function () {
 
 UserSchema.methods.updateFirstName = async function (name) {
   try {
-    if (!name) throw new Error("No first name given")
+    if (!name) throw new Error("No name given")
     this.firstName = name
     await this.save({ validateBeforeSave: false })
 
@@ -192,7 +190,7 @@ UserSchema.methods.updateFirstName = async function (name) {
 
 UserSchema.methods.updateLastName = async function (name) {
   try {
-    if (!name) throw new Error("No last name given")
+    if (!name) throw new Error("No name given")
     this.lastName = name
     await this.save({ validateBeforeSave: false })
 
@@ -226,13 +224,13 @@ UserSchema.methods.updateBanner = async function (image) {
   }
 }
 
-UserSchema.methods.updateBiography = async function (bio) {
+UserSchema.methods.updateBio = async function (bio) {
   try {
-    if (!bio) throw new Error("No bio given")
-    this.biography = bio
+    if (!bio) throw new Error("No image given")
+    this.bio = bio
     await this.save({ validateBeforeSave: false })
 
-    return this.biography
+    return this.bio
   } catch (error) {
     throw new Error(error)
   }
@@ -240,7 +238,7 @@ UserSchema.methods.updateBiography = async function (bio) {
 
 UserSchema.methods.updateWebsite = async function (website) {
   try {
-    if (!website) throw new Error("No website given")
+    if (!website) throw new Error("No image given")
     this.website = website
     await this.save({ validateBeforeSave: false })
 

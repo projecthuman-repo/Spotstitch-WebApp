@@ -5,12 +5,7 @@ import { Modal, Row, Col, Container, Button, Form, Image } from "react-bootstrap
 import { Link } from "react-router-dom"
 
 import { editAvatar, editBanner, removeBanner, settings } from "../../assets/icons";
-import {
-    useUpdateFirstNameMutation,
-    useUpdateLastNameMutation,
-    useUpdatePictureMutation,
-    useUpdateBioMutation,
-    useUpdateWebsiteMutation } from "../../services/userApi";
+import { useUpdateBioMutation, useUpdateFirstNameMutation, useUpdateLastNameMutation, useUpdatePictureMutation, useUpdateWebsiteMutation } from "../../services/userApi";
 import { setUserData } from "../../features/User/userSlice";
 
 function AccountDetails() {
@@ -55,41 +50,6 @@ function AccountDetails() {
         }
     }
 
-    
-    function handleChangeImage() {
-        imageRef.current.click()
-    }
-
-    // Handle firstName, changes first name of user
-    const [firstName, setFirstName] = useState('')
-    const [updateFirstName, { }] = useUpdateFirstNameMutation()
-    const handleFirstName = (e)  => {
-        setFirstName(e.target.value)
-    }
-
-    // Handle lastName, changes last name of user
-    const [lastName, setLastName] = useState('')
-    const [updateLastName, { }] = useUpdateLastNameMutation()
-    const handleLastName = (e)  => {
-        setLastName(e.target.value)
-    }
-
-    // Handle bio, changes bio of user
-    const [biography, setBio] = useState('')
-    const [updateBio, { }] = useUpdateBioMutation()
-    const handleBio = (e)  => {
-        setBio(e.target.value)
-    }
-
-
-    // Handle website, changes website of user
-    const [website, setWebsite] = useState('')
-    const [updateWebsite, { }] = useUpdateWebsiteMutation()
-    const handleWebsite = (e)  => {
-        setWebsite(e.target.value)
-    }
-
-
     async function handleSubmit(e) {
         e.preventDefault()
         try {
@@ -118,12 +78,11 @@ function AccountDetails() {
                 }
             }
 
-            if (biography) {
-                console.log(biography)
-                const bioRes = await updateBio({ biography: biography })
+            if (bio) {
+                const bioRes = await updateBio({ bio: bio })
                 if (bioRes.error) throw new Error(bioRes.error)
                 if (bioRes.data?.status == "ok") {
-                    await dispatch(setUserData({ biography: biography }))
+                    await dispatch(setUserData({ bio: bio }))
                 }
             }
 
@@ -139,6 +98,39 @@ function AccountDetails() {
             console.log('rejected', error)
         }
 
+    }
+
+    function handleChangeImage() {
+        imageRef.current.click()
+    }
+
+    // Handle firstName, changes first name of user
+    const [firstName, setFirstName] = useState('')
+    const [updateFirstName, { }] = useUpdateFirstNameMutation()
+    const handleFirstName = (e)  => {
+        setFirstName(e.target.value)
+    }
+
+    // Handle lastName, changes last name of user
+    const [lastName, setLastName] = useState('')
+    const [updateLastName, { }] = useUpdateLastNameMutation()
+    const handleLastName = (e)  => {
+        setLastName(e.target.value)
+    }
+
+    // Handle bio, changes bio of user
+    const [bio, setBio] = useState('')
+    const [updateBio, { }] = useUpdateBioMutation()
+    const handleBio = (e)  => {
+        setBio(e.target.value)
+    }
+
+
+    // Handle website, changes website of user
+    const [website, setWebsite] = useState('')
+    const [updateWebsite, { }] = useUpdateWebsiteMutation()
+    const handleWebsite = (e)  => {
+        setWebsite(e.target.value)
     }
 
 

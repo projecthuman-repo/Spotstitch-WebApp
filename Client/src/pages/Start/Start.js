@@ -95,10 +95,12 @@ const Start = () => {
             userData.data.user.id = res.data["banner"]
             userData.data.user.firstName = res.data["firstName"]
             userData.data.user.lastName = res.data["lastName"]
-            userData.data.user.website = res.data["website"]
-            userData.data.user.biography = res.data["biography"]
+            userData.data.user.lastName = res.data["website"]
+            userData.data.user.lastName = res.data["bio"]
             userData.data.user.otherAccounts = res.data["otherAccounts"]
             userData.data.user.displayName = res.data["displayName"]
+            userData.data.user.bio = res.data["biography"]
+            userData.data.user.website = res.data["website"]
             
             console.log(userData,"userData")
             if (userData.data?.status != "error") await dispatch(setUserData(userData.data?.user))
