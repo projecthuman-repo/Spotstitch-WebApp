@@ -1,0 +1,133 @@
+
+/* Heading */
+.heading
+{/* Auto layout */
+display: flex;
+flex-direction: column;
+align-items: center;
+padding: 0px;
+gap: 5px;
+
+width: 635px;
+height: 80px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+}
+
+/* Name Your Business */
+.heading-busiessname
+{width: 370px;
+height: 45px;
+
+font-family: 'Poppins';
+font-style: normal;
+font-weight: 500;
+font-size: 36px;
+line-height: 125.5%;
+/* or 45px */
+text-align: center;
+
+color: #333333;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;}
+
+/* Body Contents */
+.form-container{
+box-sizing: border-box;
+
+/* Auto layout */
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+padding: 60px 0px;
+gap: 35px;
+
+width: 1248px;
+height: 267px;
+
+border: 1px solid #C4C4C4;
+border-radius: 40px;
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;}
+
+
+.small-description-busiessname{
+/* No rush! You may use draft names for now and changes it later. */
+
+width: 635px;
+height: 30px;
+
+font-family: 'Poppins';
+font-style: normal;
+font-weight: 400;
+font-size: 20px;
+line-height: 30px;
+/* identical to box height */
+text-align: center;
+
+color: #333333;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;}
+
+/* Text input */
+.Text-input{
+/* Auto layout */
+display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: center;
+padding: 20px;
+gap: 20px;
+
+width: 630px;
+height: 64px;
+
+background: #FFFFFF;
+border: 1px solid #C4C4C4;
+border-radius: 15px;
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+text-align: center;
+}
+
+.input-requirement{
+    
+/* Between 4-20 characters No special characters, or accented letters */
+
+width: 424px;
+height: 48px;
+
+font-family: 'Poppins';
+font-style: normal;
+font-weight: 400;
+font-size: 16px;
+line-height: 24px;
+
+color: #000000;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+}
