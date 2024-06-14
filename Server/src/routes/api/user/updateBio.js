@@ -13,7 +13,7 @@ module.exports = async (req, res) => {
         if (!userId) throw new Error('Invalid user ID')
 
         // check for bio in request body
-        const bio = req.body.bio
+        const bio = req.body.biography
         if (!bio) throw new Error("No first name found in request")
 
         // check if user exists, otherwise throw an error
@@ -22,7 +22,7 @@ module.exports = async (req, res) => {
         if (!user) throw new Error("User does not exist")
         console.log(user);
         // update user bio
-        const data = await user.updateBio(bio)
+        const data = await user.updateBiography(bio)
 
         // return updated bio back to user
         res.status(200).json(createSuccessResponse({ bio: data }));

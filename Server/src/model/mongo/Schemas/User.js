@@ -52,6 +52,7 @@ const UserSchema = new mongoose.Schema(
     },
     biography: {
       type: String,
+      ref: "biography"
     },
     newMessages: {
       type: Object,
@@ -68,7 +69,6 @@ const UserSchema = new mongoose.Schema(
     },
 
     website: { type: String },
-    bio: { type: String },
 
     //otherAccounts: [{ type: mongoose.Schema.Types.ObjectId, ref: 'User' }],
     otherAccounts: {
@@ -224,7 +224,7 @@ UserSchema.methods.updateBanner = async function (image) {
   }
 }
 
-UserSchema.methods.updateBio = async function (bio) {
+UserSchema.methods.updateBiography = async function (bio) {
   try {
     if (!bio) throw new Error("No image given")
     this.bio = bio
