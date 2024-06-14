@@ -20,7 +20,7 @@ import VendorGoal from "./pages/VendorAccountSetup/VendorGoalA8.4";
 import VendorSetupComplete from "./pages/VendorAccountSetup/VendorSetupCompleteA8.5";
 import BusinessPreferences from './pages/VendorAccountSetup/BusinessPreferencesA.8.6.js'
 import BusinessName from './pages/VendorAccountSetup/BusinessNameA.8.7.js'
-import BilingInformation from './pages/VendorAccountSetup/BilingInformationA.8.9.js'
+import BillingInformation from './pages/VendorAccountSetup/BilingInformationA.8.9.js'
 import BusinessCustomization from './pages/VendorAccountSetup/BusinessCustomizationA.8.10.js'
 import VendorAccountSetupConfirmation from './pages/VendorAccountSetup/AccountSetupA.9.js'
 import PopupDialog from "./pages/Layers/CreateNewLayer";
@@ -120,8 +120,8 @@ function App() {
 					element={<Logged><BusinessPreferences /></Logged>} />
 				<Route path="/BusinessName"
 					element={<Logged><BusinessName/></Logged>} />
-				<Route path="/BilingInformation"
-					element={<Logged><BilingInformation/></Logged>} />
+				<Route path="/BillingInformation"
+					element={<Logged><BillingInformation/></Logged>} />
 				<Route path="/BusinessCustomization"
 					element={<Logged><BusinessCustomization/></Logged>} />
 				<Route path="/VendorAccountSetupConfirmation"

@@ -1,41 +1,48 @@
-import { current } from "@reduxjs/toolkit";
-import React, {useState} from "react";
-import { Nav } from "react-bootstrap";
+import React, { useState } from "react";
+import { useLocation } from "react-router-dom";
+import incompleteIcon from "../../assets/icons/incomplete.png";
+import inProgressIcon from "../../assets/icons/in-progress.png";
+import completeIcon from "../../assets/icons/complete.png";
+import bar from "../../assets/icons/Bar.png";
+import "./progressBar.css";
 
-function ProgressBar(currentProgress, setCurrentProgress){
-    const links = 
-    [
-        {name: "Business Preference", path: "/BusinessPreferences"},
-        {name: "Business Name", path: "/BusinessName"},
-        {name: "Business Category", path: "/BusinessCategory"}
-    ]
-    const active = "mx-2 btn-nav btn-active text-center";
-    const nav = "mx-2 btn-nav text-center";
-    return (
+function ProgressBar() {
+  const location = useLocation();
+  const currentPath = location.pathname;
+  const link = [
+    { name: "BusinessPreference", path: "/BusinessPreferences" },
+    { name: "Business Name", path: "/BusinessName" },
+    { name: "Business Category", path: "/BusinessCategory" },
+    { name: "Billing Information", path: "/BillingInformation" },
+    { name: "Business Customization", path: "/BusinessCustomization" },
+  ];
+
+  return (
     <>
-        <div className="d-flex align-items-center">
-
-        </div>
-        <div className="progress-container">
-        <Nav className="ms-auto my-0 " navbarScroll>
-						{links.map((link) => {
-							return (
-								<Nav.Link
-									key={link.name}
-									href={link.path}
-									className={
-										location.pathname == link.path
-											? active
-											: nav
-									}
-								>
-									{link.name}
-								</Nav.Link>
-							);
-						})}
-					</Nav>
-        </div>
-    </>)
+      <div className="progress-bar">
+        <img src={bar} className="bar" alt="Progress bar" />
+        {link.map((item, index) => (
+          <div className="progress-bar-stage" key={index}>
+            {currentPath === item.path ? (
+              <img
+                src={inProgressIcon}
+                className="in-progress"
+                alt="In progress icon"
+              />
+            ) : (
+              <img
+                src={completeIcon}
+                className="complete"
+                alt="Complete icon"
+              />
+            )}
+            <p className="text">{item.name}</p>
+          </div>
+        ))}
+      </div>
+      <hr className="hr-line"></hr>
+    </>
+  );
 }
 
-export default ProgressBar
+export default ProgressBar;
