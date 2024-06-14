@@ -34,7 +34,7 @@
     padding: 0px;
     gap: 20px;
     width: 120px;
-    height: 109px;
+    height: 129px;
     z-index: 2;
 }
 
@@ -74,7 +74,7 @@
 
 /* Text */
 .text {
-    width: 120px;
+    width: 80px;
     height: 48px;
     font-family: 'Poppins';
     font-style: normal;
@@ -83,10 +83,11 @@
     line-height: 24px;
     text-align: center;
     color: #333333;
+    text-wrap: wrap;
 }
 
 .hr-line {
     position: absolute;
     width: 100%;
-    top: 150px; /* Adjust this value as needed */
+    top: 170px; /* Adjust this value as needed */
 }

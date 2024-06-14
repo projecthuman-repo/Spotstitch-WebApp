@@ -1,6 +1,7 @@
 import { useRef, useState } from "react";
 import photo from "../../assets/User Picture.png";
 import pencil from "../../assets/Pencil Icon.png";
+import ProgressBar from "./progressBar";
 
 function BusinessCustomization() {
   const [image, setImage] = useState();
@@ -25,6 +26,8 @@ function BusinessCustomization() {
 
   return (
     <>
+      <ProgressBar />
+      <div className="space1"></div>
       <h1>Business Customization</h1>
       <p>Show off your business with some pictures!</p>
       <div>

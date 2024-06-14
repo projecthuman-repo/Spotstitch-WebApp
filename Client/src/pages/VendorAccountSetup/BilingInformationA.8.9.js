@@ -1,4 +1,5 @@
 import { useState } from "react";
+import ProgressBar from "./progressBar";
 
 function BilingInformation() {
   const [sellerType, setSellerType] = useState("");
@@ -49,6 +50,8 @@ function BilingInformation() {
   };
   return (
     <>
+      <ProgressBar />
+      <div className="space1"></div>
       <h1 className="progress-page-title">Billing Information</h1>
       <p className="small-description">
         Input your billing information. This is how you'll get paid!

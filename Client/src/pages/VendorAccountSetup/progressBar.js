@@ -10,7 +10,7 @@ function ProgressBar() {
   const location = useLocation();
   const currentPath = location.pathname;
   const link = [
-    { name: "BusinessPreference", path: "/BusinessPreferences" },
+    { name: "Business Preference", path: "/BusinessPreferences" },
     { name: "Business Name", path: "/BusinessName" },
     { name: "Business Category", path: "/BusinessCategory" },
     { name: "Billing Information", path: "/BillingInformation" },
@@ -29,11 +29,17 @@ function ProgressBar() {
                 className="in-progress"
                 alt="In progress icon"
               />
-            ) : (
+            ) : index < link.findIndex((i) => i.path === currentPath) ? (
               <img
                 src={completeIcon}
-                className="complete"
+                className="completeIcon"
                 alt="Complete icon"
+              />
+            ) : (
+              <img
+                src={incompleteIcon}
+                className="incompleteIcon"
+                alt="Incomplete icon"
               />
             )}
             <p className="text">{item.name}</p>
