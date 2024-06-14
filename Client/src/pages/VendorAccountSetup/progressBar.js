@@ -46,7 +46,7 @@ function ProgressBar() {
           </div>
         ))}
       </div>
-      <hr className="hr-line"></hr>
+      <hr className="top-divider"></hr>
     </>
   );
 }

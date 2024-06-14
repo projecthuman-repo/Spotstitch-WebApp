@@ -86,8 +86,15 @@
     text-wrap: wrap;
 }
 
-.hr-line {
-    position: absolute;
-    width: 100%;
-    top: 170px; /* Adjust this value as needed */
+.top-divider {
+/* Top Divider */
+
+position: absolute;
+width: 1440px;
+height: 0px;
+left: 0px;
+top: 197px;
+
+border: 1px solid #757575;
+
 }

@@ -1,3 +1,277 @@
+body {
+    overflow: auto;
+    min-height: 110vh;
+    position: relative; /* This is needed for absolute positioning of children */
+}
 .space1{
     height: 100px;
+}
+/* Heading */
+.heading
+{/* Auto layout */
+display: flex;
+flex-direction: column;
+align-items: center;
+padding: 0px;
+gap: 5px;
+
+width: 383px;
+height: 80px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+}
+.progress-page-title
+/* Business Preferences */
+{
+width: 383px;
+height: 45px;
+
+font-family: 'Poppins';
+font-style: normal;
+font-weight: 500;
+font-size: 36px;
+line-height: 125.5%;
+/* or 45px */
+text-align: center;
+
+color: #333333;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+}
+.small-description
+{/* Tell us about your shop. */
+
+width: 236px;
+height: 30px;
+
+font-family: 'Poppins';
+font-style: normal;
+font-weight: 400;
+font-size: 20px;
+line-height: 30px;
+/* identical to box height */
+text-align: center;
+
+color: #333333;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+}
+
+.main-form {
+    /* Auto layout */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0px;
+    gap: 40px;
+
+    position: absolute;
+    width: 1248px;
+    height: 521px;
+    left: 96px;
+    top: 256px;
+}
+
+.form-container
+{
+box-sizing: border-box;
+
+/* Auto layout */
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+padding: 60px 0px;
+gap: 35px;
+
+width: 1248px;
+height: 401px;
+
+border: 1px solid #C4C4C4;
+border-radius: 40px;
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+}
+
+.frame-2610802 {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 0px;
+    gap: 68px;
+    width: 556px;
+    height: 44px;
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+}
+
+.business-language {
+    width: 195px;
+    height: 25px;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 125.5%;
+    color: #333333;
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+}
+
+.main-form .selections {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px 10px 40px;
+    gap: 100px;
+    width: 293px;
+    height: 44px;
+    /* background: #FFFFFF; */
+    border: 1px solid #C4C4C4;
+    border-radius: 15px;
+    flex: none;
+    order: 1;
+    flex-grow: 0;
+    font-family: 'Poppins';
+    
+    
+}
+.frame-2610803 {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 0px;
+    gap: 88px;
+    width: 556px;
+    height: 44px;
+    flex: none;
+    order: 1;
+    flex-grow: 0;
+}
+
+.business-country {
+    width: 175px;
+    height: 25px;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 125.5%;
+    color: #333333;
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+}
+
+.frame-2610799 {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px 10px 40px;
+    gap: 100px;
+    width: 293px;
+    height: 44px;
+    background: #FFFFFF;
+    border: 1px solid #C4C4C4;
+    border-radius: 15px;
+    flex: none;
+    order: 1;
+    flex-grow: 0;
+}
+
+.frame-2610804 {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 0px;
+    gap: 19px;
+    width: 556px;
+    height: 44px;
+    flex: none;
+    order: 2;
+    flex-grow: 0;
+}
+
+.business-state-province {
+    width: 244px;
+    height: 25px;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 125.5%;
+    color: #333333;
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+}
+
+
+
+.frame-2610805 {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 0px;
+    gap: 76px;
+    width: 556px;
+    height: 44px;
+    flex: none;
+    order: 3;
+    flex-grow: 0;
+}
+
+.business-currency {
+    width: 187px;
+    height: 25px;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 125.5%;
+    color: #333333;
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+}
+
+.save-continue-btn{
+
+display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: center;
+padding: 20px;
+gap: 10px;
+
+position: absolute;
+width: 175px;
+height: 64px;
+left: 1069px;
+top: 554px;
+bottom: 100px;
+
+background: #8CBDEB;
+border-radius: 15px;
+border: none;
+
 }
