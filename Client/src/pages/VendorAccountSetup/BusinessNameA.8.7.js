@@ -1,9 +1,19 @@
 import React, { useState } from "react";
 import ProgressBar from "./progressBar";
 import "./BusinessNameA.8.7.css";
+import { useNavigate } from "react-router-dom";
 function BusinessName() {
   //back button
   //save and continue
+  const navigate = useNavigate();
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    navigate("/BusinessCategory");
+  };
+  const handleBack = (event) => {
+    event.preventDefault();
+    navigate("/BusinessPreferences");
+  };
   const [businessName, setBusinessName] = useState("");
   const handleSetBusinessName = (event) => setBusinessName(event.target.value);
 
@@ -17,7 +27,7 @@ function BusinessName() {
             No rush! You may use draft names for now and changes it later.
           </p>
         </div>
-        <div className="form-container">
+        <div className="form-container-business-name">
           <input
             className="Text-input "
             placeholder="Enter your business name"
@@ -29,8 +39,15 @@ function BusinessName() {
           </ul>
         </div>
 
-        {/* <button className="back-button">Back</button> */}
-        {/* <button className="save&continue">Save&Continue</button> */}
+        <button className="back-button-business-name" onClick={handleBack}>
+          Back
+        </button>
+        <button
+          className="save-continue-btn-business-name"
+          onClick={handleSubmit}
+        >
+          Save & Continue
+        </button>
       </div>
     </>
   );
