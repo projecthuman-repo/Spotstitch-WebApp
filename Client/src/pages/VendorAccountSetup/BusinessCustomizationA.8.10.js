@@ -130,6 +130,7 @@ function BusinessCustomization() {
           Save & Continue
         </button>
       </div>
+      <hr className="bot-line-b-custom"></hr>
     </>
   );
 }

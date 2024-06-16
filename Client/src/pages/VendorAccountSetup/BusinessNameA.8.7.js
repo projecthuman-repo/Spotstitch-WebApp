@@ -49,6 +49,7 @@ function BusinessName() {
           Save & Continue
         </button>
       </div>
+      <hr className="bot-divider"></hr>
     </>
   );
 }

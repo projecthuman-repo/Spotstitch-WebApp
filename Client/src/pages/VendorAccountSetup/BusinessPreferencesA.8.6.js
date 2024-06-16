@@ -162,6 +162,7 @@ const BusinessPreferences = () => {
           </button>
         </form>
       </div>
+      <hr className="bot-divider"></hr>
     </>
   );
 };

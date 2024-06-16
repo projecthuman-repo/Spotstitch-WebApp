@@ -164,3 +164,14 @@
   border-radius: 15px;
   border: none;
 }
+.bot-line-b-custom {
+  /* Line 5 */
+
+  position: absolute;
+  width: 100%;
+  height: 0px;
+  left: 0px;
+  top: 922px;
+
+  border: 1px solid #757575;
+}
