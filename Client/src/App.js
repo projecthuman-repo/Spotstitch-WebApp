@@ -124,8 +124,6 @@ function App() {
 					element={<Logged><BillingInformation/></Logged>} />
 				<Route path="/BusinessCustomization"
 					element={<Logged><BusinessCustomization/></Logged>} />
-				<Route path="/VendorAccountSetupConfirmation"
-					element={<Logged><VendorAccountSetupConfirmation/></Logged>} />
 				
 				{/* These routes will require the user to be logged in to access */}
 				<Route path="/" element={<Auth><Home /></Auth>}>
