@@ -22,7 +22,9 @@ import BusinessPreferences from './pages/VendorAccountSetup/BusinessPreferencesA
 import BusinessName from './pages/VendorAccountSetup/BusinessNameA.8.7.js'
 import BillingInformation from './pages/VendorAccountSetup/BilingInformationA.8.9.js'
 import BusinessCustomization from './pages/VendorAccountSetup/BusinessCustomizationA.8.10.js'
-import VendorAccountSetupConfirmation from './pages/VendorAccountSetup/AccountSetupA.9.js'
+import AccountSetupPageOne from './pages/VendorAccountSetup/AccountSetupA.9.1'
+import AccountSetupPageTwo from './pages/VendorAccountSetup/AccountSetupA.9.2'
+import AccountSetupPageThree from './pages/VendorAccountSetup/AccountSetupA.9.3'
 import PopupDialog from "./pages/Layers/CreateNewLayer";
 
 import Navigation from "./components/Navigation/Navigation";
@@ -124,6 +126,12 @@ function App() {
 					element={<Logged><BillingInformation/></Logged>} />
 				<Route path="/BusinessCustomization"
 					element={<Logged><BusinessCustomization/></Logged>} />
+				<Route path="/AccountSetupPageOne"
+					element={<Logged><AccountSetupPageOne/></Logged>} />
+				<Route path="/AccountSetupPageTwo"
+					element={<Logged><AccountSetupPageTwo/></Logged>} />
+				<Route path="/AccountSetupPageThree"
+					element={<Logged><AccountSetupPageThree/></Logged>} />
 				
 				{/* These routes will require the user to be logged in to access */}
 				<Route path="/" element={<Auth><Home /></Auth>}>
