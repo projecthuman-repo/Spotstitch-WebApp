@@ -61,9 +61,7 @@ function AccountSetupPageThree() {
 
           <div className="right-account-setup3">
             <div className="Frame-2610822">
-              <p className="title-des-setup3">
-                We offer you these Choose your Hashtag(s)
-              </p>
+              <p className="title-des-setup3">We offer you these</p>
               <p className="title-title-setup3">Choose your Hashtag(s)</p>
             </div>
             <div className="categories-setup3">
@@ -79,16 +77,16 @@ function AccountSetupPageThree() {
                 );
               })}
             </div>
-            <p className="more-ideas-setup3">more ideas</p>
+            <button className="more-ideas-setup3">more ideas</button>
             <div className="buttons-account-setup3">
               <button className="back-button-billing-info" onClick={handleBack}>
                 Back
               </button>
               <button
-                className="save-continue-account-setup2"
+                className="save-continue-account-setup3"
                 onClick={handleSubmit}
               >
-                Generate hashtag
+                Buy
               </button>
             </div>
             <img className="logo-account-setup" src={sslogo}></img>

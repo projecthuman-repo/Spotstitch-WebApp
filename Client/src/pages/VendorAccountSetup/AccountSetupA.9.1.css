@@ -62,7 +62,6 @@
   width: 360px;
 }
 
-/* Lorem ipsum dolor sit amet consectetur. Facilisis sem consectetur pellentesque phasellus accumsan. Rutrum adipiscing sit a sit congue nunc sagittis. */
 .account-setup-text {
   width: 360px;
 
@@ -83,21 +82,44 @@
 
 .save-continue-AccountSetupPageOne {
   /* Button */
+
+  /* Auto layout */
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
   padding: 20px;
   gap: 10px;
-  position: absolute;
-  width: 129px;
-  height: 64px;
-  left: 1170px;
-  top: 637px;
 
+  position: absolute;
+  width: 199px;
+  height: 64px;
+  left: 1120px;
+  top: 657px;
+
+  /* Blue */
   background: #8cbdeb;
   border-radius: 15px;
-  border: none;
+}
+
+.save-continue-AccountSetupPageOne {
+  /* Finish Stup */
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 24px;
+  /* identical to box height */
+  display: flex;
+  align-items: center;
+  text-align: center;
+
+  color: #0e0e0e;
+
+  /* Inside auto layout */
+  flex: none;
+  order: 0;
+  flex-grow: 0;
 }
 
 .logo-account-setup {

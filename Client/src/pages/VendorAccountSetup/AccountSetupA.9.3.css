@@ -34,7 +34,7 @@
   width: 252px;
   height: 64px;
   left: 1004px;
-  top: 707px;
+  top: 657px;
 }
 .Frame-2610822 {
   /* Auto layout */
@@ -146,4 +146,39 @@
   order: 2;
   align-self: stretch;
   flex-grow: 0;
+  background-color: transparent;
+  border: none;
+  text-align: start;
+}
+
+.save-continue-account-setup3 {
+  /* Button */
+
+  /* Auto layout */
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  gap: 10px;
+
+  width: 131px;
+  height: 64px;
+
+  /* Blue */
+  background: #8cbdeb;
+  border-radius: 15px;
+
+  /* Inside auto layout */
+  flex: none;
+  order: 1;
+  flex-grow: 0;
+
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 24px;
+
+  color: #0e0e0e;
 }

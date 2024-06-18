@@ -42,7 +42,7 @@ function BusinessCustomization() {
   const handleSubmit = (event) => {
     event.preventDefault();
     //this should navigate to A9
-    navigate("/BusinessCategory");
+    navigate("/AccountSetupPageOne");
   };
   const handleBack = (event) => {
     event.preventDefault();
