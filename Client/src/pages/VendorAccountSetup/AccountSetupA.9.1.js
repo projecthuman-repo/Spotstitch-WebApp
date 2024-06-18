@@ -2,6 +2,7 @@
 import holderimg from "../../assets/holderimg.png";
 import './AccountSetupA.9.1.css'
 import { useNavigate } from "react-router-dom";
+import sslogo from "../../assets/sslogo.png";
 function AccountSetupPageOne() {
     const navigate = useNavigate();
     const handleSubmit = (event) => {
@@ -26,6 +27,7 @@ function AccountSetupPageOne() {
           >
             Finish Stup
           </button>
+        <img className="logo-account-setup" src={sslogo}></img>
       </div>
     </>
   );

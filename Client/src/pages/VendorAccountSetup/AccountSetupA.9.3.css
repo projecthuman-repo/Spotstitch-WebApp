@@ -1,0 +1,149 @@
+.right-account-setup3 {
+  /* Contents */
+
+  /* Auto layout */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 50px 100px 300px;
+  gap: 20px;
+
+  margin: 0 auto;
+  width: 720px;
+  height: 1024px;
+
+  /* Inside auto layout */
+  flex: none;
+  order: 1;
+  flex-grow: 1;
+}
+
+.buttons-account-setup3 {
+  /* Buttons */
+
+  /* Auto layout */
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 0px;
+  gap: 40px;
+
+  position: absolute;
+  width: 252px;
+  height: 64px;
+  left: 1004px;
+  top: 707px;
+}
+.Frame-2610822 {
+  /* Auto layout */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 0px;
+  gap: 10px;
+
+  width: 520px;
+  height: 79px;
+
+  /* Inside auto layout */
+  flex: none;
+  order: 0;
+  align-self: stretch;
+  flex-grow: 0;
+}
+
+.title-des-setup3 {
+  /* We offer you these */
+
+  width: 520px;
+  height: 24px;
+
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  /* identical to box height */
+
+  color: #0e0e0e;
+
+  /* Inside auto layout */
+  flex: none;
+  order: 0;
+  align-self: stretch;
+  flex-grow: 0;
+}
+
+.title-title-setup3 {
+  /* Choose your Hashtag(s) */
+
+  width: 520px;
+  height: 45px;
+
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 36px;
+  line-height: 125.5%;
+  /* or 45px */
+
+  color: #0e0e0e;
+
+  /* Inside auto layout */
+  flex: none;
+  order: 1;
+  align-self: stretch;
+  flex-grow: 0;
+}
+
+.categories-setup3 {
+  /* Categories */
+
+  /* Auto layout */
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  align-content: flex-start;
+  padding: 0px;
+  gap: 20px;
+
+  width: 520px;
+  height: 236px;
+
+  /* Inside auto layout */
+  flex: none;
+  order: 1;
+  flex-grow: 0;
+}
+
+.category-btn.active {
+  background: #90c766 !important;
+  border-color: lightgreen !important;
+  color: black;
+}
+
+.more-ideas-setup3
+/* more ideas */ {
+  width: 520px;
+  height: 24px;
+
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  /* identical to box height */
+  text-decoration-line: underline;
+
+  color: #0e0e0e;
+
+  /* Inside auto layout */
+  flex: none;
+  order: 2;
+  align-self: stretch;
+  flex-grow: 0;
+}
