@@ -4,12 +4,17 @@ import { useEffect, useState } from "react";
 
 import './inventory.css'
 import PageNav from "../../components/pageNav/PageNav";
+import { useSelector } from "react-redux";
 
 
 function Inventory() {
   const [items, setItems] = useState([])
   const [categories, SetCategories] = useState([])
   const [filters, setFilters] = useState([]);
+
+  const user = useSelector(state => state.user)
+  const userInv = useSelector(state => state.user.gameInventory) // mongoDB object 
+  
 
   const itemEx = [
     { title: 'item name', description: 'Description of the item', rating: 'Trader rating', tags: ['General tag 1', 'item tag'] },
