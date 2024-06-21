@@ -22,11 +22,17 @@ import { GoLocation } from "react-icons/go";
 import CreateLayerModal from "./CreateLayerModal";
 import { Outlet } from "react-router-dom";
 import { useSelector } from "react-redux";
+import { useCreatePostMutation } from "../../services/posts";
 
 function Home({ vendor = false }) {
 	const [filters, setFilters] = useState([]);
 	const [modalShow, setModalShow] = useState(false);
 	const [popoverShow, setPopoverShow] = useState(false);
+
+	// Handle caption, changes the caption with user input
+	const [caption, setCaption] = useState("")
+    const [createPost, { }] = useCreatePostMutation()
+
 
 	const username = useSelector(state => state.user.username);
 	const avatar = useSelector(state => state.user.picture);
@@ -68,6 +74,31 @@ function Home({ vendor = false }) {
 		e.preventDefault();
 	}
 
+	const handleCaption = (e)  => {
+        setCaption(e.target.value)
+    }
+	
+	async function handlePostClick(e) {
+		e.preventDefault()
+        try {
+
+			const res = await createPost({description: caption})
+			if (res.error) throw new Error(res.error)
+			// if (res.data?.status == "ok") {
+			// 	await dispatch(setUserData({ description: image }))
+			// }
+
+            console.log("POSTED")
+
+			
+			
+
+        } catch (error) {
+            console.log('rejected', error)
+        }
+
+    }
+
 	return (
 		<div>
 			<Container className="my-4 ">
@@ -99,6 +130,7 @@ function Home({ vendor = false }) {
 												as="textarea"
 												placeholder="Share your life!"
 												rows={4}
+												onChange={handleCaption}
 											/>
 
 											<Row className="px-1">
@@ -141,7 +173,8 @@ function Home({ vendor = false }) {
 													</button>
 												</span>
 											</Row>
-											<button className="postButton float-end mt-4 round-l px-3 py-1 fw-400" 
+											<button className="postButton float-end mt-4 round-l px-3 py-1 fw-400"
+											onClick={handlePostClick} 
 											>
 												<p className="fs-15 nopadding">
 													Post
