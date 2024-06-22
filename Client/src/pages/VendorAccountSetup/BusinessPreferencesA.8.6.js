@@ -28,7 +28,9 @@ const BusinessPreferences = () => {
 
   return (
     <>
-      <ProgressBar />
+      <div class="progress-bar-container">
+        <ProgressBar />
+      </div>
       <div className="main-form">
         <div className="heading">
           <h1 className="progress-page-title">Business Preference</h1>

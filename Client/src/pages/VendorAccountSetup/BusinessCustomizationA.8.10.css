@@ -8,7 +8,7 @@
   gap: 40px;
 
   position: absolute;
-  width: 1248px;
+  width: 100%;
   height: 456px;
   left: 96px;
   top: 256px;
@@ -83,6 +83,7 @@
   gap: 943px;
   isolation: isolate;
 
+  margin: auto;
   width: 1248px;
   height: 336px;
 
@@ -124,6 +125,20 @@
 .pencil-picture:hover {
   cursor: pointer;
 }
+.btns-business-customization {
+  /* Auto layout */
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  padding: 0px;
+  gap: 40px;
+
+  position: relative;
+  width: 296px;
+  height: 64px;
+  top: 50px;
+  left: 474px;
+}
 .back-button-business-customization {
   display: flex;
   flex-direction: row;
@@ -140,11 +155,12 @@
   flex: none;
   order: 0;
   flex-grow: 0;
-  position: absolute;
+  /* position: relative; */
   text-decoration: underline;
   height: 64px;
-  left: 969px;
-  top: 504px;
+  /* left: 969px;
+  top: 504px; */
+  margin: auto;
 }
 .save-continue-btn-business-customization {
   display: flex;
@@ -153,16 +169,17 @@
   align-items: center;
   padding: 20px;
   gap: 10px;
-
-  position: absolute;
+  /* 
+  position: relative; */
   width: 175px;
   height: 64px;
-  left: 1069px;
-  top: 504px;
+  /* left: 1069px;
+  top: 504px; */
 
   background: #8cbdeb;
   border-radius: 15px;
   border: none;
+  margin: auto;
 }
 .bot-line-b-custom {
   /* Line 5 */

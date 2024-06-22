@@ -68,7 +68,9 @@ function BusinessCustomization() {
 
   return (
     <>
-      <ProgressBar />
+      <div class="progress-bar-container">
+        <ProgressBar />
+      </div>
       <div className="main-form-business-customization">
         <div className="Heading-Business-Customization">
           <h1 className="Business-Customization">Business Customization</h1>
@@ -117,18 +119,20 @@ function BusinessCustomization() {
             // }}
           />
         </div>
-        <button
-          className="back-button-business-customization"
-          onClick={handleBack}
-        >
-          Back
-        </button>
-        <button
-          className="save-continue-btn-business-customization"
-          onClick={handleSubmit}
-        >
-          Save & Continue
-        </button>
+        <div className="btns-business-customization">
+          <button
+            className="back-button-business-customization"
+            onClick={handleBack}
+          >
+            Back
+          </button>
+          <button
+            className="save-continue-btn-business-customization"
+            onClick={handleSubmit}
+          >
+            Save & Continue
+          </button>
+        </div>
       </div>
       <hr className="bot-line-b-custom"></hr>
     </>

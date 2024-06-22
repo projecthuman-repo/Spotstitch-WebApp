@@ -56,7 +56,9 @@ function BilingInformation() {
 
   return (
     <>
-      <ProgressBar />
+      <div class="progress-bar-container">
+        <ProgressBar />
+      </div>
       <div className="body-billing-info">
         <div className="header-billing-info">
           <h1 className="page-title-billing-info">Billing Information</h1>

@@ -19,7 +19,9 @@ function BusinessName() {
 
   return (
     <>
-      <ProgressBar />
+      <div class="progress-bar-container">
+        <ProgressBar />
+      </div>
       <div className="main-form">
         <div className="heading">
           <h1 className="heading-busiessname">Name Your Business</h1>
@@ -38,16 +40,17 @@ function BusinessName() {
             <li>No special characters, or accented letters</li>
           </ul>
         </div>
-
-        <button className="back-button-business-name" onClick={handleBack}>
-          Back
-        </button>
-        <button
-          className="save-continue-btn-business-name"
-          onClick={handleSubmit}
-        >
-          Save & Continue
-        </button>
+        <div className="btns-business-name">
+          <button className="back-button-business-name" onClick={handleBack}>
+            Back
+          </button>
+          <button
+            className="save-continue-btn-business-name"
+            onClick={handleSubmit}
+          >
+            Save & Continue
+          </button>
+        </div>
       </div>
       <hr className="bot-divider"></hr>
     </>
