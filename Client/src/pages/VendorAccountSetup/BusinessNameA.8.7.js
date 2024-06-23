@@ -31,7 +31,7 @@ function BusinessName() {
         </div>
         <div className="form-container-business-name">
           <input
-            className="Text-input "
+            className="Text-input-business-name "
             placeholder="Enter your business name"
             onChange={handleSetBusinessName}
           ></input>

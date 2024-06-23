@@ -8,7 +8,7 @@ function AccountSetupPageThree() {
   const navigate = useNavigate();
   const handleSubmit = (event) => {
     event.preventDefault();
-    navigate("/");
+    navigate("/ShopSetup");
   };
   const handleBack = (event) => {
     event.preventDefault();

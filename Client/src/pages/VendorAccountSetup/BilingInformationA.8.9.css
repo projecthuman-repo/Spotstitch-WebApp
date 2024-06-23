@@ -34,7 +34,7 @@
   width: 331px;
   height: 45px;
 
-  font-family: "Poppins";
+  /* font-family: "Poppins"; */
   font-style: normal;
   font-weight: 500;
   font-size: 36px;
@@ -55,7 +55,7 @@
   width: 556px;
   height: 30px;
 
-  font-family: "Poppins";
+  /* font-family: "Poppins"; */
   font-style: normal;
   font-weight: 400;
   font-size: 20px;
@@ -120,7 +120,7 @@
   width: 110px;
   height: 25px;
 
-  font-family: "Poppins";
+  /* font-family: "Poppins"; */
   font-style: normal;
   font-weight: 500;
   font-size: 20px;
@@ -139,7 +139,7 @@
   width: 359px;
   height: 24px;
 
-  font-family: "Poppins";
+  /* font-family: "Poppins"; */
   font-style: normal;
   font-weight: 400;
   font-size: 16px;
@@ -198,7 +198,7 @@ label.individual {
   width: 82px;
   height: 24px;
 
-  font-family: "Poppins";
+  /* font-family: "Poppins"; */
   font-style: normal;
   font-weight: 600;
   font-size: 16px;
@@ -242,7 +242,7 @@ label.business {
   width: 72px;
   height: 24px;
 
-  font-family: "Poppins";
+  /* font-family: "Poppins"; */
   font-style: normal;
   font-weight: 600;
   font-size: 16px;
@@ -280,7 +280,7 @@ label.business {
   width: 197px;
   height: 45px;
 
-  font-family: "Poppins";
+  /* font-family: "Poppins"; */
   font-style: normal;
   font-weight: 500;
   font-size: 20px;
@@ -333,7 +333,7 @@ label.vendor-first-name {
   width: 265px;
   height: 24px;
 
-  font-family: "Poppins";
+  /* font-family: "Poppins"; */
   font-style: normal;
   font-weight: 400;
   font-size: 16px;
@@ -370,7 +370,7 @@ label.vendor-last-name {
   width: 265px;
   height: 24px;
 
-  font-family: "Poppins";
+  /* font-family: "Poppins"; */
   font-style: normal;
   font-weight: 400;
   font-size: 16px;
@@ -425,7 +425,7 @@ label.vendor-last-name {
   width: 170px;
   height: 24px;
 
-  font-family: "Poppins";
+  /* font-family: "Poppins"; */
   font-style: normal;
   font-weight: 400;
   font-size: 16px;
@@ -513,7 +513,7 @@ label.DOB-Y select {
   width: 187px;
   height: 45px;
 
-  font-family: "Poppins";
+  /* font-family: "Poppins"; */
   font-style: normal;
   font-weight: 500;
   font-size: 20px;
@@ -570,7 +570,7 @@ label.street-number {
   width: 137px;
   height: 24px;
 
-  font-family: "Poppins";
+  /* font-family: "Poppins"; */
   font-style: normal;
   font-weight: 400;
   font-size: 16px;
@@ -648,7 +648,7 @@ label.street-name {
   width: 378px;
   height: 24px;
 
-  font-family: "Poppins";
+  /* font-family: "Poppins"; */
   font-style: normal;
   font-weight: 400;
   font-size: 16px;
@@ -722,7 +722,7 @@ label.city-town {
   width: 190px;
   height: 24px;
 
-  font-family: "Poppins";
+  /* font-family: "Poppins"; */
   font-style: normal;
   font-weight: 400;
   font-size: 16px;
@@ -779,7 +779,7 @@ label.state-province-region {
   width: 325px;
   height: 24px;
 
-  font-family: "Poppins";
+  /* font-family: "Poppins"; */
   font-style: normal;
   font-weight: 400;
   font-size: 16px;
@@ -838,7 +838,7 @@ label.country {
   width: 340px;
   height: 24px;
 
-  font-family: "Poppins";
+  /* font-family: "Poppins"; */
   font-style: normal;
   font-weight: 400;
   font-size: 16px;
@@ -897,7 +897,7 @@ label.postal-code {
   width: 175px;
   height: 24px;
 
-  font-family: "Poppins";
+  /* font-family: "Poppins"; */
   font-style: normal;
   font-weight: 400;
   font-size: 16px;
@@ -956,7 +956,7 @@ label.postal-code {
   width: 176px;
   height: 25px;
 
-  font-family: "Poppins";
+  /* font-family: "Poppins"; */
   font-style: normal;
   font-weight: 500;
   font-size: 20px;
@@ -997,7 +997,7 @@ label.card-number {
 
   width: 550px;
 
-  font-family: "Poppins";
+  /* font-family: "Poppins"; */
   font-style: normal;
   font-weight: 400;
   font-size: 16px;
@@ -1074,7 +1074,7 @@ label.expirationDate {
   width: 177px;
   height: 24px;
 
-  font-family: "Poppins";
+  /* font-family: "Poppins"; */
   font-style: normal;
   font-weight: 400;
   font-size: 16px;
@@ -1134,7 +1134,7 @@ label.cvv {
   width: 177px;
   height: 24px;
 
-  font-family: "Poppins";
+  /* font-family: "Poppins"; */
   font-style: normal;
   font-weight: 400;
   font-size: 16px;
@@ -1193,7 +1193,7 @@ label.name-on-card {
   width: 550px;
   height: 24px;
 
-  font-family: "Poppins";
+  /* font-family: "Poppins"; */
   font-style: normal;
   font-weight: 400;
   font-size: 16px;

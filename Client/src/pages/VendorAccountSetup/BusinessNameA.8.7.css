@@ -21,7 +21,7 @@
   width: 370px;
   height: 45px;
 
-  font-family: "Poppins";
+  /* font-family: "Roboto"; */
   font-style: normal;
   font-weight: 500;
   font-size: 36px;
@@ -67,7 +67,7 @@
   width: 635px;
   height: 30px;
 
-  font-family: "Poppins";
+  /* font-family: "Poppins"; */
   font-style: normal;
   font-weight: 400;
   font-size: 20px;
@@ -84,7 +84,7 @@
 }
 
 /* Text input */
-.Text-input {
+.Text-input-business-name {
   /* Auto layout */
   display: flex;
   flex-direction: row;
@@ -113,7 +113,7 @@
   width: 424px;
   height: 48px;
 
-  font-family: "Poppins";
+  /* font-family: "Poppins"; */
   font-style: normal;
   font-weight: 400;
   font-size: 16px;

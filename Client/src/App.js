@@ -20,6 +20,7 @@ import VendorGoal from "./pages/VendorAccountSetup/VendorGoalA8.4";
 import VendorSetupComplete from "./pages/VendorAccountSetup/VendorSetupCompleteA8.5";
 import BusinessPreferences from './pages/VendorAccountSetup/BusinessPreferencesA.8.6.js'
 import BusinessName from './pages/VendorAccountSetup/BusinessNameA.8.7.js'
+import BusinessCategory from './pages/VendorAccountSetup/BusinessCategoryA.8.8.js'
 import BillingInformation from './pages/VendorAccountSetup/BilingInformationA.8.9.js'
 import BusinessCustomization from './pages/VendorAccountSetup/BusinessCustomizationA.8.10.js'
 import AccountSetupPageOne from './pages/VendorAccountSetup/AccountSetupA.9.1'
@@ -122,6 +123,8 @@ function App() {
 					element={<Logged><BusinessPreferences /></Logged>} />
 				<Route path="/BusinessName"
 					element={<Logged><BusinessName/></Logged>} />
+				<Route path="/BusinessCategory"
+					element={<Logged><BusinessCategory/></Logged>} />
 				<Route path="/BillingInformation"
 					element={<Logged><BillingInformation/></Logged>} />
 				<Route path="/BusinessCustomization"

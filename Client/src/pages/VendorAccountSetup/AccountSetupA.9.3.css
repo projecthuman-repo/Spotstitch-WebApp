@@ -61,7 +61,7 @@
   width: 520px;
   height: 24px;
 
-  font-family: "Poppins";
+  /* font-family: "Poppins"; */
   font-style: normal;
   font-weight: 400;
   font-size: 16px;
@@ -83,7 +83,7 @@
   width: 520px;
   height: 45px;
 
-  font-family: "Poppins";
+  /* font-family: "Poppins"; */
   font-style: normal;
   font-weight: 500;
   font-size: 36px;
@@ -131,7 +131,7 @@
   width: 520px;
   height: 24px;
 
-  font-family: "Poppins";
+  /* font-family: "Poppins"; */
   font-style: normal;
   font-weight: 400;
   font-size: 16px;
@@ -174,7 +174,7 @@
   order: 1;
   flex-grow: 0;
 
-  font-family: "Poppins";
+  /* font-family: "Poppins"; */
   font-style: normal;
   font-weight: 600;
   font-size: 16px;

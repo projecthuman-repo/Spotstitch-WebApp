@@ -13,7 +13,7 @@ body {
   height: 100px;
 }
 /* Heading */
-.heading {
+.heading-business-preference {
   /* Auto layout */
   display: flex;
   flex-direction: column;
@@ -28,13 +28,14 @@ body {
   flex: none;
   order: 0;
   flex-grow: 0;
+  margin-bottom: 40px;
 }
 .progress-page-title
 /* Business Preferences */ {
   width: 383px;
   height: 45px;
 
-  font-family: "Poppins";
+  /* font-family: "Poppins"; */
   font-style: normal;
   font-weight: 500;
   font-size: 36px;
@@ -55,7 +56,7 @@ body {
   width: 236px;
   height: 30px;
 
-  font-family: "Poppins";
+  /* font-family: "Poppins"; */
   font-style: normal;
   font-weight: 400;
   font-size: 20px;
@@ -77,7 +78,7 @@ body {
   flex-direction: column;
   align-items: center;
   padding: 0px;
-  gap: 40px;
+  /* gap: 40px; */
 
   position: absolute;
   width: 100%;
@@ -125,7 +126,7 @@ body {
 .business-language {
   width: 195px;
   height: 25px;
-  font-family: "Poppins";
+  /* font-family: "Poppins"; */
   font-style: normal;
   font-weight: 500;
   font-size: 20px;
@@ -151,7 +152,7 @@ body {
   flex: none;
   order: 1;
   flex-grow: 0;
-  font-family: "Poppins";
+  /* font-family: "Poppins"; */
 }
 .frame-2610803 {
   display: flex;
@@ -169,7 +170,7 @@ body {
 .business-country {
   width: 175px;
   height: 25px;
-  font-family: "Poppins";
+  /* font-family: "Poppins"; */
   font-style: normal;
   font-weight: 500;
   font-size: 20px;
@@ -213,7 +214,7 @@ body {
 .business-state-province {
   width: 244px;
   height: 25px;
-  font-family: "Poppins";
+  /* font-family: "Poppins"; */
   font-style: normal;
   font-weight: 500;
   font-size: 20px;
@@ -240,7 +241,7 @@ body {
 .business-currency {
   width: 187px;
   height: 25px;
-  font-family: "Poppins";
+  /* font-family: "Poppins"; */
   font-style: normal;
   font-weight: 500;
   font-size: 20px;

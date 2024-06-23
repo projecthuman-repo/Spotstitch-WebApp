@@ -45,7 +45,7 @@
 .account-setup-title {
   /* You are all stitched up! */
 
-  font-family: "Poppins";
+  /* font-family: "Poppins"; */
   font-style: normal;
   font-weight: 500;
   font-size: 36px;
@@ -65,7 +65,7 @@
 .account-setup-text {
   width: 360px;
 
-  font-family: "Poppins";
+  /* font-family: "Poppins"; */
   font-style: normal;
   font-weight: 400;
   font-size: 16px;
@@ -104,7 +104,7 @@
 
 .save-continue-AccountSetupPageOne {
   /* Finish Stup */
-  font-family: "Poppins";
+  /* font-family: "Poppins"; */
   font-style: normal;
   font-weight: 600;
   font-size: 16px;

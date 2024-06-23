@@ -32,7 +32,7 @@ const BusinessPreferences = () => {
         <ProgressBar />
       </div>
       <div className="main-form">
-        <div className="heading">
+        <div className="heading-business-preference">
           <h1 className="progress-page-title">Business Preference</h1>
           <p className="small-description">Tell us about your shop.</p>
         </div>
