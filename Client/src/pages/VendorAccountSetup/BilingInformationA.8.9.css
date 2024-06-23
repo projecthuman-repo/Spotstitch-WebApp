@@ -1,25 +1,15 @@
 .body-billing-info {
-  position: relative;
-  width: 1440px;
-  height: 1996px;
-  left: 5336px;
-  top: 801px;
-
-  background: #ffffff;
-}
-
-.body-billing-info {
   /* Auto layout */
   display: flex;
   flex-direction: column;
   align-items: center;
   padding: 0px;
-  gap: 40px;
+  /* gap: 40px; */
 
   position: absolute;
   width: 100%;
   height: 1428px;
-  left: 96px;
+  left: 20px;
   top: 256px;
 }
 

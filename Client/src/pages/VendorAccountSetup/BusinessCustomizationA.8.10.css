@@ -10,7 +10,7 @@
   position: absolute;
   width: 100%;
   height: 456px;
-  left: 96px;
+  left: 0px;
   top: 256px;
 }
 
@@ -112,7 +112,7 @@
   position: absolute;
   width: 40.4px;
   height: 40.4px;
-  left: 1154px;
+  left: 1254px;
   top: 178.5px;
 
   /* Inside auto layout */
