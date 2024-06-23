@@ -1,16 +1,30 @@
 .btn.btn-profile.Edit-Account-button {
-    background: #06D69F;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-    color: #01271D;
-    transition: box-shadow 0.3s ease;
+  background: #06d69f;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  color: #01271d;
+  transition: box-shadow 0.3s ease;
 }
 
 .btn.btn-profile.Edit-Account-button:hover {
-    box-shadow: 0px 6px 6px rgba(0, 0, 0, 0.25);
+  box-shadow: 0px 6px 6px rgba(0, 0, 0, 0.25);
 }
 
 .btn.btn-profile.Edit-Account-button:active {
-    /* Styles for active state */
-    background-color: #01271D;
-    color: #06D69F;
+  /* Styles for active state */
+  background-color: #01271d;
+  color: #06d69f;
+}
+
+.avatar-profile-account-details {
+  /* Ellipse 143 */
+
+  /* position: absolute; */
+  width: 139px;
+  height: 142.46px;
+  /* left: 387px;
+  top: 322.71px; */
+
+  background: #757575;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 50%;
 }
