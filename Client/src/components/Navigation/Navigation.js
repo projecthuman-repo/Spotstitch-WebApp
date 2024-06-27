@@ -24,6 +24,7 @@ import logo from "../../assets/sslogo.png";
 import SideNav from "./SideNav";
 import { Link, useLocation } from "react-router-dom";
 
+
 export default function Topbar({ menuOpen, setMenuOpen }) {
 	const user = useSelector((state) => state.user);
 	const picture = useSelector(state => state.user.picture)
@@ -45,6 +46,7 @@ export default function Topbar({ menuOpen, setMenuOpen }) {
 		window.location.replace("/");
 	}
 	return (
+
 		<Navbar className="p-3 overflow-auto nav-shadow" expand="lg">
 			<Container
 				className="d-flex justify-content-center"

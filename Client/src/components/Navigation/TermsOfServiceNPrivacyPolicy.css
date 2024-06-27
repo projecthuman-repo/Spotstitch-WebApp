@@ -1,0 +1,41 @@
+.container {
+    font-family: Arial, sans-serif;
+    padding: 20px;
+}
+
+.tos-header {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.tos-content {
+    border: 1px solid #ccc;
+    padding: 20px;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+}
+
+.section {
+    margin-bottom: 20px;
+}
+
+.section h2 {
+    font-size: 1.5rem;
+    color: #333;
+}
+
+.sub-section {
+    margin-top: 10px;
+}
+
+.sub-section h3 {
+    font-size: 1.25rem;
+    color: #666;
+}
+
+.sub-section p {
+    font-size: 1rem;
+    color: #333;
+    line-height: 1.6;
+    margin-top: 10px;
+}
