@@ -9,12 +9,19 @@ import store from "../../store";
 
 import { useGlobalContext } from '../../context/GlobalContext';
 
+import AccountSwitcherDialog from "./AccountSwitcherDialog";   {/*Newly Added*/}
+import LoginDialog from './LoginDialog';                       {/*Newly Added*/}
+import "./Navigation.css";
+
 
 
 function SideNav() {
     const user = useSelector((state) => state.user);
     const dispatch = useDispatch();
     const navigate = useNavigate();
+
+    const [showSwitchDialog, setShowSwitchDialog] = useState(false);    {/*Newly Added*/}
+    const [showLoginDialog, setShowLoginDialog] = useState(false);      {/*Newly Added*/}
 
     const links = [
         { icon: profile, name: "Profile", destination: "/profile" },
@@ -69,6 +76,10 @@ function SideNav() {
         console.log(user)
         setShow(true);
     };
+    const handleShowSwitchDialog = () => setShowSwitchDialog(true);       {/*Newly Added*/}
+    const handleCloseSwitchDialog = () => setShowSwitchDialog(false);     {/*Newly Added*/}
+    const handleShowLoginDialog = () => setShowLoginDialog(true);         {/*Newly Added*/}
+    const handleCloseLoginDialog = () => setShowLoginDialog(false);       {/*Newly Added*/}
 
     const handleLogout = () => {
         console.log("logging out")
@@ -81,11 +92,7 @@ function SideNav() {
         setMainEmail(email);
         setSent(true);
         handleClose();
-
-        store.dispatch({ type: "RESET" });
-        localStorage.clear();
-
-        navigate("/start");
+        handleShowLoginDialog(); 
     }
 
     const switchAccount = () =>{
@@ -151,31 +158,38 @@ function SideNav() {
 
                     <section className="mt-auto">
                         <Row className="mb-1"><Col><button className="btn nopadding mt-auto"><p className="fw-600 mb-0">Your Accounts</p></button></Col></Row>
+                        <Row><Col className="mt-1"><button className="btn nopadding mt-auto" onClick={handleShowSwitchDialog}>Switch Account</button></Col></Row>
+                        <Row><Col className="mt-1"><button className="btn nopadding mt-auto" onClick={handleAddAccount}>Add Account</button></Col></Row>
                         {['Convert to vendor'].map(option => {
                             return <Row key={option}><Col><button className="btn nopadding">{option}</button></Col></Row>
                         })}
                         <Row><Col><button className="btn nopadding mt-3"><p className="fw-600 mb-0">More Options</p></button></Col></Row>
-                        {['See terms of service', 'See privacy policy'].map(option => {
+
+                        {/* {['See terms of service', 'See privacy policy'].map(option => {
                             return <Row key={option}><Col><button className="btn nopadding">{option}</button></Col></Row>
-                        })}
+                        })} */}
+                        <Row><Col className="mt-1"><Link className="btn nopadding" to="/terms-of-service">See terms of service</Link></Col></Row>
+                        <Row><Col className="mt-1"><Link className="btn nopadding" to="/privacy-policy">See privacy policy</Link></Col></Row>
 
                         <br/>
 
-                        <Row className="mb-1"><Col><button className="btn nopadding mt-auto"><p className="fw-600 mb-0">Switch Accounts</p></button></Col></Row>
                         {otherAccounts && otherAccounts.map((value) => {
                             return <Row key={value[0]}><Col onClick={(e) => {setAccPassword(value[1][3]); setSwitchUser(value[1][0]); switchAccount()}}><button className="btn nopadding">{value[1][0]}</button></Col></Row>
                         })}
+                        {/* <Row className="mb-1"><Col><button className="btn nopadding mt-auto"><p className="fw-600 mb-0">Switch Accounts</p></button></Col></Row> */}
 
                         <Row>
-                            <Col className="mt-5"><button className="btn nopadding" onClick={handleAddAccount}>Add Account</button></Col>
+                            {/* <Col className="mt-5"><button className="btn nopadding" onClick={handleAddAccount}>Add Account</button></Col> */}
                             <Col className="mt-5"><button className="btn nopadding" onClick={handleLogout}>Log Out</button></Col>
                         </Row>
                     </section>
 
-
-
                 </Modal.Body>
             </Modal>
+            <AccountSwitcherDialog show={showSwitchDialog} handleClose={handleCloseSwitchDialog} />  {/*Newly Added*/}
+            <LoginDialog show={showLoginDialog} handleClose={handleCloseLoginDialog} />  {/*Newly Added*/}
+
+
         </>
     );
 };
