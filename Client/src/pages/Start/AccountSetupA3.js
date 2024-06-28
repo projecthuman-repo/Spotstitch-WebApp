@@ -64,6 +64,8 @@ const AccountSetup = () => {
         }))
 
         try {
+          console.log(localStorage)
+          console.log(registerForm)
             const registerServerResponse = await registerUser(registerForm)
             console.log("success", registerServerResponse.data)
             if (registerServerResponse.error) {

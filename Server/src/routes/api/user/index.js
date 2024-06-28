@@ -10,6 +10,7 @@ const updateImage = require('./updateImage');
 const updateAccountType = require('./updateAccountType');
 const updateFirstName = require('./updateFirstName');
 const updateLastName = require('./updateLastName');
+const updateUsername = require('./updateUsername');
 const updateBanner = require('./updateBanner');
 const updateWebsite = require('./updateWebsite');
 const updateBio = require('./updateBio');
@@ -28,6 +29,9 @@ router.put('/firstName', verifyToken, updateFirstName)
 
 // update user last name
 router.put('/lastName', verifyToken, updateLastName)
+
+// update user username
+router.put('/username', verifyToken, updateUsername)
 
 // update user image
 router.put('/image', verifyToken, updateImage)

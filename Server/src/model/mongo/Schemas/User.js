@@ -176,6 +176,18 @@ UserSchema.methods.getUserData = async function () {
   return userProfile
 }
 
+UserSchema.methods.updateUsername = async function (name) {
+  try {
+    if (!name) throw new Error("No username given")
+    this.username = name
+    await this.save({ validateBeforeSave: false })
+
+    return this.username
+  } catch (error) {
+    throw new Error(error)
+  }
+}
+
 UserSchema.methods.updateFirstName = async function (name) {
   try {
     if (!name) throw new Error("No name given")

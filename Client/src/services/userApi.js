@@ -53,17 +53,9 @@ const userApi = createApi({
             }),
         }),
 
-        updateFirstName: builder.mutation({
+        updateUsername: builder.mutation({
             query: (name) => ({
-                url: "/user/firstName",
-                method: "PUT",
-                body: name
-            }),
-        }),
-
-        updateLastName: builder.mutation({
-            query: (name) => ({
-                url: "/user/lastName",
+                url: "/user/username",
                 method: "PUT",
                 body: name
             }),
@@ -108,6 +100,7 @@ export const {
     useRegisterSpotstitchMutation,
     useUpdateFirstNameMutation,
     useUpdateLastNameMutation,
+    useUpdateUsernameMutation,
     useUpdatePictureMutation,
     useUpdateBannerMutation,
     useUpdateBioMutation,

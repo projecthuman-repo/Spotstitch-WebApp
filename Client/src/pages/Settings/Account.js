@@ -1,12 +1,12 @@
 import { useState } from "react";
 import { Col, Container, Form, Row } from "react-bootstrap";
 import { useSelector } from "react-redux";
+import { useUpdateBioMutation, useUpdateUsernameMutation } from "../../services/userApi";
 
 function Account() {
     const userDetails = ['Name', 'Username', 'Bio']
     const links = ['Facebook', 'Twitter', 'Instagram', 'LinkedIn', 'Google']
     const [isLinked, setIsLinked] = useState([]);
-    const [name, setName] = useState('')
 
     const user = useSelector((state) => state.user);
     const username = user.username || "Username";
@@ -17,6 +17,21 @@ function Account() {
         if (linked.includes(newLink)) linked.splice(linked.indexOf(newLink), 1)
         else linked.push(newLink)
         setIsLinked(linked)
+    }
+
+
+    // Handle firstName, changes first name of user
+    const [chUsername, setUsername] = useState('')
+    const [updateUserame, { }] = useUpdateUsernameMutation()
+    const handleUserame = (e)  => {
+        setUsername(e.target.value)
+    }
+
+    // Handle bio, changes bio of user
+    const [biography, setBio] = useState('')
+    const [updateBio, { }] = useUpdateBioMutation()
+    const handleBio = (e)  => {
+        setBio(e.target.value)
     }
 
 

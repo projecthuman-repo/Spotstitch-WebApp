@@ -19,6 +19,9 @@ const AccountEmailVerification = () => {
         return `${censoredLocalPart}@${domain}`;
     };
 
+    dispatch(reset())
+    localStorage.clear()
+
     return (
         <>
         <div className="boss">
