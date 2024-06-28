@@ -16,6 +16,7 @@ import registerSlice from "./features/User/registerSlice";
 import userApi from "./services/userApi";
 import walletApi from "./services/wallet";
 import addressApi from "./services/address";
+import postsApi from "./services/posts";
 
 // reducers
 const appReducer = combineReducers({
@@ -26,6 +27,7 @@ const appReducer = combineReducers({
     [userApi.reducerPath]: userApi.reducer,
     [walletApi.reducerPath]: walletApi.reducer,
     [addressApi.reducerPath]: addressApi.reducer,
+    [postsApi.reducerPath]: postsApi.reducer,
 });
 
 const rootReducer = (state, action) => {
@@ -61,7 +63,8 @@ const store = configureStore({
             loginApi.middleware, 
             userApi.middleware,
             walletApi.middleware,
-            addressApi.middleware
+            addressApi.middleware,
+            postsApi.middleware,
         ])
 });
 

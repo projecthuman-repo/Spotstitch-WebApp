@@ -46,7 +46,7 @@ PostSchema.statics.createPost = async (postData) => {
         await post.save()
         return post;
     } catch (err) {
-        throw new Error("Error getting posts");
+        throw new Error("Error creating post");
     }
 }
 

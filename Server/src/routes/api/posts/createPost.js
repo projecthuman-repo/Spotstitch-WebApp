@@ -6,6 +6,8 @@ const { createErrorResponse, createSuccessResponse } = require('../../../respons
 module.exports = async (req, res) => {
     try {
         // make sure the user is authenticated and we can find their ID
+        console.log("POST dATA---------------------------------", res?.locals?.jwtData?.id)
+
         const userId = res?.locals?.jwtData?.id
         if (!userId) throw new Error('Invalid user ID')
 

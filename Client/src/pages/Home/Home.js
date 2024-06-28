@@ -84,11 +84,11 @@ function Home({ vendor = false }) {
 
 			const res = await createPost({description: caption})
 			if (res.error) throw new Error(res.error)
-			// if (res.data?.status == "ok") {
+				// if (res.data?.status == "ok") {
 			// 	await dispatch(setUserData({ description: image }))
 			// }
+			console.log("POSTED")
 
-            console.log("POSTED")
 
 			
 			
