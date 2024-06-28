@@ -14,6 +14,7 @@ const updateUsername = require('./updateUsername');
 const updateBanner = require('./updateBanner');
 const updateWebsite = require('./updateWebsite');
 const updateBio = require('./updateBio');
+const updateFollow = require('./updateFollow');
 
 // get user profile
 router.get('/profile', verifyToken, getProfile)
@@ -44,6 +45,9 @@ router.put('/website', verifyToken, updateBio)
 
 // update user website
 router.put('/website', verifyToken, updateWebsite)
+
+//update user following and followers
+router.put('/follow', verifyToken, updateFollow)
 
 // update user type
 router.put('/type', verifyToken, updateAccountType)

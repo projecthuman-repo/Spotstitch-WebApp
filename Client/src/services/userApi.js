@@ -85,6 +85,14 @@ const userApi = createApi({
             }),
         }),
 
+        updateFollow: builder.mutation({
+            query: (follow) => ({
+                url: "/user/bio",
+                method: "PUT",
+                body: follow
+            }),
+        }),
+
         updateAccountType: builder.mutation({
             query: (type) => ({
                 url: "/user/type",
@@ -105,6 +113,7 @@ export const {
     useUpdateBannerMutation,
     useUpdateBioMutation,
     useUpdateWebsiteMutation,
+    useUpdateFollowMutation,
     useUpdateAccountTypeMutation
 } = userApi;
 

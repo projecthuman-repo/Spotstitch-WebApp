@@ -260,6 +260,56 @@ UserSchema.methods.updateWebsite = async function (website) {
   }
 }
 
+UserSchema.methods.updateFollow = async function (user, followed) {
+  // user and followed are object ids
+
+  try {
+    if (!user) throw new Error("No user given")
+    if (!followed) throw new Error("No followed given")
+
+
+    // Adding followed to user's following
+    this.following.append(followed)
+    await this.save()
+
+
+    // Adding user to followed's followers
+    const followedAcc = await User.findById(followed)
+    followedAcc.followers.append(user)
+    await followedAcc.save()
+
+    return this.following
+  } catch (error) {
+    throw new Error(error)
+  }
+}
+
+UserSchema.methods.updateFollowing = async function (account) {
+  try {
+    if (!account) throw new Error("No post given")
+
+    this.following.append(account)
+    await this.save()
+
+    return this.following
+  } catch (error) {
+    throw new Error(error)
+  }
+}
+
+UserSchema.methods.updateFollowers = async function (account) {
+  try {
+    if (!account) throw new Error("No post given")
+
+    this.followers.append(account)
+    await this.save()
+
+    return this.followers
+  } catch (error) {
+    throw new Error(error)
+  }
+}
+
 UserSchema.methods.updateAccountType = async function (type) {
   try {
     if (!type) throw new Error("No type given")
