@@ -72,8 +72,8 @@
 }
 
 /* Text */
-.text {
-  width: 80px;
+.progress-bar .text {
+  width: 90px;
   height: 48px;
   /* font-family: "Poppins"; */
   font-style: normal;

@@ -1,0 +1,2 @@
+import { PixelCrop } from '..';
+export declare function imgPreview(image: HTMLImageElement, crop: PixelCrop, scale?: number, rotate?: number): Promise<string>;
