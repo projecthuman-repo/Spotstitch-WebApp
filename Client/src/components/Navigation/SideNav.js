@@ -10,7 +10,7 @@ import store from "../../store";
 import { useGlobalContext } from '../../context/GlobalContext';
 
 import AccountSwitcherDialog from "./AccountSwitcherDialog";   {/*Newly Added*/}
-import LoginDialog from './LoginDialog';                       {/*Newly Added*/}
+import AddAccount from './AddAccount';                       {/*Newly Added*/}
 import "./Navigation.css";
 
 
@@ -21,7 +21,7 @@ function SideNav() {
     const navigate = useNavigate();
 
     const [showSwitchDialog, setShowSwitchDialog] = useState(false);    {/*Newly Added*/}
-    const [showLoginDialog, setShowLoginDialog] = useState(false);      {/*Newly Added*/}
+    const [showAddAccount, setShowAddAccount] = useState(false);      {/*Newly Added*/}
 
     const links = [
         { icon: profile, name: "Profile", destination: "/profile" },
@@ -78,8 +78,8 @@ function SideNav() {
     };
     const handleShowSwitchDialog = () => setShowSwitchDialog(true);       {/*Newly Added*/}
     const handleCloseSwitchDialog = () => setShowSwitchDialog(false);     {/*Newly Added*/}
-    const handleShowLoginDialog = () => setShowLoginDialog(true);         {/*Newly Added*/}
-    const handleCloseLoginDialog = () => setShowLoginDialog(false);       {/*Newly Added*/}
+    const handleShowAddAccount = () => setShowAddAccount(true);         {/*Newly Added*/}
+    const handleCloseAddAccount = () => setShowAddAccount(false);       {/*Newly Added*/}
 
     const handleLogout = () => {
         console.log("logging out")
@@ -92,7 +92,7 @@ function SideNav() {
         setMainEmail(email);
         setSent(true);
         handleClose();
-        handleShowLoginDialog(); 
+        handleShowAddAccount(); 
     }
 
     const switchAccount = () =>{
@@ -187,7 +187,7 @@ function SideNav() {
                 </Modal.Body>
             </Modal>
             <AccountSwitcherDialog show={showSwitchDialog} handleClose={handleCloseSwitchDialog} />  {/*Newly Added*/}
-            <LoginDialog show={showLoginDialog} handleClose={handleCloseLoginDialog} />  {/*Newly Added*/}
+            <AddAccount show={showAddAccount} handleClose={handleCloseAddAccount} />  {/*Newly Added*/}
 
 
         </>

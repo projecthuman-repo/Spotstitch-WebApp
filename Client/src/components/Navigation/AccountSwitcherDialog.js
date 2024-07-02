@@ -1,6 +1,7 @@
 import React from 'react';
 import { Modal, ListGroup, Button } from 'react-bootstrap';
-import "./AccountSwitcher.css";
+import { Link, useNavigate } from "react-router-dom";
+import "./AccountSwitcher1.css";
 
 const AccountSwitcherDialog = ({ show, handleClose }) => {
     const accounts = [
@@ -10,8 +11,8 @@ const AccountSwitcherDialog = ({ show, handleClose }) => {
 
     return (
         <Modal show={show} onHide={handleClose} centered>
-            <Modal.Header closeButton>
-                <Modal.Title>Switch accounts</Modal.Title>
+            <Modal.Header closeButton className='head'>
+                <Modal.Title className="ms-auto">Switch accounts</Modal.Title>
             </Modal.Header>
             <Modal.Body>
                 <ListGroup>
@@ -30,10 +31,10 @@ const AccountSwitcherDialog = ({ show, handleClose }) => {
                         </ListGroup.Item>
                     ))}
                 </ListGroup>
-                <div className="text-center mt-3">
-                    <Button variant="link" className="existing-account-link" onClick={() => console.log("Navigate to login screen")}>
-                        Log into an existing account
-                    </Button>
+                <div className="createaccount1">
+                    <Link to="/usersignup">
+                            Log into an existing account
+                    </Link>
                 </div>
             </Modal.Body>
         </Modal>

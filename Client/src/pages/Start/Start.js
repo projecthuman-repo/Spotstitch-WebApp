@@ -18,7 +18,7 @@ const Start = () => {
   const [password, setPassword] = useState("");
   const [loginUser, { isLoading: isUpdating, isError }] =
     useLoginUserMutation();
-  const [getUserProfile, {}] = useGetUserProfileMutation();
+  const [getUserProfile, { }] = useGetUserProfileMutation();
   const user = useSelector((state) => state.user);
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -91,7 +91,7 @@ const Start = () => {
             value="Sign In"
           />
         </form>
-        
+
         <img className="lineor" src={orline} alt="orline" />
 
         <button className="googlebutton">
@@ -112,9 +112,6 @@ const Start = () => {
             Create your account
           </Link>
         </div>
-
-        <div></div>
-        <div></div>
       </div>
     </div>
   );
