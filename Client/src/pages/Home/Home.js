@@ -22,15 +22,15 @@ import { GoLocation } from "react-icons/go";
 import CreateLayerModal from "./CreateLayerModal";
 import { Outlet } from "react-router-dom";
 import { useSelector } from "react-redux";
-import emoji from "../../assets/icons/Smiley face.png";
+import emoji from "../../assets/icons/Smiley face.svg";
 
-import Text from "../../assets/icons/Text icon.png";
-import At from "../../assets/icons/@.png";
-import Line from "../../assets/icons/Line 245.png";
-import Video from "../../assets/icons/Video Icon.png";
-import Mic from "../../assets/icons/Mic Icon.png";
-import Share from "../../assets/icons/Share Icon.png";
-import { share } from "../../assets/icons";
+import Text from "../../assets/icons/Text icon.svg";
+import At from "../../assets/icons/@.svg";
+import Line from "../../assets/icons/Line 246.svg";
+import Video from "../../assets/icons/Video Icon.svg";
+import Mic from "../../assets/icons/Mic Icon.svg";
+import Share from "../../assets/icons/Share Icon.svg";
+// import { share } from "../../assets/icons";
 
 function Home({ vendor = false }) {
   const [filters, setFilters] = useState([]);
@@ -124,7 +124,7 @@ function Home({ vendor = false }) {
                         </button>
                         <img src={Line}></img>
                         <button className="icon" onClick={addAttachment}>
-                          <img src={share} alt="share" className="share" />
+                          <img src={Share} alt="share" className="share" />
                         </button>
                       </div>
                       {/* <button className="postButton float-end mt-4 round-l px-3 py-1 fw-400">
