@@ -1,0 +1,31 @@
+.account-username {
+    border: none; 
+}
+
+.existing-account-link {
+    text-decoration: none; 
+    color: inherit;
+}
+
+.existing-account-link:hover {
+    text-decoration: underline; 
+    color: blue;
+}
+
+.head{
+    font-family: 'Poppins';
+    font-weight: 500;
+    font-size: 20px;
+}
+
+.createaccount1{
+    text-align: center;
+    margin-top: 20px;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 15px;
+    color: #0D589E; 
+    text-decoration-line: none;
+}
