@@ -48,6 +48,9 @@ import Settings from "./pages/Settings/Settings";
 import Inventory from "./pages/Inventory/Inventory";
 import Messages from "./pages/Messages/Messages";
 
+import TermsOfService from "./components/Navigation/TermsOfService";   {/*Newly added*/}
+import PrivacyPolicy from "./components/Navigation/PrivacyPolicy";     {/*Newly added*/}
+
 import {
 	Market,
 	ShoppingCart,
@@ -165,6 +168,8 @@ function App() {
 				<Route path="/settings" element={<Auth><Settings /></Auth>} />
 				<Route path="/inventory" element={<Auth><Inventory /></Auth>} />
 				<Route path="/explore" element={<Auth><ExplorePage /></Auth>} />
+				<Route path="/terms-of-service" element={<TermsOfService />} />  {/*Newly added*/}
+				<Route path="/privacy-policy" element={<PrivacyPolicy />} />     {/*Newly added*/}
 
 			</Routes>
 		</BrowserRouter>
