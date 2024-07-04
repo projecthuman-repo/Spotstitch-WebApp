@@ -12,6 +12,7 @@ const Profile = () => {
     const user = useSelector(state => state.user)
     const username = useSelector(state => state.user.username)
     const picture = useSelector(state => state.user.picture)
+    const bio = useSelector(state => state.user.bio)
     
     const banner = useSelector(state => state.user.banner)
     const followers = useSelector((state) => state.user.followers); 
@@ -20,6 +21,7 @@ const Profile = () => {
     const lastName = useSelector((state) => state.user.lastName) || "Last";
     console.log(user.firstName)
     console.log(user)
+    console.log("BIO-------", user.biography)
 
     const [tab, setTab] = useState(0)
 
@@ -53,9 +55,7 @@ const Profile = () => {
                                         <div>Posts</div>
                                         <div className="fs-32 text-start">0</div>
                                     </a>
-                                    <div>Lorem ipsum dolor sit amet consectetur.
-                                        Dapibus mauris scelerisque egestas scelerisque lectus pellentesque ante.
-                                        Porttitor congue sed vivamus vel vulputate aliquet.</div>
+                                    <div>{bio}</div>
                                 </div>
 
                             </Col>
