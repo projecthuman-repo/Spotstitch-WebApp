@@ -183,8 +183,8 @@ UserSchema.methods.updateDetails = async function (body) {
 
     if (body.firstName) this.firstName = body.firstName
     if (body.lastName) this.lastName = body.lastName
-    // if (body.biography) this.biography = body.biography
-    // if (body.website) this.website = body.website
+    if (body.biography) this.biography = body.biography
+    if (body.website) this.website = body.website
 
     await this.save
 
