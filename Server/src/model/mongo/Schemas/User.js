@@ -2,7 +2,8 @@ const mongoose = require('mongoose');
 const { isEmail } = require('validator');
 const bcrypt = require('bcrypt');
 const Settings = require('./Settings');
-const Wallet = require('./Wallet')
+const Wallet = require('./Wallet');
+const logger = require('../../../logger');
 
 const VENDOR_TYPE = "vendor"
 const USER_TYPE = "personal"
@@ -37,10 +38,10 @@ const UserSchema = new mongoose.Schema(
       unique: true,
       required: [true, "Can't be blank"],
     },
-    password: {
-      type: String,
-      required: [true, "Can't be blank"],
-    },
+    // password: {
+    //   type: String,
+    //   required: [true, "Can't be blank"],
+    // },
     picture: {
       type: String,
     },
@@ -52,6 +53,11 @@ const UserSchema = new mongoose.Schema(
     },
     biography: {
       type: String,
+      ref: "biography"
+    },
+    website: {
+      type: String,
+      ref: "website"
     },
     newMessages: {
       type: Object,
@@ -160,6 +166,8 @@ UserSchema.methods.getUserData = async function () {
     displayName: this.displayName,
     email: this.email,
     picture: this.picture,
+    biography: this.biography,
+    website: this.website,
     banner: this.banner,
     userType: this.userType,
     settings: this.settings,
@@ -167,6 +175,23 @@ UserSchema.methods.getUserData = async function () {
     followers: numFollowers,
   }
   return userProfile
+}
+
+UserSchema.methods.updateDetails = async function (body) {
+  try {
+    if (!body) throw new Error("No details given")
+
+    if (body.firstName) this.firstName = body.firstName
+    if (body.lastName) this.lastName = body.lastName
+    if (body.biography) this.biography = body.biography
+    if (body.website) this.website = body.website
+
+    await this.save
+
+    return this.firstName
+  } catch (error) {
+    throw new Error(error)
+  }
 }
 
 UserSchema.methods.updatePicture = async function (image) {

@@ -23,6 +23,15 @@ const userApi = createApi({
                 body: user
             }),
         }),
+
+        updateDetails: builder.mutation({
+            query: (body) => ({
+                url: "/user/details",
+                method: "PUT",
+                body: body
+            }),
+        }),
+
         updatePicture: builder.mutation({
             query: (image) => ({
                 url: "/user/image",
@@ -59,6 +68,7 @@ const userApi = createApi({
 export const {
     useGetUserProfileMutation,
     useRegisterSpotstitchMutation,
+    useUpdateDetailsMutation,
     useUpdatePictureMutation,
     useUpdateAccountTypeMutation
 } = userApi;
