@@ -183,4 +183,4 @@ const Start = () => {
     );
 }
 
-export default Start
+export default Start;

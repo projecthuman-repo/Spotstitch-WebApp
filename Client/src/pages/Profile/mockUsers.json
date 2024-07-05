@@ -1,0 +1,23 @@
+[
+  {
+    "id": 12,
+    "active": true,
+    "username": "UserOne",
+    "description": "Lorem ipsum dolor sit amet consectetur. Dapibus mauris scelerisque egestas scelerisque lectus pellentesque ante. Porttitor congue sed vivamus vel vulputate aliquet.",
+    "isFollowing": true
+  },
+  {
+    "id": 23,
+    "active": false,
+    "username": "UserTwo",
+    "description": "Lorem ipsum dolor sit amet consectetur. Dapibus mauris scelerisque egestas scelerisque lectus pellentesque ante. Porttitor congue sed vivamus vel vulputate aliquet.",
+    "isFollowing": true
+  },
+  {
+    "id": 232,
+    "active": true,
+    "username": "UserThree",
+    "description": "Lorem ipsum dolor sit amet consectetur. Dapibus mauris scelerisque egestas scelerisque lectus pellentesque ante. Porttitor congue sed vivamus vel vulputate aliquet.",
+    "isFollowing": true
+  }
+]
