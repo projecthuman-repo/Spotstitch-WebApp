@@ -1,16 +1,11 @@
 import { useState } from "react";
 import { Col, Container, Form, Row } from "react-bootstrap";
-import { useSelector } from "react-redux";
 
 function Account() {
     const userDetails = ['Name', 'Username', 'Bio']
     const links = ['Facebook', 'Twitter', 'Instagram', 'LinkedIn', 'Google']
     const [isLinked, setIsLinked] = useState([]);
     const [name, setName] = useState('')
-
-    const user = useSelector((state) => state.user);
-    const username = user.username || "Username";
-    const picture = user.picture; 
 
     function onLink(newLink) {
         const linked = [...isLinked]
@@ -30,9 +25,9 @@ function Account() {
         <section className="border-bottom mx-0">
             <Row className="m-3">
                 <Row>
-                    <Col lg={2}><img className='avatar' src={picture} height={92} width={92}></img></Col>
+                    <Col lg={2}><img className='avatar' src={''} height={92} width={92}></img></Col>
                     <Col lg={10}>
-                        <p className="nopadding fs-16 fw-500 my-1">{username}</p>
+                        <p className="nopadding fs-16 fw-500 my-1">User name</p>
                         <p className="nopadding fs-15 fw-400"><button className="btn btn-link nopadding">Change profile photo</button></p>
                     </Col>
                 </Row>
