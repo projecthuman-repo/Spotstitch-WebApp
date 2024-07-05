@@ -155,35 +155,49 @@ function AccountDetails() {
 
                                     }} />
                             </Form.Group>
-                            <div className="bg-banner row g-0 pt-5"
-                                style={{ backgroundImage: `url(${''}), linear-gradient(#D9D9D9 100%, #FFFFFF 1%)` }}>
+                            <div
+                                className="bg-banner row g-0 pt-5"
+                                style={{
+                                backgroundImage: `url(${""}), linear-gradient(#D9D9D9 100%, #FFFFFF 1%)`,
+                                }}
+                            >
                                 <Col lg={3} sm={6} xs={7} className="d-flex">
-                                    <div className="position-relative">
-                                        <img
-                                            type="button"
-                                            className="avatar content-border-l mx-4"
-                                            src={image}
-                                            width={139}
-                                            height={139}
-                                            onClick={() => { handleChangeImage(); }}
-                                        />
-                                        <img
-                                            type="button"
-                                            className="position-absolute top-50 start-50 translate-middle"
-                                            src={editAvatar}
-                                            width={30}
-                                            eight={30}
-                                            onClick={() => { handleChangeImage(); }}
-                                        />
-                                    </div>
-
+                                <div
+                                    className="position-relative"
+                                    style={{ marginLeft: "20px" }}
+                                >
+                                    <img
+                                        type="button"
+                                        className="avatar-profile-account-details"
+                                        src={image}
+                                        width={139}
+                                        height={139}
+                                        onClick={() => {
+                                            handleChangeImage();
+                                        }}
+                                    />
+                                    <img
+                                        type="button"
+                                        className="position-absolute top-50 start-50 translate-middle"
+                                        src={editAvatar}
+                                        width={30}
+                                        eight={30}
+                                        onClick={() => {
+                                            handleChangeImage();
+                                        }}
+                                    />
+                                </div>
                                 </Col>
-                                <Col lg={6} className="d-flex justify-content-evenly" sm={6} xs={5}>
-                                    <img src={editBanner} className="" height={54} width={54} />
-                                    <img src={removeBanner} className="" height={54} width={54} />
+                                <Col
+                                    lg={6}
+                                    className="d-flex justify-content-evenly"
+                                    sm={6}
+                                    xs={5}
+                                >
+                                <img src={editBanner} className="" height={54} width={54} />
+                                <img src={removeBanner} className="" height={54} width={54} />
                                 </Col>
-                                <Col lg={3} sm={0} xs={0}>
-                                </Col>
+                                <Col lg={3} sm={0} xs={0}></Col>
                             </div>
 
                             <Form.Group className="mt-2 mx-4" itemID="account.name">
