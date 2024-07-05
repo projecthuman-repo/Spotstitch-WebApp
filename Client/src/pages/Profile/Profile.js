@@ -1,14 +1,19 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./profile.css";
+import { useParams } from "react-router-dom";
+import OtherUserProfile from "./OtherUserProfile.js";
 import { Col, Container, Row } from "react-bootstrap";
 import Followers from "./Followers";
 import AccountDetails from "./AccountDetails";
 import PageNav from "../../components/pageNav/PageNav";
 import UserPosts from "./UserPosts";
 import { useSelector } from "react-redux";
+import mockData from "./mockUsers.json";
 // import picture from "./image-placeholder.jpg"
 
 const Profile = () => {
+  const { id } = useParams();
+  const userId = id ? parseInt(id.replace(":", ""), 10) : null;
   const user = useSelector((state) => state.user);
   const username = useSelector((state) => state.user.username);
   const picture = useSelector((state) => state.user.picture);
@@ -18,12 +23,14 @@ const Profile = () => {
   const following = useSelector((state) => state.user.following);
   const firstName = useSelector((state) => state.user.firstName) || "First";
   const lastName = useSelector((state) => state.user.lastName) || "Last";
-  console.log(user.firstName);
-  console.log(user);
+  // console.log(user.firstName);
 
   const [tab, setTab] = useState(0);
 
   const postExamples = ["", "", ""];
+  function visitedUser(id) {
+    return mockData.filter((item) => item.id === id);
+  }
 
   return (
     <div>
@@ -43,12 +50,12 @@ const Profile = () => {
             <div>
               {firstName} {lastName}
             </div>
-            <div>@{username}</div>
+            <div>@{userId ? visitedUser(userId)[0].username : username}</div>
           </Col>
           <Col>
             <Row className="h-50 d-none d-lg-block"></Row>
             <Row className="mt-2">
-              <Col lg={10} xs={10}>
+              <Col lg={7} xs={10}>
                 <div>
                   <Followers
                     text={"Following"}
@@ -71,8 +78,10 @@ const Profile = () => {
                   </div>
                 </div>
               </Col>
-              <Col lg={2} className="mt-3">
-                <AccountDetails />
+              <Col lg={5} className="mt-3 ">
+                <div style={{ display: "flex", justifyContent: "flex-end" }}>
+                  {id ? <OtherUserProfile id={userId} /> : <AccountDetails />}
+                </div>
               </Col>
             </Row>
           </Col>

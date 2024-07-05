@@ -1,33 +1,43 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 
 import { Modal, Row, Col, Container } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { Link, useNavigate, useLocation, useParams } from "react-router-dom";
 
 import "./profile.css";
 import PageNav from "../../components/pageNav/PageNav";
-import { useNavigate } from "react-router-dom";
 import mockUsers from "./mockUsers.json";
 function Followers({ text, startTab, numOfFollowers = 0 }) {
+  const { id } = useParams();
+  const userId = id ? parseInt(id.replace(":", ""), 10) : null;
   const user = useSelector((state) => state.user);
   const [tab, setTab] = useState(startTab);
   const navigate = useNavigate();
+  const location = useLocation();
   const [show, setShow] = useState(false);
 
   const [users, setUsers] = useState(mockUsers);
+  useEffect(() => {
+    // This function will be called whenever the location changes
+    const handleCloseOnNavigate = () => {
+      setShow(false); // Close the modal
+    };
+
+    handleCloseOnNavigate();
+  }, [location]); // Re-run the effect if the location changes
+
   const toggleFollow = (userId) => {
+    if (id) return;
     users.forEach((user) => {
       if (user.id === userId) {
         user.isFollowing = !user.isFollowing;
       }
     });
-
     setUsers([...users]);
-    console.log(mockUsers);
   };
-  const handleDirect = (event) => {
+  const handleDirect = (event, id) => {
     event.preventDefault();
-    navigate("/following");
+    navigate(`/profile/:${id}`);
   };
 
   const handleClose = () => {
@@ -82,14 +92,20 @@ function Followers({ text, startTab, numOfFollowers = 0 }) {
                   />
                 </Col>
                 <Col lg={7} sm={7} xs={9}>
-                  <div onClick={handleDirect}>{user.username}</div>
+                  <div
+                    onClick={(e) =>
+                      user.id ? handleDirect(e, user.id) : undefined
+                    }
+                  >
+                    {user.username}
+                  </div>
                   <div className="fs-11">{user.description}</div>
                 </Col>
                 <Col lg={2} sm={2} className="d-flex py-2">
                   {" "}
                   <button
                     className="btn"
-                    onClick={() => toggleFollow(user.id)}
+                    onClick={() => (id ? undefined : toggleFollow(user.id))}
                     style={{
                       background: user.isFollowing ? "#E6E6E6" : "#90C766",
                       width: "109px",

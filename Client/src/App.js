@@ -31,7 +31,6 @@ import PopupDialog from "./pages/Layers/CreateNewLayer";
 import Navigation from "./components/Navigation/Navigation";
 import Home from "./pages/Home/Home";
 import Profile from "./pages/Profile/Profile";
-import Following from "./pages/Profile/Following";
 
 import Wallet from "./pages/Wallet/Wallet";
 import Refunds from "./pages/Refunds/Refunds";
@@ -161,7 +160,7 @@ function App() {
 				<Route path="/messages" element={<Auth><Messages /></Auth>} />
 				<Route path="/layer" element={<Auth><PopupDialog /></Auth>} />
 				<Route path="/profile" element={<Auth><Profile /></Auth>} />
-				<Route path="/following" element={<Auth><Following /></Auth>} />
+				<Route path="/profile/:id" element={<Auth><Profile /></Auth>} />
 				<Route path="/wallet" element={<Auth><Wallet /></Auth>} />
 				<Route path="/refunds" element={<Auth><Refunds /></Auth>} />
 				<Route path="/refundspolicy" element={<Auth><RefundsPolicy /></Auth>} />
