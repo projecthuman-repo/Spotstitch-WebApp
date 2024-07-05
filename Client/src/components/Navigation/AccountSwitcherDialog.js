@@ -2,12 +2,16 @@ import React from 'react';
 import { Modal, ListGroup, Button } from 'react-bootstrap';
 import { Link, useNavigate } from "react-router-dom";
 import "./AccountSwitcher1.css";
+import { useSelector } from 'react-redux';
 
 const AccountSwitcherDialog = ({ show, handleClose }) => {
     const accounts = [
         { username: 'John Doe', picture: 'https://via.placeholder.com/40' },
         { username: 'Jane Smith', picture: 'https://via.placeholder.com/40' },
     ];
+
+    const otherAccounts = useSelector(state => state.user.otherAccounts)
+    console.log("OTHER ACCOUTNS--", otherAccounts)
 
     return (
         <Modal show={show} onHide={handleClose} centered>

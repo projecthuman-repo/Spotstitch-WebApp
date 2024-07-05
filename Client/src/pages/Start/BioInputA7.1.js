@@ -5,9 +5,12 @@ import { useState } from "react";
 
 
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 const BioInput = () => {
 
+    const user = useSelector(state => state.user)
+    const firstName = useSelector(state => state.user.firstName)
     const [biotext, setBiotext] = useState("");
 
     const handleChange = (event) => {
@@ -26,7 +29,7 @@ const BioInput = () => {
         <div className="right">
             <div className="topspace"></div><div className="topspace"></div>
 
-            <div className="welcometitle">Welcome Angela! Let's get to know you.</div>
+            <div className="welcometitle">Welcome {firstName}! Let's get to know you.</div>
             <div className="space1"/><br/>
             <div className="smalldescription">Add your bio</div>
             
