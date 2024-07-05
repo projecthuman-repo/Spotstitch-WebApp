@@ -12,19 +12,11 @@ import mockData from "./mockUsers.json";
 // import picture from "./image-placeholder.jpg"
 
 const Profile = () => {
-    const user = useSelector(state => state.user)
-    const username = useSelector(state => state.user.username)
-    const picture = useSelector(state => state.user.picture)
-    const bio = useSelector(state => state.user.bio)
-    
-    const banner = useSelector(state => state.user.banner)
-    const followers = useSelector((state) => state.user.followers); 
-    const following = useSelector((state) => state.user.following);
-    const firstName = useSelector((state) => state.user.firstName) || "First";
-    const lastName = useSelector((state) => state.user.lastName) || "Last";
-    console.log(user.firstName)
-    console.log(user)
-    console.log("BIO-------", user.biography)
+  const { id } = useParams();
+  const userId = id ? parseInt(id.replace(":", ""), 10) : null;
+  const user = useSelector((state) => state.user);
+  const username = useSelector((state) => state.user.username);
+  const picture = useSelector((state) => state.user.picture);
 
   const banner = useSelector((state) => state.user.banner);
   const followers = useSelector((state) => state.user.followers);
