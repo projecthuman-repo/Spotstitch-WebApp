@@ -124,28 +124,72 @@ hr.white {
   background-color: rgb(59, 59, 249);
   color: white;
 }
-
 .top-left-body-home .card-body {
-  /* Side Bar-Post Widget */
-
-  /* Auto layout */
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   padding: 20px;
   gap: 10px;
-
-  width: 293px;
-  height: 285px;
-
-  /* border: 2px solid #c4c4c4; */
+  width: 100%;
+  max-width: 600px; /* Example max-width to prevent too wide on large screens */
+  margin: auto; /* Center the card on the page */
+  height: auto; /* Adjust height dynamically */
   border-radius: 20px;
+  box-sizing: border-box;
+}
 
-  /* Inside auto layout */
-  flex: none;
-  order: 0;
-  flex-grow: 0;
+.top-left-body-home .Text-Input {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 10px 20px;
+  gap: 10px;
+  width: 100%; /* Adjusted to fit within parent padding */
+  max-width: 600px;
+  height: 84px;
+  background: rgba(230, 230, 230, 0.6);
+  border-radius: 15px;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 18px;
+}
+
+.icons-home {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+  padding: 10px 15px;
+  width: 100%;
+  height: 36px;
+  border: 1px solid rgba(51, 51, 51, 0.1);
+  border-radius: 15px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.icons-home .emoji,
+.icons-home .text,
+.icons-home .video,
+.icons-home .at,
+.icons-home .mic,
+.icons-home .share {
+  background: none;
+  width: 20px;
+  height: 20px;
+}
+
+.icons-home .icon {
+  background: none;
+  border: none;
+}
+.top-left-body-home .Text-Input,
+.icons-home {
+  display: flex;
+  width: 100%; /* Ensure it takes up 100% of its parent's width */
+  box-sizing: border-box; /* Padding is included within the element's width */
 }
 
 .Top-Contents-home {
@@ -247,72 +291,4 @@ hr.white {
   flex: none;
   order: 1;
   flex-grow: 0;
-}
-.top-left-body-home .Text-Input {
-  /* Text Input */
-
-  /* Auto layout */
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: flex-start;
-  padding: 10px 20px;
-  gap: 10px;
-
-  width: 253px;
-  height: 84px;
-
-  background: rgba(230, 230, 230, 0.6);
-  border-radius: 15px;
-
-  /* Inside auto layout */
-  flex: none;
-  order: 1;
-  align-self: stretch;
-  flex-grow: 0;
-  font-weight: 400;
-  font-size: 12px;
-  line-height: 18px;
-}
-
-.icons-home {
-  /* Icons */
-
-  box-sizing: border-box;
-
-  /* Auto layout */
-  display: flex;
-  flex-direction: row;
-  justify-content: space-evenly;
-  align-items: center;
-  padding: 10px 15px;
-
-  width: 253px;
-  height: 36px;
-
-  border: 1px solid rgba(51, 51, 51, 0.1);
-  border-radius: 15px;
-
-  /* Inside auto layout */
-  flex: none;
-  order: 2;
-  align-self: stretch;
-  flex-grow: 0;
-  margin-top: 10px;
-  margin-bottom: 10px;
-}
-.icons-home .emoji,
-.icons-home .text,
-.icons-home .video,
-.icons-home .at,
-.icons-home .mic,
-.icons-home .share {
-  background: none;
-  width: 20px;
-  height: 20px;
-}
-
-.icons-home .icon {
-  background: none;
-  border: none;
 }

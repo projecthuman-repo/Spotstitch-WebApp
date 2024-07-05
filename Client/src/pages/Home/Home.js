@@ -94,7 +94,7 @@ function Home({ vendor = false }) {
                   </div>
                 </div>
 
-                <Row>
+                <div style={{ width: "100%" }}>
                   <Form>
                     <Form.Group>
                       <Form.Control
@@ -133,7 +133,7 @@ function Home({ vendor = false }) {
                       <button className="postButton">Post</button>
                     </Form.Group>
                   </Form>
-                </Row>
+                </div>
               </Card.Body>
             </Card>
 
