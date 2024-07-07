@@ -1,66 +1,81 @@
 .content-border-s {
-    border: 1px solid #B3B3B3 !important;
+  border: 1px solid #b3b3b3 !important;
 }
 
 .content-border-l {
-    border: 2px solid #C4C4C4 !important;
+  border: 2px solid #c4c4c4 !important;
 }
 
 .round-xl {
-    border-radius: 25px !important;
+  border-radius: 25px !important;
 }
 
 .round-l {
-    border-radius: 13px !important;
+  border-radius: 13px !important;
 }
 
 .round-s {
-    border-radius: 9px !important;
+  border-radius: 9px !important;
 }
 
 .underline {
-    border-bottom: 2px solid #C4C4C4 !important;
+  border-bottom: 2px solid #c4c4c4 !important;
 }
 
 .bg-profile {
-    background: linear-gradient(#D9D9D9 50%, #FFFFFF 50%);
-    background-repeat: no-repeat;
+  background: linear-gradient(#d9d9d9 50%, #ffffff 50%);
+  background-repeat: no-repeat;
 }
 
 .bg-banner {
-    background-size: 100% 70%;
-    background-repeat: no-repeat;
+  background-size: 100% 70%;
+  background-repeat: no-repeat;
 }
 
 .btn-profile {
-    border: 1px solid #666666 !important;
-    border-radius: 26px !important;
+  border: 1px solid #666666 !important;
+  border-radius: 26px !important;
 }
 
 .btn-follower {
-    background: #E6E6E6 !important;
-    border-radius: 3px;
-    color: #757575;
+  background: #e6e6e6 !important;
+  border-radius: 3px;
+  color: #757575;
 }
 
 .fs-32 {
-    font-size: 32px;
+  font-size: 32px;
 }
 
 .fs-11 {
-    font-size: 11px;
+  font-size: 11px;
 }
 
 .content {
-    background: #D9D9D9;
-    border: 1px solid #B3B3B3;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-    border-radius: 13px;
+  background: #d9d9d9;
+  border: 1px solid #b3b3b3;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 13px;
 }
 
 .light {
-    background: #D9D9D9 !important;
+  background: #d9d9d9 !important;
 }
-.avatar-main{
-    border-radius: 100%;
+.avatar-main {
+  border-radius: 100%;
+}
+.navOrbuttons {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 0px;
+  gap: 15px;
+  width: 129.01px;
+  height: 31.01px;
+  margin: 40px 80px 20px;
+}
+
+.backprofile:hover,
+.backhome:hover {
+  cursor: pointer;
 }
