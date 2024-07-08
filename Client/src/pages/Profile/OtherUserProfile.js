@@ -5,13 +5,13 @@ import initialUsers from "./mockUsers.json";
 import React, { useState, useEffect } from "react";
 function OtherUserProfile({ id }) {
   const [users, setUsers] = useState(initialUsers);
-
-  useEffect(() => {
-    setUsers(initialUsers);
-  }, [initialUsers]);
   function visitedUser(i) {
     return users.filter((item) => item.id === i);
   }
+  useEffect(() => {
+    setUsers(initialUsers);
+  }, [initialUsers]);
+
   function toggleFollowing() {
     const updatedUsers = users.map((user) => {
       if (user.id === id) {
