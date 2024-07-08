@@ -10,8 +10,23 @@ const AccountSwitcherDialog = ({ show, handleClose }) => {
         { username: 'Jane Smith', picture: 'https://via.placeholder.com/40' },
     ];
 
-    const otherAccounts = useSelector(state => state.user.otherAccounts)
-    console.log("OTHER ACCOUTNS--", otherAccounts)
+    const OtherAccountsList = () => {
+        // Retrieve otherAccounts from Redux store
+        const otherAccounts = useSelector((state) => state.user.otherAccounts);
+      
+        // Ensure otherAccounts is an object and not null
+        if (typeof otherAccounts !== 'object' || otherAccounts === null) {
+          return null;
+        }
+      
+        // Convert Object to Array
+        const otherAccountsArray = Object.entries(otherAccounts);
+        return otherAccountsArray;
+    }     
+
+    const otherAccounts = OtherAccountsList();
+    
+    console.log("OTHER ACCOUTNS--", OtherAccountsList)
 
     return (
         <Modal show={show} onHide={handleClose} centered>

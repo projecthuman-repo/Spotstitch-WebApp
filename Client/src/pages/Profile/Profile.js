@@ -15,6 +15,7 @@ const Profile = () => {
   const { id } = useParams();
   const userId = id ? parseInt(id.replace(":", ""), 10) : null;
   const user = useSelector((state) => state.user);
+  const bio = useSelector((state) => state.user.biography);
   const username = useSelector((state) => state.user.username);
   const picture = useSelector((state) => state.user.picture);
 
