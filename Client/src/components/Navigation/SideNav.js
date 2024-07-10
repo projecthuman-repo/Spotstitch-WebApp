@@ -92,11 +92,7 @@ function SideNav() {
         setMainEmail(email);
         setSent(true);
         handleClose();
-        handleShowAddAccount(); 
-    }
 
-    const switchAccount = () =>{
-        
         store.dispatch({ type: "RESET" });
         localStorage.clear();
 
@@ -173,13 +169,7 @@ function SideNav() {
 
                         <br/>
 
-                        {otherAccounts && otherAccounts.map((value) => {
-                            return <Row key={value[0]}><Col onClick={(e) => {setAccPassword(value[1][3]); setSwitchUser(value[1][0]); switchAccount()}}><button className="btn nopadding">{value[1][0]}</button></Col></Row>
-                        })}
-                        {/* <Row className="mb-1"><Col><button className="btn nopadding mt-auto"><p className="fw-600 mb-0">Switch Accounts</p></button></Col></Row> */}
-
                         <Row>
-                            {/* <Col className="mt-5"><button className="btn nopadding" onClick={handleAddAccount}>Add Account</button></Col> */}
                             <Col className="mt-5"><button className="btn nopadding" onClick={handleLogout}>Log Out</button></Col>
                         </Row>
                     </section>
