@@ -76,6 +76,34 @@ function Home({ vendor = false }) {
     e.preventDefault();
   }
 
+  function callApi(e) {
+    e.preventDefault();
+    console.log("inside call api method");
+
+    fetch('http://localhost:5000/api/spotstitch/', { method: 'GET' })
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('Network response was not ok ' + response.statusText);
+        }
+        return response.json();
+      })
+      .then(data => {
+        console.log("API response:", data);
+        data.forEach(item => {
+          if (item.email) {
+            alert(item.email); // Print the email field
+          } else {
+            console.error('Email field is missing in one of the response objects:', item);
+          }
+        });
+      })
+      .catch(error => {
+        console.error('There has been a problem with your fetch operation:', error);
+      });
+  }
+
+
+
   return (
     <div>
       <Container className="my-4 ">
