@@ -5,6 +5,7 @@ import "./AccountSwitcher1.css";
 import { useSelector } from 'react-redux';
 import { useGlobalContext } from '../../context/GlobalContext';
 import store from '../../store';
+import { useViewUserProfileMutation } from '../../services/userApi';
 
 const AccountSwitcherDialog = ({ show, handleClose }) => {
 
@@ -37,8 +38,7 @@ const AccountSwitcherDialog = ({ show, handleClose }) => {
       } = useGlobalContext();
 
     const otherAccounts = OtherAccountsList();
-    
-    console.log("OTHER ACCOUTNS--", OtherAccountsList)
+
     console.log("OTHER ACCOUTNS+++++++++++", otherAccounts)
 
     return (
@@ -49,6 +49,7 @@ const AccountSwitcherDialog = ({ show, handleClose }) => {
             <Modal.Body>
                 <ListGroup>
                     {otherAccounts && otherAccounts.map((value) => {
+                        // value { username, picture, token, password }
                             console.log("VALUE: ", value)
                             return <ListGroup.Item key={value[0]} onClick={(e) => {
                                         setAccPassword(value[1][3]);
@@ -59,7 +60,7 @@ const AccountSwitcherDialog = ({ show, handleClose }) => {
                             <button className="btn nopadding">
                                 <div className="d-flex align-items-center">
                                     <img
-                                        src={value[1][0].picture} // Fallback to a default avatar if picture is not available
+                                        src={value[1][1]} // Fallback to a default avatar if picture is not available
                                         alt={undefined}
                                         className="rounded-circle me-3"
                                         height={40}

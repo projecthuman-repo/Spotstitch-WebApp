@@ -31,19 +31,9 @@ const AddAccount = ({ show, handleClose }) => {
         sent, setSent,
         mainEmail, setMainEmail,
         accPassword, setAccPassword,
-        switchUser, setSwitchUser
+        switchUser, setSwitchUser,
+        PictureInPictureEvent, setPicture
       } = useGlobalContext();
-
-      const handleAddAccount = () =>{
-        setMainEmail(email);
-        setSent(true);
-        handleClose();
-
-        store.dispatch({ type: "RESET" });
-        localStorage.clear();
-
-        // navigate("/start");
-    }
   
     const handleSubmit = async (event) => {
       event.preventDefault();

@@ -37,33 +37,13 @@ function SideNav() {
     const followers = useSelector((state) => state.user.followers);
     const following = useSelector((state) => state.user.following);
     
-    const OtherAccountsList = () => {
-        // Retrieve otherAccounts from Redux store
-        const otherAccounts = useSelector((state) => state.user.otherAccounts);
-      
-        // Ensure otherAccounts is an object and not null
-        if (typeof otherAccounts !== 'object' || otherAccounts === null) {
-          return null;
-        }
-      
-        // Convert Object to Array
-        const otherAccountsArray = Object.entries(otherAccounts);
-        return otherAccountsArray;
-    }      
-    
-    const otherAccounts = OtherAccountsList();
-
-    // console.log("state.user", useSelector((state) =>state.user));
-    // console.log("Other Accs", otherAccounts);
-    // console.log("Other Accs 0", otherAccounts[0]);
-    // console.log("Other Accs 1", otherAccounts[0][1][0]);
-    
 
     const {
         sent, setSent,
         mainEmail, setMainEmail,
         accPassword, setAccPassword,
-        switchUser, setSwitchUser
+        switchUser, setSwitchUser,
+        PictureInPictureEvent, setPicture
       } = useGlobalContext();
     
     const [show, setShow] = useState(false);
@@ -91,6 +71,7 @@ function SideNav() {
     const handleAddAccount = () =>{
         setMainEmail(email);
         setSent(true);
+        
         handleClose();
 
         store.dispatch({ type: "RESET" });
