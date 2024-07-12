@@ -14,6 +14,7 @@ import { useLoginUserMutation } from "../../services/loginApi";
 import { useDispatch, useSelector } from "react-redux";
 import { login, setUserData } from "../../features/User/userSlice";
 import { useGetUserProfileMutation } from "../../services/userApi";
+import { useGlobalContext } from '../../context/GlobalContext';
 
 const AddAccount = ({ show, handleClose }) => {
     const [email, setEmail] = useState("");
@@ -24,6 +25,15 @@ const AddAccount = ({ show, handleClose }) => {
     const user = useSelector((state) => state.user);
     const dispatch = useDispatch();
     const navigate = useNavigate();
+
+
+    const {
+        sent, setSent,
+        mainEmail, setMainEmail,
+        accPassword, setAccPassword,
+        switchUser, setSwitchUser,
+        PictureInPictureEvent, setPicture
+      } = useGlobalContext();
   
     const handleSubmit = async (event) => {
       event.preventDefault();

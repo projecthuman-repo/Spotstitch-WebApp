@@ -15,6 +15,7 @@ const Profile = () => {
   const { id } = useParams();
   const userId = id ? parseInt(id.replace(":", ""), 10) : null;
   const user = useSelector((state) => state.user);
+  const bio = useSelector((state) => state.user.biography);
   const username = useSelector((state) => state.user.username);
   const picture = useSelector((state) => state.user.picture);
 
@@ -23,7 +24,7 @@ const Profile = () => {
   const following = useSelector((state) => state.user.following);
   const firstName = useSelector((state) => state.user.firstName) || "First";
   const lastName = useSelector((state) => state.user.lastName) || "Last";
-  // console.log(user.firstName);
+  console.log(user);
 
   const [tab, setTab] = useState(0);
 
@@ -72,9 +73,7 @@ const Profile = () => {
                     <div className="fs-32 text-start">0</div>
                   </a>
                   <div>
-                    Lorem ipsum dolor sit amet consectetur. Dapibus mauris
-                    scelerisque egestas scelerisque lectus pellentesque ante.
-                    Porttitor congue sed vivamus vel vulputate aliquet.
+                    { bio }
                   </div>
                 </div>
               </Col>

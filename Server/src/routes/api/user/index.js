@@ -9,9 +9,13 @@ const getProfile = require('./getProfile');
 const updateImage = require('./updateImage');
 const updateAccountType = require('./updateAccountType');
 const updateDetails = require('./updateDetails');
+const viewProfile = require('./viewProfile');
 
 // get user profile
 router.get('/profile', verifyToken, getProfile)
+
+// gets other user profile (some searched user)
+router.get('/viewProfile', viewProfile)
 
 // creating user
 router.post('/register', register);
