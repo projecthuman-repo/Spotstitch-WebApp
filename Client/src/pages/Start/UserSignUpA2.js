@@ -5,9 +5,9 @@ import sslogo from "../../assets/sslogo.png";
 import orline from "../../assets/orline.png";
 
 import holderimg from "../../assets/holderimg.png";
-import googlesignin from "../../assets/googlesignin.png";
-import facesignin from "../../assets/facesignin.png";
-import projectsignin from "../../assets/projectsignin.png";
+import googlesignin from "../../assets/googlesignin.svg";
+import facesignin from "../../assets/facesignin.svg";
+import projectsignin from "../../assets/projectsignin.svg";
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { registerData } from "../../features/User/registerSlice";
@@ -230,19 +230,19 @@ const UserSignUp = () => {
           <br />
           <img className="lineor" src={orline} alt="orline" />
           <br />
-          <button className="googlebutton">
+          <button className="googlebutton-start">
             <img src={googlesignin} alt="googlesignin" border="0" />
           </button>
           <br />
-          <button className="facebookbutton">
+          <button className="facebookbutton-start">
             <img src={facesignin} alt="facebooksignin" border="0" />
           </button>
           <br />
-          <button className="projectbutton">
+          <button className="projectbutton-start">
             <img src={projectsignin} alt="projectsignin" border="0" />
           </button>
           <br />
-          <div className="policy2">
+          <div className="policy-usersignup">
             <span className="bold">Privacy Policy</span> and{" "}
             <span className="bold">Terms of Service</span> apply.
           </div>

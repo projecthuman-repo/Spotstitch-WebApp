@@ -13,10 +13,7 @@ const AccountEmailVerification = () => {
           <img className="holderimg" src={holderimg} alt="holderimg" />
         </div>
 
-        <div className="right">
-          <div className="topspace"></div>
-          <div className="topspace"></div>
-
+        <div className="right-emailverification">
           <div className="verifyacctitle">Verify your account</div>
           <br />
           <div className="verifydescription">
@@ -25,7 +22,7 @@ const AccountEmailVerification = () => {
           </div>
           <br />
           <div className="noemail">Didn't receive an email? Send again</div>
-          <div className="botspace"></div>
+          {/* <div className="botspace"></div> */}
           <Link to="/profileimage" className="linknextbutton">
             <button className="nextbutton btn btn-primary">Next</button>
           </Link>
