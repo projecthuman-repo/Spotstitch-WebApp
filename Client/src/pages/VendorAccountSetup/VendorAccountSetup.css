@@ -1,99 +1,123 @@
-
-.boss{
-    display: flex;
-   
+.boss {
+  display: flex;
 }
-.left{
-    height: 100vh;
-    width: 50%;
-    background-color: rgba(0, 255, 136, 0.227);
-    overflow: auto;
-    
+.left {
+  height: 100vh;
+  width: 50%;
+  background-color: rgba(0, 255, 136, 0.227);
+  overflow: auto;
 }
 
-.right{
-    display: grid;
-    
-    height: 100vh;
-    width: 50%;
-    overflow: auto;
-    
-   
+.right {
+  display: grid;
+
+  height: 100vh;
+  width: 50%;
+  overflow: auto;
 }
 
-.topspace{
-    height: 50px;
+.topspace {
+  height: 50px;
 }
 
-.botspace{
-    height: 200px;
+.botspace {
+  height: 200px;
 }
 
-.welcometitle{
-   
-    width: 500px;
-    height: 76px;
-  
+.welcometitle-vendorsetup {
+  /* Welcome Angela! Let’s get to know you. */
 
-    font-family: 'Poppins';
-    font-style: normal;
-    font-weight: 500;
-    font-size: 60px;
-    line-height: 125.5%;
+  width: 454px;
+  height: 180px;
 
-    color: #333333;
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 48px;
+  line-height: 125.5%;
+  /* or 60px */
+  text-align: center;
 
+  color: #333333;
 
-    margin: auto;
+  /* Inside auto layout */
+  flex: none;
+  order: 0;
+  align-self: stretch;
+  flex-grow: 0;
 
+  margin: auto;
+  margin-top: 100px;
 }
 
-.smalldescription{
-    width: 500px;
-    font-family: 'Poppins';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 16px;
-    line-height: 24px;
-    
-    color: #333333;
-    margin: auto;
-    
+.smalldescription-vendorsetup {
+  /* Lorem ipsum dolor sit amet consectetur. Tellus libero diam sed neque nam libero tellus nec faucibus. */
+
+  width: 454px;
+  height: 48px;
+
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  text-align: center;
+
+  color: #333333;
+
+  /* Inside auto layout
+  flex: none;
+  order: 1;
+  align-self: stretch;
+  flex-grow: 0; */
 }
-.input.placeholder{
-    
+.input.placeholder {
 }
 
+.addbiobox {
+  padding-bottom: 75px; /* Adjust the padding-top to move the text up */
 
-.addbiobox{
-    padding-bottom: 75px; /* Adjust the padding-top to move the text up */
-    
-    box-sizing: border-box;
-    width: 500px;
-    height: 125px;
-    margin: auto;
+  box-sizing: border-box;
+  width: 500px;
+  height: 125px;
+  margin: auto;
 
-    border: 2px solid #C4C4C4;
-    border-radius: 9px;
+  border: 2px solid #c4c4c4;
+  border-radius: 9px;
 }
-.space1{
-    height: 150px;
+.space1 {
+  height: 150px;
 }
-.linknextbutton{
-    margin-left: auto;
-    margin-right: 80px;
-    width: 175px;
-    height: 50px;
+.linknextbutton-vendorsetup {
+  margin-bottom: 300px;
+  align-items: center;
 }
-.nextbutton{
-   
-    width: 175px;
-    height: 50px;
- 
+.linknextbutton-vendorsetup:hover {
+  background-color: inherit;
+}
+.nextbutton-vendorsetup {
+  /* Button */
 
-    background: #E6E6E6;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-    border:none;
-    margin-left: auto;
-    margin-right: 80px;
-    }
+  /* Auto layout */
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  gap: 10px;
+
+  margin: 0 auto;
+  width: 280px;
+  height: 50px;
+
+  /* Blue */
+  background: #8cbdeb;
+  border-radius: 15px;
+
+  /* Inside auto layout */
+  flex: none;
+  order: 1;
+  flex-grow: 0;
+  border: none;
+  font-weight: bold;
+}

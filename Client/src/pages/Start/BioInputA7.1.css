@@ -76,6 +76,7 @@
   border: none;
   margin: auto;
   border-radius: 25px;
+  font-weight: bold;
 }
 
 .right .nextbutton:active {
