@@ -39,8 +39,6 @@ const AccountSwitcherDialog = ({ show, handleClose }) => {
 
     const otherAccounts = OtherAccountsList();
 
-    console.log("OTHER ACCOUTNS+++++++++++", otherAccounts)
-
     return (
         <Modal show={show} onHide={handleClose} centered>
             <Modal.Header closeButton className='head'>
