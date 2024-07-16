@@ -2,6 +2,7 @@ const express = require('express');
 const { verifyToken } = require('../../authorization/auth');
 const router = express.Router();
 
+
 router.use('/user', require('./user'))
 router.use('/products', verifyToken, require('./products'))
 router.use('/address', verifyToken, require('./address'))
@@ -11,5 +12,7 @@ router.use('/posts', verifyToken, require('./posts'))
 router.use('/inventory', verifyToken, require('./inventory'))
 router.use('/wallet', verifyToken, require('./wallet'))
 router.use('/settings', verifyToken, require('./settings'))
+router.use('/search',verifyToken,require('./search'))
+
 
 module.exports = router

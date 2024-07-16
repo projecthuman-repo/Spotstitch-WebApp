@@ -13,12 +13,12 @@ const validateFields = (schema, obj, ignore = []) => {
     const paths = Object.keys(schema.paths);
     const missing = []
     for (const path of paths) {
-        const shouldIgnore = ignore.includes(path) || path.startsWith('_')
-        if (!shouldIgnore && !obj[path]) {
-            missing.push(path)
+        const shouldIgnore = ignore.includes(path) || path.startsWith('_');
+        if (!shouldIgnore && schema.paths[path].isRequired && (obj[path] === undefined || obj[path] === null)) {
+            missing.push(path);
         }
     }
-    return missing
+    return missing;
 }
 
 /**
@@ -33,9 +33,11 @@ const validateFields = (schema, obj, ignore = []) => {
 const updateFields = (model, obj) => {
     const paths = Object.keys(model.schema.paths);
     for (const path of paths) {
-        if (obj[path]) model[path] = obj[path]
+        if (obj[path] !== undefined && obj[path] !== null) {
+            model[path] = obj[path];
+        }
     }
-    return model
+    return model;
 }
 
 module.exports = {

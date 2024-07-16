@@ -6,21 +6,36 @@ const PostSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    username: String,
-    userDescription: String,
+    username: {
+        type: String,
+        required: true
+    },
+    userDescription: {type:String,
+        required:false
+    },
     image: {
         data: String,
-        contentType: String
+        contentType: String,
+        required:false
     },
-    description: String,
+    description: {
+        type: String,
+        required: true
+    },
     tags: [String],
     comments: [{
         by: String,
         content: String,
-        likes: Number
+        likes: Number,
+        required:false
     }],
-    likes: Number
-})
+    likes: {
+        type: Number,
+        required:false,
+        default: 0
+    }
+});
+
 
 PostSchema.statics.getPost = async (id) => {
     try {
