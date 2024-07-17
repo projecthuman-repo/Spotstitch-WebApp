@@ -1,3 +1,8 @@
+html,
+body {
+  height: 100%;
+  margin: 0; /* Remove default margin */
+}
 .input {
   resize: none;
 }
@@ -10,8 +15,8 @@
   background: #d9d9d9 !important;
 }
 
-.post {
-  background-color: #b3b3b3 !important;
+.post-home {
+  background-color: #90c766 !important;
 }
 
 .comment {
@@ -291,4 +296,93 @@ hr.white {
   flex: none;
   order: 1;
   flex-grow: 0;
+}
+
+.post-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 0px;
+  width: 100%;
+  height: auto;
+  background: rgba(217, 217, 217, 0.5);
+  border: 2px solid #c4c4c4;
+  border-radius: 20px;
+  flex: none;
+  order: 0;
+  flex-grow: 0;
+  margin: auto;
+}
+.post-image-container {
+  display: flex; /* Make it a flex container */
+  justify-content: center; /* Center children horizontally */
+  align-items: center; /* Center children vertically */
+  width: 70%;
+  height: 100%;
+  background: #ffffff;
+  border-radius: 20px;
+  flex: none;
+  order: 0;
+  align-self: stretch;
+  flex-grow: 1;
+  overflow: hidden;
+}
+.post-image {
+  max-width: 100%;
+  max-height: 100%;
+  height: auto;
+  border-radius: 50%; /* Assuming 'round-l' meant to apply a large rounding, adjust as needed */
+  display: block; /* To replace 'd-block' */
+  margin-left: auto;
+  margin-right: auto; /* To center the image, equivalent to 'mx-auto' */
+}
+.col-post-text-body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 10px;
+  gap: 10px;
+  width: 348px !important;
+  height: 80%;
+  max-height: 100%;
+  background: #ffffff;
+  border-radius: 13px;
+  flex: none;
+  order: 0;
+  align-self: stretch;
+  flex-grow: 0;
+}
+
+.row-icons {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 0px;
+  gap: 6px;
+  width: 206px;
+  height: 32px;
+  flex: none;
+  /* order: 1; Uncomment if needed */
+  flex-grow: 0;
+}
+
+.icon-userContent {
+  width: 20px;
+  height: 22px;
+  display: flex;
+  /* marginLeft: 5px; Uncomment if needed */
+}
+.icon-button-userContent {
+  width: 45px !important;
+  height: 32px !important;
+  display: flex !important;
+  order: 0 !important;
+  flex-grow: 0 !important;
+  border-radius: 100px !important;
+  background: white !important;
+  justify-content: center !important;
+  padding: 5px !important;
 }

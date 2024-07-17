@@ -7,7 +7,9 @@ import { Link, useNavigate } from "react-router-dom";
 
 const VendorSetupComplete = () => {
   const navigate = useNavigate();
-
+  const handleDirect = () => {
+    navigate("/start");
+  };
   return (
     <>
       <div className="boss">
@@ -37,10 +39,7 @@ const VendorSetupComplete = () => {
             className="linknextbutton-vendortype"
             style={{ display: "flex", alignItems: "center", margin: "auto" }}
           >
-            <button
-              className="nextbutton-vendortype"
-              onClick={navigate("/start")}
-            >
+            <button className="nextbutton-vendortype" onClick={handleDirect}>
               Next
             </button>
           </div>

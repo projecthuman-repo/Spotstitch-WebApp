@@ -173,7 +173,7 @@ function Home({ vendor = false }) {
                           <button
                             className={
                               filters.includes(layer) == true
-                                ? "btn btn-outline-0 post m-2 text-start w-100 shadow"
+                                ? "btn btn-outline-0 post-home m-2 text-start w-100 shadow"
                                 : "btn btn-outline-0 bg-light m-2 text-start w-100"
                             }
                             // data-bs-toggle="button"
