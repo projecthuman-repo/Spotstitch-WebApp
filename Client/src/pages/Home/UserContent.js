@@ -4,49 +4,63 @@ import { BsChat, BsHeart, BsSend, BsReply } from 'react-icons/bs';
 import { useState } from 'react';
 
 function callApi(comment, likes) {
-
-    const id = '6661f2239fdc6067f10374db'; // ID of the object you are interested in
+    const id = '6661f2239fdc6067f10374db'; // ID of the User logged in
 
     fetch(`http://localhost:5000/api/spotstitch/${id}/comment`, {
         method: 'POST',
-        headers: {'Content-Type': 'application/json'},
-        body: JSON.stringify({
-            comment: comment,
-            likes: likes
-        }),
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ comment, likes }),
     })
     .then(response => {
-        if (!response.ok) {
-            throw new Error('Network response was not ok ' + response.statusText);
-        }
+        if (!response.ok) throw new Error('Network response was not ok ' + response.statusText);
         return response.json();
     })
     .then(data => {
         console.log("API response:", data);
-
-        // Check if data contains the nested data object
-        if (data && data.data && data.data._id === id) {
-            if (data.data.score) {
-                alert(`The Reputation is: ${data.data.score}`); // Print the email field from the nested data object
-            } else {
-                console.error('Score field is missing in the nested response object:', data.data);
-            }
+        if (data?.data?._id === id && data.data.score) {
+            alert(`The Reputation is: ${data.data.score}`);
         } else {
-            console.error('Unexpected response format or ID mismatch:', data);
+            console.error('Unexpected response format or missing score:', data);
         }
     })
-    .catch(error => {
-        console.error('There has been a problem with your fetch operation:', error);
-    });
+    .catch(error => console.error('Fetch operation error:', error));
+}
+
+function likePostReputationApi(post) {
+    const id = '6661f2239fdc6067f10374db';
+
+    fetch(`http://localhost:5000/api/spotstitch/${id}/like-post`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ post: post }),
+    })
+    .then(response => {
+        if (!response.ok) throw new Error('Network response was not ok ' + response.statusText);
+        return response.json();
+    })
+    .then(data => {
+        console.log("API response:", JSON.stringify(data, null, 2));
+        if (data?._id === id && typeof data?.spectatorData?.totalPoints !== 'undefined') {
+            alert(`The Reputation is: ${data.spectatorData.totalPoints}`);
+        } else {
+            console.error('ID mismatch, missing totalPoints, or unexpected response format:', data);
+        }
+    })
+    .catch(error => console.error('There has been a problem with your fetch operation:', error));
 }
 
 function UserContent({ img, avatar, user, desc, body }) {
     const [comment, setComment] = useState(''); // State for comment input
     const [likes, setLikes] = useState(0); // State for likes, you can adjust this as needed
 
-    // Function to handle the button click
+    // Function to handle the comment button click
     const handleCommentButtonClick = () => {
         callApi(comment, 10); // Pass comment and likes to callApi
+    };
+
+     // Function to handle the like post button click
+     const handleLikePostButtonClick = () => {
+        likePostReputationApi("test post"); // Pass post to likePostReputationApi
     };
 
     return (
@@ -72,7 +86,7 @@ function UserContent({ img, avatar, user, desc, body }) {
                     </Row>
                     <Row className='mx-2 mt-auto'>
                         <Col lg={12}>
-                            <button className='btn btn-outline-0 p-0 pe-2'><BsHeart size={22} /></button>
+                            <button className='btn btn-outline-0 p-0 pe-2' onClick={handleLikePostButtonClick}><BsHeart size={22} /></button>
                             <button className='btn btn-outline-0 px-2'><BsSend size={22} /></button>
                             <button className='btn btn-outline-0 px-2'><BsReply size={22} className='flip' /></button>
                         </Col>
