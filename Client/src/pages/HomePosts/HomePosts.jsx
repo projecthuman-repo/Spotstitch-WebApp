@@ -6,11 +6,14 @@ import placeHolder from "../../assets/holderimg.png";
 import { TfiEmail } from "react-icons/tfi";
 import { HiOutlineChevronDoubleUp } from "react-icons/hi";
 import UserContent from "../Home/UserContent";
+import { useGetAllPostsQuery } from "../../services/posts";
 
 const HomePosts = () => {
     const user = useSelector((state) => state.user);
     const [tab, setTab] = useState(1);
     const [filters, setFilters] = useState([]);
+
+    // const [getPosts, { }] = useGetAllPostsQuery
     const [posts, setPosts] = useState([]);
     const [quickMessageClicked, setQuickMessageClicked] = useState(true);
 
@@ -47,6 +50,27 @@ const HomePosts = () => {
         },
     ];
 
+
+    // useEffect(() => {
+    //     const fetchPosts = async () => {
+    //         try {
+    
+    //             const res = await getPosts()
+    //             if (res.error) throw new Error(res.error)
+    //             if (res.data?.status == "ok") {
+    //                 console.log("GOT POSTS", res)
+    //                 // await dispatch(setUserData({ picture: image }))
+    //             }
+    
+    
+    //         } catch (error) {
+    //             console.log('rejected', error)
+    //         }
+    //     };
+    //     fetchPosts();
+    // }, []);
+
+
     useEffect(() => {
         const fetchPosts = async () => {
             try {
@@ -67,8 +91,14 @@ const HomePosts = () => {
 
                 const result = await response.json();
 
+                console.log("55555555555555555555555555555555555555555555")
+
+                console.log("result:", result)
+                console.log("result data:", result.data)
+
                 if (result.data && result.data.posts) {
                     setPosts(result.data.posts);
+
                 } else {
                     console.error('Error fetching posts: No data in result');
                 }
