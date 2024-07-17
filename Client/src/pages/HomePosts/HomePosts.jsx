@@ -50,7 +50,7 @@ const HomePosts = () => {
     useEffect(() => {
         const fetchPosts = async () => {
             try {
-                const token = localStorage.getItem('token'); // or however you store your token
+                const token = localStorage.getItem('token'); // token reader
                 if (!token) {
                     throw new Error('No token found! User not authenticated.');
                 }
