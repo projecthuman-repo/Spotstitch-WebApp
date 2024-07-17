@@ -78,29 +78,25 @@ const HomePosts = () => {
                 if (!token) {
                     throw new Error('No token found! User not authenticated.');
                 }
-
+    
                 const response = await fetch('http://localhost:8080/v1/posts/all', {
                     headers: {
                         'Authorization': `Bearer ${token}`
                     }
                 });
-
+    
                 if (!response.ok) {
                     throw new Error(`HTTP error! status: ${response.status}`);
                 }
-
+    
                 const result = await response.json();
-
-                console.log("55555555555555555555555555555555555555555555")
-
-                console.log("result:", result)
-                console.log("result data:", result.data)
-
-                if (result.data && result.data.posts) {
-                    setPosts(result.data.posts);
-
+    
+                console.log("Result:", result);
+    
+                if (result.status === 'ok' && result.posts) {
+                    setPosts(result.posts);
                 } else {
-                    console.error('Error fetching posts: No data in result');
+                    console.error('Error fetching posts: Invalid response format');
                 }
             } catch (error) {
                 console.error('Error fetching posts:', error);
