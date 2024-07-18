@@ -7,6 +7,7 @@ import { TfiEmail } from "react-icons/tfi";
 import { HiOutlineChevronDoubleUp } from "react-icons/hi";
 import UserContent from "../Home/UserContent";
 import { useGetAllPostsQuery } from "../../services/posts";
+import { useViewUserProfileByIdMutation } from "../../services/userApi";
 
 const HomePosts = () => {
     const user = useSelector((state) => state.user);
@@ -16,6 +17,8 @@ const HomePosts = () => {
     // const [getPosts, { }] = useGetAllPostsQuery
     const [posts, setPosts] = useState([]);
     const [quickMessageClicked, setQuickMessageClicked] = useState(true);
+
+    const [getUser, { }] = useViewUserProfileByIdMutation()
 
     const users = [
         {
@@ -74,6 +77,31 @@ const HomePosts = () => {
     
                 if (result.status === 'ok' && result.posts) {
                     setPosts(result.posts);
+
+                    // Fetch avatars
+                    const avatarPromises = posts.map(async (post) => {
+                        try {
+                            const res = await getUser(post.userId);
+                            console.log("RESULT:", res)
+                            return { userId: post.userId, picture: res.picture };
+                        } catch (error) {
+                            console.log('rejected', error);
+                            return { userId: post.userId, picture: placeHolder };
+                        }
+                    });
+
+                    const avatarResults = await Promise.all(avatarPromises);
+                    const avatarMap = avatarResults.reduce((acc, avatar) => {
+                        acc[avatar.userId] = avatar.picture;
+                        return acc;
+                    }, {});
+
+                    console.log("Avatar MAp", avatarMap)
+
+
+                    setAvatars(avatarMap);
+
+
                 } else {
                     console.error('Error fetching posts: Invalid response format');
                 }
@@ -108,10 +136,11 @@ const HomePosts = () => {
             </Row>
             {posts.length > 0 ? (
                 posts.map((post) => (
+
                     <UserContent
                         key={post._id}
                         img={post.image?.data || placeHolder}
-                        avatar={placeHolder}
+                        avatar={post.picture || placeHolder}
                         user={post.username}
                         desc={post.userDescription}
                         body={post.description}
