@@ -4,6 +4,7 @@ import holderimg from "../../assets/holderimg.png";
 import { useState } from "react";
 
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 const BioInput = () => {
   const [biotext, setBiotext] = useState("");

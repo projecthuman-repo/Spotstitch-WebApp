@@ -32,9 +32,6 @@ const UserSignUp = () => {
   const check =
     /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,10}$/;
   const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-  useEffect(() => {
-    setEmail(localStorage.getItem("email"));
-  }, []);
 
   useEffect(() => {
     if (check.test(password)) {
@@ -57,6 +54,7 @@ const UserSignUp = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
+    localStorage.setItem("email", email);
 
     // Check if the password meets the requirements
     if (!check.test(password)) {

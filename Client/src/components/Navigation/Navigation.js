@@ -53,12 +53,14 @@ export default function Topbar({ menuOpen, setMenuOpen }) {
       >
         <img
           src={logo}
-          width={"163px"}
-          height={"32px"}
+          width={"40px"}
+          height={"40px"}
           className="d-inline-block align-top mx-2"
           alt="Logo"
         />
-        <Navbar.Brand href="#" className="fs-16 fw-700"></Navbar.Brand>
+        <Navbar.Brand href="#" className="fs-16 fw-700">
+          SPOTSTICH
+        </Navbar.Brand>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
 
         <Navbar.Collapse id="basic-navbar-nav">

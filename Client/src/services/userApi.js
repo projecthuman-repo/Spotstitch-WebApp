@@ -24,6 +24,15 @@ const userApi = createApi({
             }),
         }),
 
+        // Fetch any user profile information that is public
+        viewUserProfile: builder.mutation({
+            query: (username) => ({
+                url: "/user/viewProfile",
+                method: "GET",
+                body: username
+            }),
+        }),
+
         updateDetails: builder.mutation({
             query: (body) => ({
                 url: "/user/details",
@@ -68,6 +77,7 @@ const userApi = createApi({
 export const {
     useGetUserProfileMutation,
     useRegisterSpotstitchMutation,
+    useViewUserProfileMutation,
     useUpdateDetailsMutation,
     useUpdatePictureMutation,
     useUpdateAccountTypeMutation
