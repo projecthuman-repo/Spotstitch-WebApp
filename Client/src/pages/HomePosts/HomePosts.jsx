@@ -50,27 +50,6 @@ const HomePosts = () => {
         },
     ];
 
-
-    // useEffect(() => {
-    //     const fetchPosts = async () => {
-    //         try {
-    
-    //             const res = await getPosts()
-    //             if (res.error) throw new Error(res.error)
-    //             if (res.data?.status == "ok") {
-    //                 console.log("GOT POSTS", res)
-    //                 // await dispatch(setUserData({ picture: image }))
-    //             }
-    
-    
-    //         } catch (error) {
-    //             console.log('rejected', error)
-    //         }
-    //     };
-    //     fetchPosts();
-    // }, []);
-
-
     useEffect(() => {
         const fetchPosts = async () => {
             try {
