@@ -22,6 +22,15 @@ const PostSchema = new mongoose.Schema({
     likes: Number
 })
 
+PostSchema.statics.getAllPosts = async () => {
+    try {
+        const result = await Post.find();
+        return result;
+    } catch (err) {
+        throw new Error("Error getting all posts");
+    }
+}
+
 PostSchema.statics.getPost = async (id) => {
     try {
         const result = await Post.findById(id);

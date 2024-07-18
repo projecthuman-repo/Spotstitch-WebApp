@@ -18,7 +18,8 @@ module.exports = async (req, res) => {
             }
 
             req.user = user;
-            const posts = await Post.getAllPosts();
+            const filters = req.body.filters || {};
+            const posts = await Post.getPosts(filters);
 
             if (!posts || posts.length === 0) {
                 throw new Error('No posts found');
