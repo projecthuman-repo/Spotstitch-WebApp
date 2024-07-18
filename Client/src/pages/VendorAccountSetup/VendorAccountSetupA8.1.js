@@ -6,6 +6,9 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 
 const VendorAccountSetup = () => {
+  const user = useSelector((state) => state.user);
+  const firstName = useSelector((state) => state.user.firstName);
+
   return (
     <>
       <div className="boss">

@@ -51,18 +51,17 @@ export default function Topbar({ menuOpen, setMenuOpen }) {
         style={{ maxWidth: "1440px" }}
         fluid
       >
-        <img
-          src={logo}
-          width={"40px"}
-          height={"40px"}
-          className="d-inline-block align-top mx-2"
-          alt="Logo"
-        />
-        <Navbar.Brand href="#" className="fs-16 fw-700">
-          SPOTSTICH
+        {" "}
+        <Navbar.Brand href="#" className="fs-16 fw-700 logo-container">
+          <img
+            src={logo}
+            width={"163px"}
+            height={"40px"}
+            className="d-inline-block align-top mx-2 logo-navigation"
+            alt="Logo"
+          />
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
-
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav>
             <Form className="m-2">
