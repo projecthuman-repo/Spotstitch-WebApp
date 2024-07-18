@@ -1,14 +1,25 @@
 import "./home.css";
-import { Col, Form, Row, Card, Container } from "react-bootstrap";
-import { BsChat, BsHeart, BsSend, BsReply } from "react-icons/bs";
+import {
+  Col,
+  Form,
+  Row,
+  Card,
+  Container,
+  OverlayTrigger,
+  Popover,
+  Tooltip,
+  Modal,
+} from "react-bootstrap";
+import { BsChat } from "react-icons/bs";
 import emoji from "../../assets/icons/emoji 1.svg";
 import addEmoji from "../../assets/icons/addEmoji.svg";
 import like from "../../assets/icons/Like-emoji group.svg";
 import Repost from "../../assets/icons/Re-post icon.png";
 import iconReposted from "../../assets/icons/icon-reposted.png";
 import React, { useState } from "react";
+import DetailedPost from "./detailedPost.js";
 function UserContent({ img, avatar, user, desc, body }) {
-  const threshold = 400;
+  const threshold = 150;
   const [isExpanded, setIsExpanded] = useState(false);
   const [displayText, setDisplayText] = useState("");
 
@@ -20,6 +31,18 @@ function UserContent({ img, avatar, user, desc, body }) {
       setDisplayText(body);
     }
   }, [body]);
+  const [showModal, setShowModal] = useState(false);
+  //   const detailedPostModal = (a, u, d, b) => (
+  //     <Modal show={showModal} onHide={() => setShowModal(false)}>
+  //       <Modal.Header closeButton>
+  //         <Modal.Title>User Details</Modal.Title>
+  //       </Modal.Header>
+  //       <Modal.Body>
+  //         {/* Call detailedPost here or directly place the content */}
+  //         {detailedPost(a, u, d, b)}
+  //       </Modal.Body>
+  //     </Modal>
+  //   );
 
   const toggleText = () => {
     if (isExpanded) {
@@ -33,8 +56,15 @@ function UserContent({ img, avatar, user, desc, body }) {
   return (
     <Container className=" p-0 my-3 round-l">
       <Row className="post-row">
-        <Col lg={7} className="post-image-container">
-          <img src={img}></img>
+        <Col
+          lg={7}
+          className="post-image-container"
+          style={{ height: "299px" }}
+        >
+          <img
+            src={img}
+            style={{ width: "100%", height: "100%", objectFit: "contain" }}
+          ></img>
         </Col>
         <Col
           lg={5}
@@ -64,22 +94,32 @@ function UserContent({ img, avatar, user, desc, body }) {
             </Col>
           </Row>
 
-          <Row className="mx-2 ">
+          <Row className="mx-2">
             <Col className="col-post-text-body">
               <p className="fs-12 fw-400">
                 {displayText}
                 {body.length > threshold && (
                   <span
-                    onClick={toggleText}
                     style={{ color: "blue", cursor: "pointer" }}
+                    onClick={() => setShowModal(true)}
                   >
-                    {isExpanded ? " See Less" : "See More"}
+                    See More
                   </span>
                 )}
               </p>
             </Col>
+            {showModal && (
+              <DetailedPost
+                show={showModal}
+                onHide={() => setShowModal(false)}
+                avatar={avatar}
+                user={user}
+                desc={desc}
+                body={body}
+                img={img}
+              />
+            )}
           </Row>
-          <Row style={{ height: "150px" }}></Row>
 
           <Row className="mx-2 my-3 row-icons">
             <button

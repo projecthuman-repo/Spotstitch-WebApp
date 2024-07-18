@@ -109,7 +109,12 @@ function Home({ vendor = false }) {
                           <img src={emoji} alt="Emoji" className="emoji" />
                         </button>
                         <button className="icon" onClick={addAttachment}>
-                          <img src={Text} alt="text" className="text" />
+                          <img
+                            src={Text}
+                            alt="text"
+                            className="text"
+                            style={{ width: "35px" }}
+                          />
                         </button>
 
                         <button className="icon" onClick={addAttachment}>
