@@ -111,6 +111,8 @@ function Account() {
                     <Button variant="secondary" onClick={handleCloseModal}>
                         Cancel
                     </Button>
+
+
                 </Modal.Footer>
             </Modal>
         </Container>
