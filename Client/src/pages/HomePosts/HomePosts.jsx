@@ -83,6 +83,7 @@ const HomePosts = () => {
                         try {
                             const res = await getUser(post.userId);
                             console.log("RESULT:", res)
+                            //!!!! currently not returning any user's info
                             return { userId: post.userId, picture: res.picture };
                         } catch (error) {
                             console.log('rejected', error);

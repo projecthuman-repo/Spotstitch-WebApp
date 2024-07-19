@@ -9,7 +9,7 @@ module.exports = async (req, res) => {
         const userId = res?.locals?.jwtData?.id
         if (!userId) throw new Error('Invalid user ID')
 
-        const getUserId = res?.locals?.jwtData?.userId
+        const getUserId = req.body.userId;
         if (!getUserId) throw new Error('Invalid searched user Id')
 
         // check if user exists, otherwise throw an error
