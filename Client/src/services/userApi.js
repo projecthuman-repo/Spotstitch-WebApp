@@ -33,6 +33,14 @@ const userApi = createApi({
             }),
         }),
 
+        viewUserProfileById: builder.mutation({
+            query: (userId) => ({
+                url: "/user/viewProfileById",
+                method: "GET",
+                body: userId
+            }),
+        }),
+
         updateDetails: builder.mutation({
             query: (body) => ({
                 url: "/user/details",
@@ -78,6 +86,7 @@ export const {
     useGetUserProfileMutation,
     useRegisterSpotstitchMutation,
     useViewUserProfileMutation,
+    useViewUserProfileByIdMutation,
     useUpdateDetailsMutation,
     useUpdatePictureMutation,
     useUpdateAccountTypeMutation
