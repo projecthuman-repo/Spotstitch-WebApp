@@ -20,6 +20,11 @@ const getChat = async (chatId) => {
     return await socket.emitWithAck(socketEvents.chatOpen, chatId)
 }
 
+const addToChat = async (users) => {
+    const chats = await socket.emitWithAck(socketEvents.addToChat, users)
+    return chats
+}
+
 const sendMessage = async (chat, content) => {
     return await socket.emitWithAck(socketEvents.messageSend, chat, content)
 }
@@ -37,6 +42,7 @@ export {
     connect,
     getChats,
     getChat,
+    addToChat,
     sendMessage,
     updateMessage,
     typing,

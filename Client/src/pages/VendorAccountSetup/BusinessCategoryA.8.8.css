@@ -1,0 +1,114 @@
+.form-container-business-category {
+  /* Body Contents */
+
+  box-sizing: border-box;
+
+  /* Auto layout */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 60px 0px;
+  gap: 35px;
+
+  width: 1248px;
+  height: 391px;
+
+  border: 1px solid #c4c4c4;
+  border-radius: 40px;
+
+  /* Inside auto layout */
+  flex: none;
+  order: 1;
+  flex-grow: 0;
+}
+.input-wrapper {
+  position: relative;
+  border: 1px solid #ccc; /* Mimic input border */
+  padding: 5px 35px 5px 10px; /* Adjust based on your design */
+  border-radius: 4px; /* Optional: if you want rounded corners */
+}
+
+.input-wrapper:focus-within {
+  border-color: blue; /* Change as needed for focus effect */
+  box-shadow: 0 0 0 2px rgba(0, 0, 255, 0.2); /* Optional: for additional focus effect */
+}
+
+.text-input-business-category {
+  border: none;
+  width: 100%;
+  padding: 8px 0;
+}
+
+.input-icon {
+  position: absolute;
+  right: 10px; /* Adjust based on your design */
+  top: 50%;
+  transform: translateY(-50%);
+  width: 20px; /* Adjust based on your image */
+  height: 20px; /* Adjust based on your image */
+}
+
+.text-input-business-category:focus {
+  outline: none;
+}
+.input-wrapper {
+  /* Text input */
+
+  /* Auto layout */
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  gap: 20px;
+
+  width: 588px;
+  height: 64px;
+
+  background: #ffffff;
+  border: 1px solid #c4c4c4;
+  border-radius: 15px;
+
+  /* Inside auto layout */
+  flex: none;
+  order: 0;
+  flex-grow: 0;
+}
+
+.categories-business-category {
+  /* Categories */
+
+  /* Auto layout */
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  padding: 0px;
+  gap: 20px;
+
+  width: 633px;
+  height: 172px;
+
+  /* Inside auto layout */
+  flex: none;
+  order: 1;
+  flex-grow: 0;
+}
+
+.btns-business-category {
+  /* Auto layout */
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  padding: 0px;
+  gap: 40px;
+
+  position: relative;
+  width: 296px;
+  height: 64px;
+  top: 500px;
+  left: 480px;
+}

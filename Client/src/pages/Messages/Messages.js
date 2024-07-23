@@ -91,8 +91,8 @@ const Messages = () => {
   const onCreateChat = () => {
 
     console.log(user)
-    console.log(user.id)
-    var member1 = user.id || "1";
+    console.log(user._id)
+    var member1 = user._id || "1";
     var member2 = undefined || "2"; // Undefined is temp. Second member username
 
     createChat([member1])

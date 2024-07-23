@@ -1,0 +1,1301 @@
+.body-billing-info {
+  /* Auto layout */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0px;
+  /* gap: 40px; */
+
+  position: absolute;
+  width: 100%;
+  height: 1428px;
+  left: 20px;
+  top: 256px;
+}
+
+.header-billing-info/* Heading */ {
+  /* Auto layout */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0px;
+  gap: 5px;
+
+  width: 556px;
+  height: 80px;
+
+  /* Inside auto layout */
+  flex: none;
+  order: 0;
+  flex-grow: 0;
+}
+/* Billing Information */
+.page-title-billing-info {
+  width: 331px;
+  height: 45px;
+
+  /* font-family: "Poppins"; */
+  font-style: normal;
+  font-weight: 500;
+  font-size: 36px;
+  line-height: 125.5%;
+  /* or 45px */
+  text-align: center;
+
+  color: #0e0e0e;
+
+  /* Inside auto layout */
+  flex: none;
+  order: 0;
+  flex-grow: 0;
+}
+
+/* Input your billing information. This is how you’ll get paid! */
+.small-description-billing-info {
+  width: 556px;
+  height: 30px;
+
+  /* font-family: "Poppins"; */
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 30px;
+  /* identical to box height */
+  text-align: center;
+
+  color: #0e0e0e;
+
+  /* Inside auto layout */
+  flex: none;
+  order: 1;
+  flex-grow: 0;
+}
+
+.main-form-content {
+  /* Body Contents */
+
+  box-sizing: border-box;
+
+  /* Auto layout */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 60px 100px;
+  gap: 40px;
+
+  width: 1248px;
+  height: 1308px;
+
+  border: 1px solid #c4c4c4;
+  border-radius: 40px;
+
+  /* Inside auto layout */
+  flex: none;
+  order: 1;
+  flex-grow: 0;
+}
+
+/* Frame 2610814 */
+.Frame-2610814 {
+  /* Auto layout */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 0px;
+  gap: 20px;
+
+  width: 359px;
+  height: 133px;
+
+  /* Inside auto layout */
+  flex: none;
+  order: 0;
+  flex-grow: 0;
+}
+/* Seller Type */
+
+.Frame-2610814 .form-element-header {
+  width: 110px;
+  height: 25px;
+
+  /* font-family: "Poppins"; */
+  font-style: normal;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 125.5%;
+  /* identical to box height, or 25px */
+
+  color: #0e0e0e;
+
+  /* Inside auto layout */
+  flex: none;
+  order: 0;
+  flex-grow: 0;
+}
+.Frame-2610814 .form-element-description {
+  /* For tax purposes, what type of seller are you? */
+  width: 359px;
+  height: 24px;
+
+  /* font-family: "Poppins"; */
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  /* identical to box height */
+  color: #0e0e0e;
+
+  /* Inside auto layout */
+  flex: none;
+  order: 1;
+  flex-grow: 0;
+  margin: 0;
+}
+
+/* Frame 2610813 */
+.Frame-2610813 {
+  /* Auto layout */
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0px;
+  gap: 40px;
+
+  width: 261px;
+  height: 24px;
+
+  /* Inside auto layout */
+  flex: none;
+  order: 2;
+  flex-grow: 0;
+}
+.individual {
+  /* [Radio Button] */
+
+  /* Auto layout */
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 0px;
+  gap: 10px;
+
+  margin: 0 auto;
+  width: 110px;
+  height: 24px;
+
+  /* Inside auto layout */
+  flex: none;
+  order: 0;
+  flex-grow: 0;
+}
+
+label.individual {
+  /* Individual */
+
+  width: 82px;
+  height: 24px;
+
+  /* font-family: "Poppins"; */
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 24px;
+  /* identical to box height */
+  display: flex;
+  justify-content: space-between;
+  color: #0e0e0e;
+
+  /* Inside auto layout */
+  flex: none;
+  order: 2;
+  flex-grow: 0;
+}
+label.individual input[type="radio"],
+label.business input[type="radio"] {
+  order: -1;
+}
+.business {
+  /* [Radio Button] */
+
+  /* Auto layout */
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 0px;
+  gap: 10px;
+
+  margin: 0 auto;
+  width: 100px;
+  height: 24px;
+
+  /* Inside auto layout */
+  flex: none;
+  order: 1;
+  flex-grow: 0;
+}
+label.business {
+  /* Business */
+
+  width: 72px;
+  height: 24px;
+
+  /* font-family: "Poppins"; */
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 24px;
+  /* identical to box height */
+
+  color: #0e0e0e;
+
+  /* Inside auto layout */
+  flex: none;
+  order: 2;
+  flex-grow: 0;
+}
+
+.Frame-2610815 {
+  /* Auto layout */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 0px;
+  gap: 20px;
+
+  width: 550px;
+  height: 245px;
+
+  /* Inside auto layout */
+  flex: none;
+  order: 1;
+  flex-grow: 0;
+}
+.Frame-2610815 .form-element-header {
+  /* Vendor Information */
+
+  width: 197px;
+  height: 45px;
+
+  /* font-family: "Poppins"; */
+  font-style: normal;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 125.5%;
+  /* identical to box height, or 25px */
+
+  color: #0e0e0e;
+
+  /* Inside auto layout */
+  flex: none;
+  order: 0;
+  flex-grow: 0;
+}
+.Frame-2610812 {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 0px;
+  gap: 20px;
+
+  width: 550px;
+  height: 50px;
+
+  /* Inside auto layout */
+  flex: none;
+  order: 1;
+  flex-grow: 0;
+}
+
+.vendor-first-name {
+  /* Auto layout */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 0px;
+  gap: 6px;
+
+  width: 265px;
+  height: 90px;
+
+  /* Inside auto layout */
+  flex: none;
+  order: 0;
+  flex-grow: 0;
+}
+label.vendor-first-name {
+  /* [Title] */
+
+  width: 265px;
+  height: 24px;
+
+  /* font-family: "Poppins"; */
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  /* identical to box height */
+
+  color: #0e0e0e;
+
+  /* Inside auto layout */
+  flex: none;
+  order: 0;
+  align-self: stretch;
+  flex-grow: 0;
+}
+/* Text + Input */
+.vendor-last-name {
+  /* Auto layout */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 0px;
+  gap: 6px;
+  width: 265px;
+  height: 90px;
+  /* Inside auto layout */
+  flex: none;
+  order: 1;
+  flex-grow: 0;
+}
+label.vendor-last-name {
+  /* [Title] */
+
+  width: 265px;
+  height: 24px;
+
+  /* font-family: "Poppins"; */
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  /* identical to box height */
+
+  color: #0e0e0e;
+
+  /* Inside auto layout */
+  flex: none;
+  order: 0;
+  align-self: stretch;
+  flex-grow: 0;
+}
+/* Text Input */
+.Frame-2610812 input {
+  box-sizing: border-box;
+
+  width: 265px;
+  height: 60px;
+
+  background: #ffffff;
+  border: 1px solid #0e0e0e;
+  border-radius: 10px;
+
+  /* Inside auto layout */
+  flex: none;
+  order: 1;
+  align-self: stretch;
+  flex-grow: 0;
+}
+
+.Frame-2610811 {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 0px;
+  gap: 10px;
+
+  width: 550px;
+  height: 90px;
+
+  /* Inside auto layout */
+  flex: none;
+  order: 2;
+  flex-grow: 0;
+  margin-bottom: 60px;
+}
+.DOB {
+  /* [Title] */
+
+  width: 170px;
+  height: 24px;
+
+  /* font-family: "Poppins"; */
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  /* identical to box height */
+
+  color: #0e0e0e;
+
+  /* Inside auto layout */
+  flex: none;
+  order: 0;
+  align-self: stretch;
+  flex-grow: 0;
+  margin-bottom: 0;
+}
+/* Dropdown */
+.DOB-D,
+.DOB-M,
+.DOB-Y {
+  /* Auto layout */
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  gap: 100px;
+
+  width: 177px;
+  height: 60px;
+
+  background: #ffffff;
+  border: 1px solid #0e0e0e;
+  border-radius: 10px;
+
+  /* Inside auto layout */
+  flex: none;
+  order: 1;
+  flex-grow: 0;
+}
+
+label.DOB-D select,
+label.DOB-M select,
+label.DOB-Y select {
+  /* Auto layout */
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  padding-right: 30px;
+  gap: 100px;
+
+  width: 160px;
+  height: 40px;
+
+  background: #ffffff;
+  border: none;
+  border-radius: 10px;
+
+  /* Inside auto layout */
+  flex: none;
+  order: 1;
+  flex-grow: 0;
+}
+
+.Frame-2610819 {
+  /* Auto layout */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 0px;
+  gap: 20px;
+
+  width: 550px;
+  height: 305px;
+
+  /* Inside auto layout */
+  flex: none;
+  order: 2;
+  flex-grow: 0;
+}
+
+/* Tax payer address */
+.Frame-2610819 .form-element-header {
+  width: 187px;
+  height: 45px;
+
+  /* font-family: "Poppins"; */
+  font-style: normal;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 125.5%;
+  /* identical to box height, or 25px */
+
+  color: #0e0e0e;
+
+  /* Inside auto layout */
+  flex: none;
+  order: 0;
+  flex-grow: 0;
+}
+
+.Frame-2610816 {
+  /* Auto layout */
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 0px;
+  gap: 35px;
+
+  width: 550px;
+  height: 90px;
+
+  /* Inside auto layout */
+  flex: none;
+  order: 1;
+  align-self: stretch;
+  flex-grow: 0;
+}
+.street-number {
+  /* Text + Input */
+
+  /* Auto layout */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 0px;
+  gap: 6px;
+
+  width: 137px;
+  height: 90px;
+
+  /* Inside auto layout */
+  flex: none;
+  order: 0;
+  flex-grow: 0;
+}
+label.street-number {
+  /* [Title] */
+
+  width: 137px;
+  height: 24px;
+
+  /* font-family: "Poppins"; */
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  /* identical to box height */
+
+  color: #0e0e0e;
+
+  /* Inside auto layout */
+  flex: none;
+  order: 0;
+  align-self: stretch;
+  flex-grow: 0;
+}
+
+.street-number input {
+  /* Text Input */
+
+  box-sizing: border-box;
+
+  width: 137px;
+  height: 60px;
+
+  background: #ffffff;
+  border: 1px solid #0e0e0e;
+  border-radius: 10px;
+
+  /* Inside auto layout */
+  flex: none;
+  order: 1;
+  align-self: stretch;
+  flex-grow: 0;
+}
+
+.street-name {
+  /* Text + Input */
+
+  /* Auto layout */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 0px;
+  gap: 6px;
+
+  width: 378px;
+  height: 90px;
+
+  /* Inside auto layout */
+  flex: none;
+  order: 1;
+  flex-grow: 0;
+}
+.street-name input {
+  /* Text Input */
+
+  box-sizing: border-box;
+
+  width: 378px;
+  height: 60px;
+
+  background: #ffffff;
+  border: 1px solid #0e0e0e;
+  border-radius: 10px;
+
+  /* Inside auto layout */
+  flex: none;
+  order: 1;
+  align-self: stretch;
+  flex-grow: 0;
+}
+label.street-name {
+  /* [Title] */
+
+  width: 378px;
+  height: 24px;
+
+  /* font-family: "Poppins"; */
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  /* identical to box height */
+
+  color: #0e0e0e;
+
+  /* Inside auto layout */
+  flex: none;
+  order: 0;
+  align-self: stretch;
+  flex-grow: 0;
+}
+
+.Frame-2610817 {
+  /* Auto layout */
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 0px;
+  gap: 35px;
+
+  width: 550px;
+  height: 90px;
+
+  /* Inside auto layout */
+  flex: none;
+  order: 2;
+  align-self: stretch;
+  flex-grow: 0;
+}
+
+.city-town {
+  /* Text + Input */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 0px;
+  gap: 6px;
+
+  width: 190px;
+  height: 90px;
+
+  /* Inside auto layout */
+  flex: none;
+  order: 0;
+  flex-grow: 0;
+}
+.city-town input {
+  /* Text Input */
+
+  box-sizing: border-box;
+
+  width: 190px;
+  height: 60px;
+
+  background: #ffffff;
+  border: 1px solid #0e0e0e;
+  border-radius: 10px;
+
+  /* Inside auto layout */
+  flex: none;
+  order: 1;
+  align-self: stretch;
+  flex-grow: 0;
+}
+
+label.city-town {
+  width: 190px;
+  height: 24px;
+
+  /* font-family: "Poppins"; */
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  /* identical to box height */
+
+  color: #0e0e0e;
+
+  /* Inside auto layout */
+  flex: none;
+  order: 0;
+  align-self: stretch;
+  flex-grow: 0;
+}
+
+.state-province-region {
+  /* Auto layout */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 0px;
+  gap: 6px;
+
+  width: 325px;
+  height: 90px;
+
+  /* Inside auto layout */
+  flex: none;
+  order: 1;
+  flex-grow: 0;
+}
+.state-province-region input {
+  /* Text Input */
+
+  box-sizing: border-box;
+
+  width: 325px;
+  height: 60px;
+
+  background: #ffffff;
+  border: 1px solid #0e0e0e;
+  border-radius: 10px;
+
+  /* Inside auto layout */
+  flex: none;
+  order: 1;
+  align-self: stretch;
+  flex-grow: 0;
+}
+label.state-province-region {
+  /* [Title] */
+
+  width: 325px;
+  height: 24px;
+
+  /* font-family: "Poppins"; */
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  /* identical to box height */
+
+  color: #0e0e0e;
+
+  /* Inside auto layout */
+  flex: none;
+  order: 0;
+  align-self: stretch;
+  flex-grow: 0;
+}
+
+.Frame-2610818 {
+  /* Auto layout */
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 0px;
+  gap: 35px;
+
+  width: 550px;
+  height: 90px;
+
+  /* Inside auto layout */
+  flex: none;
+  order: 3;
+  align-self: stretch;
+  flex-grow: 0;
+}
+
+/* Text + Input */
+.country {
+  /* Auto layout */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 0px;
+  gap: 6px;
+
+  width: 340px;
+  height: 90px;
+
+  /* Inside auto layout */
+  flex: none;
+  order: 0;
+  flex-grow: 0;
+}
+
+label.country {
+  /* [Title] */
+
+  width: 340px;
+  height: 24px;
+
+  /* font-family: "Poppins"; */
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  /* identical to box height */
+
+  color: #0e0e0e;
+
+  /* Inside auto layout */
+  flex: none;
+  order: 0;
+  align-self: stretch;
+  flex-grow: 0;
+}
+
+.country input {
+  /* Text Input */
+
+  box-sizing: border-box;
+
+  width: 340px;
+  height: 60px;
+
+  background: #ffffff;
+  border: 1px solid #0e0e0e;
+  border-radius: 10px;
+
+  /* Inside auto layout */
+  flex: none;
+  order: 1;
+  align-self: stretch;
+  flex-grow: 0;
+}
+.postal-code {
+  /* Text + Input */
+
+  /* Auto layout */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 0px;
+  gap: 6px;
+
+  width: 175px;
+  height: 90px;
+
+  /* Inside auto layout */
+  flex: none;
+  order: 1;
+  flex-grow: 0;
+}
+label.postal-code {
+  /* [Title] */
+
+  width: 175px;
+  height: 24px;
+
+  /* font-family: "Poppins"; */
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  /* identical to box height */
+
+  color: #0e0e0e;
+
+  /* Inside auto layout */
+  flex: none;
+  order: 0;
+  align-self: stretch;
+  flex-grow: 0;
+}
+
+.postal-code input {
+  /* Text Input */
+
+  box-sizing: border-box;
+
+  width: 175px;
+  height: 60px;
+
+  background: #ffffff;
+  border: 1px solid #0e0e0e;
+  border-radius: 10px;
+
+  /* Inside auto layout */
+  flex: none;
+  order: 1;
+  align-self: stretch;
+  flex-grow: 0;
+}
+
+.Frame-2610820 {
+  /* Auto layout */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 0px;
+  gap: 20px;
+
+  width: 550px;
+  height: 355px;
+
+  /* Inside auto layout */
+  flex: none;
+  order: 3;
+  flex-grow: 0;
+}
+
+.Frame-2610820 .form-element-header {
+  /* Add a credit card */
+
+  width: 176px;
+  height: 25px;
+
+  /* font-family: "Poppins"; */
+  font-style: normal;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 125.5%;
+  /* identical to box height, or 25px */
+
+  color: #0e0e0e;
+
+  /* Inside auto layout */
+  flex: none;
+  order: 0;
+  flex-grow: 0;
+}
+
+.card-number-container {
+  /* Text + Input */
+
+  /* Auto layout */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 0px;
+  gap: 6px;
+
+  width: 550px;
+  height: 90px;
+
+  /* Inside auto layout */
+  flex: none;
+  order: 1;
+  flex-grow: 0;
+  margin-bottom: 40px;
+}
+
+label.card-number {
+  /* [Title] */
+
+  width: 550px;
+
+  /* font-family: "Poppins"; */
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  /* identical to box height */
+
+  color: #0e0e0e;
+
+  /* Inside auto layout */
+  flex: none;
+  order: 0;
+  align-self: stretch;
+  flex-grow: 0;
+}
+.card-number input {
+  /* Text Input */
+
+  box-sizing: border-box;
+
+  width: 550px;
+  height: 60px;
+
+  background: #ffffff;
+  border: 1px solid #0e0e0e;
+  border-radius: 10px;
+
+  /* Inside auto layout */
+  flex: none;
+  order: 1;
+  align-self: stretch;
+  flex-grow: 0;
+}
+.expire-cvv {
+  /* Frame 2610817 */
+
+  /* Auto layout */
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 0px;
+  gap: 35px;
+
+  width: 389px;
+  height: 60px;
+
+  /* Inside auto layout */
+  flex: none;
+  order: 2;
+  flex-grow: 0;
+}
+
+.expirationDate {
+  /* Text + Input */
+
+  /* Auto layout */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 0px;
+  gap: 6px;
+
+  width: 177px;
+  height: 90px;
+
+  /* Inside auto layout */
+  flex: none;
+  order: 0;
+  flex-grow: 0;
+}
+label.expirationDate {
+  /* [Title] */
+
+  width: 177px;
+  height: 24px;
+
+  /* font-family: "Poppins"; */
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  /* identical to box height */
+
+  color: #0e0e0e;
+
+  /* Inside auto layout */
+  flex: none;
+  order: 0;
+  align-self: stretch;
+  flex-grow: 0;
+}
+.expirationDate input {
+  /* Text Input */
+
+  box-sizing: border-box;
+
+  width: 177px;
+  height: 60px;
+
+  background: #ffffff;
+  border: 1px solid #0e0e0e;
+  border-radius: 10px;
+
+  /* Inside auto layout */
+  flex: none;
+  order: 1;
+  align-self: stretch;
+  flex-grow: 0;
+}
+
+.cvv {
+  /* Text + Input */
+
+  /* Auto layout */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 0px;
+  gap: 6px;
+
+  width: 177px;
+  height: 90px;
+
+  /* Inside auto layout */
+  flex: none;
+  order: 1;
+  flex-grow: 0;
+}
+
+label.cvv {
+  /* [Title] */
+
+  width: 177px;
+  height: 24px;
+
+  /* font-family: "Poppins"; */
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  /* identical to box height */
+
+  color: #0e0e0e;
+
+  /* Inside auto layout */
+  flex: none;
+  order: 0;
+  align-self: stretch;
+  flex-grow: 0;
+}
+.cvv input {
+  /* Text Input */
+
+  box-sizing: border-box;
+
+  width: 177px;
+  height: 60px;
+
+  background: #ffffff;
+  border: 1px solid #0e0e0e;
+  border-radius: 10px;
+
+  /* Inside auto layout */
+  flex: none;
+  order: 1;
+  align-self: stretch;
+  flex-grow: 0;
+}
+
+.name-on-card-container {
+  /* Text + Input */
+
+  /* Auto layout */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 0px;
+  gap: 6px;
+
+  width: 550px;
+  height: 30px;
+
+  /* Inside auto layout */
+  flex: none;
+  order: 3;
+  flex-grow: 0;
+}
+label.name-on-card {
+  /* [Title] */
+
+  width: 550px;
+  height: 24px;
+
+  /* font-family: "Poppins"; */
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  /* identical to box height */
+
+  color: #0e0e0e;
+
+  /* Inside auto layout */
+  flex: none;
+  order: 0;
+  align-self: stretch;
+  flex-grow: 0;
+}
+
+.name-on-card input {
+  /* Text Input */
+
+  box-sizing: border-box;
+
+  width: 550px;
+  height: 60px;
+
+  background: #ffffff;
+  border: 1px solid #0e0e0e;
+  border-radius: 10px;
+
+  /* Inside auto layout */
+  flex: none;
+  order: 1;
+  align-self: stretch;
+  flex-grow: 0;
+}
+
+.main-form-content .form-element-header {
+  font-weight: bold;
+}
+
+.buttons-billing-info {
+  /* Auto layout */
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  padding: 0px;
+  gap: 40px;
+
+  position: relative;
+  width: 296px;
+  height: 64px;
+  top: 1450px;
+  left: 474px;
+}
+.back-button-billing-info {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  gap: 10px;
+
+  width: 81px;
+  height: 64px;
+  background: none;
+  border: none;
+  /* Inside auto layout */
+  flex: none;
+  order: 0;
+  flex-grow: 0;
+
+  text-decoration: underline;
+  /* position: absolute;
+  height: 64px;
+  left: 969px;
+  top: 404px; */
+}
+.save-continue-btn-billing-info {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  gap: 10px;
+
+  width: 175px;
+  height: 64px;
+  /* position: absolute;
+  left: 1069px;
+  top: 404px; */
+
+  background: #8cbdeb;
+  border-radius: 15px;
+  border: none;
+}
+
+.bot-line {
+  /* Line 5 */
+
+  position: absolute;
+  width: 100%;
+  height: 0px;
+  left: 0px;
+  top: 1888px;
+
+  border: 1px solid #757575;
+}

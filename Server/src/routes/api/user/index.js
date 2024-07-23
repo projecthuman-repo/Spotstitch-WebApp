@@ -8,15 +8,27 @@ const { verifyToken } = require('../../../authorization/auth');
 const getProfile = require('./getProfile');
 const updateImage = require('./updateImage');
 const updateAccountType = require('./updateAccountType');
+const updateDetails = require('./updateDetails');
+const viewProfile = require('./viewProfile');
+const viewProfilebyId = require('./viewProfilebyId');
 
 // get user profile
 router.get('/profile', verifyToken, getProfile)
+
+// gets other user profile (some searched user)
+router.get('/viewProfile', viewProfile)
+
+// gets other user profile (some searched user)
+router.get('/viewProfileById', viewProfilebyId)
 
 // creating user
 router.post('/register', register);
 
 // login user
 router.post('/login', login);
+
+// update user details
+router.put('/details', verifyToken, updateDetails)
 
 // update user image
 router.put('/image', verifyToken, updateImage)

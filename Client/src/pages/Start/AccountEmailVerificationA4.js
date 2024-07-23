@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import { useSendVerificationEmailMutation } from '../../services/loginApi'; // Adjust the import path as necessary
 
 const AccountEmailVerification = () => {
+
   const email = localStorage.email;
   const [resendStatus, setResendStatus] = useState("");
   const [sendVerificationEmail] = useSendVerificationEmailMutation();

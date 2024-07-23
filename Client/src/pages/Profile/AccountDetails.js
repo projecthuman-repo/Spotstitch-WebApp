@@ -5,7 +5,7 @@ import { Modal, Row, Col, Container, Button, Form, Image } from "react-bootstrap
 import { Link } from "react-router-dom"
 
 import { editAvatar, editBanner, removeBanner, settings } from "../../assets/icons";
-import { useUpdatePictureMutation } from "../../services/userApi";
+import { useUpdatePictureMutation, useUpdateDetailsMutation } from "../../services/userApi";
 import { setUserData } from "../../features/User/userSlice";
 import './AccountDetails.css';
 function AccountDetails() {
@@ -17,6 +17,13 @@ function AccountDetails() {
     const [updatePicture, { }] = useUpdatePictureMutation()
     const [show, setShow] = useState(false);
     const dispatch = useDispatch()
+
+    const [updateDetails, { }] = useUpdateDetailsMutation()
+
+    const [firstName, setFirstNameInput] = useState('');
+    const [lastName, setLastNameInput] = useState('');
+    const [bio, setBioInput] = useState('');
+    const [website, setWebsiteInput] = useState('');
 
     useEffect(() => {
         setImage(picture)
@@ -42,6 +49,23 @@ function AccountDetails() {
         }
     }
 
+    const handleChangeFirstName = (e) => {
+        setFirstNameInput(e.target.value);
+    };
+
+    const handleChangeLastName = (e) => {
+        setLastNameInput(e.target.value);
+    };
+
+    const handleChangeBio = (e) => {
+        setBioInput(e.target.value);
+    };
+
+    const handleChangeWebsite = (e) => {
+        setWebsiteInput(e.target.value);
+    };
+
+
     async function handleSubmit(e) {
         e.preventDefault()
         try {
@@ -50,6 +74,26 @@ function AccountDetails() {
             if (res.data?.status == "ok") {
                 await dispatch(setUserData({ picture: image }))
             }
+
+            const dRes = await updateDetails(
+                {
+                    firstName: firstName,
+                    lastName: lastName,
+                    // biography: bio,
+                    // website: website
+                })
+            console.log(dRes)
+            if (dRes.error) throw new Error(dRes.error)
+            if (dRes.data?.status == "ok") {
+                await dispatch(setUserData({
+                    firstName: firstName,
+                    lastName: lastName,
+                    biography: bio,
+                    website: website
+                }))
+            }
+
+
         } catch (error) {
             console.log('rejected', error)
         }
@@ -111,50 +155,70 @@ function AccountDetails() {
 
                                     }} />
                             </Form.Group>
-                            <div className="bg-banner row g-0 pt-5"
-                                style={{ backgroundImage: `url(${''}), linear-gradient(#D9D9D9 100%, #FFFFFF 1%)` }}>
+                            <div
+                                className="bg-banner row g-0 pt-5"
+                                style={{
+                                backgroundImage: `url(${""}), linear-gradient(#D9D9D9 100%, #FFFFFF 1%)`,
+                                }}
+                            >
                                 <Col lg={3} sm={6} xs={7} className="d-flex">
-                                    <div className="position-relative">
-                                        <img
-                                            type="button"
-                                            className="avatar content-border-l mx-4"
-                                            src={image}
-                                            width={139}
-                                            height={139}
-                                            onClick={() => { handleChangeImage(); }}
-                                        />
-                                        <img
-                                            type="button"
-                                            className="position-absolute top-50 start-50 translate-middle"
-                                            src={editAvatar}
-                                            width={30}
-                                            eight={30}
-                                            onClick={() => { handleChangeImage(); }}
-                                        />
-                                    </div>
-
+                                <div
+                                    className="position-relative"
+                                    style={{ marginLeft: "20px" }}
+                                >
+                                    <img
+                                        type="button"
+                                        className="avatar-profile-account-details"
+                                        src={image}
+                                        width={139}
+                                        height={139}
+                                        onClick={() => {
+                                            handleChangeImage();
+                                        }}
+                                    />
+                                    <img
+                                        type="button"
+                                        className="position-absolute top-50 start-50 translate-middle"
+                                        src={editAvatar}
+                                        width={30}
+                                        eight={30}
+                                        onClick={() => {
+                                            handleChangeImage();
+                                        }}
+                                    />
+                                </div>
                                 </Col>
-                                <Col lg={6} className="d-flex justify-content-evenly" sm={6} xs={5}>
-                                    <img src={editBanner} className="" height={54} width={54} />
-                                    <img src={removeBanner} className="" height={54} width={54} />
+                                <Col
+                                    lg={6}
+                                    className="d-flex justify-content-evenly"
+                                    sm={6}
+                                    xs={5}
+                                >
+                                <img src={editBanner} className="" height={54} width={54} />
+                                <img src={removeBanner} className="" height={54} width={54} />
                                 </Col>
-                                <Col lg={3} sm={0} xs={0}>
-                                </Col>
+                                <Col lg={3} sm={0} xs={0}></Col>
                             </div>
 
                             <Form.Group className="mt-2 mx-4" itemID="account.name">
-                                <Form.Label>Name</Form.Label>
-                                <Form.Control type='input' placeholder="name" />
+                                <Form.Label>First Name</Form.Label>
+                                <Form.Control type='input' placeholder="first name" onChange={handleChangeFirstName}/>
+                            </Form.Group>
+
+                            <Form.Group className="mt-2 mx-4" itemID="account.name">
+                                <Form.Label>Last Name</Form.Label>
+                                <Form.Control type='input' placeholder="last name" onChange={handleChangeLastName}/>
                             </Form.Group>
 
                             <Form.Group className="mt-2 mx-4" itemID="account.bio">
                                 <Form.Label>Bio</Form.Label>
-                                <Form.Control as="textarea" placeholder='old bio' rows={4} style={{ resize: 'none' }} />
+                                <Form.Control as="textarea" placeholder='old bio' rows={4} style={{ resize: 'none' }} 
+                                onChange={handleChangeBio}/>
                             </Form.Group>
 
                             <Form.Group className="mt-2 mx-4" itemID="account.website">
                                 <Form.Label>Website</Form.Label>
-                                <Form.Control type='input' placeholder="website" />
+                                <Form.Control type='input' placeholder="website" onChange={handleChangeWebsite}/>
                             </Form.Group>
 
                             <button type="submit" className="btn btn-profile my-2 mx-4 float-end">Save</button>

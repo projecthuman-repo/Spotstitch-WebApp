@@ -1,0 +1,194 @@
+.main-form-business-customization {
+  /* Body */
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0px;
+  gap: 40px;
+
+  position: absolute;
+  width: 100%;
+  height: 456px;
+  left: 0px;
+  top: 256px;
+}
+
+.Heading-Business-Customization/* Heading */ {
+  /* Auto layout */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0px;
+  gap: 5px;
+
+  width: 433px;
+  height: 80px;
+
+  /* Inside auto layout */
+  flex: none;
+  order: 0;
+  flex-grow: 0;
+}
+.Business-Customization
+/* Business Customization */ {
+  width: 433px;
+  height: 45px;
+
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 36px;
+  line-height: 125.5%;
+  /* or 45px */
+  text-align: center;
+
+  color: #0e0e0e;
+
+  /* Inside auto layout */
+  flex: none;
+  order: 0;
+  flex-grow: 0;
+}
+.small-description-Business-Customization
+/* Show off your business with some pictures! */ {
+  width: 429px;
+  height: 30px;
+
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 30px;
+  /* identical to box height */
+  text-align: center;
+
+  color: #0e0e0e;
+
+  /* Inside auto layout */
+  flex: none;
+  order: 1;
+  flex-grow: 0;
+}
+
+/* Body */
+.main-form-business-customization .body-content-business-customization {
+  /* User Picture & Banner */
+
+  /* Auto layout */
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+  padding: 100px 60px 40px;
+  gap: 943px;
+  isolation: isolate;
+
+  margin: auto;
+  width: 1248px;
+  height: 336px;
+
+  background: #cdcdcd;
+  border-radius: 40px;
+
+  /* Inside auto layout */
+  flex: none;
+  order: 0;
+  align-self: stretch;
+  flex-grow: 0;
+}
+
+/* Body */
+.user-picture {
+  width: 196px;
+  height: 196px;
+
+  flex: none;
+  order: 0;
+  flex-grow: 0;
+  z-index: 0;
+}
+/* Body */
+.pencil-picture {
+  position: absolute;
+  width: 40.4px;
+  height: 40.4px;
+  left: 1254px;
+  top: 178.5px;
+
+  /* Inside auto layout */
+  flex: none;
+  order: 1;
+  flex-grow: 0;
+  z-index: 1;
+}
+.user-picture:hover,
+.pencil-picture:hover {
+  cursor: pointer;
+}
+.btns-business-customization {
+  /* Auto layout */
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  padding: 0px;
+  gap: 40px;
+
+  position: relative;
+  width: 296px;
+  height: 64px;
+  top: 50px;
+  left: 474px;
+}
+.back-button-business-customization {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  gap: 10px;
+
+  width: 81px;
+  height: 64px;
+  background: none;
+  border: none;
+  /* Inside auto layout */
+  flex: none;
+  order: 0;
+  flex-grow: 0;
+  /* position: relative; */
+  text-decoration: underline;
+  height: 64px;
+  /* left: 969px;
+  top: 504px; */
+  margin: auto;
+}
+.save-continue-btn-business-customization {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  gap: 10px;
+  /* 
+  position: relative; */
+  width: 175px;
+  height: 64px;
+  /* left: 1069px;
+  top: 504px; */
+
+  background: #8cbdeb;
+  border-radius: 15px;
+  border: none;
+  margin: auto;
+}
+.bot-line-b-custom {
+  /* Line 5 */
+
+  position: absolute;
+  width: 100%;
+  height: 0px;
+  left: 0px;
+  top: 922px;
+
+  border: 1px solid #757575;
+}

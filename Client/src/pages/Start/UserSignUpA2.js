@@ -11,9 +11,7 @@ import projectsignin from "../../assets/projectsignin.png";
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { registerData } from "../../features/User/registerSlice";
-import { Overlay, Tooltip } from 'react-bootstrap';
-
-
+import { Overlay, Tooltip } from "react-bootstrap";
 
 const UserSignUp = () => {
   const [email, setEmail] = useState("");
@@ -34,9 +32,6 @@ const UserSignUp = () => {
   const check =
     /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,10}$/;
   const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-  useEffect(() => {
-    setEmail(localStorage.getItem("email"));
-  }, []);
 
   useEffect(() => {
     if (check.test(password)) {
@@ -55,16 +50,36 @@ const UserSignUp = () => {
     } else {
       setValidEmail(false);
     }
-
   }, [email]);
 
   const handleSubmit = (event) => {
     event.preventDefault();
+    localStorage.setItem("email", email);
 
-      console.log(validEmail)
-      console.log(email)
+    // Check if the password meets the requirements
+    if (!check.test(password)) {
+      let message = "Your password does not meet the following requirements:\n";
+      if (!/(?=.*[a-z])/.test(password)) {
+        message += "- At least one lowercase letter\n";
+      }
+      if (!/(?=.*[A-Z])/.test(password)) {
+        message += "- At least one uppercase letter\n";
+      }
+      if (!/(?=.*\d)/.test(password)) {
+        message += "- At least one digit\n";
+      }
+      if (!/(?=.*[@$!%*?&])/.test(password)) {
+        message += "- At least one special character (@, $, !, %, *, ?, &)\n";
+      }
+      if (!/.{8,10}/.test(password)) {
+        message += "- Between 8 and 10 characters in length\n";
+      }
 
-    // handle form submission here
+      alert(message);
+      return; // Stop the form submission
+    }
+
+    // Proceed if all validations pass
     if (!matching || !acceptedTerms || !valid || !validEmail) return;
     dispatch(
       registerData({
@@ -105,39 +120,54 @@ const UserSignUp = () => {
               onChange={(event) => {
                 // localStorage.setItem("email", event.target.value);
                 setEmail(event.target.value);
-                
               }}
             />
 
             {/* <br /> */}
-            {confirmPassword&& password&& !matching && (
-              <Overlay target={confirmPasswordRef.current} show={true} placement="left" offset={[0,10]}>
+            {confirmPassword && password && !matching && (
+              <Overlay
+                target={confirmPasswordRef.current}
+                show={true}
+                placement="left"
+                offset={[0, 10]}
+              >
                 {(props) => (
-                  <Tooltip id="button-tooltip" {...props} className="password-tooltip passwordMatch-overlay">
-                    <p className="passwordMatch">
-                      passwords do not match
-                    </p>
+                  <Tooltip
+                    id="button-tooltip"
+                    {...props}
+                    className="password-tooltip passwordMatch-overlay"
+                  >
+                    <p className="passwordMatch">passwords do not match</p>
                   </Tooltip>
                 )}
               </Overlay>
             )}
-            
+
             <input
-            ref={target}
-            className="password"
-            type={showPassword ? "text" : "password"}
-            onFocus={() => setIsPasswordFocused(true)}
-            onBlur={() => setIsPasswordFocused(false)}
-            placeholder="Password"
-            id="password"
-            name="password"
-            required
-            value={password}
-            onChange={(event) => setPassword(event.target.value)}
-          />
-            <Overlay target={target.current} show={isPasswordFocused} placement="left" offset={[0, 10]}>
+              ref={target}
+              className="password"
+              type={showPassword ? "text" : "password"}
+              onFocus={() => setIsPasswordFocused(true)}
+              onBlur={() => setIsPasswordFocused(false)}
+              placeholder="Password"
+              id="password"
+              name="password"
+              required
+              value={password}
+              onChange={(event) => setPassword(event.target.value)}
+            />
+            <Overlay
+              target={target.current}
+              show={isPasswordFocused}
+              placement="left"
+              offset={[0, 10]}
+            >
               {(props) => (
-                <Tooltip id="button-tooltip" {...props} className="password-tooltip passwordRequirement-overlay">
+                <Tooltip
+                  id="button-tooltip"
+                  {...props}
+                  className="password-tooltip passwordRequirement-overlay"
+                >
                   <ul className="passwordRequirement">
                     <li>Passwords must be between 8-10 characters long</li>
                     <li>One uppercase letter</li>
@@ -173,7 +203,6 @@ const UserSignUp = () => {
                 <br />
               </>
             )} */}
-
 
             <br />
             <div className="checkarea">
