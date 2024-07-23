@@ -26,12 +26,20 @@ const loginApi = createApi({
         }),
 
         // logout
-
         logoutUser: builder.mutation({
             query: (payload) => ({
                 url: "/logout",
                 method: "DELETE",
                 body: payload,
+            }),
+        }),
+
+        // send verification email
+        sendVerificationEmail: builder.mutation({
+            query: (email) => ({
+                url: "/send-verification-email",
+                method: "POST",
+                body: { email },
             }),
         }),
     }),
@@ -40,7 +48,8 @@ const loginApi = createApi({
 export const { 
     useRegisterUserMutation, 
     useLoginUserMutation, 
-    useLogoutUserMutation 
+    useLogoutUserMutation,
+    useSendVerificationEmailMutation
 } = loginApi;
 
 export default loginApi;
