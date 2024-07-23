@@ -1,5 +1,3 @@
-// src/app.js
-
 const express = require("express");
 const cors = require("cors");
 
@@ -14,7 +12,7 @@ const pino = require("pino-http")({
 const app = express();
 
 app.use(express.json({ limit: '10mb' }));
-app.use(express.urlencoded({ extended: true,limit: '10mb', parameterLimit: 50000 }));
+app.use(express.urlencoded({ extended: true, limit: '10mb', parameterLimit: 50000 }));
 
 // Use logging middleware
 app.use(pino);
