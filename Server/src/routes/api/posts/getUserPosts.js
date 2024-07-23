@@ -8,12 +8,15 @@ const { createErrorResponse, createSuccessResponse } = require('../../../respons
 module.exports = async (req, res) => {
     try {
 
+        console.log("REQUEST", req)
+
         // look for existing post based on unique id
-        const posts = await Post.find({ username: req.body.username })
+        const { username } = req.params.username
+        const posts = await Post.find({ username: username })
         if (!posts) throw new Error('Could not find posts')
 
         // send back post if found to client
-        res.status(200).json(createSuccessResponse({ posts}));
+        res.status(200).json(createSuccessResponse({ posts }));
     } catch (e) {
         logger.error({ e }, e.message)
         res.status(400).json(createErrorResponse(400, "Could not find posts"))

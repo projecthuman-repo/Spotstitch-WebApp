@@ -19,11 +19,10 @@ const postsApi = createApi({
             query: (postId) => `/posts/${postId}`,
         }),
 
-        getUserPost: builder.query({
+        getUserPosts: builder.query({
             query: (username) => ({
-                url: `/posts/${username}`,
+                url: `users/${username}/posts`,
                 method: 'GET',
-                body: username,
             }),
         }),
 
@@ -67,7 +66,7 @@ const postsApi = createApi({
 export const {
     useGetAllPostsQuery,
     useGetPostQuery,
-    useGetUserPostQuery,
+    useGetUserPostsQuery,
     useCreatePostMutation,
     useUpdatePostMutation,
     useDeletePostMutation,
