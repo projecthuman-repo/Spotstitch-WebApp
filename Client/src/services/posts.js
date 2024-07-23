@@ -19,6 +19,14 @@ const postsApi = createApi({
             query: (postId) => `/posts/${postId}`,
         }),
 
+        getUserPost: builder.query({
+            query: (username) => ({
+                url: `/posts/${username}`,
+                method: 'GET',
+                body: username,
+            }),
+        }),
+
         // Create a new post
         createPost: builder.mutation({
             query: (post) => ({
@@ -59,6 +67,7 @@ const postsApi = createApi({
 export const {
     useGetAllPostsQuery,
     useGetPostQuery,
+    useGetUserPostQuery,
     useCreatePostMutation,
     useUpdatePostMutation,
     useDeletePostMutation,

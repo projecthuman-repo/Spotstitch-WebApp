@@ -36,7 +36,7 @@ PostSchema.statics.getPost = async (id) => {
         const result = await Post.findById(id);
         return result;
     } catch (err) {
-        throw new Error("Error getting posts");
+        throw new Error("Error getting posts getPost");
     }
 }
 
@@ -45,7 +45,7 @@ PostSchema.statics.getPosts = async (filters = "") => {
         const result = await Post.find({ tags: { $all: filters } });
         return result;
     } catch (err) {
-        throw new Error("Error getting posts");
+        throw new Error("Error getting posts getPosts");
     }
 }
 
@@ -55,7 +55,7 @@ PostSchema.statics.createPost = async (postData) => {
         await post.save()
         return post;
     } catch (err) {
-        throw new Error("Error getting posts");
+        throw new Error("Error getting posts createPost");
     }
 }
 

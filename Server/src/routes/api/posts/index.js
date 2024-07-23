@@ -5,6 +5,7 @@ const allPosts = require('./allPosts')
 const createPost = require('./createPost')
 const deletePost = require('./deletePost');
 const filteredPosts = require('./filteredPosts');
+const getUserPost = require('./getUserPost');
 
 
 // Create a router on which to mount our API endpoints
@@ -17,6 +18,7 @@ router.get('/filter', filteredPosts)
 
 router.get('/:postId', getPost)
 
+router.get('/:username', getUserPost)
 
 router.post('/create', createPost)
 

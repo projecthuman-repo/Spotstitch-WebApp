@@ -9,6 +9,10 @@ import PageNav from "../../components/pageNav/PageNav";
 import UserPosts from "./UserPosts";
 import { useSelector } from "react-redux";
 import mockData from "./mockUsers.json";
+
+import { baseUrl } from "../../services/baseQuery.js";
+import { useGetUserPostQuery } from "../../services/posts.js";
+
 // import picture from "./image-placeholder.jpg"
 
 const Profile = () => {
@@ -24,7 +28,8 @@ const Profile = () => {
   const following = useSelector((state) => state.user.following);
   const firstName = useSelector((state) => state.user.firstName) || "First";
   const lastName = useSelector((state) => state.user.lastName) || "Last";
-  console.log(user);
+
+  const [posts, setPosts] = useState([]);
 
   const [tab, setTab] = useState(0);
 
@@ -32,6 +37,45 @@ const Profile = () => {
   function visitedUser(id) {
     return mockData.filter((item) => item.id === id);
   }
+
+  const [getUserPosts, [{ }]] = useGetUserPostQuery()
+
+
+  useEffect(() => {
+    const fetchPosts = async () => {
+        try {
+            const token = localStorage.getItem('token'); // token reader
+            if (!token) {
+                throw new Error('No token found! User not authenticated.');
+            }
+
+            const response = await fetch(`${baseUrl}/posts/${username}`, {
+                headers: {
+                    'Authorization': `Bearer ${token}`,
+                }
+            });
+            console.log("response:!!!!!!!!", response)
+            if (!response.ok) {
+              throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            console.log("HERE----------------")
+
+            const result = await response.json();
+
+            console.log("Result:", result);
+
+            if (result.status === 'ok' && result.posts) {
+                setPosts(result.posts);
+
+            } else {
+                console.error('Error fetching posts: Invalid response format');
+            }
+        } catch (error) {
+            console.error('Error fetching posts:', error);
+        }
+    };
+    fetchPosts();
+}, [username]);
 
   return (
     <div>
@@ -87,20 +131,20 @@ const Profile = () => {
         </Row>
         <Row className="" id="posts">
           <Col className="mx-5 mt-2">
-            {postExamples.map((post, index) => {
-              const body = `Lorem ipsum dolor sit amet consectetur. Eget libero a convallis ut. Nunc fermentum et nunc commodo pulvinar lectus imperdiet vel tellus. Dolor accumsan elit consectetur fringilla dignissim. Quis elit egestas vulputate nec etiam mauris vel vel. Quisque amet sociis odio est neque.
-                            #posttag #posttag`;
-              return (
-                <UserPosts
-                  img={require("./image-placeholder.jpg")}
-                  avatar={""}
-                  user={"name"}
-                  desc={"desc"}
-                  body={body}
-                  key={`post_${index}`}
-                />
-              );
-            })}
+          {posts.length > 0 ? (
+                posts.map((post) => (
+                    <UserContent
+                        key={post._id}
+                        img={post.image?.data || placeHolder}
+                        avatar={picture || placeHolder}
+                        user={username}
+                        desc={post.userDescription}
+                        body={post.description}
+                    />
+                ))
+            ) : (
+                <p>No posts available</p>
+            )}
           </Col>
         </Row>
       </Container>
