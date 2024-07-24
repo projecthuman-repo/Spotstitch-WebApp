@@ -7,11 +7,13 @@ import Followers from "./Followers";
 import AccountDetails from "./AccountDetails";
 import PageNav from "../../components/pageNav/PageNav";
 import UserPosts from "./UserPosts";
+import placeHolder from "../../assets/holderimg.png";
 import { useSelector } from "react-redux";
 import mockData from "./mockUsers.json";
 
 import { baseUrl } from "../../services/baseQuery.js";
 import { useGetUserPostsQuery } from "../../services/posts.js";
+import UserContent from "../Home/UserContent.js";
 
 // import picture from "./image-placeholder.jpg"
 
@@ -38,11 +40,6 @@ const Profile = () => {
     return mockData.filter((item) => item.id === id);
   }
 
-  const {data: userPosts} = useGetUserPostsQuery(username)
-
-  console.log("USER POSTS:", userPosts)
-
-
   useEffect(() => {
     const fetchPosts = async () => {
         try {
@@ -51,13 +48,13 @@ const Profile = () => {
                 throw new Error('No token found! User not authenticated.');
             }
 
-            // const response = await fetch(`${baseUrl}/posts/${username}`, {
-            //     headers: {
-            //         'Authorization': `Bearer ${token}`,
-            //     }
-            // });
+            const response = await fetch(`${baseUrl}/posts/single/${username}`, {
+                headers: {
+                    'Authorization': `Bearer ${token}`,
+                }
+            });
 
-            const response = userPosts
+            // const response = userPosts
 
             console.log("response:!!!!!!!!", response)
             if (!response.ok) {
