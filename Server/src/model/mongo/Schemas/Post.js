@@ -6,7 +6,8 @@ const PostSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    username: String,
+    // username: String, // We do not want to keep username, difficult to update
+                         // see getAllPosts.js, we fetch username and avatar there 
     userDescription: String,
     image: {
         data: String,

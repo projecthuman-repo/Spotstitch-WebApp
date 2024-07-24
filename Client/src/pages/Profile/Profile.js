@@ -59,7 +59,6 @@ const Profile = () => {
             if (!response.ok) {
               throw new Error(`HTTP error! status: ${response.status}`);
             }
-            console.log("HERE----------------")
 
             const result = await response.json();
 

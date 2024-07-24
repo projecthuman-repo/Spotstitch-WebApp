@@ -78,31 +78,6 @@ const HomePosts = () => {
                 if (result.status === 'ok' && result.posts) {
                     setPosts(result.posts);
 
-                    // Fetch avatars
-                    const avatarPromises = posts.map(async (post) => {
-                        try {
-                            const res = await getUser(post.userId);
-                            console.log("RESULT:", res)
-                            //!!!! currently not returning any user's info
-                            return { userId: post.userId, picture: res.picture };
-                        } catch (error) {
-                            console.log('rejected', error);
-                            return { userId: post.userId, picture: placeHolder };
-                        }
-                    });
-
-                    const avatarResults = await Promise.all(avatarPromises);
-                    const avatarMap = avatarResults.reduce((acc, avatar) => {
-                        acc[avatar.userId] = avatar.picture;
-                        return acc;
-                    }, {});
-
-                    console.log("Avatar MAp", avatarMap)
-
-
-                    setAvatars(avatarMap);
-
-
                 } else {
                     console.error('Error fetching posts: Invalid response format');
                 }
@@ -141,8 +116,8 @@ const HomePosts = () => {
                     <UserContent
                         key={post._id}
                         img={post.image?.data || placeHolder}
-                        avatar={post.picture || placeHolder}
-                        user={post.username}
+                        avatar={post.userDetails.picture || placeHolder}
+                        user={post.userDetails.username}
                         desc={post.userDescription}
                         body={post.description}
                     />
