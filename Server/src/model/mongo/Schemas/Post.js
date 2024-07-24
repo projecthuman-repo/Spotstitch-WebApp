@@ -6,7 +6,8 @@ const PostSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    username: String,
+    // username: String, // We do not want to keep username, difficult to update
+                         // see getAllPosts.js, we fetch username and avatar there 
     userDescription: String,
     image: {
         data: String,
@@ -36,16 +37,25 @@ PostSchema.statics.getPost = async (id) => {
         const result = await Post.findById(id);
         return result;
     } catch (err) {
-        throw new Error("Error getting posts");
+        throw new Error("Error getting posts getPost");
     }
 }
+
+PostSchema.statics.getPostUsername = async function (username) {
+    try {
+        const result = await this.find({ username: username });
+        return result;
+    } catch (err) {
+        throw new Error("Error getting posts by username: " + err.message);
+    }
+};
 
 PostSchema.statics.getPosts = async (filters = "") => {
     try {
         const result = await Post.find({ tags: { $all: filters } });
         return result;
     } catch (err) {
-        throw new Error("Error getting posts");
+        throw new Error("Error getting posts getPosts");
     }
 }
 
@@ -55,7 +65,7 @@ PostSchema.statics.createPost = async (postData) => {
         await post.save()
         return post;
     } catch (err) {
-        throw new Error("Error getting posts");
+        throw new Error("Error getting posts createPost");
     }
 }
 
