@@ -14,6 +14,7 @@ import {
 } from "redux-persist";
 import registerSlice from "./features/User/registerSlice";
 import userApi from "./services/userApi";
+import postApi from "./services/posts"
 import walletApi from "./services/wallet";
 import addressApi from "./services/address";
 
@@ -24,6 +25,7 @@ const appReducer = combineReducers({
     chat: chatSlice,
     [loginApi.reducerPath]: loginApi.reducer,
     [userApi.reducerPath]: userApi.reducer,
+    [postApi.reducerPath]: postApi.reducer,
     [walletApi.reducerPath]: walletApi.reducer,
     [addressApi.reducerPath]: addressApi.reducer,
 });
@@ -60,6 +62,7 @@ const store = configureStore({
         }).concat([
             loginApi.middleware, 
             userApi.middleware,
+            postApi.middleware,
             walletApi.middleware,
             addressApi.middleware
         ])

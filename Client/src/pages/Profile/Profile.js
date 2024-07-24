@@ -7,12 +7,15 @@ import Followers from "./Followers";
 import AccountDetails from "./AccountDetails";
 import PageNav from "../../components/pageNav/PageNav";
 import UserPosts from "./UserPosts";
+import placeHolder from "../../assets/holderimg.png";
 import { useSelector } from "react-redux";
 import mockData from "./mockUsers.json";
-import { useNavigate } from "react-router-dom";
-import homeIcon from "../../assets/icons/Group 9554.svg";
-import line from "../../assets/icons/Line 246.svg";
-import back from "../../assets/icons/Frame 2610919.svg";
+
+import { baseUrl } from "../../services/baseQuery.js";
+import { useGetUserPostsQuery } from "../../services/posts.js";
+import UserContent from "../Home/UserContent.js";
+
+// import picture from "./image-placeholder.jpg"
 
 const Profile = () => {
   const { id } = useParams();
@@ -35,16 +38,52 @@ const Profile = () => {
   const following = useSelector((state) => state.user.following);
   const firstName = useSelector((state) => state.user.firstName) || "First";
   const lastName = useSelector((state) => state.user.lastName) || "Last";
-  console.log(user.firstName);
-  console.log(user);
-  console.log("BIO-------", user.biography);
+
+  const [posts, setPosts] = useState([]);
 
   const [tab, setTab] = useState(0);
 
-  const postExamples = ["", "", ""];
   function visitedUser(id) {
     return mockData.filter((item) => item.id === id);
   }
+
+  useEffect(() => {
+    const fetchPosts = async () => {
+        try {
+            const token = localStorage.getItem('token'); // token reader
+            if (!token) {
+                throw new Error('No token found! User not authenticated.');
+            }
+
+            const response = await fetch(`${baseUrl}/posts/user/${username}`, {
+                headers: {
+                    'Authorization': `Bearer ${token}`,
+                }
+            });
+
+            // const response = userPosts
+
+            console.log("response:!!!!!!!!", response)
+            if (!response.ok) {
+              throw new Error(`HTTP error! status: ${response.status}`);
+            }
+
+            const result = await response.json();
+
+            console.log("Result:", result);
+
+            if (result.status === 'ok' && result.posts) {
+                setPosts(result.posts);
+
+            } else {
+                console.error('Error fetching posts: Invalid response format');
+            }
+        } catch (error) {
+            console.error('Error fetching posts:', error);
+        }
+    };
+    fetchPosts();
+}, [username]);
 
   return (
     <>
@@ -114,31 +153,31 @@ const Profile = () => {
                 </Col>
                 <Col lg={5} className="mt-3 ">
                   {id ? <OtherUserProfile id={userId} /> : <AccountDetails />}
-                </Col>
-              </Row>
-            </Col>
-          </Row>
-          <Row className="" id="posts">
-            <Col className="mx-5 mt-2">
-              {postExamples.map((post, index) => {
-                const body = `Lorem ipsum dolor sit amet consectetur. Eget libero a convallis ut. Nunc fermentum et nunc commodo pulvinar lectus imperdiet vel tellus. Dolor accumsan elit consectetur fringilla dignissim. Quis elit egestas vulputate nec etiam mauris vel vel. Quisque amet sociis odio est neque.
-                            #posttag #posttag`;
-                return (
-                  <UserPosts
-                    img={require("./image-placeholder.jpg")}
-                    avatar={""}
-                    user={"name"}
-                    desc={"desc"}
-                    body={body}
-                    key={`post_${index}`}
-                  />
-                );
-              })}
-            </Col>
-          </Row>
-        </Container>
-      </div>
-    </>
+                </div>
+              </Col>
+            </Row>
+          </Col>
+        </Row>
+        <Row className="" id="posts">
+          <Col className="mx-5 mt-2">
+          {posts.length > 0 ? (
+                posts.map((post) => (
+                    <UserContent
+                        key={post._id}
+                        img={post.image?.data || placeHolder}
+                        avatar={picture || placeHolder}
+                        user={username}
+                        desc={post.userDescription}
+                        body={post.description}
+                    />
+                ))
+            ) : (
+                <p>No posts available</p>
+            )}
+          </Col>
+        </Row>
+      </Container>
+    </div>
   );
 };
 
