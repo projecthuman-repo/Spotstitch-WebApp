@@ -18,7 +18,7 @@ router.get('/filter', filteredPosts)
 
 router.get('/:postId', getPost)
 
-router.get('/single/:username', getUserPosts)
+router.get('/user/:username', getUserPosts)
 
 router.post('/create', createPost)
 

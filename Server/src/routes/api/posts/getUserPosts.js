@@ -12,6 +12,7 @@ module.exports = async (req, res) => {
 
         // Use the static method to find the post by username
         const posts = await Post.getPostUsername(username);
+
         if (!posts || posts.length === 0) throw new Error('Could not find posts');
 
         // Send back the post if found to the client

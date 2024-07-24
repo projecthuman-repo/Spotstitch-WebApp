@@ -35,7 +35,6 @@ const Profile = () => {
 
   const [tab, setTab] = useState(0);
 
-  const postExamples = ["", "", ""];
   function visitedUser(id) {
     return mockData.filter((item) => item.id === id);
   }
@@ -48,7 +47,7 @@ const Profile = () => {
                 throw new Error('No token found! User not authenticated.');
             }
 
-            const response = await fetch(`${baseUrl}/posts/single/${username}`, {
+            const response = await fetch(`${baseUrl}/posts/user/${username}`, {
                 headers: {
                     'Authorization': `Bearer ${token}`,
                 }

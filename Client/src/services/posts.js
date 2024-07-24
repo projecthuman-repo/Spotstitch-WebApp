@@ -21,7 +21,7 @@ const postsApi = createApi({
 
         getUserPosts: builder.query({
             query: (username) => ({
-                url: `posts/single/${username}`,
+                url: `posts/user/${username}`,
                 method: 'GET',
             }),
         }),
