@@ -3,10 +3,14 @@ import { Col, Form, Row, Card, Container } from "react-bootstrap";
 import { BsChat, BsHeart, BsSend, BsReply } from 'react-icons/bs'
 import { useState } from 'react';
 import { useSelector } from 'react-redux';
+import { baseUrl } from '../../services/baseQuery';
+import { useCreateCommentMutation } from '../../services/posts';
 
 function UserContent({ img, avatar, user, desc, body, postId }) {
 
     const [comment, setComment] = useState('')
+
+    const [addComment, {}] = useCreateCommentMutation('')
 
     const handleCommentChange = (event) => {
         setComment(event.target.value);
@@ -23,14 +27,16 @@ function UserContent({ img, avatar, user, desc, body, postId }) {
             console.log("COMMENT", comment)
 
 
-            const response = fetch(`http://localhost:8080/v1/posts/${postId}/addComment`, {
-                method: 'POST',
-                headers: {
-                    'Authorization': `Bearer ${token}`,
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({ comment })
-            });
+            // const response = fetch(`${baseUrl}/posts/${postId}/addComment`, {
+            //     method: 'POST',
+            //     headers: {
+            //         'Authorization': `Bearer ${token}`,
+            //         'Content-Type': 'application/json'
+            //     },
+            //     body: JSON.stringify({ postId, comment })
+            // });
+
+            const response = await addComment({postId, comment})
 
             console.log("REPSONSE COMMENT", response)
 

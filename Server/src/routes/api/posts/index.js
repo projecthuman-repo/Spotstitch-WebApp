@@ -32,7 +32,7 @@ router.put('/:postId/update', updatePost)
 
 router.delete('/:postId/delete', deletePost)
 
-router.delete('/:postId/addComment', addComment)
+router.put('/:postId/addComment', addComment)
 
 // Export our routes
 module.exports = router
