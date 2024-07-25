@@ -6,6 +6,7 @@ const createPost = require('./createPost')
 const deletePost = require('./deletePost');
 const filteredPosts = require('./filteredPosts');
 const getUserPosts = require('./getUserPosts');
+const addComment = require('./addComment');
 
 
 // Create a router on which to mount our API endpoints
@@ -31,6 +32,7 @@ router.put('/:postId/update', updatePost)
 
 router.delete('/:postId/delete', deletePost)
 
+router.delete('/:postId/addComment', addComment)
 
 // Export our routes
 module.exports = router

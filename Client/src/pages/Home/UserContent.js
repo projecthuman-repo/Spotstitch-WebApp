@@ -1,8 +1,62 @@
 import './home.css'
 import { Col, Form, Row, Card, Container } from "react-bootstrap";
 import { BsChat, BsHeart, BsSend, BsReply } from 'react-icons/bs'
+import { useState } from 'react';
+import { useSelector } from 'react-redux';
 
-function UserContent({ img, avatar, user, desc, body }) {
+function UserContent({ img, avatar, user, desc, body, postId }) {
+
+    const [comment, setComment] = useState('')
+
+    const handleCommentChange = (event) => {
+        setComment(event.target.value);
+    };
+
+
+    const handleCommentSubmit = async () => {
+        try {
+            const token = localStorage.getItem('token'); // token reader
+            if (!token) {
+                throw new Error('No token found! User not authenticated.');
+            }
+
+            console.log("COMMENT", comment)
+
+
+            const response = fetch(`http://localhost:8080/v1/posts/${postId}/addComment`, {
+                method: 'POST',
+                headers: {
+                    'Authorization': `Bearer ${token}`,
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ comment })
+            });
+
+            console.log("REPSONSE COMMENT", response)
+
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+
+            const result = await response.json();
+
+            console.log("Result:", result);
+
+            if (result.status === 'ok' && result.post) {
+                setPosts(result.posts);
+
+            } else {
+                console.error('Error fetching posts: Invalid response format');
+            }
+        } catch (error) {
+            console.error('Error fetching posts:', error);
+        }
+    }
+
+
+
+
+
     return (
         <Container className="shadow p-0 my-3 round-l content">
             <Row>
@@ -43,9 +97,10 @@ function UserContent({ img, avatar, user, desc, body }) {
                                         className="form-control border-0 comment"
                                         type="text"
                                         placeholder="Add a comment..."
+                                        onChange={handleCommentChange}
                                     />
                                     <span className="input-group-append">
-                                        <button className="btn border-0 comment" type="button">
+                                        <button className="btn border-0 comment" type="button" onClick={handleCommentSubmit} >
                                             <BsChat className='flip' size={20} />
                                         </button>
                                     </span>

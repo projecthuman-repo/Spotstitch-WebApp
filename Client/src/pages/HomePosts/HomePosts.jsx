@@ -120,6 +120,7 @@ const HomePosts = () => {
                         user={post.userDetails.username}
                         desc={post.userDescription}
                         body={post.description}
+                        postId={post._id}
                     />
                 ))
             ) : (
