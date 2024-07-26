@@ -10,7 +10,7 @@ function UserContent({ img, avatar, user, desc, body, postId }) {
 
     const [comment, setComment] = useState('')
 
-    const [addComment, {}] = useCreateCommentMutation('')
+    const [addComment, {}] = useCreateCommentMutation()
 
     const handleCommentChange = (event) => {
         setComment(event.target.value);
@@ -36,9 +36,10 @@ function UserContent({ img, avatar, user, desc, body, postId }) {
             //     body: JSON.stringify({ postId, comment })
             // });
 
-            const response = await addComment({postId, comment})
+            console.log("PASSING", { postId, comment })
+            const response = await addComment({ postId, comment})
 
-            console.log("REPSONSE COMMENT", response)
+            console.log("REPSONSE COMMENTs", response)
 
             if (!response.ok) {
                 throw new Error(`HTTP error! status: ${response.status}`);
