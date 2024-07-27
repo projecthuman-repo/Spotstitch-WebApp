@@ -6,8 +6,6 @@ import placeHolder from "../../assets/holderimg.png";
 import { TfiEmail } from "react-icons/tfi";
 import { HiOutlineChevronDoubleUp } from "react-icons/hi";
 import UserContent from "../Home/UserContent";
-import { useGetAllPostsQuery } from "../../services/posts";
-import { useViewUserProfileByIdMutation } from "../../services/userApi";
 
 const HomePosts = () => {
     const user = useSelector((state) => state.user);
@@ -18,7 +16,6 @@ const HomePosts = () => {
     const [posts, setPosts] = useState([]);
     const [quickMessageClicked, setQuickMessageClicked] = useState(true);
 
-    const [getUser, { }] = useViewUserProfileByIdMutation()
 
     const users = [
         {
@@ -120,6 +117,7 @@ const HomePosts = () => {
                         user={post.userDetails.username}
                         desc={post.userDescription}
                         body={post.description}
+                        postId={post._id}
                     />
                 ))
             ) : (
