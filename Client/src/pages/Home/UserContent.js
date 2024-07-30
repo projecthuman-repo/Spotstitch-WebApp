@@ -4,16 +4,22 @@ import { BsChat, BsHeart, BsSend, BsReply } from 'react-icons/bs'
 import { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { baseUrl } from '../../services/baseQuery';
-import { useCreateCommentMutation } from '../../services/posts';
+import { useCreateCommentMutation, useUpdatePostMutation } from '../../services/posts';
 
 function UserContent({ img, avatar, user, desc, body, postId }) {
 
     const [comment, setComment] = useState('')
+    const [editPost, setEdited] = useState('')
 
     const [addComment, {}] = useCreateCommentMutation()
+    const [updatePost, {}] = useUpdatePostMutation()
 
     const handleCommentChange = (event) => {
         setComment(event.target.value);
+    };
+
+    const handlePostChange = (event) => {
+        setEdited(event.target.value);
     };
 
 
@@ -26,20 +32,45 @@ function UserContent({ img, avatar, user, desc, body, postId }) {
 
             console.log("COMMENT", comment)
 
-
-            // const response = fetch(`${baseUrl}/posts/${postId}/addComment`, {
-            //     method: 'POST',
-            //     headers: {
-            //         'Authorization': `Bearer ${token}`,
-            //         'Content-Type': 'application/json'
-            //     },
-            //     body: JSON.stringify({ postId, comment })
-            // });
-
             console.log("PASSING", { postId, comment })
             const response = await addComment({ postId, comment})
 
             console.log("REPSONSE COMMENTs", response)
+
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+
+            const result = await response.json();
+
+            console.log("Result:", result);
+
+            if (result.status === 'ok' && result.post) {
+                setPosts(result.posts);
+
+            } else {
+                console.error('Error fetching posts: Invalid response format');
+            }
+        } catch (error) {
+            console.error('Error fetching posts:', error);
+        }
+    }
+
+
+    
+    const handleUpdatePostSubmit = async () => {
+        try {
+            const token = localStorage.getItem('token'); // token reader
+            if (!token) {
+                throw new Error('No token found! User not authenticated.');
+            }
+
+            console.log("POST CONTENT", editPost)
+
+            console.log("PASSING", { postId, comment })
+            const response = await updatePost({ postId, comment})
+
+            console.log("REPSONSE UPDATE", response)
 
             if (!response.ok) {
                 throw new Error(`HTTP error! status: ${response.status}`);
