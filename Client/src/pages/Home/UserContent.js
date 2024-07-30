@@ -1,94 +1,108 @@
-import "./home.css";
-import {
-  Col,
-  Form,
-  Row,
-  Card,
-  Container,
-  OverlayTrigger,
-  Popover,
-  Tooltip,
-  Modal,
-} from "react-bootstrap";
-import { BsChat } from "react-icons/bs";
-import emoji from "../../assets/icons/emoji 1.svg";
-import addEmoji from "../../assets/icons/addEmoji.svg";
-import like from "../../assets/icons/Like-emoji group.svg";
-import Repost from "../../assets/icons/Re-post icon.png";
-import iconReposted from "../../assets/icons/icon-reposted.png";
-import React, { useState } from "react";
-import DetailedPost from "./detailedPost.js";
-function UserContent({ img, avatar, user, desc, body }) {
-  const threshold = 150;
-  const [isExpanded, setIsExpanded] = useState(false);
-  const [displayText, setDisplayText] = useState("");
+import './home.css'
+import { Col, Form, Row, Card, Container } from "react-bootstrap";
+import { BsChat, BsHeart, BsSend, BsReply } from 'react-icons/bs'
+import { useState } from 'react';
+import { useSelector } from 'react-redux';
+import { baseUrl } from '../../services/baseQuery';
+import { useCreateCommentMutation, useUpdatePostMutation } from '../../services/posts';
 
-  // Effect to truncate text initially if it's longer than the threshold
-  React.useEffect(() => {
-    if (body.length > threshold) {
-      setDisplayText(`${body.substring(0, threshold)}... `);
-    } else {
-      setDisplayText(body);
+function UserContent({ img, avatar, user, desc, body, postId }) {
+
+    const [comment, setComment] = useState('')
+    const [editPost, setEdited] = useState('')
+
+    const [addComment, {}] = useCreateCommentMutation()
+    const [updatePost, {}] = useUpdatePostMutation()
+
+    const handleCommentChange = (event) => {
+        setComment(event.target.value);
+    };
+
+    const handlePostChange = (event) => {
+        setEdited(event.target.value);
+    };
+
+
+    const handleCommentSubmit = async () => {
+        try {
+            const token = localStorage.getItem('token'); // token reader
+            if (!token) {
+                throw new Error('No token found! User not authenticated.');
+            }
+
+            console.log("COMMENT", comment)
+
+            console.log("PASSING", { postId, comment })
+            const response = await addComment({ postId, comment})
+
+            console.log("REPSONSE COMMENTs", response)
+
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+
+            const result = await response.json();
+
+            console.log("Result:", result);
+
+            if (result.status === 'ok' && result.post) {
+                setPosts(result.posts);
+
+            } else {
+                console.error('Error fetching posts: Invalid response format');
+            }
+        } catch (error) {
+            console.error('Error fetching posts:', error);
+        }
     }
-  }, [body]);
-  const [showModal, setShowModal] = useState(false);
-  //   const detailedPostModal = (a, u, d, b) => (
-  //     <Modal show={showModal} onHide={() => setShowModal(false)}>
-  //       <Modal.Header closeButton>
-  //         <Modal.Title>User Details</Modal.Title>
-  //       </Modal.Header>
-  //       <Modal.Body>
-  //         {/* Call detailedPost here or directly place the content */}
-  //         {detailedPost(a, u, d, b)}
-  //       </Modal.Body>
-  //     </Modal>
-  //   );
 
-  const toggleText = () => {
-    if (isExpanded) {
-      setDisplayText(`${body.substring(0, threshold)}... `);
-    } else {
-      setDisplayText(body);
+
+    
+    const handleUpdatePostSubmit = async () => {
+        try {
+            const token = localStorage.getItem('token'); // token reader
+            if (!token) {
+                throw new Error('No token found! User not authenticated.');
+            }
+
+            console.log("POST CONTENT", editPost)
+
+            console.log("PASSING", { postId, comment })
+            const response = await updatePost({ postId, comment})
+
+            console.log("REPSONSE UPDATE", response)
+
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+
+            const result = await response.json();
+
+            console.log("Result:", result);
+
+            if (result.status === 'ok' && result.post) {
+                setPosts(result.posts);
+
+            } else {
+                console.error('Error fetching posts: Invalid response format');
+            }
+        } catch (error) {
+            console.error('Error fetching posts:', error);
+        }
     }
-    setIsExpanded(!isExpanded);
-  };
 
-  return (
-    <Container className=" p-0 my-3 round-l">
-      <Row className="post-row">
-        <Col
-          lg={7}
-          className="post-image-container"
-          style={{ height: "299px" }}
-        >
-          <img
-            src={img}
-            style={{ width: "100%", height: "100%", objectFit: "contain" }}
-          ></img>
-        </Col>
-        <Col
-          lg={5}
-          className="d-flex flex-column g-0 px-2"
-          style={{ height: "auto" }}
-        >
-          <Row className="mx-2 my-3">
-            <Col lg={2} xs={5}>
-              <img
-                className="avatar shadow"
-                src={avatar}
-                width={61}
-                height={61}
-              ></img>
-            </Col>
-            <Col lg={9} xs={7} className="mx-2">
-              <Row>
-                <Col>
-                  <p className="nopadding fs-15 fw-500">{user}</p>
-                </Col>
-              </Row>
-              <Row>
-                <Col>
-                  <p className="nopadding fs-12 fw-400">{desc}</p>
+
+
+
+
+    return (
+        <Container className="shadow p-0 my-3 round-l content">
+            <Row>
+                <Col lg={7} className="round-l">
+                    <div className='bg-white round-l'>
+                        <img src={img} className="round-l img-fluid mx-auto d-block"></img>
+                    </div>
+
                 </Col>
               </Row>
             </Col>
@@ -155,29 +169,31 @@ function UserContent({ img, avatar, user, desc, body }) {
             </button>
           </Row>
 
-          <Row className="mb-3">
-            <Col className="mx-2">
-              {/* <div className="my-2 overline"></div> */}
-              <Form>
-                <div className="input-group">
-                  <input
-                    className="form-control border-0 comment"
-                    type="text"
-                    placeholder="Add a comment..."
-                  />
-                  <span className="input-group-append">
-                    <button className="btn border-0 comment" type="button">
-                      <BsChat className="flip" size={20} />
-                    </button>
-                  </span>
-                </div>
-              </Form>
-            </Col>
-          </Row>
-        </Col>
-      </Row>
-    </Container>
-  );
+                    <Row className='mb-3'>
+                        <Col className='mx-4'>
+                            <div className='my-2 overline'></div>
+                            <Form>
+                                <div className="input-group">
+                                    <input
+                                        className="form-control border-0 comment"
+                                        type="text"
+                                        placeholder="Add a comment..."
+                                        onChange={handleCommentChange}
+                                    />
+                                    <span className="input-group-append">
+                                        <button className="btn border-0 comment" type="button" onClick={handleCommentSubmit} >
+                                            <BsChat className='flip' size={20} />
+                                        </button>
+                                    </span>
+                                </div>
+                            </Form>
+                        </Col>
+                    </Row>
+
+                </Col>
+            </Row>
+        </Container>
+    )
 }
 
 export default UserContent;

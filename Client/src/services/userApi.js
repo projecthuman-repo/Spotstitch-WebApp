@@ -1,6 +1,9 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import { baseUrl, prepareHeaders } from "./baseQuery";
 
+
+// Handler Functions in Server\src\routes\api\user\index.js
+
 const userApi = createApi({
     reducerPath: "userApi",
     baseQuery: fetchBaseQuery({

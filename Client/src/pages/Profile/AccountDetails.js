@@ -89,7 +89,38 @@ function AccountDetails() {
       if (res.data?.status == "ok") {
         await dispatch(setUserData({ picture: image }));
       }
+      async function handleSubmit(e) {
+        e.preventDefault();
+        try {
+          const res = await updatePicture({ picture: image }); // Goes to API
+          if (res.error) throw new Error(res.error);
+          if (res.data?.status == "ok") {
+            await dispatch(setUserData({ picture: image }));
+          }
 
+          const dRes = await updateDetails({
+            firstName: firstName,
+            lastName: lastName,
+            // biography: bio,
+            // website: website
+          });
+          console.log(dRes);
+          if (dRes.error) throw new Error(dRes.error);
+          if (dRes.data?.status == "ok") {
+            await dispatch(
+              setUserData({
+                firstName: firstName,
+                lastName: lastName,
+                biography: bio,
+                website: website,
+              })
+            );
+          }
+        } catch (error) {
+          console.log("rejected", error);
+        }
+      }
+      // Goes to API. check updateDetails definition
       const dRes = await updateDetails({
         firstName: firstName,
         lastName: lastName,

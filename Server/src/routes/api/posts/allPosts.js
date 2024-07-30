@@ -1,4 +1,4 @@
-const { Post } = require('../../../model');
+const { Post, User } = require('../../../model');
 const logger = require('../../../logger');
 const { createErrorResponse, createSuccessResponse } = require('../../../response');
 const jwt = require('jsonwebtoken');
@@ -37,7 +37,7 @@ module.exports = async (req, res) => {
             users.forEach(user => {
                 userMap[user._id] = {
                     username: user.username,
-                    avatar: user.avatar,
+                    picture: user.picture,
                 };
             });
 

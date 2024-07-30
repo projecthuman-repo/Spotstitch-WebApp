@@ -54,10 +54,10 @@ const postsApi = createApi({
 
         // Create a comment on a post
         createComment: builder.mutation({
-            query: ({ postId, comment }) => ({
-                url: `/posts/${postId}/comment`,
-                method: 'POST',
-                body: comment,
+            query: ({postId, comment}) => ({
+                url: `/posts/${postId}/addComment`,
+                method: 'PUT',
+                body: { comment },
             }),
         }),
     }),
