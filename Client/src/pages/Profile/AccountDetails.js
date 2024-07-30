@@ -69,12 +69,13 @@ function AccountDetails() {
     async function handleSubmit(e) {
         e.preventDefault()
         try {
-            const res = await updatePicture({ picture: image })
+            const res = await updatePicture({ picture: image }) // Goes to API
             if (res.error) throw new Error(res.error)
             if (res.data?.status == "ok") {
                 await dispatch(setUserData({ picture: image }))
             }
 
+            // Goes to API. check updateDetails definition
             const dRes = await updateDetails(
                 {
                     firstName: firstName,

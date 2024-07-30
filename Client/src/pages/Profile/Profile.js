@@ -31,6 +31,8 @@ const Profile = () => {
   const firstName = useSelector((state) => state.user.firstName) || "First";
   const lastName = useSelector((state) => state.user.lastName) || "Last";
 
+  const {data: getUserPosts} = useGetUserPostsQuery(username)
+
   const [posts, setPosts] = useState([]);
 
   const [tab, setTab] = useState(0);
@@ -42,18 +44,18 @@ const Profile = () => {
   useEffect(() => {
     const fetchPosts = async () => {
         try {
-            const token = localStorage.getItem('token'); // token reader
-            if (!token) {
-                throw new Error('No token found! User not authenticated.');
-            }
+            // const token = localStorage.getItem('token'); // token reader
+            // if (!token) {
+            //     throw new Error('No token found! User not authenticated.');
+            // }
 
-            const response = await fetch(`${baseUrl}/posts/user/${username}`, {
-                headers: {
-                    'Authorization': `Bearer ${token}`,
-                }
-            });
+            // const response = await fetch(`${baseUrl}/posts/user/${username}`, {
+            //     headers: {
+            //         'Authorization': `Bearer ${token}`,
+            //     }
+            // });
 
-            // const response = userPosts
+            const response = getUserPosts
 
             console.log("response:!!!!!!!!", response)
             if (!response.ok) {
