@@ -6,14 +6,17 @@ import emoji from "../../assets/icons/emoji 1.svg";
 import addEmoji from "../../assets/icons/addEmoji.svg";
 import like from "../../assets/icons/Like-emoji group.svg";
 import Repost from "../../assets/icons/Re-post icon.png";
+import { useSelector } from "react-redux";
 function DetailedPost({ show, onHide, avatar, user, desc, body, img }) {
+  const userId = useSelector((state) => state.user.userId);
+
   return (
     <Modal size="xl" className="m-0 p-0" centered show={show} onHide={onHide}>
       <Modal.Body
         className="d-flex flex-column justify-content-center align-items-center p-sm-5"
         style={{ minHeight: "calc(80vh - 2rem)" }} // Adjust the 2rem based on your modal's padding or header/footer height
       >
-        <Row>
+        <Row style={{ width: "100%" }}>
           <Col lg={5} className="image-left">
             <img src={img}></img>
           </Col>
@@ -59,7 +62,7 @@ function DetailedPost({ show, onHide, avatar, user, desc, body, img }) {
                 style={{
                   /* thumbs up emoji group */
 
-                  width: "53px",
+                  width: "60px",
                   height: "32px",
                   display: "flex",
                   /* Inside auto layout */

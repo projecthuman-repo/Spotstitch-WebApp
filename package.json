@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "react-admin": "^5.1.0",
     "react-image-crop": "^11.0.5"
   }
 }

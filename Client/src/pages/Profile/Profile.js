@@ -39,7 +39,7 @@ const Profile = () => {
   const firstName = useSelector((state) => state.user.firstName) || "First";
   const lastName = useSelector((state) => state.user.lastName) || "Last";
 
-  const {data: getUserPosts} = useGetUserPostsQuery(username)
+  const { data: getUserPosts } = useGetUserPostsQuery(username);
 
   const [posts, setPosts] = useState([]);
 
@@ -51,41 +51,40 @@ const Profile = () => {
 
   useEffect(() => {
     const fetchPosts = async () => {
-        try {
-            // const token = localStorage.getItem('token'); // token reader
-            // if (!token) {
-            //     throw new Error('No token found! User not authenticated.');
-            // }
+      try {
+        // const token = localStorage.getItem('token'); // token reader
+        // if (!token) {
+        //     throw new Error('No token found! User not authenticated.');
+        // }
 
-            // const response = await fetch(`${baseUrl}/posts/user/${username}`, {
-            //     headers: {
-            //         'Authorization': `Bearer ${token}`,
-            //     }
-            // });
+        // const response = await fetch(`${baseUrl}/posts/user/${username}`, {
+        //     headers: {
+        //         'Authorization': `Bearer ${token}`,
+        //     }
+        // });
 
-            const response = getUserPosts
+        const response = getUserPosts;
 
-            console.log("response:!!!!!!!!", response)
-            if (!response.ok) {
-              throw new Error(`HTTP error! status: ${response.status}`);
-            }
-
-            const result = await response.json();
-
-            console.log("Result:", result);
-
-            if (result.status === 'ok' && result.posts) {
-                setPosts(result.posts);
-
-            } else {
-                console.error('Error fetching posts: Invalid response format');
-            }
-        } catch (error) {
-            console.error('Error fetching posts:', error);
+        console.log("response:!!!!!!!!", response);
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
         }
+
+        const result = await response.json();
+
+        console.log("Result:", result);
+
+        if (result.status === "ok" && result.posts) {
+          setPosts(result.posts);
+        } else {
+          console.error("Error fetching posts: Invalid response format");
+        }
+      } catch (error) {
+        console.error("Error fetching posts:", error);
+      }
     };
     fetchPosts();
-}, [username]);
+  }, [username]);
 
   return (
     <>
@@ -155,31 +154,31 @@ const Profile = () => {
                 </Col>
                 <Col lg={5} className="mt-3 ">
                   {id ? <OtherUserProfile id={userId} /> : <AccountDetails />}
-                </div>
-              </Col>
-            </Row>
-          </Col>
-        </Row>
-        <Row className="" id="posts">
-          <Col className="mx-5 mt-2">
-          {posts.length > 0 ? (
+                </Col>
+              </Row>
+            </Col>
+          </Row>
+          <Row className="" id="posts">
+            <Col className="mx-5 mt-2">
+              {posts.length > 0 ? (
                 posts.map((post) => (
-                    <UserContent
-                        key={post._id}
-                        img={post.image?.data || placeHolder}
-                        avatar={picture || placeHolder}
-                        user={username}
-                        desc={post.userDescription}
-                        body={post.description}
-                    />
+                  <UserContent
+                    key={post._id}
+                    img={post.image?.data || placeHolder}
+                    avatar={picture || placeHolder}
+                    user={username}
+                    desc={post.userDescription}
+                    body={post.description}
+                  />
                 ))
-            ) : (
+              ) : (
                 <p>No posts available</p>
-            )}
-          </Col>
-        </Row>
-      </Container>
-    </div>
+              )}
+            </Col>
+          </Row>
+        </Container>
+      </div>
+    </>
   );
 };
 
