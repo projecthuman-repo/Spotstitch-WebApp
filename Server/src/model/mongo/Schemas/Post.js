@@ -41,9 +41,9 @@ PostSchema.statics.getPost = async (id) => {
     }
 }
 
-PostSchema.statics.getPostUsername = async function (username) {
+PostSchema.statics.getPostUsername = async function (userId) {
     try {
-        const result = await this.find({ username: username });
+        const result = await Post.find({ userId: userId });
         return result;
     } catch (err) {
         throw new Error("Error getting posts by username: " + err.message);

@@ -19,7 +19,8 @@ import UserContent from "../Home/UserContent.js";
 
 const Profile = () => {
   const { id } = useParams();
-  const userId = id ? parseInt(id.replace(":", ""), 10) : null;
+  // const userId = id ? parseInt(id.replace(":", ""), 10) : null;
+  const userId = useSelector((state) => state.user.id);
   const user = useSelector((state) => state.user);
   const bio = useSelector((state) => state.user.biography);
   const username = useSelector((state) => state.user.username);
@@ -31,7 +32,7 @@ const Profile = () => {
   const firstName = useSelector((state) => state.user.firstName) || "First";
   const lastName = useSelector((state) => state.user.lastName) || "Last";
 
-  const {data: getUserPosts} = useGetUserPostsQuery(username)
+  const {data: getUserPosts} = useGetUserPostsQuery()
 
   const [posts, setPosts] = useState([]);
 
@@ -41,21 +42,23 @@ const Profile = () => {
     return mockData.filter((item) => item.id === id);
   }
 
+  console.log(user)
+
   useEffect(() => {
     const fetchPosts = async () => {
         try {
-            // const token = localStorage.getItem('token'); // token reader
-            // if (!token) {
-            //     throw new Error('No token found! User not authenticated.');
-            // }
+            const token = localStorage.getItem('token'); // token reader
+            if (!token) {
+                throw new Error('No token found! User not authenticated.');
+            }
 
-            // const response = await fetch(`${baseUrl}/posts/user/${username}`, {
-            //     headers: {
-            //         'Authorization': `Bearer ${token}`,
-            //     }
-            // });
+            const response = await fetch(`${baseUrl}/posts/user/${username}`, {
+                headers: {
+                    'Authorization': `Bearer ${token}`,
+                }
+            });
 
-            const response = getUserPosts
+            // const response = getUserPosts
 
             console.log("response:!!!!!!!!", response)
             if (!response.ok) {
