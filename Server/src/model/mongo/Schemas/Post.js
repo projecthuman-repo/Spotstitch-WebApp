@@ -63,14 +63,17 @@ PostSchema.statics.getPosts = async (filters = "") => {
 };
 
 PostSchema.statics.createPost = async (postData) => {
-  try {
-    const post = new Post(postData);
-    await post.save();
-    return post;
-  } catch (err) {
-    throw new Error("Error getting posts createPost");
-  }
-};
+    try {
+
+        console.log("POSTDATA POST.JS: ", postData)
+        const post = new Post(postData)
+        console.log("Post created:", post)
+        await post.save()
+        return post;
+    } catch (err) {
+        throw new Error("Error getting posts createPost");
+    }
+}
 
 PostSchema.methods.updateImage = async function (newImg) {
   try {
