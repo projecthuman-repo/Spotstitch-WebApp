@@ -12,19 +12,24 @@ module.exports = async (req, res) => {
 
         const postData = req.body
         postData.userId = userId.toString()
-        postData.comments = []
+        postData.userDescription = ""
+        postData.image = {}
         postData.tags = []
+        postData.comments = []
+        postData.likes = 0
         
         console.log("POSTDATA AFTER: ", postData)
+        console.log("POST TEMPLATE: ", Post)
+        
         // good so far
 
 
         // console.log("Comments: ", postData.comments)
 
         // ensure all fields required to create an event are present
-        // const missing = validateFields(Post, postData)
+        const missing = validateFields(Post, postData)
         console.log("HERE=================")
-        // if (missing) throw new Error(`Missing required fields: ${missing.toString()}`)
+        if (missing) throw new Error(`Missing required fields: ${missing.toString()}`)
 
         // attempt to create new post using post data from client
         const post = await Post.createPost(postData)

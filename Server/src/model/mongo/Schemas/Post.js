@@ -64,8 +64,10 @@ PostSchema.statics.createPost = async (postData) => {
 
         console.log("POSTDATA POST.JS: ", postData)
         const post = new Post(postData)
-        console.log("Post created:", post)
+        // await post.validate();
+        // console.log("VALIDATING POST",post.validate())
         await post.save()
+        console.log("Post created:", post)
         return post;
     } catch (err) {
         throw new Error("Error getting posts createPost");
