@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "./profile.css";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import OtherUserProfile from "./OtherUserProfile.js";
 import { Col, Container, Row } from "react-bootstrap";
 import Followers from "./Followers";
@@ -54,25 +54,23 @@ const Profile = () => {
   useEffect(() => {
     const fetchPosts = async () => {
         try {
-            const token = localStorage.getItem('token'); // token reader
-            if (!token) {
-                throw new Error('No token found! User not authenticated.');
-            }
+          const token = localStorage.getItem('token'); // token reader
+          if (!token) {
+              throw new Error('No token found! User not authenticated.');
+          }
 
-            const response = await fetch(`${baseUrl}/posts/user/${username}`, {
-                headers: {
-                    'Authorization': `Bearer ${token}`,
-                }
-            });
+          const response = await fetch(`${baseUrl}/posts/user/${username}`, {
+              headers: {
+                  'Authorization': `Bearer ${token}`,
+              }
+          });
 
-            // const response = getUserPosts
+          // const response = getUserPosts
 
-            console.log("response:!!!!!!!!", response)
-            if (!response.ok) {
-              throw new Error(`HTTP error! status: ${response.status}`);
-            }
-
-            const result = await response.json();
+          console.log("response:!!!!!!!!", response)
+          if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+          }
 
         const result = await response.json();
 
@@ -167,12 +165,7 @@ const Profile = () => {
               {posts.length > 0 ? (
                 posts.map((post) => (
                   <UserContent
-                    key={post._id}
-                    img={post.image?.data || placeHolder}
-                    avatar={picture || placeHolder}
-                    user={username}
-                    desc={post.userDescription}
-                    body={post.description}
+                    post = {post}
                   />
                 ))
               ) : (
