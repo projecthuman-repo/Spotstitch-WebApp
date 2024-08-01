@@ -1,0 +1,83 @@
+.message-other-profile {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 10px 0px;
+  gap: 10px;
+  border: 2px solid #8cbdeb;
+  border-radius: 15px;
+  color: #8cbdeb;
+  width: 170px;
+  height: 50px;
+}
+
+.follow-other-profile {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 10px 0px;
+  gap: 10px;
+  width: 170px;
+  height: 50px;
+  background: #8cbdeb;
+  border-radius: 15px;
+  color: #0e0e0e;
+  /* Follow */
+
+  font-style: normal;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 30px;
+  /* identical to box height */
+  display: flex;
+  align-items: center;
+  text-align: center;
+
+  color: #0e0e0e;
+
+  /* Inside auto layout */
+  flex: none;
+  order: 1;
+  flex-grow: 0;
+}
+.message-other-profile:hover,
+.follow-other-profile:hover,
+.following-other-profile:hover {
+  cursor: pointer;
+}
+
+.following-other-profile {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 10px 0px;
+  gap: 10px;
+
+  width: 170px;
+  height: 50px;
+
+  /* Green */
+  background: #90c766;
+  border-radius: 15px;
+  /* Following */
+
+  font-style: normal;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 30px;
+  /* identical to box height */
+  display: flex;
+  align-items: center;
+  text-align: center;
+
+  color: #0e0e0e;
+
+  /* Inside auto layout */
+  flex: none;
+  order: 1;
+  flex-grow: 0;
+}

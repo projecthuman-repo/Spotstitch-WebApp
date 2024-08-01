@@ -124,7 +124,7 @@ function Home({ vendor = false }) {
                   </div>
                 </div>
 
-                <Row>
+                <div style={{ width: "100%" }}>
                   <Form>
                     <Form.Group>
                       <Form.Control
@@ -141,7 +141,12 @@ function Home({ vendor = false }) {
                           <img src={emoji} alt="Emoji" className="emoji" />
                         </button>
                         <button className="icon" onClick={addAttachment}>
-                          <img src={Text} alt="text" className="text" />
+                          <img
+                            src={Text}
+                            alt="text"
+                            className="text"
+                            style={{ width: "35px" }}
+                          />
                         </button>
 
                         <button className="icon" onClick={addAttachment}>
@@ -165,7 +170,7 @@ function Home({ vendor = false }) {
                       <button className="postButton" onClick={handleSubmit}>Post</button>
                     </Form.Group>
                   </Form>
-                </Row>
+                </div>
               </Card.Body>
             </Card>
 
@@ -205,7 +210,7 @@ function Home({ vendor = false }) {
                           <button
                             className={
                               filters.includes(layer) == true
-                                ? "btn btn-outline-0 post m-2 text-start w-100 shadow"
+                                ? "btn btn-outline-0 post-home m-2 text-start w-100 shadow"
                                 : "btn btn-outline-0 bg-light m-2 text-start w-100"
                             }
                             // data-bs-toggle="button"

@@ -1,4 +1,26 @@
-function OtherUserProfile(id) {
+import message from "../../assets/Button.svg";
+import Vector from "../../assets/icons/Vector.svg";
+import "./OtherUserProfile.css";
+import initialUsers from "./mockUsers.json";
+import React, { useState, useEffect } from "react";
+function OtherUserProfile({ id }) {
+  const [users, setUsers] = useState(initialUsers);
+  function visitedUser(i) {
+    return users.filter((item) => item.id === i);
+  }
+  useEffect(() => {
+    setUsers(initialUsers);
+  }, [initialUsers]);
+
+  function toggleFollowing() {
+    const updatedUsers = users.map((user) => {
+      if (user.id === id) {
+        return { ...user, isFollowing: !user.isFollowing };
+      }
+      return user;
+    });
+    setUsers(updatedUsers);
+  }
   return (
     <>
       <div
@@ -10,41 +32,18 @@ function OtherUserProfile(id) {
           gap: "10px",
         }}
       >
-        <div
-          style={{
-            boxSizing: "border-box",
-            display: "flex",
-            flexDirection: "row",
-            justifyContent: "center",
-            alignItems: "center",
-            padding: "10px 0px",
-            gap: "10px",
-            border: "2px solid #8CBDEB",
-            borderRadius: "15px",
-            color: "#8CBDEB",
-            width: "170px",
-            height: "50px",
-          }}
-        >
-          Message
+        <div className="message-other-profile">
+          <img src={message}></img>
         </div>
-        <div
-          style={{
-            display: "flex",
-            flexDirection: "row",
-            justifyContent: "center",
-            alignItems: "center",
-            padding: "10px 0px",
-            gap: "10px",
-            width: "170px",
-            height: "50px",
-            background: "#8CBDEB",
-            borderRadius: "15px",
-            color: "#0E0E0E",
-          }}
-        >
-          Follow
-        </div>
+        {visitedUser(id)[0].isFollowing ? (
+          <div className="following-other-profile" onClick={toggleFollowing}>
+            <img src={Vector}></img>Following
+          </div>
+        ) : (
+          <div className="follow-other-profile" onClick={toggleFollowing}>
+            + Follow
+          </div>
+        )}
       </div>
     </>
   );

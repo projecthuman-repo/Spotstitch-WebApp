@@ -1,146 +1,124 @@
-
-.boss{
-    display: flex;
-
-   
+.boss {
+  display: flex;
 }
-.left{
-    height: 100vh;
-    width: 50%;
-
-    
+.left {
+  height: 100vh;
+  width: 50%;
 }
 
-.holderimg{
-    width: 100%;
-    height: 100%;
+.holderimg {
+  width: 100%;
+  height: 100%;
 }
 
-.right{
-    display: grid;
-    
-    height: 100vh;
-    
-   
+.right {
+  display: grid;
+
+  height: 100vh;
 }
 
-.topspace{
-    height: 50px;
-
+.topspace {
+  height: 50px;
 }
 
-.sslogo{
-    display: block;
-    margin: auto;
-    width: 50%;
-    height: 100px;
-    width: 100px;
-    
-    
+.sslogo {
+  display: block;
+  margin: auto;
+  width: 50%;
+  height: 100px;
+  width: 100px;
 }
-.titlen{
+.titlen {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 24px;
+  text-align: center;
+  color: #06d6a0;
 
-
-font-family: 'Inter';
-font-style: normal;
-font-weight: 700;
-font-size: 24px;
-text-align: center;
-color: #06D6A0;
-
-margin: auto;
-
-    
+  margin: auto;
 }
-.formsignin{
-    display: grid;
-    
+.formsignin {
+  display: grid;
 }
-.right .email,.right .password{
-    width: 350px;
-    height: 50px;
-    left: 905px;
-    top: 383px;
-    
+.right .email,
+.right .password {
+  width: 350px;
+  height: 50px;
+  left: 905px;
+  top: 383px;
 
-    border: 2px solid #B3B3B3;
-    border-radius: 10px;
+  border: 2px solid #b3b3b3;
+  border-radius: 10px;
 
-    margin: auto;
+  margin: auto;
 
-
-    text-align: left;
-    padding-left: 2em;
-    
+  text-align: left;
+  padding-left: 2em;
 }
-.right .signin{
+.right .signin {
+  height: 50px;
+  left: 905px;
+  top: 523px;
+  background: #06d69f;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  color: #01271d;
 
-height: 50px;
-left: 905px;
-top: 523px;
-background: #06D69F;
-box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-color: #01271D;
-
-border: none;
-margin:20px auto;
-width: 350px;
-border-radius: 10px;
+  border: none;
+  margin: 20px auto;
+  width: 350px;
+  border-radius: 10px;
 }
-.right .signin:active{
-    background-color: #01271D;
-    color: #06D69F;
-
+.right .signin:active {
+  background-color: #01271d;
+  color: #06d69f;
 }
-.lineor{
-    width: 350px;
-    
-    margin: auto;
+.lineor {
+  width: 350px;
 
+  margin: auto;
 }
 
-
-
-.facebookbutton,.googlebutton,.projectbutton {
-    width: 364px;
-    height: 40px;
-    margin: auto;
-
-    
-    border: none;
-    cursor: pointer;
-    appearance: none;
-    background-color: inherit;
-    
-  }
+.facebookbutton-start,
+.googlebutton-start,
+.projectbutton-start {
+  width: 364px;
+  height: 40px;
+  margin: auto;
+  margin-bottom: 10px;
+  cursor: pointer;
+  appearance: none;
+  background-color: inherit;
+  background: none;
+  border: none;
+}
 
 * {
-    margin: 0;
-    padding: 0;
-  }
-
-.right .needaccountbox{
-    margin: 10px auto;
-    width: 400px;
-    padding: 10px;
-    font-family: 'Poppins';
-    font-style: normal;
-    font-weight: 500;
-    font-size: 17px;
-    line-height: 15px;
-    color: #246EB9;
+  margin: 0;
+  padding: 0;
 }
-.right .createaccount{
 
-    margin: 0;
+.right .needaccountbox {
+  margin: 10px auto;
+  width: 400px;
+  padding: 10px;
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 17px;
+  line-height: 15px;
+  color: #246eb9;
+}
+.right .createaccount {
+  margin: 0;
 
-    text-align: center;
-    
-    font-family: 'Poppins';
-    font-style: normal;
-    font-weight: bolder;
-    font-size: 18px;
-    line-height: 15px;
-    color: #246EB9;
-    text-decoration-line: underline;
+  text-align: center;
+
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: bolder;
+  font-size: 18px;
+  line-height: 15px;
+  color: #246eb9;
+  text-decoration-line: underline;
 }

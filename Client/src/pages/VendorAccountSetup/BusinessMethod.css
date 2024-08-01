@@ -1,118 +1,107 @@
-
-.boss{
-    display: flex;
-   
+.boss {
+  display: flex;
 }
-.left{
-    height: 100vh;
-    width: 50%;
-    background-color: rgba(0, 255, 136, 0.227);
-    overflow: auto;
-    
+.left {
+  height: 100vh;
+  width: 50%;
+  background-color: rgba(0, 255, 136, 0.227);
+  overflow: auto;
 }
 
-.right{
-    display: grid;
-    
-    height: 100vh;
-    width: 50%;
-    overflow: auto;
-    
-   
+.right {
+  display: grid;
+
+  height: 100vh;
+  width: 50%;
+  overflow: auto;
 }
 
-.topspace{
-    height: 50px;
+.topspace {
+  height: 50px;
 }
 
-.botspace{
-    height: 200px;
+.botspace {
+  height: 200px;
 }
 
-.welcometitle{
-   
-    width: 500px;
-    height: 76px;
-  
+.welcometitle {
+  width: 500px;
+  height: 76px;
 
-    font-family: 'Poppins';
-    font-style: normal;
-    font-weight: 500;
-    font-size: 60px;
-    line-height: 125.5%;
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 60px;
+  line-height: 125.5%;
 
-    color: #333333;
+  color: #333333;
 
-
-    margin: auto;
-
+  margin: auto;
 }
 
-.smalldescription{
-    width: 500px;
-    font-family: 'Poppins';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 16px;
-    line-height: 24px;
-    
-    color: #333333;
-    margin: auto;
-    
-}
-.whatbringyouradiobox{
-    box-sizing: border-box;
-    margin: auto;
-    margin-left: 100px ;
-    width: 400px;
-    height: 88px;
-    border: 2px solid #C4C4C4;
-    border-radius: 9px;
-    display: flex;
-    align-items: center;
-    align-content: center;
-    text-align: center;
-}
+.smalldescription {
+  width: 500px;
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
 
-.whatbringyouradio{
-    width: 100px;
-    height: 20px;
-    border: 2px solid #B3B3B3;
-
-    
+  color: #333333;
+  margin: auto;
+}
+.whatbringyouradiobox {
+  box-sizing: border-box;
+  margin: auto;
+  margin-left: 100px;
+  width: 400px;
+  height: 88px;
+  border: 2px solid #c4c4c4;
+  border-radius: 9px;
+  display: flex;
+  align-items: center;
+  align-content: center;
+  text-align: center;
 }
 
-.radiotext{
-    width: 300px;
-    text-align: left;
+.whatbringyouradio {
+  width: 100px;
+  height: 20px;
+  border: 2px solid #b3b3b3;
 }
 
-.space1{
-    height: 150px;
-}
-.skipnextbox{
-    margin-right: 100px;
+.radiotext {
+  width: 300px;
+  text-align: left;
 }
 
-.linknextbutton{
-    margin-left: auto;
-    margin-right: 80px;
-    width: 175px;
-    height: 50px;
+.space1 {
+  height: 150px;
 }
-.nextbutton{
-   
-    width: 175px;
-    height: 50px;
- 
+.skipnextbox {
+  margin-right: 100px;
+}
 
-    background: #E6E6E6;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-    border:none;
-    margin-left: auto;
-    margin-right: 80px;
-    }
+.linknextbutton {
+  margin-left: auto;
+  margin-right: 80px;
+  width: 175px;
+  height: 50px;
+}
+.nextbutton {
+  width: 175px;
+  height: 50px;
 
-.whitespace-bottom{
-    height: 100px;
+  background: #e6e6e6;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border: none;
+  margin-left: auto;
+  margin-right: 80px;
+}
+
+.nextbutton-vendortype:hover {
+  cursor: pointer;
+}
+.whitespace-bottom {
+  height: 100px;
 }
