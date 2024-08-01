@@ -22,7 +22,7 @@ function sharePostReputationApi(shares, membersRecruited) {
     .then(data => {
         console.log("API response:", data);
         if (data?.data?._id === id && data.data.score) {
-            alert(`The Reputation is: ${data.data.score}`);
+            console.log(`The Reputation is: ${data.data.score}`);
         } else {
             console.error('Unexpected response format or missing score:', data);
         }
@@ -45,7 +45,7 @@ function callApi(comment, likes) {
     .then(data => {
         console.log("API response:", data);
         if (data?.data?._id === id && data.data.score) {
-            alert(`The Reputation is: ${data.data.score}`);
+            console.log(`The Reputation is: ${data.data.score}`);
         } else {
             console.error('Unexpected response format or missing score:', data);
         }
@@ -68,7 +68,7 @@ function likePostReputationApi(post) {
     .then(data => {
         console.log("API response:", JSON.stringify(data, null, 2));
         if (data?._id === id && typeof data?.spectatorData?.totalPoints !== 'undefined') {
-            alert(`The Reputation is: ${data.spectatorData.totalPoints}`);
+            console.log(`The Reputation is: ${data.spectatorData.totalPoints}`);
         } else {
             console.error('ID mismatch, missing totalPoints, or unexpected response format:', data);
         }
