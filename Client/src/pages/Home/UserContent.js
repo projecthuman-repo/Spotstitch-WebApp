@@ -124,7 +124,6 @@ function UserContent({ post }) {
   };
   // console.log(user.userId);
   // console.log(post.userId);
-  console.log(post)
   return (
     <Container className=" p-0 my-3 round-l">
       <Row className="post-row">

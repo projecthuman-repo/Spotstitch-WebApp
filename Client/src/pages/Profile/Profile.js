@@ -148,9 +148,7 @@ const Profile = () => {
                       <div className="fs-32 text-start">0</div>
                     </a>
                     <div style={{ fontFamily: "Poppins" }}>
-                      Lorem ipsum dolor sit amet consectetur. Dapibus mauris
-                      scelerisque egestas scelerisque lectus pellentesque ante.
-                      Porttitor congue sed vivamus vel vulputate aliquet.
+                      {bio}
                     </div>
                   </div>
                 </Col>
