@@ -1,4 +1,4 @@
-const { Post } = require('../../../model');
+const { Post, User } = require('../../../model');
 const logger = require('../../../logger');
 const { createErrorResponse, createSuccessResponse } = require('../../../response');
 
@@ -7,11 +7,12 @@ const { createErrorResponse, createSuccessResponse } = require('../../../respons
  */
 module.exports = async (req, res) => {
     try {
-        // Extract the username from the request parameters
-        const { username } = req.params;
+        // make sure the user is authenticated and we can find their ID
+        const { username } = req.params
 
         // Use the static method to find the post by username
-        const posts = await Post.getPostUsername(username);
+        const user = await User.findOne({username: username})
+        const posts = await Post.getPostUsername(user._id);
 
         if (!posts || posts.length === 0) throw new Error('Could not find posts');
 

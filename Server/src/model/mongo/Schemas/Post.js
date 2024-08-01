@@ -44,13 +44,13 @@ PostSchema.statics.getPost = async (id) => {
   }
 };
 
-PostSchema.statics.getPostUsername = async function (username) {
-  try {
-    const result = await this.find({ username: username });
-    return result;
-  } catch (err) {
-    throw new Error("Error getting posts by username: " + err.message);
-  }
+PostSchema.statics.getPostUsername = async function (userId) {
+    try {
+        const result = await Post.find({ userId: userId });
+        return result;
+    } catch (err) {
+        throw new Error("Error getting posts by username: " + err.message);
+    }
 };
 
 PostSchema.statics.getPosts = async (filters = "") => {
