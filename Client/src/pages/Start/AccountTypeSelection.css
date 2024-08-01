@@ -1,96 +1,86 @@
-
-.boss{
-    display: flex;
-   
+.boss {
+  display: flex;
 }
-.left{
-    height: 100vh;
-    width: 50%;
-    background-color: rgba(0, 255, 136, 0.227);
-    overflow: auto;
-    
+.left {
+  height: 100vh;
+  width: 50%;
+  background-color: rgba(0, 255, 136, 0.227);
+  overflow: auto;
 }
 
-.right{
-    display: grid;
-    
-    height: 100vh;
-    width: 50%;
-    overflow: auto;
-    
-   
+.right {
+  display: grid;
+
+  height: 100vh;
+  width: 50%;
+  overflow: auto;
 }
 
-.topspace{
-    height: 50px;
+.topspace {
+  height: 50px;
 }
 
-.botspace{
-    height: 200px;
+.botspace {
+  height: 200px;
 }
 
-.right .welcometitle{
-   
-    width: 500px;
-    height: 76px;
-  
+.right .welcometitle {
+  width: 500px;
+  height: 76px;
 
-    font-family: 'Poppins';
-    font-style: normal;
-    font-weight: 700;
-    font-size: 48px;
-    line-height: 125.5%;
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 48px;
+  line-height: 125.5%;
 
-    color: #333333;
+  color: #333333;
 
-
-    margin: auto;
-
+  margin: auto;
 }
 
-.smalldescription{
-    width: 500px;
-    font-family: 'Poppins';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 16px;
-    line-height: 24px;
-    
-    color: #333333;
-    margin: auto;
-    
-}
-.accounttypebuttonbox{
-    width: 500px;
-    margin: auto;
-    display: flex;
-    flex-direction: column;
-}
-.accounttypebutton{
-    width: 500px;
-    height: 86px;
+.smalldescription-profile-image {
+  width: 500px;
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
 
-    
-    font-family: 'Poppins';
-    font-style: normal;
-    font-weight: 500;
-    font-size: 30px;
-    line-height: 27px;
-    /* identical to box height */
-    margin: auto;
-    margin-bottom: 10px;
-    border: none;
-    background: #06D69F;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-    color: #01271D;
-    border-radius: 10px;
+  color: #333333;
+  margin: auto;
+  text-align: center;
+  margin-bottom: 50px;
 }
-.right .accounttypebutton:active{
-    background-color: #01271D;
-    color: #06D69F;
+.accounttypebuttonbox {
+  width: 500px;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+}
+.accounttypebutton {
+  width: 500px;
+  height: 86px;
 
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 25px;
+  line-height: 27px;
+  /* identical to box height */
+  margin: auto;
+  margin-bottom: 10px;
+  border: none;
+  background: #06d69f;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  color: #01271d;
+  border-radius: 10px;
+}
+.right .accounttypebutton:active {
+  background-color: #01271d;
+  color: #06d69f;
 }
 
-.linkacctypebutton{
-    width: 232px;
+.linkacctypebutton {
+  width: 232px;
 }

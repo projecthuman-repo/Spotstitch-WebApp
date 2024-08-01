@@ -1,229 +1,213 @@
+.boss {
+  display: flex;
+}
+.left {
+  height: 100vh;
+  width: 50%;
+  background-color: rgba(0, 255, 136, 0.227);
+  overflow: auto;
+}
+.humanlogo {
+}
+.right {
+  display: grid;
 
-.boss{
-    display: flex;
-   
-}
-.left{
-    height: 100vh;
-    width: 50%;
-    background-color: rgba(0, 255, 136, 0.227);
-    overflow: auto;
-    
-}
-.humanlogo{
-    
-}
-.right{
-    display: grid;
-    
-    height: 100vh;
-    width: 50%;
-    overflow: auto;
-    
-   
+  height: 100vh;
+  width: 50%;
+  overflow: auto;
 }
 
-.topspace{
-    height: 50px;
+.topspace {
+  height: 50px;
 }
 
-.sslogo{
-    display: block;
-    margin: auto;
-    width: 50%;
-    height: 100px;
-    width: 100px;
-    
-    
+.sslogo {
+  display: block;
+  margin: auto;
+  width: 50%;
+  height: 100px;
+  width: 100px;
 }
 
-.right .signuptitle{
-    font-family: 'Poppins';
-    font-style: normal;
-    /* font-weight: bold; */
-    font-size: 24px;
-    line-height: 36px;
-    color: black;
+.right .signuptitle {
+  font-family: "Poppins";
+  font-style: normal;
+  /* font-weight: bold; */
+  font-size: 24px;
+  line-height: 36px;
+  color: black;
 
-    width: 350px;
-    text-align: center;
-    margin: auto;
+  width: 350px;
+  text-align: center;
+  margin: auto;
 
-
-    padding-top: 50px;
-    padding-bottom: 10px;
+  padding-top: 50px;
+  padding-bottom: 10px;
 }
 
-.signupdescription{
-    font-family: 'Poppins';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 12px;
-    line-height: 18px;
-    
-    color: #333333;
+.signupdescription {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 18px;
 
-    width: 350px;
-    text-align: justify;
-    margin: auto;
-    width: 50%;
+  color: #333333;
 
-    padding-bottom: 20px;
+  width: 350px;
+  text-align: justify;
+  margin: auto;
+  width: 50%;
+
+  padding-bottom: 20px;
 }
 .input-container {
-    display: flex;
-    flex-direction: column;
-    align-items: start; /* align items to the start of the container */
+  display: flex;
+  flex-direction: column;
+  align-items: start; /* align items to the start of the container */
 }
 
+.right .email,
+.right .password {
+  width: 350px;
+  height: 50px;
+  left: 905px;
+  top: 383px;
 
-.right .email,.right .password{
-    
-    width: 350px;
-    height: 50px;
-    left: 905px;
-    top: 383px;
-    
-    border: 2px solid #B3B3B3;
-    border-radius: 10px;
+  border: 2px solid #b3b3b3;
+  border-radius: 10px;
 
-    margin: auto;
-
+  margin: auto;
 }
-.right .password, .right .comfirmPassword{
-    margin-top: 10px;
+.right .password,
+.right .comfirmPassword {
+  margin-top: 10px;
 }
-
 
 .password-tooltip .tooltip-inner {
-    margin-right: 1em;
-    text-align: left !important;
-    white-space: pre-wrap !important;
+  margin-right: 1em;
+  text-align: left !important;
+  white-space: pre-wrap !important;
 }
 
-.lacc{
-    margin: auto;
-    width: 50%;
-
+.lacc {
+  margin: auto;
+  width: 50%;
 }
-.signup{
-width: 350px;
-height: 50px;
-left: 905px;
-top: 523px;
-background: #06D59E;
-box-shadow: #01271D;
-border: none;
-margin: auto;
-border-radius: 10px;
+.signup {
+  width: 350px;
+  height: 50px;
+  left: 905px;
+  top: 523px;
+  background: #06d59e;
+  box-shadow: #01271d;
+  border: none;
+  margin: auto;
+  border-radius: 10px;
 }
-.signup:active{
-    background-color: #01271D;
-    color: #06D59E;
-}
-
-.checkarea{
-
-    display: flex;
-    width: 340px;
-    margin: auto;
-    width: 50%;
-    /* padding-left: 10px; */
-    margin-top: 15px;
-    margin-bottom: 15px;
-}
-.bold{
-    font-weight: bold;
-    color: rgba(0, 0, 0, 0.517);
-}
-.policy{
-    font-family: 'Poppins';
-    font-style: normal;
-    font-weight: 500;
-    font-size: 13px;
-    line-height: 15px;
-
-    align-items: center;
-
-    color: #B3B3B3;
-}
-.checkboxpolicy{
-    border: 1px solid #B3B3B3;
-    border-radius: 4px;
-    margin-right: 15px;
-    width: 20px;
-    height: 20px;
+.signup:active {
+  background-color: #01271d;
+  color: #06d59e;
 }
 
-.lineor{
-    width: 350px;
-    
-    margin: auto;
-    width: 50%;
+.checkarea {
+  display: flex;
+  width: 340px;
+  margin: auto;
+  width: 50%;
+  /* padding-left: 10px; */
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+.bold {
+  font-weight: bold;
+  color: rgba(0, 0, 0, 0.517);
+}
+.policy {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 13px;
+  line-height: 15px;
+
+  align-items: center;
+
+  color: #b3b3b3;
+}
+.checkboxpolicy {
+  border: 1px solid #b3b3b3;
+  border-radius: 4px;
+  margin-right: 15px;
+  width: 20px;
+  height: 20px;
 }
 
-.joingoogle,.joinfacebook{
- 
-    margin: auto;
-    width: 50%;
+.lineor {
+  width: 350px;
+
+  margin: auto;
+  width: 50%;
 }
 
-
-
-.needaccountbox{
-    width: 200px;
-    margin: auto;
-    text-align: center;
- 
-    font-family: 'Poppins';
-    font-style: normal;
-    font-weight: 500;
-    font-size: 17px;
-    line-height: 15px;
-    /* identical to box height */
-
-    color: #B3B3B3;
-}
-.createaccount{
-    width: 200px;
-    margin: auto;
-    text-align: center;
-    
-    font-family: 'Poppins';
-    font-style: normal;
-    font-weight: bolder;
-    font-size: 18px;
-    line-height: 15px;
-    /* identical to box height */
-    
-    color: #B3B3B3;
-    text-decoration-line: underline;
+.joingoogle,
+.joinfacebook {
+  margin: auto;
+  width: 50%;
 }
 
+.needaccountbox {
+  width: 200px;
+  margin: auto;
+  text-align: center;
 
-.policy2{
-    font-family: 'Poppins';
-    font-style: normal;
-    font-weight: 500;
-    font-size: 12px;
-    line-height: 15px;
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 17px;
+  line-height: 15px;
+  /* identical to box height */
 
-    align-items: center;
+  color: #b3b3b3;
+}
+.createaccount {
+  width: 200px;
+  margin: auto;
+  text-align: center;
 
-    color: #B3B3B3;
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: bolder;
+  font-size: 18px;
+  line-height: 15px;
+  /* identical to box height */
 
-    width: 230px;
-    margin: auto;
+  color: #b3b3b3;
+  text-decoration-line: underline;
 }
 
-.botspace{
-    height: 200px;
+.policy-usersignup {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 15px;
+
+  align-items: center;
+
+  color: #b3b3b3;
+
+  width: 230px;
+  margin: 20px auto;
+}
+
+.botspace {
+  height: 200px;
 }
 
 .tooltip.show.passwordRequirement-overlay .tooltip-inner {
-    background-color: #246EB9 !important;
+  background-color: #246eb9 !important;
 }
 
-.tooltip.passwordMatch-overlay .tooltip-inner{
-    background-color: #FE5F55 !important;
+.tooltip.passwordMatch-overlay .tooltip-inner {
+  background-color: #fe5f55 !important;
 }
