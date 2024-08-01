@@ -61,7 +61,10 @@ PostSchema.statics.getPosts = async (filters = "") => {
 
 PostSchema.statics.createPost = async (postData) => {
     try {
+
+        console.log("POSTDATA POST.JS: ", postData)
         const post = new Post(postData)
+        console.log("Post created:", post)
         await post.save()
         return post;
     } catch (err) {

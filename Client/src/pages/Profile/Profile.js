@@ -42,8 +42,6 @@ const Profile = () => {
     return mockData.filter((item) => item.id === id);
   }
 
-  console.log(user)
-
   useEffect(() => {
     const fetchPosts = async () => {
         try {

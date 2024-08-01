@@ -30,15 +30,22 @@ import Line from "../../assets/icons/Line 246.svg";
 import Video from "../../assets/icons/Video Icon.svg";
 import Mic from "../../assets/icons/Mic Icon.svg";
 import Share from "../../assets/icons/Share Icon.svg";
+import { useCreatePostMutation } from "../../services/posts";
 // import { share } from "../../assets/icons";
 
 function Home({ vendor = false }) {
+
+  const username = useSelector((state) => state.user.username);
+  const avatar = useSelector((state) => state.user.picture);  
+
   const [filters, setFilters] = useState([]);
   const [modalShow, setModalShow] = useState(false);
   const [popoverShow, setPopoverShow] = useState(false);
 
-  const username = useSelector((state) => state.user.username);
-  const avatar = useSelector((state) => state.user.picture);
+  const [text, setText] = useState('');
+
+  const [createPost] = useCreatePostMutation()
+
 
   const popover = (
     <Popover id="popover-basic" className="mt-5">
@@ -57,6 +64,8 @@ function Home({ vendor = false }) {
       </Popover.Body>
     </Popover>
   );
+  
+
 
   const layerExamples = ["these", "are", "test", "layers", "replace later"];
 
@@ -75,6 +84,27 @@ function Home({ vendor = false }) {
   function addAttachment(e) {
     e.preventDefault();
   }
+
+
+  const handleTextChange = (event) => {
+    setText(event.target.value);
+  };
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    console.log('Submitted text:', text);
+
+    const res = await createPost({ description: text }) // Goes to API
+
+    console.log("RESPONSE: ", res)
+    if (res.error) throw new Error(res.error)
+    if (!res.ok) {
+        throw new Error(`HTTP error! status: ${res.status}`);
+    }
+    const result = await res.json();
+    console.log("CREATEPOST RESPONSE", result)
+
+  };
 
   return (
     <div>
@@ -102,6 +132,8 @@ function Home({ vendor = false }) {
                         as="textarea"
                         placeholder="Share your life!"
                         rows={4}
+                        value={text}
+                        onChange={handleTextChange}
                       />
 
                       <div className="icons-home">
@@ -130,7 +162,7 @@ function Home({ vendor = false }) {
                       {/* <button className="postButton float-end mt-4 round-l px-3 py-1 fw-400">
                         <p className="fs-15 nopadding">Post</p>
                       </button> */}
-                      <button className="postButton">Post</button>
+                      <button className="postButton" onClick={handleSubmit}>Post</button>
                     </Form.Group>
                   </Form>
                 </Row>
