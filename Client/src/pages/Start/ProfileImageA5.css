@@ -1,169 +1,167 @@
+.boss {
+  display: flex;
+}
+.left {
+  height: 100vh;
+  width: 50%;
+  background-color: rgba(0, 255, 136, 0.227);
+  overflow: auto;
+}
+.humanlogo {
+}
+.right {
+  display: grid;
 
-.boss{
-    display: flex;
-   
-}
-.left{
-    height: 100vh;
-    width: 50%;
-    background-color: rgba(0, 255, 136, 0.227);
-    overflow: auto;
-    
-}
-.humanlogo{
-    
-}
-.right{
-    display: grid;
-    
-    height: 100vh;
-    width: 50%;
-    overflow: auto;
-    
-   
+  height: 100vh;
+  width: 50%;
+  overflow: auto;
 }
 
-.topspace{
-    height: 50px;
+.topspace {
+  height: 50px;
 }
 
-.sslogo{
-    display: block;
-    margin: auto;
-    width: 50%;
-    height: 100px;
-    width: 100px;
-    
-    
+.sslogo {
+  display: block;
+  margin: auto;
+  width: 50%;
+  height: 100px;
+  width: 100px;
 }
 
-.signuptitle{
-    font-family: 'Poppins';
-    font-style: normal;
-    font-weight: bold;
-    font-size: 34px;
-    line-height: 36px;
-    color: #333333;
+.signuptitle {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: bold;
+  font-size: 34px;
+  line-height: 36px;
+  color: #333333;
 
-    width: 350px;
-    text-align: center;
-    margin: auto;
-    width: 50%;
+  width: 350px;
+  text-align: center;
+  margin: auto;
+  width: 50%;
 
-    padding-top: 50px;
-    padding-bottom: 10px;
+  padding-top: 50px;
+  padding-bottom: 10px;
 }
 
-.signupdescription{
-    font-family: 'Poppins';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 18px;
-    line-height: 18px;
-    
-    color: #333333;
+.signupdescription {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 18px;
 
-    width: 350px;
-    text-align: justify;
-    margin: auto;
-    width: 50%;
+  color: #333333;
 
-    padding-bottom: 20px;
+  width: 350px;
+  text-align: justify;
+  margin: auto;
+  width: 50%;
+
+  padding-bottom: 20px;
 }
 
-.photo{
-    height: 260px !important;
-    width: 260px !important;
-    border-radius: 0 !important;
-    margin: auto;
-    border: none !important;
+.right .photo-profileimage {
+  height: 260px !important;
+  width: 260px !important;
+  border-radius: 0 !important;
+  margin: auto;
+  border: none !important;
+  box-shadow: none;
 }
 
-.skipnextbox{
-    margin: auto;
-    width: 300px;
-    height: 50px;
-   
+.skipnextbox {
+  margin: auto;
+  width: 300px;
+  height: 50px;
 
-    display: flex;
+  display: flex;
 }
 
-.skipbutton{
-    width: 125px;
-    height: 100%;
-    border: none;
-    background-color: white;
-    text-decoration: underline;
-    font-family: 'Poppins';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 22px;
-    line-height: 24px;
-    color: #757575;
+.skipbutton-profileimage {
+  /* Skip Button */
+
+  /* Auto layout */
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 10px 20px;
+  gap: 10px;
+
+  width: 73px;
+  height: 50px;
+
+  /* Inside auto layout */
+  flex: none;
+  order: 1;
+  flex-grow: 0;
+  background-color: inherit;
+  text-decoration: underline;
+  border: none;
 }
 
-.right .nextbutton{
-    width: 175px;
-    height: 100%;
-    font-family: 'Poppins';
-    font-style: normal;
-    font-weight: 500;
-    font-size: 24px;
-    line-height: 24px;
-    background: #06D69F;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-    color: #01271D;
-    border: none;
-    width: 50%;
-    border-radius: 10px;
+.right .nextbutton-profileimage {
+  /* Post Button */
+
+  /* Auto layout */
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  gap: 10px;
+
+  width: 280px;
+  height: 50px;
+
+  /* Blue */
+  background: #06d69f;
+  border-radius: 15px;
+
+  /* Inside auto layout */
+  flex: none;
+  order: 0;
+  flex-grow: 0;
 }
-.right .nextbutton:active{
-    background-color: #01271D;
-    color: #06D69F;
-
-}
-
-
-
-.bold{
-    font-weight: bold;
-    color: rgba(0, 0, 0, 0.517);
-}
-.policy{
-    font-family: 'Poppins';
-    font-style: normal;
-    font-weight: 500;
-    font-size: 13px;
-    line-height: 15px;
-
-    align-items: center;
-
-    color: #B3B3B3;
+.right .nextbutton-profileimage:active {
+  background-color: #01271d;
+  color: #06d69f;
 }
 
+.bold {
+  font-weight: bold;
+  color: rgba(0, 0, 0, 0.517);
+}
+.policy {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 13px;
+  line-height: 15px;
 
+  align-items: center;
 
-
-
-
-
-.right .policy2{
-    font-family: 'Poppins';
-    font-style: normal;
-    font-weight: 500;
-    font-size: 12px;
-    line-height: 15px;
-
-    align-items: center;
-
-    color: #B3B3B3;
-
-    width: 230px;
-    margin-top: auto;
-
+  color: #b3b3b3;
 }
 
-.botspace{
-    height: 200px;
+.policy2 {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 15px;
+
+  align-items: center;
+
+  color: #b3b3b3;
+
+  width: 230px;
+  margin-top: auto;
 }
 
+.botspace {
+  height: 200px;
+}

@@ -82,7 +82,7 @@ const ProfileImage = () => {
           <img
             src={image || photo}
             alt={"photo"}
-            className="photo avatar"
+            className="photo-profileimage avatar"
             onClick={() => {
               handleChangeImage();
             }}
@@ -92,21 +92,20 @@ const ProfileImage = () => {
           <br />
           <div className="skipnextbox">
             <button
-              className="skipbutton"
-              onClick={() => {
-                nextPage();
-              }}
-            >
-              Skip
-            </button>
-
-            <button
-              className="nextbutton"
+              className="nextbutton-profileimage"
               onClick={() => {
                 handleSubmit();
               }}
             >
               Next
+            </button>
+            <button
+              className="skipbutton-profileimage"
+              onClick={() => {
+                nextPage();
+              }}
+            >
+              Skip
             </button>
           </div>
 

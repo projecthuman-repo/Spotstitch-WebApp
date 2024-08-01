@@ -1,83 +1,75 @@
-
-.boss{
-    display: flex;
-   
+.boss {
+  display: flex;
 }
-.left{
-    height: 100vh;
-    width: 50%;
-    background-color: rgba(0, 255, 136, 0.227);
-    overflow: auto;
-    
+.left {
+  height: 100vh;
+  width: 50%;
+  background-color: rgba(0, 255, 136, 0.227);
+  overflow: auto;
 }
 
-.right{
-    display: grid;
-    
-    height: 100vh;
-    width: 50%;
-    overflow: auto;
-    
-   
+.right-emailverification {
+  display: grid;
+
+  height: 100vh;
+  width: 50%;
+  overflow: auto;
 }
 
-.topspace{
-    height: 50px;
+.topspace {
+  height: 50px;
 }
 
+.verifyacctitle {
+  width: 450px;
+  height: 30px;
 
-.verifyacctitle{
-    width: 450px;
-    height: 30px;
-   
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 48px;
+  line-height: 125.5%;
+  color: #333333;
 
-    font-family: 'Poppins';
-    font-style: normal;
-    font-weight: 500;
-    font-size: 48px;
-    line-height: 125.5%;
-    color: #333333;
-
-    margin: auto;
-    
+  margin: 100px auto;
 }
 
-.verifydescription{
-    
-    width: 450px;
-    height: 30px;
-    left: 848px;
-    top: 393px;
+.verifydescription {
+  width: 450px;
+  height: 30px;
+  left: 848px;
+  top: 393px;
 
-    font-family: 'Poppins';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 16px;
-    line-height: 24px;
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
 
-    color: #333333;
+  color: #333333;
 
-    margin: auto;
+  margin: auto;
 }
-.noemail{
-    width: 450px;
-    height: 30px;
-  
-    font-family: 'Poppins';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 16px;
-    line-height: 24px;
+.noemail {
+  width: 450px;
+  height: 30px;
 
-    color: #333333;
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
 
-    margin: auto;
+  color: #333333;
+
+  margin: 50px auto;
+  margin-bottom: 50px;
 }
-.linknextbutton{
-    margin-left: auto;
-    margin-right: 80px;
-    width: 175px;
-    height: 50px;
+.linknextbutton {
+  margin-left: auto;
+  margin-right: 80px;
+  width: 175px;
+  height: 50px;
 }
 /* .right .nextbutton{
    
@@ -93,11 +85,6 @@
     background-color: rgb(136, 179, 213);
     } */
 
-
-
-
-
-
-.botspace{
-    height: 200px;
+.botspace {
+  height: 200px;
 }

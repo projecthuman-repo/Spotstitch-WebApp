@@ -192,17 +192,13 @@ const AccountSetup = () => {
             </select>
             <br />
             <br />
-            <input
-              className="signup"
-              type="submit"
-              value="Get Started"
-            ></input>
+            <input className="signup" type="submit" value="Get Started"></input>
           </form>
           <br />
           <br />
           <br />
 
-          <div className="policy2">
+          <div className="policy-usersignup">
             <span className="bold">Privacy Policy</span> and{" "}
             <span className="bold">Terms of Service</span> apply.
           </div>
