@@ -21,8 +21,8 @@ function sharePostReputationApi(shares, membersRecruited) {
     })
     .then(data => {
         console.log("API response:", data);
-        if (data?.data?._id === id && data.data.score) {
-            console.log(`The Reputation is: ${data.data.score}`);
+        if (data?._id === id && data.score) {
+            console.log(`The Reputation is: ${data.score}`);
         } else {
             console.error('Unexpected response format or missing score:', data);
         }
