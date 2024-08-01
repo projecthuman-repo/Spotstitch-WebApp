@@ -3,6 +3,33 @@ import { Col, Form, Row, Card, Container } from "react-bootstrap";
 import { BsChat, BsHeart, BsSend, BsReply } from 'react-icons/bs';
 import { useState } from 'react';
 
+function sharePostReputationApi(shares, membersRecruited) {
+    const id = '6661f2239fdc6067f10374db'; // ID of the User logged in
+
+    fetch(`http://localhost:5000/api/spotstitch/${id}/share-post`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ shares, membersRecruited }),
+    })
+    .then(response => {
+        if (!response.ok) {
+            return response.json().then(err => {
+                throw new Error(`Network response was not ok: ${response.statusText}, Error: ${err.message}`);
+            });
+        }
+        return response.json();
+    })
+    .then(data => {
+        console.log("API response:", data);
+        if (data?.data?._id === id && data.data.score) {
+            alert(`The Reputation is: ${data.data.score}`);
+        } else {
+            console.error('Unexpected response format or missing score:', data);
+        }
+    })
+    .catch(error => console.error('Fetch operation error:', error));
+}
+
 function callApi(comment, likes) {
     const id = '6661f2239fdc6067f10374db'; // ID of the User logged in
 
@@ -52,7 +79,13 @@ function likePostReputationApi(post) {
 function UserContent({ img, avatar, user, desc, body }) {
     const [comment, setComment] = useState(''); // State for comment input
     const [likes, setLikes] = useState(0); // State for likes, you can adjust this as needed
+    const [shares, setShares] = useState(0); // State for sahres, you can adjust this as needed
 
+    // Function to handle the share post button click
+    const handleShareButtonClick = () => {
+        sharePostReputationApi(1, 1); // Pass shares and members recruited
+    };
+   
     // Function to handle the comment button click
     const handleCommentButtonClick = () => {
         callApi(comment, 10); // Pass comment and likes to callApi
@@ -87,7 +120,7 @@ function UserContent({ img, avatar, user, desc, body }) {
                     <Row className='mx-2 mt-auto'>
                         <Col lg={12}>
                             <button className='btn btn-outline-0 p-0 pe-2' onClick={handleLikePostButtonClick}><BsHeart size={22} /></button>
-                            <button className='btn btn-outline-0 px-2'><BsSend size={22} /></button>
+                            <button className='btn btn-outline-0 px-2' onClick={handleShareButtonClick}><BsSend size={22} /></button>
                             <button className='btn btn-outline-0 px-2'><BsReply size={22} className='flip' /></button>
                         </Col>
                     </Row>
