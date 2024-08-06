@@ -24,7 +24,7 @@ router.get('/user/:username', getUserPosts)
 router.post('/create', createPost)
 
 
-router.post('/:postId/comment', createPost)
+// router.post('/:postId/comment', createPost)
 
 
 router.put('/:postId/update', updatePost)

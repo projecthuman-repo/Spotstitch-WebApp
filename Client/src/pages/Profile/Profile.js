@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "./profile.css";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import OtherUserProfile from "./OtherUserProfile.js";
 import { Col, Container, Row } from "react-bootstrap";
 import Followers from "./Followers";
@@ -19,7 +19,8 @@ import UserContent from "../Home/UserContent.js";
 
 const Profile = () => {
   const { id } = useParams();
-  const userId = id ? parseInt(id.replace(":", ""), 10) : null;
+  // const userId = id ? parseInt(id.replace(":", ""), 10) : null;
+  const userId = useSelector((state) => state.user.id);
   const user = useSelector((state) => state.user);
   const username = useSelector((state) => state.user.username);
   const picture = useSelector((state) => state.user.picture);
@@ -39,7 +40,8 @@ const Profile = () => {
   const firstName = useSelector((state) => state.user.firstName) || "First";
   const lastName = useSelector((state) => state.user.lastName) || "Last";
 
-  const { data: getUserPosts } = useGetUserPostsQuery(username);
+
+  const {data: getUserPosts} = useGetUserPostsQuery()
 
   const [posts, setPosts] = useState([]);
 
@@ -51,24 +53,24 @@ const Profile = () => {
 
   useEffect(() => {
     const fetchPosts = async () => {
-      try {
-        // const token = localStorage.getItem('token'); // token reader
-        // if (!token) {
-        //     throw new Error('No token found! User not authenticated.');
-        // }
+        try {
+          const token = localStorage.getItem('token'); // token reader
+          if (!token) {
+              throw new Error('No token found! User not authenticated.');
+          }
 
-        // const response = await fetch(`${baseUrl}/posts/user/${username}`, {
-        //     headers: {
-        //         'Authorization': `Bearer ${token}`,
-        //     }
-        // });
+          const response = await fetch(`${baseUrl}/posts/user/${username}`, {
+              headers: {
+                  'Authorization': `Bearer ${token}`,
+              }
+          });
 
-        const response = getUserPosts;
+          // const response = getUserPosts
 
-        console.log("response:!!!!!!!!", response);
-        if (!response.ok) {
-          throw new Error(`HTTP error! status: ${response.status}`);
-        }
+          console.log("response:!!!!!!!!", response)
+          if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+          }
 
         const result = await response.json();
 
@@ -146,9 +148,7 @@ const Profile = () => {
                       <div className="fs-32 text-start">0</div>
                     </a>
                     <div style={{ fontFamily: "Poppins" }}>
-                      Lorem ipsum dolor sit amet consectetur. Dapibus mauris
-                      scelerisque egestas scelerisque lectus pellentesque ante.
-                      Porttitor congue sed vivamus vel vulputate aliquet.
+                      {bio}
                     </div>
                   </div>
                 </Col>
@@ -163,12 +163,7 @@ const Profile = () => {
               {posts.length > 0 ? (
                 posts.map((post) => (
                   <UserContent
-                    key={post._id}
-                    img={post.image?.data || placeHolder}
-                    avatar={picture || placeHolder}
-                    user={username}
-                    desc={post.userDescription}
-                    body={post.description}
+                    post = {post}
                   />
                 ))
               ) : (

@@ -44,13 +44,13 @@ PostSchema.statics.getPost = async (id) => {
   }
 };
 
-PostSchema.statics.getPostUsername = async function (username) {
-  try {
-    const result = await this.find({ username: username });
-    return result;
-  } catch (err) {
-    throw new Error("Error getting posts by username: " + err.message);
-  }
+PostSchema.statics.getPostUsername = async function (userId) {
+    try {
+        const result = await Post.find({ userId: userId });
+        return result;
+    } catch (err) {
+        throw new Error("Error getting posts by username: " + err.message);
+    }
 };
 
 PostSchema.statics.getPosts = async (filters = "") => {
@@ -63,14 +63,19 @@ PostSchema.statics.getPosts = async (filters = "") => {
 };
 
 PostSchema.statics.createPost = async (postData) => {
-  try {
-    const post = new Post(postData);
-    await post.save();
-    return post;
-  } catch (err) {
-    throw new Error("Error getting posts createPost");
-  }
-};
+    try {
+
+        console.log("POSTDATA POST.JS: ", postData)
+        const post = new Post(postData)
+        // await post.validate();
+        // console.log("VALIDATING POST",post.validate())
+        await post.save()
+        console.log("Post created:", post)
+        return post;
+    } catch (err) {
+        throw new Error("Error getting posts createPost");
+    }
+}
 
 PostSchema.methods.updateImage = async function (newImg) {
   try {

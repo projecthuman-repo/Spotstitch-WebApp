@@ -29,6 +29,8 @@ import {
 } from "../../services/posts";
 
 function UserContent({ post }) {
+
+  const postId = post._id
   const user = useSelector((state) => state.user);
   const threshold = 150;
   const [isExpanded, setIsExpanded] = useState(false);
@@ -120,8 +122,8 @@ function UserContent({ post }) {
       console.error("Error fetching posts:", error);
     }
   };
-  console.log(user.userId);
-  console.log(post.userId);
+  // console.log(user.userId);
+  // console.log(post.userId);
   return (
     <Container className=" p-0 my-3 round-l">
       <Row className="post-row">
@@ -144,7 +146,7 @@ function UserContent({ post }) {
             <Col lg={2} xs={5}>
               <img
                 className="avatar shadow"
-                src={post.avatar}
+                src={post.userDetails.picture}
                 width={61}
                 height={61}
               ></img>
@@ -152,7 +154,7 @@ function UserContent({ post }) {
             <Col lg={8} xs={7} className="mx-2">
               <Row>
                 <Col>
-                  <p className="nopadding fs-15 fw-500">{post.user}</p>
+                  <p className="nopadding fs-15 fw-500">{post.userDetails.username}</p>
                 </Col>
               </Row>
               <Row>
@@ -191,8 +193,8 @@ function UserContent({ post }) {
               <DetailedPost
                 show={showModal}
                 onHide={() => setShowModal(false)}
-                avatar={post.picture || placeHolder}
-                user={post.username}
+                avatar={post.userDetails.picture || placeHolder}
+                user={post.userDetails.username}
                 desc={post.userDescription}
                 body={post.description}
                 img={post.image?.data || placeHolder}
@@ -221,7 +223,7 @@ function UserContent({ post }) {
               }}
             >
               <img src={emoji} className="icon-userContent" />
-              {"5"}
+              {post.likes}
             </button>
             <button className="btn btn-outline-0 px-2 icon-button-userContent">
               <img src={addEmoji}></img>{" "}
@@ -243,9 +245,10 @@ function UserContent({ post }) {
                     className="form-control border-0 comment"
                     type="text"
                     placeholder="Add a comment..."
+                    onChange={handleCommentChange}
                   />
                   <span className="input-group-append">
-                    <button className="btn border-0 comment" type="button">
+                    <button className="btn border-0 comment" type="button" onClick={handleCommentSubmit}>
                       <BsChat className="flip" size={20} />
                     </button>
                   </span>
