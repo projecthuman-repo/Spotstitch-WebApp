@@ -3,37 +3,71 @@ import { Col, Form, Row, Card, Container } from "react-bootstrap";
 import { BsChat, BsHeart, BsSend, BsReply } from 'react-icons/bs';
 import { useState } from 'react';
 
-function sharePostReputationApi(shares, membersRecruited) {
-    const id = '6661f2239fdc6067f10374db'; // ID of the User logged in
+async function getObjectIdViaEmailFromApi(targetEmail) {
+  try {
+      const response = await fetch('http://localhost:5000/api/spotstitch', {
+          method: 'GET',
+          headers: { 'Content-Type': 'application/json' },
+      });
 
-    fetch(`http://localhost:5000/api/spotstitch/${id}/share-post`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ shares, membersRecruited }),
-    })
-    .then(response => {
-        if (!response.ok) {
-            return response.json().then(err => {
-                throw new Error(`Network response was not ok: ${response.statusText}, Error: ${err.message}`);
-            });
-        }
-        return response.json();
-    })
-    .then(data => {
-        console.log("API response:", data);
-        if (data?._id === id && data.score) {
-            console.log(`The Reputation is: ${data.score}`);
-        } else {
-            console.error('Unexpected response format or missing score:', data);
-        }
-    })
-    .catch(error => console.error('Fetch operation error:', error));
+      const data = await response.json();
+
+      if (Array.isArray(data)) {
+          const user = data.find(user => user.email === targetEmail);
+          if (user) {
+              console.log(`The email ${targetEmail} was found. User ID: ${user._id}`);
+              return user._id;
+          } else {
+              console.log(`The email ${targetEmail} was not found in the list.`);
+              return null;
+          }
+      } else {
+          console.error('Unexpected response format:', data);
+          return null;
+      }
+  } catch (error) {
+      console.error('Fetch operation error:', error);
+      return null;
+  }
 }
 
-function callApi(comment, likes) {
-    const id = '6661f2239fdc6067f10374db'; // ID of the User logged in
+async function sharePostReputationApi(shares, membersRecruited) {
+  const targetEmail = 'newentry@test.com';
+  const userId = await getObjectIdViaEmailFromApi(targetEmail);
 
-    fetch(`http://localhost:5000/api/spotstitch/${id}/comment`, {
+  if (userId) {
+      fetch(`http://localhost:5000/api/spotstitch/${userId}/share-post`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ shares, membersRecruited }),
+      })
+      .then(response => {
+          if (!response.ok) {
+              return response.json().then(err => {
+                  throw new Error(`Network response was not ok: ${response.statusText}, Error: ${err.message}`);
+              });
+          }
+          return response.json();
+      })
+      .then(data => {
+          console.log("API response:", data);
+          if (data?._id === userId && data.score) {
+              console.log(`The Reputation is: ${data.score}`);
+          } else {
+              console.error('Unexpected response format or missing score:', data);
+          }
+      })
+      .catch(error => console.error('Fetch operation error:', error));
+  } else {
+      console.error('User ID not found, cannot share post');
+  }
+}
+
+async function callApi(comment, likes) {
+  const targetEmail = 'newentry@test.com';
+  const userId = await getObjectIdViaEmailFromApi(targetEmail);
+
+    fetch(`http://localhost:5000/api/spotstitch/${userId}/comment`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ comment, likes }),
@@ -44,7 +78,7 @@ function callApi(comment, likes) {
     })
     .then(data => {
         console.log("API response:", data);
-        if (data?.data?._id === id && data.data.score) {
+        if (data?.data?._id === userId && data.data.score) {
             console.log(`The Reputation is: ${data.data.score}`);
         } else {
             console.error('Unexpected response format or missing score:', data);
@@ -53,10 +87,11 @@ function callApi(comment, likes) {
     .catch(error => console.error('Fetch operation error:', error));
 }
 
-function likePostReputationApi(post) {
-    const id = '6661f2239fdc6067f10374db';
+async function likePostReputationApi(post) {
+  const targetEmail = 'newentry@test.com';
+  const userId = await getObjectIdViaEmailFromApi(targetEmail);
 
-    fetch(`http://localhost:5000/api/spotstitch/${id}/like-post`, {
+    fetch(`http://localhost:5000/api/spotstitch/${userId}/like-post`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ post: post }),
@@ -66,8 +101,8 @@ function likePostReputationApi(post) {
         return response.json();
     })
     .then(data => {
-        console.log("API response:", JSON.stringify(data, null, 2));
-        if (data?._id === id && typeof data?.spectatorData?.totalPoints !== 'undefined') {
+        console.log("API response:", data);
+        if (data?._id === userId && typeof data?.spectatorData?.totalPoints !== 'undefined') {
             console.log(`The Reputation is: ${data.spectatorData.totalPoints}`);
         } else {
             console.error('ID mismatch, missing totalPoints, or unexpected response format:', data);

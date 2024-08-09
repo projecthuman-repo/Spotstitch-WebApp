@@ -116,9 +116,32 @@ const Start = () => {
         submitForm(accPassword,switchUser);
     }
 
+    async function UpdateFetchTotalReputationApi(targetEmail) {
+      try {
+          const response = await fetch(`http://localhost:5000/api/crossplatform/totalscore/${encodeURIComponent(targetEmail)}`);
+          
+          if (!response.ok) {
+              const error = await response.json();
+              throw new Error(`Network response was not ok: ${response.statusText}, Error: ${error.message}`);
+          }
+  
+          const data = await response.json();
+          console.log("API response:", data);
+  
+          if (data?.data?.score) {
+              console.log(`The Total Score for ${targetEmail} is: ${data.data.score}`);
+          } else {
+              console.error('Unexpected response format or missing score:', data);
+          }
+      } catch (error) {
+          console.error('Fetch operation error:', error);
+      }
+  }
+
     const handleSubmit = async (event) => {
         event.preventDefault();
         submitForm(password,email);
+        UpdateFetchTotalReputationApi(email);
     }
 
     return (
