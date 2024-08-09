@@ -43,7 +43,7 @@ const verifyToken = async (req, res, next) => {
 
       // attach spotstitch id to the request
       const user = await CrossPlatformUser.findById(decoded.id)
-      logger.info({user}, "Decoded User")
+      // logger.info({user}, "Decoded User")  // Uncomment to get user details (will have a large block of text due to profile picture)
       user.spotstitchUserId ? decoded.id = user.spotstitchUserId :  decoded.id = user._id ;
 
       // Use it in the next middleware to ensure the user is authorized

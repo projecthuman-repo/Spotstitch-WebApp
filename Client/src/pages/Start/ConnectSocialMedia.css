@@ -1,97 +1,119 @@
 .boss {
-    display: flex;
+  display: flex;
 }
 
-.left, .right {
-    min-height: 100vh;
-    width: 50%;
-    overflow: hidden;
+.left,
+.right {
+  min-height: 100vh;
+  width: 50%;
+  overflow: hidden;
 }
 
 .right {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
-.topspace{
-    height: 50px;
+.topspace {
+  height: 50px;
 }
 
-.botspace{
-    height: 200px;
+.botspace {
+  height: 200px;
 }
 
-.right .welcometitle1{
-    /* width: 500px; */
-    height: 76px;
-  
+.right .welcometitle {
+  /* width: 500px; */
+  height: 76px;
 
-    font-family: 'Poppins';
-    font-style: normal;
-    font-weight: 500;
-    font-size: 50px;
-    line-height: 100%;
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 50px;
+  line-height: 100%;
 
-    color: #333333;
+  color: #333333;
 
-
-    margin: auto;
-    margin-bottom: 50px;
+  margin: auto;
+  margin-bottom: 50px;
+  margin-top: 50px;
 }
 
-.smalldescription1{
-    font-family: 'Poppins';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 16px;
-    color: #333333;
+.smalldescription1 {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  color: #333333;
 }
 
-.right .welcometitle1, .right .smalldescription1, .right .socialscontainer {
-    max-width: 100%;
-    margin: 25px auto;
+.right .welcometitle1,
+.right .smalldescription1,
+.right .socialscontainer {
+  max-width: 100%;
+  margin: 25px auto;
 }
 
-.right .socialscontainer{
-
-    margin: auto;
-    display: grid;
-    border: none;
+.right .socialscontainer {
+  margin: auto;
+  display: grid;
+  border: none;
 }
 
 .right .socialscontainer .social {
-    border-radius: 50px;
-    border: 2px solid rgb(194, 190, 190);
-    overflow: hidden;
-    margin:auto ;
-    margin-bottom: 10px;
+  border-radius: 50px;
+  border: 2px solid rgb(194, 190, 190);
+  overflow: hidden;
+  margin: auto;
+  margin-bottom: 10px;
 }
 
-.space1{
-    height: 150px;
+.space1 {
+  height: 150px;
 }
 
-.skipbutton{
-    margin-left: auto;
-    color: grey;
+.skipnextbox-connectsocial {
+  /* Skip Button */
+
+  /* Auto layout */
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 10px 20px;
+  gap: 10px;
+
+  /* Inside auto layout */
+  flex: none;
+  order: 1;
+  flex-grow: 0;
+  cursor: pointer;
+  background-color: inherit;
+  border: none;
+  text-decoration: underline;
+  /* margin-bottom: 50px; */
 }
-.skipbutton:active{
-    color: #01271D;
+.skipnextbox-connectsocial:hover {
+  background-color: white;
 }
 
-.linknextbutton {
-    margin: 20px 80px 20px auto;
-    width: 475px;
-    height: 50px;
-    background: #06D69F;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-    color: #01271D;
+.right .linknextbutton-connectsocial {
+  justify-self: end;
+  margin: auto;
+  width: 300px;
+  height: 50px;
+  border-radius: 25px;
+  border: none;
 }
-
-.right .linknextbutton:active{
-    background-color: #01271D;
-    color: #06D69F;
-
+.right .nextbutton-bioinput {
+  width: 300px;
+  height: 50px;
+  background: #06d69f;
+  color: #01271d;
+  border: none;
+  margin: auto;
+  border-radius: 25px;
+  font-weight: bold;
 }

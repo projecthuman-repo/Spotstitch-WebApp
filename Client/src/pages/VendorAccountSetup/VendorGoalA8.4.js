@@ -36,134 +36,129 @@ const VendorGoal = () => {
           <br />
           <br />
           <div className="smalldescription">
-            Lorem ipsum dolor sit amet consectetur. Tellus libero diam sed
-            neque nam libero tellus nec faucibus.
+            Lorem ipsum dolor sit amet consectetur. Tellus libero diam sed neque
+            nam libero tellus nec faucibus.
           </div>
           <br />
           <div className="goaloptions">
-                <label className="goalcheckbox">
-                    <input
-                    className="goalcheck"
-                    type="checkbox"
-                    value="Promote Online Business"
-                    checked={selectedOptions.includes("Promote Online Business")}
-                    onChange={() => handleOptionSelected("Promote Online Business")}
-                    />
-                    <span className="radiotext">Promote Online Business</span>
-                </label>
-          
-                <label className="goalcheckbox">
-                    <input
-                    className="goalcheck"
-                    type="checkbox"
-                    value="Promote In Person Business"
-                    checked={selectedOptions.includes("Promote In Person Business")}
-                    onChange={() =>
-                        handleOptionSelected("Promote In Person Business")
-                    }
-                    />
-                    <span className="radiotext">Promote In Person Business</span>
-                </label>
-    
-                <label className="goalcheckbox">
-                    <input
-                    className="goalcheck"
-                    type="checkbox"
-                    value="Get Discovered"
-                    checked={selectedOptions.includes("Get Discovered")}
-                    onChange={() =>
-                        handleOptionSelected(
-                        "Get Discovered"
-                        )
-                    }
-                    />
-                    <span className="radiotext">Get Discovered</span>
-                </label>
-                <label className="goalcheckbox">
-                    <input
-                    className="goalcheck"
-                    type="checkbox"
-                    value="Marketing To New Audiences"
-                    checked={selectedOptions.includes("Marketing To New Audiences")}
-                    onChange={() =>
-                        handleOptionSelected(
-                        "Marketing To New Audiences"
-                        )
-                    }
-                    />
-                    <span className="radiotext">Marketing To New Audiences</span>
-                </label>
-                <label className="goalcheckbox">
-                    <input
-                    className="goalcheck"
-                    type="checkbox"
-                    value="Gain Local Business"
-                    checked={selectedOptions.includes("Gain Local Business")}
-                    onChange={() =>
-                        handleOptionSelected(
-                        "Gain Local Business"
-                        )
-                    }
-                    />
-                    <span className="radiotext">Gain Local Business</span>
-                </label>
-                <label className="goalcheckbox">
-                    <input
-                    className="goalcheck"
-                    type="checkbox"
-                    value="Seek Network With Other Businesses"
-                    checked={selectedOptions.includes("Seek Network With Other Businesses")}
-                    onChange={() =>
-                        handleOptionSelected(
-                        "Seek Network With Other Businesses"
-                        )
-                    }
-                    />
-                    <span className="radiotext">Seek Network With Other Businesses</span>
-                </label>
-                <label className="goalcheckbox">
-                    <input
-                    className="goalcheck"
-                    type="checkbox"
-                    value="Promote Offers And Discounts"
-                    checked={selectedOptions.includes("Promote Offers And Discounts")}
-                    onChange={() =>
-                        handleOptionSelected(
-                        "Promote Offers And Discounts"
-                        )
-                    }
-                    />
-                    <span className="radiotext">Promote Offers And Discounts</span>
-                </label>
-                <label className="goalcheckbox">
-                    <input
-                    className="goalcheck"
-                    type="checkbox"
-                    value="Provide Schedules For Customers"
-                    checked={selectedOptions.includes("Provide Schedules For Customers")}
-                    onChange={() =>
-                        handleOptionSelected(
-                        "Provide Schedules For Customers"
-                        )
-                    }
-                    />
-                    <span className="radiotext">Provide Schedules For Customers</span>
-                </label>
+            <label className="goalcheckbox">
+              <input
+                className="goalcheck"
+                type="checkbox"
+                value="Promote Online Business"
+                checked={selectedOptions.includes("Promote Online Business")}
+                onChange={() => handleOptionSelected("Promote Online Business")}
+              />
+              <span className="radiotext">Promote Online Business</span>
+            </label>
 
-            </div>
-            <div className="whitespaceBottom"></div>
-            <div className="skipnextbox">
+            <label className="goalcheckbox">
+              <input
+                className="goalcheck"
+                type="checkbox"
+                value="Promote In Person Business"
+                checked={selectedOptions.includes("Promote In Person Business")}
+                onChange={() =>
+                  handleOptionSelected("Promote In Person Business")
+                }
+              />
+              <span className="radiotext">Promote In Person Business</span>
+            </label>
 
-
-                <Link to="/vendorsetupcomplete" className="linknextbutton">
-                <button className="nextbutton">Next</button>
-                </Link>
-                <Link to="/vendorsetupcomplete" className="linkskipbutton">
-                <button className="skipbutton">Skip</button>
-                </Link>
-            </div>
-            <div className="botspace"></div>
-            </div>
+            <label className="goalcheckbox">
+              <input
+                className="goalcheck"
+                type="checkbox"
+                value="Get Discovered"
+                checked={selectedOptions.includes("Get Discovered")}
+                onChange={() => handleOptionSelected("Get Discovered")}
+              />
+              <span className="radiotext">Get Discovered</span>
+            </label>
+            <label className="goalcheckbox">
+              <input
+                className="goalcheck"
+                type="checkbox"
+                value="Marketing To New Audiences"
+                checked={selectedOptions.includes("Marketing To New Audiences")}
+                onChange={() =>
+                  handleOptionSelected("Marketing To New Audiences")
+                }
+              />
+              <span className="radiotext">Marketing To New Audiences</span>
+            </label>
+            <label className="goalcheckbox">
+              <input
+                className="goalcheck"
+                type="checkbox"
+                value="Gain Local Business"
+                checked={selectedOptions.includes("Gain Local Business")}
+                onChange={() => handleOptionSelected("Gain Local Business")}
+              />
+              <span className="radiotext">Gain Local Business</span>
+            </label>
+            <label className="goalcheckbox">
+              <input
+                className="goalcheck"
+                type="checkbox"
+                value="Seek Network With Other Businesses"
+                checked={selectedOptions.includes(
+                  "Seek Network With Other Businesses"
+                )}
+                onChange={() =>
+                  handleOptionSelected("Seek Network With Other Businesses")
+                }
+              />
+              <span className="radiotext">
+                Seek Network With Other Businesses
+              </span>
+            </label>
+            <label className="goalcheckbox">
+              <input
+                className="goalcheck"
+                type="checkbox"
+                value="Promote Offers And Discounts"
+                checked={selectedOptions.includes(
+                  "Promote Offers And Discounts"
+                )}
+                onChange={() =>
+                  handleOptionSelected("Promote Offers And Discounts")
+                }
+              />
+              <span className="radiotext">Promote Offers And Discounts</span>
+            </label>
+            <label className="goalcheckbox">
+              <input
+                className="goalcheck"
+                type="checkbox"
+                value="Provide Schedules For Customers"
+                checked={selectedOptions.includes(
+                  "Provide Schedules For Customers"
+                )}
+                onChange={() =>
+                  handleOptionSelected("Provide Schedules For Customers")
+                }
+              />
+              <span className="radiotext">Provide Schedules For Customers</span>
+            </label>
+          </div>
+          <div className="whitespaceBottom"></div>
+          <div className="skipnextbox">
+            <Link
+              to="/vendorsetupcomplete"
+              className="linknextbutton-vendortype"
+            >
+              <button className="nextbutton-vendortype">Next</button>
+            </Link>
+            <Link
+              to="/vendorsetupcomplete"
+              className="linkskipbutton-vendortype"
+            >
+              <button className="skipbutton-vendortype">Skip</button>
+            </Link>
+          </div>
+          {/* <div className="botspace"></div> */}
+        </div>
       </div>
     </>
   );

@@ -1,6 +1,9 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import { baseUrl, prepareHeaders } from "./baseQuery";
 
+
+// Handler Functions in Server\src\routes\api\user\index.js
+
 const userApi = createApi({
     reducerPath: "userApi",
     baseQuery: fetchBaseQuery({
@@ -21,6 +24,23 @@ const userApi = createApi({
                 url: "/user/register",
                 method: "POST",
                 body: user
+            }),
+        }),
+
+        // Fetch any user profile information that is public
+        viewUserProfile: builder.mutation({
+            query: (username) => ({
+                url: "/user/viewProfile",
+                method: "GET",
+                body: username
+            }),
+        }),
+
+        viewUserProfileById: builder.mutation({
+            query: (userId) => ({
+                url: "/user/viewProfileById",
+                method: "GET",
+                body: userId
             }),
         }),
 
@@ -68,6 +88,8 @@ const userApi = createApi({
 export const {
     useGetUserProfileMutation,
     useRegisterSpotstitchMutation,
+    useViewUserProfileMutation,
+    useViewUserProfileByIdMutation,
     useUpdateDetailsMutation,
     useUpdatePictureMutation,
     useUpdateAccountTypeMutation
