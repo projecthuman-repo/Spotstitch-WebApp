@@ -260,11 +260,11 @@ body {
   padding: 20px;
   gap: 10px;
 
-  position: absolute;
+  position: relative;
   width: 175px;
   height: 64px;
-  left: 1189px;
-  top: 554px;
+  margin-left: auto;
+  top: 354px;
 
   background: #8cbdeb;
   border-radius: 15px;

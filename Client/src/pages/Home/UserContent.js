@@ -18,7 +18,6 @@ import addEmoji from "../../assets/icons/addEmoji.svg";
 import like from "../../assets/icons/Like-emoji group.svg";
 import Repost from "../../assets/icons/Re-post icon.png";
 import edit from "../../assets/icons/edit.svg";
-import iconReposted from "../../assets/icons/icon-reposted.png";
 import DetailedPost from "./detailedPost.js";
 import React, { useState } from "react";
 import { useSelector } from "react-redux";

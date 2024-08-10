@@ -89,8 +89,16 @@ function AccountSetupPageThree() {
                 Buy
               </button>
             </div>
-            <img className="logo-account-setup" src={sslogo}></img>
           </div>
+        </div>
+        <div
+          style={{
+            marginLeft: "auto",
+            width: "fit-content",
+            marginRight: "100px",
+          }}
+        >
+          <img className="logo-account-setup" src={sslogo}></img>
         </div>
       </div>
     </>

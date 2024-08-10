@@ -30,7 +30,15 @@ function AccountSetupPageOne() {
         >
           Finish Setup
         </button>
-        <img className="logo-account-setup" src={sslogo}></img>
+        <div
+          style={{
+            marginLeft: "auto",
+            width: "fit-content",
+            marginRight: "100px",
+          }}
+        >
+          <img className="logo-account-setup" src={sslogo}></img>
+        </div>
       </div>
     </>
   );

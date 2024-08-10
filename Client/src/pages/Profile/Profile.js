@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "./profile.css";
+import { useNavigate } from "react-router-dom";
 import { useParams } from "react-router-dom";
 import OtherUserProfile from "./OtherUserProfile.js";
 import { Col, Container, Row } from "react-bootstrap";
