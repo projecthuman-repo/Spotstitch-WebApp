@@ -7,9 +7,8 @@ import addEmoji from "../../assets/icons/addEmoji.svg";
 import like from "../../assets/icons/Like-emoji group.svg";
 import Repost from "../../assets/icons/Re-post icon.png";
 import { useSelector } from "react-redux";
-function DetailedPost({ show, onHide, avatar, user, desc, body, img }) {
+function DetailedPost({ show, onHide, avatar, user, desc, body, img, likes }) {
   const userId = useSelector((state) => state.user.userId);
-
   return (
     <Modal size="xl" className="m-0 p-0" centered show={show} onHide={onHide}>
       <Modal.Body
@@ -75,7 +74,7 @@ function DetailedPost({ show, onHide, avatar, user, desc, body, img }) {
                 }}
               >
                 <img src={emoji} className="icon-userContent" />
-                {"5"}
+                {likes}
               </button>
               <button className="btn btn-outline-0 px-2 icon-button-userContent">
                 <img src={addEmoji}></img>{" "}

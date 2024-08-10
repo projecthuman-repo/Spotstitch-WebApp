@@ -28,6 +28,7 @@ import {
 } from "../../services/posts";
 
 function UserContent({ post }) {
+  const [postState, setPostState] = useState(post);
   const user = useSelector((state) => state.user);
   const threshold = 150;
   const [isExpanded, setIsExpanded] = useState(false);
@@ -48,6 +49,17 @@ function UserContent({ post }) {
   const [addComment, {}] = useCreateCommentMutation();
   const [updatePost, {}] = useUpdatePostMutation();
 
+  const handleLike = (event) => {
+    setPostState((prevPost) => {
+      const isLiked = !prevPost.liked;
+
+      const likes = isLiked ? prevPost.likes + 1 : prevPost.likes - 1;
+      const updatedPost = { ...prevPost, likes, liked: isLiked };
+      console.log("Previous Post:", prevPost);
+      console.log("Updated Post:", updatedPost);
+      return updatedPost;
+    });
+  };
   const handleCommentChange = (event) => {
     setComment(event.target.value);
   };
@@ -195,6 +207,7 @@ function UserContent({ post }) {
                 desc={post.userDescription}
                 body={post.description}
                 img={post.image?.data || placeHolder}
+                likes={post.likes || 0}
               />
             )}
           </Row>
@@ -205,7 +218,7 @@ function UserContent({ post }) {
               style={{
                 /* thumbs up emoji group */
 
-                width: "53px",
+                width: "63px",
                 height: "32px",
                 display: "flex",
                 /* Inside auto layout */
@@ -218,9 +231,10 @@ function UserContent({ post }) {
                 alignContent: "flexStart",
                 padding: "5px",
               }}
+              onClick={() => handleLike()}
             >
               <img src={emoji} className="icon-userContent" />
-              {"5"}
+              {postState.likes}
             </button>
             <button className="btn btn-outline-0 px-2 icon-button-userContent">
               <img src={addEmoji}></img>{" "}
