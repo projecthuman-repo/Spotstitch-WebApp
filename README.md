@@ -25,7 +25,7 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-Spotstitch is a web application that allows businesses to manage their inventory and sales.
+Spotstitch is a AR based web application that allows businesses to manage their inventory and sales.
 
 ### Built With
 
