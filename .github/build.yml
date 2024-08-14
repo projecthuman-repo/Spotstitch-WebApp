@@ -1,0 +1,38 @@
+name: Building and Testing The App
+
+on:
+  pull_request:
+    branches:
+      - main
+      - master
+  push:
+    branches:
+      - main
+      - master
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Set up Node Js
+        uses: actions/setup-node@v3
+        with:
+          node-version: "20"
+
+      - name: Check and Lint Server
+        run: |
+          cd Server
+          npm install
+          npm run lint
+          npm run test
+          cd ../
+
+      - name: Check Client
+        run: |
+          cd Client
+          npm install
+          npm run build
+          cd ../
