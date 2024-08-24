@@ -80,7 +80,7 @@ function Home({ vendor = false }) {
     e.preventDefault();
     console.log("inside call api method");
 
-    fetch('http://localhost:5000/api/spotstitch/', { method: 'GET' })
+    fetch('http://localhost:8080/api/spotstitch/', { method: 'GET' })
       .then(response => {
         if (!response.ok) {
           throw new Error('Network response was not ok ' + response.statusText);

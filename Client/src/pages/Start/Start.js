@@ -118,7 +118,7 @@ const Start = () => {
 
     async function UpdateFetchTotalReputationApi(targetEmail) {
       try {
-          const response = await fetch(`http://localhost:5000/api/crossplatform/totalscore/${encodeURIComponent(targetEmail)}`);
+          const response = await fetch(`http://localhost:8080/api/crossplatform/totalscore/${encodeURIComponent(targetEmail)}`);
           
           if (!response.ok) {
               const error = await response.json();

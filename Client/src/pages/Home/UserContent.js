@@ -3,9 +3,35 @@ import { Col, Form, Row, Card, Container } from "react-bootstrap";
 import { BsChat, BsHeart, BsSend, BsReply } from 'react-icons/bs';
 import { useState } from 'react';
 
+async function createReputation(email, score) {
+    try {
+        const response = await fetch('http://localhost:8080/api/spotstitch/', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ email, score }),
+        });
+
+        if (!response.ok) {
+            const errorData = await response.json();
+            throw new Error(`Network response was not ok: ${response.statusText}, Error: ${errorData.message}`);
+        }
+
+        const data = await response.json();
+        console.log('Reputation created successfully:', data);
+
+        // Handle the response data as needed
+        return data;
+    } catch (error) {
+        console.error('Error creating reputation:', error);
+        throw error;
+    }
+}
+
 async function getObjectIdViaEmailFromApi(targetEmail) {
   try {
-      const response = await fetch('http://localhost:5000/api/spotstitch', {
+      const response = await fetch('http://localhost:8080/api/spotstitch', {
           method: 'GET',
           headers: { 'Content-Type': 'application/json' },
       });
@@ -19,7 +45,8 @@ async function getObjectIdViaEmailFromApi(targetEmail) {
               return user._id;
           } else {
               console.log(`The email ${targetEmail} was not found in the list.`);
-              return null;
+              createReputation(targetEmail, 0);
+              return user._id;
           }
       } else {
           console.error('Unexpected response format:', data);
@@ -36,7 +63,7 @@ async function sharePostReputationApi(shares, membersRecruited) {
   const userId = await getObjectIdViaEmailFromApi(targetEmail);
 
   if (userId) {
-      fetch(`http://localhost:5000/api/spotstitch/${userId}/share-post`, {
+      fetch(`http://localhost:8080/api/spotstitch/${userId}/share-post`, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ shares, membersRecruited }),
@@ -67,7 +94,7 @@ async function callApi(comment, likes) {
   const targetEmail = 'newentry@test.com';
   const userId = await getObjectIdViaEmailFromApi(targetEmail);
 
-    fetch(`http://localhost:5000/api/spotstitch/${userId}/comment`, {
+    fetch(`http://localhost:8080/api/spotstitch/${userId}/comment`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ comment, likes }),
@@ -91,7 +118,7 @@ async function likePostReputationApi(post) {
   const targetEmail = 'newentry@test.com';
   const userId = await getObjectIdViaEmailFromApi(targetEmail);
 
-    fetch(`http://localhost:5000/api/spotstitch/${userId}/like-post`, {
+    fetch(`http://localhost:8080/api/spotstitch/${userId}/like-post`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ post: post }),
