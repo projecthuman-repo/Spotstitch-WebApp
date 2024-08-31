@@ -1,9 +1,9 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
-
+import {REACT_APP_USER_API_URL} from "../constants"
 const gamesApi = createApi({
     reducerPath: 'gamesApi',
     baseQuery: fetchBaseQuery({
-        baseUrl: 'http://localhost:5001/game',
+        baseUrl: `${REACT_APP_USER_API_URL}/games`,
     }),
     endpoints: (builder) => ({
         getGameInventory: builder.query({

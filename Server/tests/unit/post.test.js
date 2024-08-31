@@ -1,5 +1,6 @@
-
+/* eslint-disable no-unused-vars */
 const { Post } = require('../../src/model')
+/* eslint-disable no-unused-vars */
 const mongoose = require('mongoose');
 
 

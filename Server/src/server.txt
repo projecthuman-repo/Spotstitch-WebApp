@@ -61,7 +61,10 @@ io.on('connection', (socket)=> {
   })
 
   socket.on('message-room', async(room, content, sender, time, date) => {
+  /* eslint-disable no-unused-vars */
     const newMessage = await Message.create({content, from: sender, time, date, to: room});
+  /* eslint-disable no-unused-vars */
+
     let roomMessages = await getLastMessagesFromRoom(room);
     roomMessages = sortRoomMessagesByDate(roomMessages);
     // sending message to room

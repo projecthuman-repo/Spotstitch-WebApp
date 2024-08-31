@@ -1,7 +1,7 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
-
+import {REACT_APP_LOGIN_API_URL} from "../constants"
 // define a service user a base URL
-const baseUrl = process.env.LOGIN_SERVER || "http://localhost:4000/api"
+const baseUrl = REACT_APP_LOGIN_API_URL //process.env.LOGIN_SERVER || "http://localhost:4000/api"
 
 const loginApi = createApi({
     reducerPath: "loginServer",

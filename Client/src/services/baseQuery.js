@@ -1,7 +1,7 @@
 
 
 
-
+import {REACT_APP_LOGIN_SERVER_URL} from "../constants"
 
 export const prepareHeaders = (headers, { getState }) => {
     const token = getState().user?.token
@@ -9,4 +9,4 @@ export const prepareHeaders = (headers, { getState }) => {
     return headers
 }
 
-export const baseUrl = process.env.LOGIN_SERVER || "http://localhost:8080/v1"
+export const baseUrl = REACT_APP_LOGIN_SERVER_URL
