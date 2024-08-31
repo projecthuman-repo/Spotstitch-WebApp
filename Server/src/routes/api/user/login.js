@@ -7,7 +7,11 @@ const { createToken } = require('../../../authorization/auth');
 
 module.exports = async (req, res) => {
   try {
-    const { email, password, mainmail } = req.body;
+    const { email, password, 
+    /* eslint-disable no-unused-vars */
+      mainmail 
+    /* eslint-disable no-unused-vars */
+    } = req.body;
     const user = await User.findByCredentials(email, password);
 
     user.status = 'online';

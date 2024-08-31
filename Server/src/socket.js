@@ -2,7 +2,11 @@
 // Connect chatting server
 const { Server } = require("socket.io");
 const { Chat, Message } = require("./model");
-const { verifyToken, decodeToken } = require("./authorization/auth");
+const { 
+        /* eslint-disable no-unused-vars */
+        verifyToken,
+        /* eslint-disable no-unused-vars */
+        decodeToken } = require("./authorization/auth");
 const { createSuccessResponse, createErrorResponse } = require("./response");
 const logger = require("./logger");
 const io = new Server()

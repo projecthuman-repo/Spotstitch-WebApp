@@ -1,5 +1,7 @@
 const { createServer } = require("node:http");
+/* eslint-disable no-unused-vars */
 const { Server } = require("socket.io");
+/* eslint-disable no-unused-vars */
 const ioc = require("socket.io-client");
 const app = require('../../src/app')
 const server = require('../../src/socket')
@@ -101,7 +103,9 @@ describe("Messaging system", () => {
     })
 
     describe('Messaging System', () => {
+    /* eslint-disable no-unused-vars */
         let chatId;
+    /* eslint-disable no-unused-vars */
         const users = ['1', '2']
         test('should create a chat', async () => {
             const res = await clientSocket.emitWithAck('create chat', users)
@@ -136,6 +140,7 @@ describe("Messaging system", () => {
                 done()
             })
             let id;
+    /* eslint-disable no-unused-vars */
             clientSocket.emit('connect to rooms', 'a', (res) => {
                 clientSocket.emit('create chat', ['a','b'], (res) => {
                     id = res.chatId
@@ -144,7 +149,7 @@ describe("Messaging system", () => {
                     })
                 })
             })
-
+    /* eslint-disable no-unused-vars */
             waitFor(serverSocket, 'message sent')
 
         })

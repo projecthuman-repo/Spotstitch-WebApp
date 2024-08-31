@@ -3,7 +3,7 @@ const { isEmail } = require('validator');
 const bcrypt = require('bcrypt');
 const Settings = require('./Settings');
 const Wallet = require('./Wallet');
-const logger = require('../../../logger');
+//const logger = require('../../../logger');
 
 const VENDOR_TYPE = "vendor"
 const USER_TYPE = "personal"

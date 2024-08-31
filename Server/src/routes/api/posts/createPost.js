@@ -1,4 +1,8 @@
-const { Post, User, validateFields } = require('../../../model');
+const { Post, 
+    /* eslint-disable no-unused-vars */
+    User, 
+    /* eslint-disable no-unused-vars */
+    validateFields } = require('../../../model');
 const logger = require('../../../logger');
 const { createErrorResponse, createSuccessResponse } = require('../../../response');
 

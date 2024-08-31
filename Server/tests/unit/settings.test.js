@@ -59,7 +59,9 @@ describe('Settings', () => {
         })
         test('creating duplicate user settings', async () => {
             expect(async () => {
+                /* eslint-disable no-unused-vars */
                 const res = await Settings.createSettings('1')
+                /* eslint-disable no-unused-vars */
             }).rejects.toThrow()
         })
         test('getting user settings', async () => {
