@@ -1,10 +1,10 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
-
+import {REACT_APP_USER_API_URL} from "../constants"
 // Define a service for user management using a base URL
 const userApi = createApi({
     reducerPath: 'userApi',
     baseQuery: fetchBaseQuery({
-        baseUrl: 'http://localhost:5001',
+        baseUrl: REACT_APP_USER_API_URL,
     }),
 
     endpoints: (builder) => ({

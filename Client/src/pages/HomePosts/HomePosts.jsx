@@ -8,6 +8,7 @@ import UserContent from "../Home/UserContent";
 import { useGetAllPostsQuery } from "../../services/posts";
 import { useViewUserProfileByIdMutation } from "../../services/userApi";
 import filterIcon from "../../assets/icons/filter.svg";
+import {REACT_APP_API_URL} from "../../constants"
 const HomePosts = () => {
   const user = useSelector((state) => state.user);
   const [tab, setTab] = useState(1);
@@ -59,7 +60,7 @@ const HomePosts = () => {
           throw new Error("No token found! User not authenticated.");
         }
 
-        const response = await fetch("http://localhost:8080/v1/posts/all", {
+        const response = await fetch(`${REACT_APP_API_URL}/v1/posts/all`, {
           headers: {
             Authorization: `Bearer ${token}`,
           },
