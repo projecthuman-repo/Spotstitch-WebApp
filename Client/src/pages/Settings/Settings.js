@@ -1,3 +1,4 @@
+//Client/src/pages/Settings/Settings.js
 import { Col, Container, Row, Card } from "react-bootstrap";
 import { useEffect, useState } from "react";
 import General from "./General";

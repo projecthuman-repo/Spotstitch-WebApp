@@ -1,3 +1,4 @@
+//Client/src/pages/Settings/General.js
 import { Col, Container, Form, InputGroup, Row } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { useGetUserProfileMutation } from "../../services/userApi";
