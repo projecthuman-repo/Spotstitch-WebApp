@@ -8,18 +8,11 @@
       <ul>
         <li><a href="#built-with">Built With</a></li>
       </ul>
+        <li><a href="#installing">Installing</a></li>
     </li>
-    <li>
-      <a href="#getting-started">Getting Started</a>
-      <ul>
-        <li><a href="#prerequisites">Prerequisites</a></li>
-        <li><a href="#installation">Installation</a></li>
-      </ul>
-    </li>
-    <li><a href="#deployment">Deployment</a></li>
     <li><a href="#contributing">Contributing</a></li>
   </ol>
-
+  
 
 
 <!-- ABOUT THE PROJECT -->
@@ -32,35 +25,8 @@ Spotstitch is a AR based web application that allows businesses to manage their 
 * React JS - Frontend
 * React JS - Backend
 
-
-<!-- GETTING STARTED -->
-## Getting Started
-
-To get a local copy up and running follow these simple steps.
-
-### Prerequisites
-
-* node
-
-### Installation
-#### React Backend
-
-1. `cd` into server folder
-2. run `npm install`
-3. run `npm start`
-
-Once it is running, you can access the backend at `http://localhost:3000`
-
-#### React Frontend
-
-1. `cd` into Client folder
-2. run `npm install`
-3. run `npm start`
-
-<!-- DEPLOYMENT -->
-## Deployment
-
-TODO
+## Installing
+Refer to the [installation wiki](https://github.com/projecthuman-repo/Spotstitch-WebApp/wiki/Installing) for steps on how to install
 
 <!-- CONTRIBUTING -->
 ## Contributing
